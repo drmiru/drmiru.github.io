@@ -1,7 +1,7 @@
 ---
 id: 86
 title: 'What&#8217;s new in VMware vSphere 4 @ Magirus &#8211; Day 1'
-date: 2009-07-02T16:11:44+00:00
+date: 2009-07-02T16:11:44+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=86
@@ -20,8 +20,7 @@ Not motivated to list all new features, there are many sites including VMware on
   * &#8211; Native SATA Support (cool for Labs)
   * &#8211; Asymmetric LUN Access (LUA)
   * &#8211; Paravirtualized SCSI Adapter for VMs
-  * &#8211; vCenter linked Mode (manage more than one vCenter within the same GUI (each VC keeps it&#8217;s own database, some information synced via ADAM between VC Instances)
-  
+  * &#8211; vCenter linked Mode (manage more than one vCenter within the same GUI (each VC keeps it&#8217;s own database, some information synced via ADAM between VC Instances)  
     &#8211;> only supported if all VCs are within the same forest/domain or whithin a two-way trust environment
   * &#8211; Update Manager supports now Patch staging (pre download patches to Hosts, remmediate later). Unfortunately there is no multi-repository support, still only one Update Manager and patch repository per vCenter. Local Repositories can be managed within vCenter Client.
   * &#8211; Orchestrator (devel, automation, orchestration) is installed by default with vCenter. There is no much information about that. 🙁
@@ -31,10 +30,8 @@ Not motivated to list all new features, there are many sites including VMware on
   * &#8211; Perfmon Integration in Windows guests. Counters available for virtual CPU etc.
   * &#8211; Alarms / Events. A bunch of new events and triggers to monitor the infrastructure (cpu, network, storage, hosts, vms, clusters, etc.)
   * &#8211; vApp : import or create your own vApp. (container with multiple VMs exportable as OVF / OFA with enhanced properties)
-  * &#8211; vNetwork Distributed Switch Architecture
-  
-    -> enables support for Cisco NEXUS 1000 virtual switch
-  
+  * &#8211; vNetwork Distributed Switch Architecture  
+    -> enables support for Cisco NEXUS 1000 virtual switch  
     -> distributed virtual switches are configured on vCenter level, connected hosts get configured with hidden vSwitches and Uplinks to manage the connectivity to the physical environment. Base for VMsafeAPI and vShield zones
 
 enough for now&#8230; let&#8217;s go to the lab&#8230;

@@ -1,7 +1,7 @@
 ---
 id: 3359
 title: 'This year isn&#8217;t over yet&#8230;Next speakings&#8230; #E2EVC Barcelona and #TechSummit Berlin'
-date: 2014-10-23T17:31:40+00:00
+date: 2014-10-23T17:31:40+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=3359

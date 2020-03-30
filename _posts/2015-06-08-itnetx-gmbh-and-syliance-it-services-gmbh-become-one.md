@@ -1,7 +1,7 @@
 ---
 id: 4059
 title: itnetx gmbh and Syliance IT Services GmbH become one !
-date: 2015-06-08T08:02:31+00:00
+date: 2015-06-08T08:02:31+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=4059
@@ -25,7 +25,7 @@ tags:
 
 Today&#8217;s an exciting day for all of us, employees of itnetX as well as of Syliance IT Services. Two of the most important companies in the field of Microsoft Workplace, Cloud and Management Solutions, **Syliance IT Services GmbH and itnetx gmbh, will merge as of 1st July 2015 to form the new company, itnetX AG**. This is a giant step and smart step for both of the companies as they currently lead the Microsoft System Center and Cloud Services stack in Switzerland. Both companies are equipped with skilled and motivated people and geeks,  packed with future- and practice-proven technlology know-how in the Microsoft private- / hybrid- and public Cloud services stack.
 
-<img style="width: 217px; height: 169px;" alt="" src="http://i.livescience.com/images/i/000/049/316/i02/atom.jpg?1328915037" width="242" height="192" />
+<img style="width: 217px; height: 169px;" alt="" src="http://i.livescience.com/images/i/000/049/316/i02/atom.jpg?1328915037" width="242" height="192" /> 
 
 The new organization comprises 5 strategic business units: Modern Workplace Solutions, Management Solutions, Cloud and Datacenter Solutions, and Software Solutions, all of which are complemented by Managed Services.
 

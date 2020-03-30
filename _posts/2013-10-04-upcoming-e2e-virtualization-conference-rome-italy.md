@@ -1,7 +1,7 @@
 ---
 id: 1643
 title: 'Upcoming: E2E Virtualization Conference Rome (Italy)'
-date: 2013-10-04T13:27:44+00:00
+date: 2013-10-04T13:27:44+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1643

@@ -1,7 +1,7 @@
 ---
 id: 1094
 title: How to execute 64-Bit Powershell Scripts in System Center Orchestrator
-date: 2013-05-26T13:45:18+00:00
+date: 2013-05-26T13:45:18+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1094
@@ -25,11 +25,11 @@ I came along a weird issue when trying to automate a SCVMM Hyper-V Bare metal De
 
 System Center Orchestrator is built in x86 architecture (yes.. still the 2012 SP1 version I&#8217;m using on a Server 2012). Therefore the built-in Script execution action executes the PoSh code in x86 Powershell environment. This is not very useful for x64 based management modules or snapIns like SCVMM, Exchange 2010/2013 or SCCM. Trying to execute a SCVMM CMDLET like in the example here:
 
-![](http://www.miru.ch/wp-content/uploads/2013/05/052613_1142_Howtoexecut1.png)
+![](../content/images/2013/05/052613_1142_Howtoexecut1.png) 
 
 ..ends with an Error (CMDLET is unknown)
 
-![](http://www.miru.ch/wp-content/uploads/2013/05/052613_1142_Howtoexecut2.png)
+![](../content/images/2013/05/052613_1142_Howtoexecut2.png) 
 
 This happens because SCVMM PoSh modules are not available in x86 Powershell environments.
 
@@ -37,11 +37,10 @@ This happens because SCVMM PoSh modules are not available in x86 Powershell envi
 
 There are basically three different workarounds I&#8217;m currently aware of. If you know other or better ones please let me know.
 
-  1. **Use Run Program Action
-  
+  1. **Use Run Program Action  
 ** 
 
-![](http://www.miru.ch/wp-content/uploads/2013/05/052613_1142_Howtoexecut3.png)
+![](../content/images/2013/05/052613_1142_Howtoexecut3.png) 
 
 <p style="margin-left: 36pt;">
   <ol>
@@ -51,7 +50,7 @@ There are basically three different workarounds I&#8217;m currently aware of. If
   </ol>
   
   <p>
-    <img src="http://www.miru.ch/wp-content/uploads/2013/05/052613_1142_Howtoexecut4.png" alt="" />
+    <img src="../content/images/2013/05/052613_1142_Howtoexecut4.png" alt="" />
   </p>
   
   <p>

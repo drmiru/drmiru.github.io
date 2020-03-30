@@ -1,7 +1,7 @@
 ---
 id: 175
 title: Microsoft launches Security Essentials
-date: 2009-10-31T19:42:30+00:00
+date: 2009-10-31T19:42:30+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=175

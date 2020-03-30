@@ -1,7 +1,7 @@
 ---
 id: 2417
 title: Troubleshooting Windows Azure Pack Console Connect
-date: 2014-03-21T23:16:27+00:00
+date: 2014-03-21T23:16:27+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=2417
@@ -28,7 +28,7 @@ tags:
 
 <span style="font-family: Times New Roman; font-size: 12pt;">To give you a basic understanding, I pasted the original Microsoft big picture here.<br /> </span>
 
-![](http://www.miru.ch/wp-content/uploads/2014/03/031914_2159_Troubleshoo1.gif)<span style="font-family: Times New Roman; font-size: 12pt;"><br /> </span>
+![](../content/images/2014/03/031914_2159_Troubleshoo1.gif) <span style="font-family: Times New Roman; font-size: 12pt;"><br /> </span>
 
 <span style="font-family: Times New Roman; font-size: 12pt;">Image: Remote Console Connect Architecture (Image Source: Microsoft)<br /> </span>
 
@@ -59,10 +59,8 @@ While it is a bit more complex in detail, I tried to simplify the process for a 
 <span style="text-decoration: underline;"><strong>Mistake 1:<br /> </strong></span>
 
   * A self-signed SSL certificate has been used on SCVMM to generate the access tokens, but the certificate has not been imported into the computers certificate store on each Hyper-V Host
-  * A self-signed SSL certificate has been used on SCVMM to generate the access tokens, but the certificate&#8217;s public key has not been imported in the &#8220;Trusted Root Certificate Authorities&#8221; container on each Hyper-V Host
-  
-    **<span style="color: red;">In both cases above, Your browser will get a JSON file containing a not very helpful error message, instead of receiving an RDP File when trying to connect a VM Console</span>
-  
+  * A self-signed SSL certificate has been used on SCVMM to generate the access tokens, but the certificate&#8217;s public key has not been imported in the &#8220;Trusted Root Certificate Authorities&#8221; container on each Hyper-V Host  
+    **<span style="color: red;">In both cases above, Your browser will get a JSON file containing a not very helpful error message, instead of receiving an RDP File when trying to connect a VM Console</span>  
 ** 
 
 <span style="text-decoration: underline;"><strong>Mistake 2:<br /> </strong></span>
@@ -78,16 +76,14 @@ While it is a bit more complex in detail, I tried to simplify the process for a 
 <span style="text-decoration: underline;"><strong>Mistake 3:<br /> </strong></span>
 
   * The thumbprint of the SSL certificate installed on SCVMM has not been registered on the RD Gateway host
-  * The SSL Certificate for RD Gateway Host has been changed or renewed without restarting the host
-  
-    ![](http://www.miru.ch/wp-content/uploads/2014/03/032114_2114_Troubleshoo1.png)
+  * The SSL Certificate for RD Gateway Host has been changed or renewed without restarting the host  
+![](../content/images/2014/03/032114_2114_Troubleshoo1.png) 
 
 <span style="text-decoration: underline;"><strong>Mistake 4:<br /> </strong></span>
 
   * The RD Gateway URL defined on the VM Cloud in WAP Portal does not match the CN of the RD Gateway Certficate.
   * The Certificate used for RD Gateway does not have DNS=<gatewayFQDN> set as a &#8220;Subject Alternative Name&#8221;
-  * In this case you&#8217;ll see the following error message:
-  
-    ![](http://www.miru.ch/wp-content/uploads/2014/03/032114_2114_Troubleshoo2.png)
+  * In this case you&#8217;ll see the following error message:  
+![](../content/images/2014/03/032114_2114_Troubleshoo2.png) 
 
 While there are other pitfalls like SSL-Offloading, Load-Balancing etc., I hope this post covers the most often occurring issues and questions I see around Windows Azure Pack Console Connect feature. However, if you know other important pitfalls, feel free to ping me: <a href="http://www.twitter.com/DRMIRU" target="_blank">@DRMIRU</a>

@@ -1,7 +1,7 @@
 ---
 id: 236
 title: How to mass modify VM config parameters using PowerCLI
-date: 2010-05-07T20:45:58+00:00
+date: 2010-05-07T20:45:58+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=236

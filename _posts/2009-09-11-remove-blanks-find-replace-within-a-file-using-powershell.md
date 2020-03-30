@@ -1,7 +1,7 @@
 ---
 id: 165
 title: Remove blanks, find replace within a file using powershell
-date: 2009-09-11T21:08:16+00:00
+date: 2009-09-11T21:08:16+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=165
@@ -24,8 +24,7 @@ Function find_replace($file,$findstr,$replacestr)
 }
 #---------------------------------------------------------------------------------------</pre>
 
-Example:
-  
+Example:  
 **find_replace &#8220;C:\test.txt&#8221; &#8220;blaa&#8221; &#8220;fooo&#8221;**
 
 <pre>#---------------------------------------------------------------------------------------
@@ -41,16 +40,11 @@ Function trim($file,$mode)
 }
 #---------------------------------------------------------------------------------------</pre>
 
-Example 1:**
-  
-trim &#8220;C:\test.txt&#8221;
-  
+Example 1:**  
+trim &#8220;C:\test.txt&#8221;  
 ** (removes empty lines in the file)****
 
-**Example 2:
-  
-trim &#8220;C:\test.txt&#8221; includeblanks
-  
-** (removes also blank chars)**
-  
+**Example 2:  
+trim &#8220;C:\test.txt&#8221; includeblanks  
+** (removes also blank chars)**  
 **

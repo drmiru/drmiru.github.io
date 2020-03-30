@@ -1,7 +1,7 @@
 ---
 id: 348
 title: Unified Computing
-date: 2010-11-21T14:40:38+00:00
+date: 2010-11-21T14:40:38+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=348

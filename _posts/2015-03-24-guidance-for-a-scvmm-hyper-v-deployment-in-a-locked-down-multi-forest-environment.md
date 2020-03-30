@@ -1,7 +1,7 @@
 ---
 id: 3868
 title: Guidance for a SCVMM / Hyper-V deployment in a locked down, multi-forest environment
-date: 2015-03-24T22:18:39+00:00
+date: 2015-03-24T22:18:39+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=3868
@@ -32,7 +32,7 @@ Multi-forest in general is documented, but not the specific trust authentication
 
 ### Environment
 
-![](http://www.miru.ch/wp-content/uploads/2015/03/032415_2016_Guidancefor1.png)
+![](../content/images/2015/03/032415_2016_Guidancefor1.png) 
 
 ### 
 
@@ -45,8 +45,7 @@ Multi-forest in general is documented, but not the specific trust authentication
 
 ### Selective forest authentication in a nutshell
 
-Enabling this option on the forest trust properties requires any user / group in the trusting forest to be granted explicitly on computer objects with the &#8220;allowed to authenticate&#8221; permission on the trusted forest.
-  
+Enabling this option on the forest trust properties requires any user / group in the trusting forest to be granted explicitly on computer objects with the &#8220;allowed to authenticate&#8221; permission on the trusted forest.  
 For detailed information on that see the following TechNet documentation: <https://technet.microsoft.com/en-us/library/cc755844%28v=ws.10%29.aspx>
 
 ### Issues to solve
@@ -76,7 +75,7 @@ For detailed information on that see the following TechNet documentation: <https
         <span style="font-size: 10pt;">Unable to verify RunAs credentials account for Host Management with error: ID 405<br /> </span></p> 
         
         <p>
-          <img alt="" src="http://www.miru.ch/wp-content/uploads/2015/03/032415_2016_Guidancefor2.png" /></td> 
+          <img alt="" src="../content/images/2015/03/032415_2016_Guidancefor2.png" /></td> 
           
           <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
             <span style="font-size: 10pt;">Grant the RunAs account from Forest B &#8220;allowed to authenticate&#8221; permission on the SCVMM computer object in Forest A</span>
@@ -140,7 +139,7 @@ For detailed information on that see the following TechNet documentation: <https
                         <span style="font-size: 10pt;">Unable to add Hyper-V Hosts and Clusters with error:<br /> </span></p> 
                         
                         <p>
-                          <img alt="" src="http://www.miru.ch/wp-content/uploads/2015/03/032415_2016_Guidancefor3.png" /></td> 
+                          <img alt="" src="../content/images/2015/03/032415_2016_Guidancefor3.png" /></td> 
                           
                           <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
                             <ul>

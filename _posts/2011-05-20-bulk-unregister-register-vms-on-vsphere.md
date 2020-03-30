@@ -1,7 +1,7 @@
 ---
 id: 510
 title: Bulk unregister / register VMs on vSphere
-date: 2011-05-20T11:42:05+00:00
+date: 2011-05-20T11:42:05+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=510

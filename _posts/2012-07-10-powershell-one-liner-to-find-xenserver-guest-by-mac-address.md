@@ -1,7 +1,7 @@
 ---
 id: 854
 title: Powershell one-liner to find XenServer guest by MAC address
-date: 2012-07-10T12:21:18+00:00
+date: 2012-07-10T12:21:18+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=854

@@ -1,7 +1,7 @@
 ---
 id: 674
 title: Exchange 2010 Administrative Group Name decrypted
-date: 2011-10-28T20:21:40+00:00
+date: 2011-10-28T20:21:40+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=674

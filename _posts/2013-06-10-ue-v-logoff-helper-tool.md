@@ -1,7 +1,7 @@
 ---
 id: 1115
 title: UE-V Logoff Helper Tool
-date: 2013-06-10T19:23:24+00:00
+date: 2013-06-10T19:23:24+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1115

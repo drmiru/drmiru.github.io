@@ -1,7 +1,7 @@
 ---
 id: 365
 title: How to change the pool master in a XenServer farm
-date: 2010-12-13T21:50:20+00:00
+date: 2010-12-13T21:50:20+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=365

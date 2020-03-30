@@ -1,7 +1,7 @@
 ---
 id: 4767
 title: Deploy Packages and Windows Updates to Nano Servers
-date: 2016-07-03T22:09:43+00:00
+date: 2016-07-03T22:09:43+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=4767
@@ -35,12 +35,9 @@ Nano Server supports the following methods to add the items above.
 
 To add packages you can leverage PowerShell PackageManagement, formerly known as OneGet capabilities.
 
-PackageManagement is essentially a Package Management Aggregator.
-  
-It creates a unified and consistent PowerShell interface for users and provides a plug-in model at the back end that different
-  
-installer technologies or package managers can plug-in as providers, using PackageManagement APIs.
-  
+PackageManagement is essentially a Package Management Aggregator.  
+It creates a unified and consistent PowerShell interface for users and provides a plug-in model at the back end that different  
+installer technologies or package managers can plug-in as providers, using PackageManagement APIs.  
 Each provider further manages one or multiple package sources (repositories) where software packages are stored.
 
 <div id="page" class="site container-fluid">
@@ -51,7 +48,7 @@ Each provider further manages one or multiple package sources (repositories) whe
         
         <div class="entry-content single">
           <p>
-            <a href="http://www.miru.ch/deploy-packages-and-windows-updates-to-nano-servers/oneget-architecture/"><img class="alignleft wp-image-4770" src="http://www.miru.ch/wp-content/uploads/2016/07/oneget-architecture.png" alt="oneget-architecture" width="589" height="323" srcset="http://www.miru.ch/wp-content/uploads/2016/07/oneget-architecture.png 784w, http://www.miru.ch/wp-content/uploads/2016/07/oneget-architecture-300x165.png 300w, http://www.miru.ch/wp-content/uploads/2016/07/oneget-architecture-768x421.png 768w" sizes="(max-width: 589px) 100vw, 589px" /></a>
+            <a href="http://www.miru.ch/deploy-packages-and-windows-updates-to-nano-servers/oneget-architecture/"><img class="alignleft wp-image-4770" src="../content/images/2016/07/oneget-architecture.png" alt="oneget-architecture" width="589" height="323" srcset="../content/images/2016/07/oneget-architecture.png 784w, ../content/images/2016/07/oneget-architecture-300x165.png 300w, ../content/images/2016/07/oneget-architecture-768x421.png 768w" sizes="(max-width: 589px) 100vw, 589px" /></a>
           </p>
         </div></article>
       </div>

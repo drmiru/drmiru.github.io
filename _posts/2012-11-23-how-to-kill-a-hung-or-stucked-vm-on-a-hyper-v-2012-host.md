@@ -1,7 +1,7 @@
 ---
 id: 952
 title: How to kill a hung or stucked VM on a Hyper-V 2012 host.
-date: 2012-11-23T23:18:48+00:00
+date: 2012-11-23T23:18:48+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=952

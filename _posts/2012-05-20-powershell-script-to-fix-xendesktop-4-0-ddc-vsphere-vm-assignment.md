@@ -1,7 +1,7 @@
 ---
 id: 753
 title: Powershell script to fix XenDesktop 4.0 DDC / vSphere VM assignment
-date: 2012-05-20T11:56:00+00:00
+date: 2012-05-20T11:56:00+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=753
@@ -28,7 +28,7 @@ The scripts checks if the Attribute has been set on vSphere side and if so, if i
   * XenDesktop SDK Powershell SnapIn has to be installed
   * vSphere PowerCLI 4.0 or later has to be installed
 
-And here it is&#8230; <a href="http://www.miru.ch/wp-content/uploads/2012/05/FixDDCHypAssignments.ps1_.txt" target="_blank">download</a>
+And here it is&#8230; <a href="../content/images/2012/05/FixDDCHypAssignments.ps1_.txt" target="_blank">download</a>
 
 <pre>#####################################################################
 # Scriptname:      FixDDCVCHosting.ps1

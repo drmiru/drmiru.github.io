@@ -1,7 +1,7 @@
 ---
 id: 2228
 title: SMA Workflows and Remoting, how to deal with Variable Scoping
-date: 2014-02-04T22:56:47+00:00
+date: 2014-02-04T22:56:47+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=2228

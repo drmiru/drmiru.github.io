@@ -1,7 +1,7 @@
 ---
 id: 2032
 title: BSOD on Hyper-V 2012 R2 Cluster Nodes after installing KB2887595
-date: 2013-12-22T12:09:10+00:00
+date: 2013-12-22T12:09:10+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=2032
@@ -23,38 +23,22 @@ After recently patching all 2012 R2 Hyper-V Cluster Nodes in our own datacenter,
 
 Analyzing the memory dump, I could see **Mslbfoprovider.sys** was mostly causing the BSOD. Crawling through the KB articles of all patches CAU has deployed to the nodes, I found that **KB2887595** replaced **Mslbfoprovider.sys** which is the core driver for NIC load balancing and failover teaming (NETLBFO).
 
-Digging a bit deeper into the dumpy analysis I could see that the last function called was related to VMQ.
-  
-STACK_TEXT:
-  
-fffff800\`4876a8c8 fffff800\`46dc97e9 : 00000000\`0000000a 00000000\`00000028 00000000\`00000002 00000000\`00000000 : nt!KeBugCheckEx
-  
-fffff800\`4876a8d0 fffff800\`46dc803a : 00000000\`00000000 00000000\`00000003 fffff800\`00691000 fffff800\`4876aa10 : nt!KiBugCheckDispatch+0x69
-  
-fffff800\`4876aa10 fffff800\`0213572f : fffff800\`02134dfe 00000000\`00000000 00000000\`00000000 fffff800\`4876ab58 : nt!KiPageFault+0x23a
-  
-<span style="color: #ff0000;">fffff800`4876aba8 fffff800`02134dfe : 00000000`00000000 00000000`00000000 fffff800`4876ab58 00000000`00000000 : MsLbfoProvider!vmqcGetFirstMappedMNic+0xf</span>
-  
-fffff800\`4876abb0 fffff800\`0069c44b : 00000000\`00000000 00000000\`00000000 00000000\`00000000 ffffe000\`0ce416c0 : MsLbfoProvider!LbfoReceiveNetBufferListsComplete+0x92
-  
-fffff800\`4876ac00 fffff800\`0068d09d : 00000000\`00000002 00000000\`00000000 ffffe000\`79a8c910 00000000\`00000000 : NDIS!ndisInvokeNextReceiveCompleteHandler+0xf35b
-  
-fffff800\`4876ac90 fffff800\`0068cf42 : ffffe000\`101521a0 00000000\`00000002 ffffe000\`79a8c910 ffffe000\`0cccfc10 : NDIS!ndisReturnNetBufferListsInternal+0x12d
-  
-fffff800\`4876acf0 fffff800\`01a54071 : 00000000\`00000000 00000000\`00000000 ffffe000\`0d8051c0 00000000\`00000000 : NDIS!NdisReturnNetBufferLists+0x72
-  
-fffff800\`4876ad50 fffff800\`01a539db : ffffe000\`0ccd2000 ffffe000\`0f710001 ffffe000\`79a8c910 00000000\`00000001 : vmswitch!VmsPtNicPvtPacketRouted+0x1b1
-  
-fffff800\`4876ade0 fffff800\`01a536ae : 00000003\`00000002 00000000\`00000000 ffffe000\`79a8c910 fffff800\`4876ae00 : vmswitch!VmsExtIoPacketRouted+0x28b
-  
-fffff800\`4876ae90 fffff800\`006911b5 : fffff800\`4876af49 00000000\`00000000 00000000\`00000000 fffff800\`01a53a15 : vmswitch!VmsExtPtSendNetBufferListsComplete+0x9e
-  
-fffff800\`4876aee0 fffff800\`0069078b : ffffe000\`0f7f11a0 ffffe000\`79a8c910 fffff800\`00000005 00000000\`00000000 : NDIS!ndisMSendCompleteNetBufferListsInternal+0x135
-  
-fffff800\`4876afb0 fffff800\`01a53a2d : ffffe000\`0f7f11a0 ffffe000\`79a8c910 ffffe000\`0f76a000 fffff800\`01a53580 : NDIS!NdisMSendNetBufferListsComplete+0x2bb
-  
-fffff800\`4876b120 fffff800\`01a535d2 : 00000000\`00000200 00000000\`00000000 fffff800\`4876b178 00000000\`00000000 : vmswitch!VmsExtIoPacketRouted+0x2dd
-  
+Digging a bit deeper into the dumpy analysis I could see that the last function called was related to VMQ.  
+STACK_TEXT:  
+fffff800\`4876a8c8 fffff800\`46dc97e9 : 00000000\`0000000a 00000000\`00000028 00000000\`00000002 00000000\`00000000 : nt!KeBugCheckEx  
+fffff800\`4876a8d0 fffff800\`46dc803a : 00000000\`00000000 00000000\`00000003 fffff800\`00691000 fffff800\`4876aa10 : nt!KiBugCheckDispatch+0x69  
+fffff800\`4876aa10 fffff800\`0213572f : fffff800\`02134dfe 00000000\`00000000 00000000\`00000000 fffff800\`4876ab58 : nt!KiPageFault+0x23a  
+<span style="color: #ff0000;">fffff800`4876aba8 fffff800`02134dfe : 00000000`00000000 00000000`00000000 fffff800`4876ab58 00000000`00000000 : MsLbfoProvider!vmqcGetFirstMappedMNic+0xf</span>  
+fffff800\`4876abb0 fffff800\`0069c44b : 00000000\`00000000 00000000\`00000000 00000000\`00000000 ffffe000\`0ce416c0 : MsLbfoProvider!LbfoReceiveNetBufferListsComplete+0x92  
+fffff800\`4876ac00 fffff800\`0068d09d : 00000000\`00000002 00000000\`00000000 ffffe000\`79a8c910 00000000\`00000000 : NDIS!ndisInvokeNextReceiveCompleteHandler+0xf35b  
+fffff800\`4876ac90 fffff800\`0068cf42 : ffffe000\`101521a0 00000000\`00000002 ffffe000\`79a8c910 ffffe000\`0cccfc10 : NDIS!ndisReturnNetBufferListsInternal+0x12d  
+fffff800\`4876acf0 fffff800\`01a54071 : 00000000\`00000000 00000000\`00000000 ffffe000\`0d8051c0 00000000\`00000000 : NDIS!NdisReturnNetBufferLists+0x72  
+fffff800\`4876ad50 fffff800\`01a539db : ffffe000\`0ccd2000 ffffe000\`0f710001 ffffe000\`79a8c910 00000000\`00000001 : vmswitch!VmsPtNicPvtPacketRouted+0x1b1  
+fffff800\`4876ade0 fffff800\`01a536ae : 00000003\`00000002 00000000\`00000000 ffffe000\`79a8c910 fffff800\`4876ae00 : vmswitch!VmsExtIoPacketRouted+0x28b  
+fffff800\`4876ae90 fffff800\`006911b5 : fffff800\`4876af49 00000000\`00000000 00000000\`00000000 fffff800\`01a53a15 : vmswitch!VmsExtPtSendNetBufferListsComplete+0x9e  
+fffff800\`4876aee0 fffff800\`0069078b : ffffe000\`0f7f11a0 ffffe000\`79a8c910 fffff800\`00000005 00000000\`00000000 : NDIS!ndisMSendCompleteNetBufferListsInternal+0x135  
+fffff800\`4876afb0 fffff800\`01a53a2d : ffffe000\`0f7f11a0 ffffe000\`79a8c910 ffffe000\`0f76a000 fffff800\`01a53580 : NDIS!NdisMSendNetBufferListsComplete+0x2bb  
+fffff800\`4876b120 fffff800\`01a535d2 : 00000000\`00000200 00000000\`00000000 fffff800\`4876b178 00000000\`00000000 : vmswitch!VmsExtIoPacketRouted+0x2dd  
 fffff800\`4876b1d0 fffff800\`0069c4c6 : ffffe000\`0f7f11a0 00000000\`00000000 fffff800\`4876b1a8 00000000\`00000000 : vmswitch!VmsExtMpReturnNetBufferLists+0x42
 
 I you&#8217;re unfamilar with VMQ I&#8217;d highly recommend the following post series.

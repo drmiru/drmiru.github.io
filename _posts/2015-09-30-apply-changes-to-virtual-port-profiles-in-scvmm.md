@@ -1,7 +1,7 @@
 ---
 id: 4290
 title: Apply changes to virtual Port Profiles in SCVMM
-date: 2015-09-30T07:18:53+00:00
+date: 2015-09-30T07:18:53+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=4290

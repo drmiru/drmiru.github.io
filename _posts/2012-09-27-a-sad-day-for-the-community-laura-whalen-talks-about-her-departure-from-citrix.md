@@ -1,7 +1,7 @@
 ---
 id: 862
 title: A sad day for the community. Laura Whalen talks about her departure from Citrix
-date: 2012-09-27T13:43:15+00:00
+date: 2012-09-27T13:43:15+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=862

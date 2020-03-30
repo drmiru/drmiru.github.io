@@ -1,7 +1,7 @@
 ---
 id: 1198
 title: Creating tiered Storage Spaces in Server 2012 R2
-date: 2013-07-18T22:22:52+00:00
+date: 2013-07-18T22:22:52+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1198
@@ -33,8 +33,7 @@ Now with the R2 version of Server 2012 Microsoft enhanced the features by adding
 
 **Storage Tiering** 
 
-Storage tiering in Server 2012 R2 knows about two tiers. A HDD tier and an SSD tier, meaning one for traditional spinning drives and one for solid state drives. It automatically detects the drive type of physical disks.
-  
+Storage tiering in Server 2012 R2 knows about two tiers. A HDD tier and an SSD tier, meaning one for traditional spinning drives and one for solid state drives. It automatically detects the drive type of physical disks.  
 Windows automatically discovers which parts of a storage space are access more frequently and heavily than others and moves them to an SSD tier. The data is moved based on 1MB junks. This has basically two benefits. It combines two common requirements in one single solution out of the box. Maximized capacity and maximized performance, which generally don&#8217;t go well together. Storage Tiering also allows manual pinning of complete files to a particular storage tier. This allows administrators two permanently map files to an SSD or HDD tier.
 
 **Write-Back Cache** 
@@ -43,7 +42,7 @@ This is like a staging area for write IO and lies on a SSD space. Like other ven
 
 **How this fits all together…** 
 
-![](http://www.miru.ch/wp-content/uploads/2013/07/071813_2125_Creatingati1.png)
+![](../content/images/2013/07/071813_2125_Creatingati1.png) 
 
 &nbsp;
 
@@ -80,8 +79,7 @@ Get-VirtualDisk -FriendlyName Tiered_Space | Get-Disk | Initialize-Disk –Passt
 
 In the Server Manager you should now see a tiered space
 
-![](http://www.miru.ch/wp-content/uploads/2013/07/071813_2125_Creatingati2.png)**
-  
+![](../content/images/2013/07/071813_2125_Creatingati2.png) **  
 ** 
 
 &nbsp;

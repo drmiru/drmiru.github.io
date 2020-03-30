@@ -1,7 +1,7 @@
 ---
 id: 713
 title: Redirect AGEE VPN users to a different Web Interface
-date: 2011-12-17T00:16:48+00:00
+date: 2011-12-17T00:16:48+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=713

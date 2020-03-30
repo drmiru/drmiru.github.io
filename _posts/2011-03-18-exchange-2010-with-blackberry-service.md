@@ -1,7 +1,7 @@
 ---
 id: 427
 title: Exchange 2010 with Blackberry service
-date: 2011-03-18T15:35:44+00:00
+date: 2011-03-18T15:35:44+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=427

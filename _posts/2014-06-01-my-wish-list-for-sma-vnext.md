@@ -1,7 +1,7 @@
 ---
 id: 2713
 title: My wish list for SMA vNext
-date: 2014-06-01T22:57:42+00:00
+date: 2014-06-01T22:57:42+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=2713

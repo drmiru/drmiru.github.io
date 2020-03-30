@@ -1,7 +1,7 @@
 ---
 id: 647
 title: UAC prompts when running scripts which perform high privileged operations, even if you are a local administrator
-date: 2011-09-06T21:31:08+00:00
+date: 2011-09-06T21:31:08+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=647

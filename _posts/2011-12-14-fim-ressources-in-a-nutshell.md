@@ -1,7 +1,7 @@
 ---
 id: 709
 title: FIM Ressources in a nutshell
-date: 2011-12-14T01:30:53+00:00
+date: 2011-12-14T01:30:53+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=709

@@ -1,7 +1,7 @@
 ---
 id: 791
 title: 'How to redirect certain URL requests to XenApp published browser with &#8220;URLRedirect&#8221; version 1.0'
-date: 2012-06-02T12:10:01+00:00
+date: 2012-06-02T12:10:01+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=791
@@ -54,14 +54,12 @@ As this is version 1.0, there are still some things to do manually :-), I promis
 
 **Disclaimer**
 
-The solution has been successfully tested with Receiver 3.2 and ReveiverEnterprise 3.2 on Windows 7 together with XenApp 6.5 and Web Interface 5.4, but it may also work for lower versions. Currently it does NOT work with PNAgent together with Citrix StoreFront Services.
-  
+The solution has been successfully tested with Receiver 3.2 and ReveiverEnterprise 3.2 on Windows 7 together with XenApp 6.5 and Web Interface 5.4, but it may also work for lower versions. Currently it does NOT work with PNAgent together with Citrix StoreFront Services.  
 The solution is provided as is without any warranty or support. You use it at your own risk.
 
 **Bug Reporting**
 
 If you notice any bugs or if you have nice ideas or feature requests, tweet me @DRMIRU, or write me an email to: michael(at)miru.ch
 
-**
-  
+**  
 **

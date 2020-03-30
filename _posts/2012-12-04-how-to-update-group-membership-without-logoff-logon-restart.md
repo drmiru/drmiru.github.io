@@ -1,7 +1,7 @@
 ---
 id: 960
 title: How to update group membership without logoff / logon /restart
-date: 2012-12-04T01:15:24+00:00
+date: 2012-12-04T01:15:24+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=960
@@ -25,16 +25,14 @@ This might be very useful for certain situations where you want to update a user
 
 <pre>klist purge</pre>
 
-**<span style="text-decoration: underline;">To purge tickets of the local system account:</span>**
-  
+**<span style="text-decoration: underline;">To purge tickets of the local system account:</span>**  
 Start a cmd or PoSH session with elevated privileges
 
 <pre>klist -li 0:0x3e7 purge</pre>
 
 klist is a tool that has been included by default since Vista/Server 2008.
 
-If you have a Windows 2003 Server / XP then you&#8217;re required to download klist here:
-  
+If you have a Windows 2003 Server / XP then you&#8217;re required to download klist here:  
 <http://www.microsoft.com/downloads/details.aspx?familyid=9d467a69-57ff-4ae7-96ee-b18c4790cffd&displaylang=en>
 
 Be aware then the 2003/XP version of klist does not support purging directly the system accoun&#8217;s tickets. You can use psexec from sysinternals to launch an interactive command line as the system account (psexec -s -i cmd.exe) and then execute klist purge)

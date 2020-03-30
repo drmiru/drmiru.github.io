@@ -1,7 +1,7 @@
 ---
 id: 1075
 title: 'Refreshing a Virtual Machine in SCVMM fails with error: 13992'
-date: 2013-05-06T21:31:42+00:00
+date: 2013-05-06T21:31:42+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1075
@@ -21,8 +21,7 @@ tags:
   - Hyper-V
   - SCVMM
 ---
-**Scenario:
-  
+**Scenario:  
 ** 
 
   * You&#8217;re using SMB based storage for virtual machines on your Hyper-V hosts
@@ -33,28 +32,25 @@ tags:
 
 &nbsp;
 
-**Error:
-  
+**Error:  
 ** 
 
 Each VM with a previously attached, shared ISO image fails to refresh with the following error message:
 
-![](http://www.miru.ch/wp-content/uploads/2013/05/050613_1933_Refreshinga11.jpg)
+![](../content/images/2013/05/050613_1933_Refreshinga11.jpg) 
 
 As a result the VM is in an &#8220;Unsupported VM Configuration&#8221; state and there is no way to get rid of the attached ISO within SCVMM Console or SCVMM Powershell CMDLETs.
 
 &nbsp;
 
-**Reason:
-  
+**Reason:  
 ** 
 
 It seems that the ISO files previously attached in shared mode have a direct reference to the SMB file share of the virtual machine files, even if the ISO is located on an independent share or SCVMM library share.
 
 &nbsp;
 
-**Solution:
-  
+**Solution:  
 ** 
 
 Of course we&#8217;ll use Powershell here as we are lazy and don&#8217;t want to click around for a fair amount of time.

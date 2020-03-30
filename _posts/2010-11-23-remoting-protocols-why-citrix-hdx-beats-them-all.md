@@ -1,7 +1,7 @@
 ---
 id: 350
 title: 'Remoting protocols&#8230;why Citrix HDX beats them all'
-date: 2010-11-23T23:53:54+00:00
+date: 2010-11-23T23:53:54+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=350

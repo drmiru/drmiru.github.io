@@ -1,7 +1,7 @@
 ---
 id: 1269
 title: Enrich SCVMM using Custom Properties
-date: 2013-09-06T21:05:55+00:00
+date: 2013-09-06T21:05:55+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1269

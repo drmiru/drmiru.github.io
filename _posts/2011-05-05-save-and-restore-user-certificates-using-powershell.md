@@ -1,7 +1,7 @@
 ---
 id: 460
 title: Save and restore user certificates using Powershell
-date: 2011-05-05T21:24:30+00:00
+date: 2011-05-05T21:24:30+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=460
@@ -62,7 +62,7 @@ This command imports all user certificates into the  CurrentUser store to H:\Pr
 
 **Integrating the scripts into a Appsense Environment Manager Config**
 
-As currently the Appsense EM does not support Powershell scripts as custom actions, we have to wrap the call of powershell scripts around a simple VBscript. If you download the scripts <a href="http://www.miru.ch/wp-content/uploads/2011/05/PS-CertMgmt.zip" target="_blank">here</a>, you&#8217;ll find usable examples for how to call the Import / Export Scripts at logon / logoff using EM custom actions.
+As currently the Appsense EM does not support Powershell scripts as custom actions, we have to wrap the call of powershell scripts around a simple VBscript. If you download the scripts <a href="../content/images/2011/05/PS-CertMgmt.zip" target="_blank">here</a>, you&#8217;ll find usable examples for how to call the Import / Export Scripts at logon / logoff using EM custom actions.
 
 Special Notes:
 
@@ -70,4 +70,4 @@ Special Notes:
   * The password for private key protection of the PFX is not that strong as it has to be automatically set on import, but I&#8217;m currently thinking about other possibilities.
   * Any bugs or feature requests are welcome
 
-<a href="http://www.miru.ch/wp-content/uploads/2011/05/PS-CertMgmt.zip" target="_blank"><img class="alignleft size-thumbnail wp-image-466" title="download-button" src="http://www.miru.ch/wp-content/uploads/2011/05/download-button-150x150.jpg" alt="" width="75" height="75" /></a>
+<a href="../content/images/2011/05/PS-CertMgmt.zip" target="_blank"><img class="alignleft size-thumbnail wp-image-466" title="download-button" src="../content/images/2011/05/download-button-150x150.jpg" alt="" width="75" height="75" /></a>

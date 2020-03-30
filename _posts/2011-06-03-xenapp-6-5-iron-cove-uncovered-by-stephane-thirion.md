@@ -1,7 +1,7 @@
 ---
 id: 563
 title: XenApp 6.5 (Iron Cove) uncovered by Stephane Thirion
-date: 2011-06-03T22:39:06+00:00
+date: 2011-06-03T22:39:06+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=563

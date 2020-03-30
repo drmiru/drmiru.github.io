@@ -1,7 +1,7 @@
 ---
 id: 4551
 title: Azure Automation Role based Access Control (RBAC)
-date: 2016-02-15T23:20:09+00:00
+date: 2016-02-15T23:20:09+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=4551
@@ -23,9 +23,9 @@ tags:
 
 <span style="font-family: Calibri Light; font-size: 12pt;">Now, here&#8217;s where you access the RBAC component.<br /> </span>
 
-![](http://www.miru.ch/wp-content/uploads/2015/12/Automation-RBAC-start-300x241.png)<span style="font-family: Times New Roman; font-size: 12pt;"><br /> </span>
+![](../content/images/2015/12/Automation-RBAC-start-300x241.png) <span style="font-family: Times New Roman; font-size: 12pt;"><br /> </span>
 
-![](http://www.miru.ch/wp-content/uploads/2015/12/Automation-RBAC-users-300x223.png)<span style="font-family: Times New Roman; font-size: 12pt;"><br /> </span>
+![](../content/images/2015/12/Automation-RBAC-users-300x223.png) <span style="font-family: Times New Roman; font-size: 12pt;"><br /> </span>
 
 <span style="font-family: Calibri Light; font-size: 12pt;">We have 5 different roles, to which we can assign users.   <em><br /> </em></span>
 

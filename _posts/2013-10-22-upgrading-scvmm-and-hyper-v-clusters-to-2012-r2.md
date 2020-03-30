@@ -1,7 +1,7 @@
 ---
 id: 1699
 title: Upgrading SCVMM and Hyper-V Clusters to 2012 R2
-date: 2013-10-22T18:13:06+00:00
+date: 2013-10-22T18:13:06+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1699

@@ -1,7 +1,7 @@
 ---
 id: 344
 title: Citrix updates their communication ports sheet
-date: 2010-11-17T21:12:05+00:00
+date: 2010-11-17T21:12:05+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=344

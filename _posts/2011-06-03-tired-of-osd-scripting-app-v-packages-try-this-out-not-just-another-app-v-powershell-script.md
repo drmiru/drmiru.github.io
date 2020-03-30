@@ -1,7 +1,7 @@
 ---
 id: 547
 title: Tired of OSD scripting App-V packages? Try this out. Not just another App-V Powershell script
-date: 2011-06-03T22:22:45+00:00
+date: 2011-06-03T22:22:45+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=547
@@ -27,4 +27,4 @@ Within the OSD file you just add a script (of course a Powershell one, what else
   * Find / Replace within text based files (INI etc.)
   * Copy files / folders
 
-Download the solution <a href="http://www.miru.ch/wp-content/uploads/2011/06/AppConf.zip" target="_blank">here</a> (it includes a little readme which should help you to implement that. It&#8217;s a BETA folks, so please drop me an <a href="mailto:michael@miru.ch" target="_blank">email</a> if you find bugs or have feature requests.
+Download the solution <a href="../content/images/2011/06/AppConf.zip" target="_blank">here</a> (it includes a little readme which should help you to implement that. It&#8217;s a BETA folks, so please drop me an <a href="mailto:michael@miru.ch" target="_blank">email</a> if you find bugs or have feature requests.

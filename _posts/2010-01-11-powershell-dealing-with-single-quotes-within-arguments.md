@@ -1,7 +1,7 @@
 ---
 id: 190
 title: 'Powershell: Dealing with single quotes within arguments'
-date: 2010-01-11T22:08:42+00:00
+date: 2010-01-11T22:08:42+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=190
@@ -18,4 +18,4 @@ A run in a very special issue when I tried to pass arguments to a powershell scr
 
 <span style="color:#ddd9c3; font-family:Courier New">$msg = ($msg | join-string -separator &#8221; &#8220;)<br /> write-host &#8216;The Script Arguments where now: &#8220;&#8216;$user'&#8221; &#8220;&#8216;$msg'&#8221;&#8216;<br /> </span>
 
-![](http://www.miru.ch/wp-content/uploads/2010/01/011110-2123-powershelld11.jpg)
+![](../content/images/2010/01/011110-2123-powershelld11.jpg)

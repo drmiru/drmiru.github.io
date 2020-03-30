@@ -1,7 +1,7 @@
 ---
 id: 859
 title: MPNotify not called by Winlogon when Kerberos authentication is used on XenApp 6.x
-date: 2012-09-29T14:44:47+00:00
+date: 2012-09-29T14:44:47+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=859
@@ -23,12 +23,10 @@ As I first noticed this behavior in March 2012 I didn&#8217;t expect to have a s
 
 Citrix has now published a hotfix for XenApp where MPNotify gets spawned correctly on Kerberos logons.
 
-Hotfix for XenApp 6.0 HRP1
-  
+Hotfix for XenApp 6.0 HRP1  
 <a href="http://support.citrix.com/article/CTX134317" target="_blank">http://support.citrix.com/article/CTX134317</a>
 
-Hotfix for XenApp 6.5 HRP1
-  
+Hotfix for XenApp 6.5 HRP1  
 The HF for XA6.5 HRP01 has not been published yet. You might call Citrix Support to get the private or wait a few weeks till it has been officially released cauz I&#8217;m not allowed to share the private at this time.
 
 ! For Appsense EM you need the most recent version **8.3.232.0** which also includes a fix required for the issue mentioned above.

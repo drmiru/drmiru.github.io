@@ -1,7 +1,7 @@
 ---
 id: 4851
 title: Online extending a Storage Replica Volume
-date: 2017-02-24T23:51:27+00:00
+date: 2017-02-24T23:51:27+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=4851
@@ -27,7 +27,7 @@ By default, online extension of replicated volumes is disabled. It&#8217;s a &#8
 
 In the following example, we&#8217;re going to extend a volume, based on a virtual disk of a S2D (Storage Spaces Direct) cluster, which has some volumes replicated to another S2D Cluster using the Cluster-to-Cluster SR scenario.
 
-[<img class="alignleft size-medium wp-image-4856" src="http://www.miru.ch/wp-content/uploads/2017/02/sr_clustertocluster-300x215.png" alt="" width="300" height="215" srcset="http://www.miru.ch/wp-content/uploads/2017/02/sr_clustertocluster-300x215.png 300w, http://www.miru.ch/wp-content/uploads/2017/02/sr_clustertocluster.png 427w" sizes="(max-width: 300px) 100vw, 300px" />](http://www.miru.ch/wp-content/uploads/2017/02/sr_clustertocluster.png)
+[<img class="alignleft size-medium wp-image-4856" src="../content/images/2017/02/sr_clustertocluster-300x215.png" alt="" width="300" height="215" srcset="../content/images/2017/02/sr_clustertocluster-300x215.png 300w, ../content/images/2017/02/sr_clustertocluster.png 427w" sizes="(max-width: 300px) 100vw, 300px" />](../content/images/2017/02/sr_clustertocluster.png)
 
 &nbsp;
 
@@ -83,24 +83,15 @@ $MaxSize = ($Partition | Get-PartitionSupportedSize).SizeMax</pre>
   * The above example uses WinRM from a management server, hence the steps also work for Nano Server
   * SR CMDLETs have to be installed on the management server: <pre class="">Add-WindowsFeature RSAT-Storage-Replica</pre>
 
-  * If volume resizing is not enabled, you can extend the virtual disk, but as soon as you want to extend the CSV partition, you&#8217;ll receive the following CIM exception:
-  
-    <span style="color: #ff0000;">Resize-Partition : Failed</span>
-  
-    <span style="color: #ff0000;">Activity ID: {a5fa44ea-d115-4cb8-b535-f7c3fdab14cd}</span>
-  
-    <span style="color: #ff0000;">At line:1 char:76</span>
-  
-    <span style="color: #ff0000;">+ &#8230; ession S2DCL01 | Get-Partition) | Resize-Partition -Size 377822859264</span>
-  
-    <span style="color: #ff0000;">+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
-  
-     <span style="color: #ff0000;">+ CategoryInfo : NotSpecified: (StorageWMI:ROOT/Microsoft/&#8230;/MSFT_Partition) [Resize-Partition], CimExce</span>
-  
-     <span style="color: #ff0000;">ption</span>
-  
-     <span style="color: #ff0000;">+ FullyQualifiedErrorId : StorageWMI 4,Resize-Partition</span>
-  
+  * If volume resizing is not enabled, you can extend the virtual disk, but as soon as you want to extend the CSV partition, you&#8217;ll receive the following CIM exception:  
+    <span style="color: #ff0000;">Resize-Partition : Failed</span>  
+    <span style="color: #ff0000;">Activity ID: {a5fa44ea-d115-4cb8-b535-f7c3fdab14cd}</span>  
+    <span style="color: #ff0000;">At line:1 char:76</span>  
+    <span style="color: #ff0000;">+ &#8230; ession S2DCL01 | Get-Partition) | Resize-Partition -Size 377822859264</span>  
+    <span style="color: #ff0000;">+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>  
+     <span style="color: #ff0000;">+ CategoryInfo : NotSpecified: (StorageWMI:ROOT/Microsoft/&#8230;/MSFT_Partition) [Resize-Partition], CimExce</span>  
+     <span style="color: #ff0000;">ption</span>  
+     <span style="color: #ff0000;">+ FullyQualifiedErrorId : StorageWMI 4,Resize-Partition</span>  
      <span style="color: #ff0000;">+ PSComputerName : S2DCL01</span>
 
 Hope this prevents some headaches.

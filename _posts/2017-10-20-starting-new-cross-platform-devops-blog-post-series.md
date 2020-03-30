@@ -1,7 +1,7 @@
 ---
 id: 4895
 title: Starting new Cross-Platform DevOps Blog Post Series
-date: 2017-10-20T21:07:36+00:00
+date: 2017-10-20T21:07:36+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=4895
@@ -74,7 +74,7 @@ DevOps is not a tool, it&#8217;s nor a software or a specific technology. DevOps
 
 ## Why mentioning IT Pros?
 
-<img class="alignnone" src="https://www.familie-und-tipps.de/Kinder/Erziehung/Bild/Beleidigt-b4.jpg" alt="" width="224" height="149" />
+<img class="alignnone" src="https://www.familie-und-tipps.de/Kinder/Erziehung/Bild/Beleidigt-b4.jpg" alt="" width="224" height="149" /> 
 
 (Disclaimer: The following statements, are reflecting my personal opinion, and may not apply to everyone reading this post 🙂
 

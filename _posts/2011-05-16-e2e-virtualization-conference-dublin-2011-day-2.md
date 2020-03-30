@@ -1,7 +1,7 @@
 ---
 id: 493
 title: 'E2E virtualization conference Dublin 2011 / Day #2'
-date: 2011-05-16T15:00:04+00:00
+date: 2011-05-16T15:00:04+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=493

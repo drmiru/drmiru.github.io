@@ -1,7 +1,7 @@
 ---
 id: 659
 title: How to create a Windows 7 Default Profile
-date: 2011-09-21T21:11:54+00:00
+date: 2011-09-21T21:11:54+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=659
@@ -17,8 +17,7 @@ categories:
 ---
 Leaving the &#8220;Default&#8221; user profile as it is can hurt your VDI / RDS deployment, because Windows needs certain amount of time to create a new user profile from the initial default one. The Default has not been initialized, meaning e.g. the HKCU hive is not generated, active setup has not initialized components.
 
-You can gain up to 25 seconds less for logons (depending on other parameters too of course)
-  
+You can gain up to 25 seconds less for logons (depending on other parameters too of course)  
 There are several ways to create a new Default user profile on a Windows 7 client,
 
 The most popular one is the official way from Microsoft documented here: <http://support.microsoft.com/kb/973289/en-us>
@@ -27,10 +26,8 @@ BUT&#8230;Personally I think that&#8217;s a bit too complex, we just want to cop
 
   1. Create a local user, log on with this user and make your changes to the profile as you have to
   2. Log off and log on with an administrator account (you may need to reboot first as sometimes the user&#8217;s hive is not completely unloaded at logoff)
-  3. Open the registry editor and change the following value to match your model users profile
-  
-    **HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\Default**
-  
+  3. Open the registry editor and change the following value to match your model users profile  
+    **HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\Default**  
     (Change %SystemDrive%\Users\**Default** to %SystemDrive%\Users\**yourlocaluser**)&nbsp;</p> 
     &#8211;> **If you want to Replace the original Default Profile, continue with step 4. Otherwise you&#8217;re already done.**</li> 
     

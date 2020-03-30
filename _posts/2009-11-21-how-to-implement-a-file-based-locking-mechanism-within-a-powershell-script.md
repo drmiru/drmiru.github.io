@@ -1,7 +1,7 @@
 ---
 id: 179
 title: How to implement a file based locking mechanism within a powershell script
-date: 2009-11-21T14:53:54+00:00
+date: 2009-11-21T14:53:54+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=179
@@ -27,4 +27,4 @@ The following code enables a file based locking mechanism within a powershell sc
 
  
 
-[<img src="http://www.miru.ch/wp-content/uploads/2010/01/112109-1453-howtoimplem1.jpg" alt="" border="0" />](http://images.google.ch/imgres?imgurl=http://www.gnr8.biz/images/blue_lock%2520main.jpg&imgrefurl=http://www.gnr8.biz/product_info.php%3Fproducts_id%3D304&usg=__zSEp805411nm-VqQyBYugBeRgwE=&h=432&w=432&sz=49&hl=de&start=2&tbnid=FZ87K5zi-ppJzM:&tbnh=126&tbnw=126&prev=/images%3Fq%3Dlock%26gbv%3D2%26hl%3Dde)<span style="color:#c4bc96; font-family:Courier New; font-size:10pt"><br /> </span>
+[<img src="../content/images/2010/01/112109-1453-howtoimplem1.jpg" alt="" border="0" />](http://images.google.ch/imgres?imgurl=http://www.gnr8.biz/images/blue_lock%2520main.jpg&imgrefurl=http://www.gnr8.biz/product_info.php%3Fproducts_id%3D304&usg=__zSEp805411nm-VqQyBYugBeRgwE=&h=432&w=432&sz=49&hl=de&start=2&tbnid=FZ87K5zi-ppJzM:&tbnh=126&tbnw=126&prev=/images%3Fq%3Dlock%26gbv%3D2%26hl%3Dde)<span style="color:#c4bc96; font-family:Courier New; font-size:10pt"><br /> </span>

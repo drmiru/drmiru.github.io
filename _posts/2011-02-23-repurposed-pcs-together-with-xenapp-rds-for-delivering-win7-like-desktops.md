@@ -1,7 +1,7 @@
 ---
 id: 404
 title: Repurposed PCs together with XenApp / RDS for delivering Win7 like desktops
-date: 2011-02-23T12:16:57+00:00
+date: 2011-02-23T12:16:57+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=404

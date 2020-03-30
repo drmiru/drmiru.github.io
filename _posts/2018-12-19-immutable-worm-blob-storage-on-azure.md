@@ -1,7 +1,7 @@
 ---
 id: 5016
 title: Immutable (WORM) Blob Storage on Azure
-date: 2018-12-19T17:03:10+00:00
+date: 2018-12-19T17:03:10+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=5016
@@ -90,7 +90,7 @@ az storage container create --name compliance --public-access off --account-name
 
 All &#8220;delete&#8221; and &#8220;modify/upload&#8221; operations are beeing denied now, as we set period of 720 days for the immutable policy.<figure class="wp-block-image">
 
-<img src="http://www.miru.ch/wp-content/uploads/2018/12/AZworm-test1-1024x740.png" alt="" class="wp-image-5028" srcset="http://www.miru.ch/wp-content/uploads/2018/12/AZworm-test1-1024x740.png 1024w, http://www.miru.ch/wp-content/uploads/2018/12/AZworm-test1-300x217.png 300w, http://www.miru.ch/wp-content/uploads/2018/12/AZworm-test1-768x555.png 768w, http://www.miru.ch/wp-content/uploads/2018/12/AZworm-test1.png 1257w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure> 
+<img src="../content/images/2018/12/AZworm-test1-1024x740.png" alt="" class="wp-image-5028" srcset="../content/images/2018/12/AZworm-test1-1024x740.png 1024w, ../content/images/2018/12/AZworm-test1-300x217.png 300w, ../content/images/2018/12/AZworm-test1-768x555.png 768w, ../content/images/2018/12/AZworm-test1.png 1257w" sizes="(max-width: 1024px) 100vw, 1024px" /> </figure> 
 
 6. Up to now, the immutable policy is still editable, meaning we could reduce the minimum retention interval to 1 day and delete the file the upcoming day. Of course, this is not what your compliance officers would like to happen. Therefore we need to lock the policy object.  
 
@@ -109,7 +109,7 @@ If we try to modify the policy furthermore, we&#8217;ll receive the following er
 
 
 
-####   
+####  
 Example 1: (create a legal hold policy) {#supported-values}
 
 This example demonstrates how to create a legal hold policy to prevent data deletion or modification for an infinite amount of time. Well not really infinite, because data is only hold immutable until the policy is removed (by removing the tags).

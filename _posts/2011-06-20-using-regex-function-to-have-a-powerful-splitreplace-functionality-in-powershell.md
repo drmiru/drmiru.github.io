@@ -1,7 +1,7 @@
 ---
 id: 600
 title: Using regex function to have a powerful split/replace functionality in Powershell
-date: 2011-06-20T22:52:11+00:00
+date: 2011-06-20T22:52:11+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=600
@@ -17,8 +17,7 @@ tags:
 ---
 Powershell provides easy replace and split method to manipulate text/string values. They are easy to use but&#8230;if you want to replace content only on subsequent positions or split a string using a pattern containing more than a single character, you&#8217;ll fail.
 
-Let&#8217;s take two examples.
-  
+Let&#8217;s take two examples.  
 Replace the last IP digit
 
 <pre>$a = 'The IP Adress with the number 100 is: 192.168.1.100'

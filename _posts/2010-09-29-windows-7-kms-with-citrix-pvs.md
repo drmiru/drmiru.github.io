@@ -1,7 +1,7 @@
 ---
 id: 252
 title: Windows 7 KMS with Citrix PVS
-date: 2010-09-29T21:24:33+00:00
+date: 2010-09-29T21:24:33+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=252

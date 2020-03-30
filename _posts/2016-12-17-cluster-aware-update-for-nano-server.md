@@ -1,7 +1,7 @@
 ---
 id: 4804
 title: Cluster Aware Update for Nano Server
-date: 2016-12-17T23:15:07+00:00
+date: 2016-12-17T23:15:07+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=4804
@@ -27,7 +27,7 @@ The past months I&#8217;ve been working more and more on the new deployment type
 
 For more information on Nano Server in general, you might consider to read some of my recent posts:
 
-<blockquote data-secret="0VyKTXzhkK" class="wp-embedded-content">
+<blockquote class="wp-embedded-content" data-secret="O5POdAyJSD">
   <p>
     <a href="http://www.miru.ch/deploy-packages-and-windows-updates-to-nano-servers/">Deploy Packages and Windows Updates to Nano Servers</a>
   </p>
@@ -35,7 +35,7 @@ For more information on Nano Server in general, you might consider to read some 
 
 
 
-<blockquote data-secret="o6HNC232o0" class="wp-embedded-content">
+<blockquote class="wp-embedded-content" data-secret="gHQdbSHp5R">
   <p>
     <a href="http://www.miru.ch/sneak-peek-on-nano-server-2016-tp5/">Sneak Peek on Nano Server 2016 TP5</a>
   </p>
@@ -58,7 +58,7 @@ Currently the script has the following capabilities:
   * Check Clustered Storage Subsystem Health before pausing next node (wait for rebuild, includes pools and vdisks)
   * Logging to C:\Windows\Logs\ClusterUpdate.log (in [CMTrace](http://blog.tyang.org/2012/04/17/sccm-2012-log-parser-cmtrace-exe/) format)
 
-[<img class="alignleft size-medium wp-image-4811" src="http://www.miru.ch/wp-content/uploads/2016/12/CAUNanoCMTrace-300x262.png" alt="caunanocmtrace" width="300" height="262" srcset="http://www.miru.ch/wp-content/uploads/2016/12/CAUNanoCMTrace-300x262.png 300w, http://www.miru.ch/wp-content/uploads/2016/12/CAUNanoCMTrace-768x670.png 768w, http://www.miru.ch/wp-content/uploads/2016/12/CAUNanoCMTrace.png 860w" sizes="(max-width: 300px) 100vw, 300px" />](http://www.miru.ch/wp-content/uploads/2016/12/CAUNanoCMTrace.png)
+[<img class="alignleft size-medium wp-image-4811" src="../content/images/2016/12/CAUNanoCMTrace-300x262.png" alt="caunanocmtrace" width="300" height="262" srcset="../content/images/2016/12/CAUNanoCMTrace-300x262.png 300w, ../content/images/2016/12/CAUNanoCMTrace-768x670.png 768w, ../content/images/2016/12/CAUNanoCMTrace.png 860w" sizes="(max-width: 300px) 100vw, 300px" />](../content/images/2016/12/CAUNanoCMTrace.png)
 
 &nbsp;
 
@@ -78,8 +78,7 @@ Currently the script has the following capabilities:
 
 The script is available on [my GitHub repo here](https://github.com/drmiru/Powershell/tree/master/Cluster). Feel free to test and report any bugs.
 
-DISCLAIMER
-  
+DISCLAIMER  
 Although, the script has been tested heavily, you are using it at your very own risk. I don’t take any responsibility for messed up Clusters.
 
 &nbsp;

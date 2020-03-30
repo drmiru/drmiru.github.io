@@ -1,7 +1,7 @@
 ---
 id: 1042
 title: How to control and prioritize Client authentication and logon requests on Domain Controllers
-date: 2013-04-10T10:44:06+00:00
+date: 2013-04-10T10:44:06+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1042
@@ -25,8 +25,7 @@ Now the question arises, if there is a logic which domain controller responds fi
   * The OS version of the DC (e.g. a 2012 DC responds generally before a 2003 DC)
   * The responsiveness (mainly based on HW resources)
   * The ordering within the DNS SRV records (\_ldap / \_gc)
-  * **The priority and weight values for the SRV records
-  
+  * **The priority and weight values for the SRV records  
 ** 
 
 There are multiple scenarios where you might have to limit LDAP requests to one or more of your Domain Controllers. The following are the most common ones:
@@ -38,16 +37,14 @@ There are multiple scenarios where you might have to limit LDAP requests to one 
 
 &nbsp;
 
-The NETLOGON service has two parameters which control the response-behavior to LDAP requests: [**LdapSrvWeigth**](http://technet.microsoft.com/en-us/library/cc957291.aspx) and [**LdapSrvPriority**  ](http://technet.microsoft.com/en-us/library/cc957290.aspx)**
-  
+The NETLOGON service has two parameters which control the response-behavior to LDAP requests: [**LdapSrvWeigth**](http://technet.microsoft.com/en-us/library/cc957291.aspx) and [**LdapSrvPriority**  ](http://technet.microsoft.com/en-us/library/cc957290.aspx)**  
 ** 
 
 By default, each DC has a priority of 0 and a weight of 100. The weight can be used to prefer particular DCs with the same priority.
 
 If the priority value is set, it takes precedence over the weight value.
 
-  * **Domain controllers with the highest weight and the lowest priority are most likely to be contacted
-  
+  * **Domain controllers with the highest weight and the lowest priority are most likely to be contacted  
 ** 
 
 #### <span style="font-family: Calibri;">To modify the behavior, just create two REG_DWORD values (LdapSrvWeight and LdapSrvPriority) under the Key:<br /> <span style="color: #5b9bd5;">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Netlogon\Parameters</span><br /> </span>

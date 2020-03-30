@@ -1,7 +1,7 @@
 ---
 id: 1066
 title: How to import Hyper-V VMs with compatibility issues
-date: 2013-04-29T21:15:30+00:00
+date: 2013-04-29T21:15:30+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1066
@@ -42,10 +42,8 @@ The following steps show how to get rid of most compatibility issues.
 
 You should get an output showing you the root cause for incompatibilities
 
-_VMName Name SnapshotType CreationTime ParentSnapshotName_
-  
-_&#8212;&#8212; &#8212;- &#8212;&#8212;&#8212;&#8212; &#8212;&#8212;&#8212;&#8212; &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;_
-  
+_VMName Name SnapshotType CreationTime ParentSnapshotName_  
+_&#8212;&#8212; &#8212;- &#8212;&#8212;&#8212;&#8212; &#8212;&#8212;&#8212;&#8212; &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;_  
 _CMIRUW702 DEMO Clean Planned 24.11.2012 01:13:51_
 
 **4. Fix the incompatibility (in this case, remove the snapshot)**

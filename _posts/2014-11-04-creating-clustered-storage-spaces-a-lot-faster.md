@@ -1,7 +1,7 @@
 ---
 id: 3492
 title: Creating clustered storage spaces a lot faster
-date: 2014-11-04T21:22:36+00:00
+date: 2014-11-04T21:22:36+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=3492

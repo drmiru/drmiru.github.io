@@ -1,7 +1,7 @@
 ---
 id: 764
 title: Powershell script to fix XenDesktop 5.x DDC / vSphere VM assignment
-date: 2012-05-20T21:20:44+00:00
+date: 2012-05-20T21:20:44+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=764
@@ -28,7 +28,7 @@ The following script will do the work for you. It contains an optional switch  
 
 &nbsp;
 
-Here it is&#8230; and here for <a href="http://www.miru.ch/wp-content/uploads/2012/05/FixXD5VMAssignment.ps1_.txt" target="_blank">download</a>
+Here it is&#8230; and here for <a href="../content/images/2012/05/FixXD5VMAssignment.ps1_.txt" target="_blank">download</a>
 
 Any comments are welcome. Tweet me @DRMIRU
 

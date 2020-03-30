@@ -1,7 +1,7 @@
 ---
 id: 740
 title: Powershell one-liner to find vSphere guest by MAC address
-date: 2012-04-25T21:27:58+00:00
+date: 2012-04-25T21:27:58+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=740

@@ -1,7 +1,7 @@
 ---
 id: 570
 title: Installing Hyper-V on Server Core 2008 R2, a journey into the abyss of CLI administration
-date: 2011-11-06T21:43:55+00:00
+date: 2011-11-06T21:43:55+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=570
@@ -24,7 +24,7 @@ This week i decided to take myself into a Hyper-V installation running on a Serv
 
 For each of you who haven&#8217;t seen a core server after initial image deploy, I&#8217;ve captured the scree after changing the admin password.
 
-<img src="http://www.miru.ch/wp-content/uploads/2011/06/060611_1944_InstallingH13.png" alt="" width="510" height="384" />
+<img src="../content/images/2011/06/060611_1944_InstallingH13.png" alt="" width="510" height="384" /> 
 
 ## Configuring Networking
 

@@ -1,7 +1,7 @@
 ---
 id: 3957
 title: Performing Maintenance on busy SMA Runbook Workers
-date: 2015-05-01T00:09:38+00:00
+date: 2015-05-01T00:09:38+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=3957

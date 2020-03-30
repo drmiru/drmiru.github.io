@@ -1,7 +1,7 @@
 ---
 id: 1009
 title: How the Kerberos token size can affect WinRM and other Kerberos based services
-date: 2013-04-02T21:42:26+00:00
+date: 2013-04-02T21:42:26+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1009
@@ -22,7 +22,7 @@ tags:
   - Token size
   - WinRM
 ---
-![](http://www.miru.ch/wp-content/uploads/2013/04/040213_1942_HowtheKerbe1.jpg)
+![](../content/images/2013/04/040213_1942_HowtheKerbe1.jpg)
 
 It&#8217;s like a little but really mean ghost which seems to follow me over all my IT career, it&#8217;s called &#8220;kerberos token&#8221;. I&#8217;ve debugged a lot of kerberos errors the last years, but the overall evergreen is a parameter called &#8220;MaxTokenSize&#8221;. Depending on the Windows OS version it has a default value of 12&#8217;000 bytes(WinXP,Vista,Win7) and 48&#8217;000 bytes (Win8). The kerberos token size grows depending on the following facts:
 
@@ -50,18 +50,15 @@ You can &#8220;calculate&#8221; or in other, better words, &#8220;estimate&#8221
 
 <span style="font-size: 12pt;"> </span><span style="font-size: 14pt;"><strong>How to increase the default values?</strong></span>
 
-(Requires a reboot after modification)
-  
+(Requires a reboot after modification)  
 The supported max value is 65335. However you should consider methods to reduce the token size, rather than use the max value everywhere.
 
-**<span style="text-decoration: underline;">For basic services</span>
-  
+**<span style="text-decoration: underline;">For basic services</span>  
 ** Add the following Registry Key to all your Windows clients and servers
 
 <pre>New-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\LSA\Kerberos\Parameters -Name "MaxTokenSize" -Value 65335 -PropertyType "DWORD"</pre>
 
-**<span style="text-decoration: underline;">For WinRM / Remote Powershell and other HTTP based services</span>
-  
+**<span style="text-decoration: underline;">For WinRM / Remote Powershell and other HTTP based services</span>  
 ** Add the following Registry value to all your servers
 
 <pre>New-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Services\HTTP\Parameters -Name "MaxFieldLength" -Value 65335 -PropertyType "DWORD" New-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Services\HTTP\Parameters -Name "MaxRequestBytes" -Value 40000 -PropertyType "DWORD"</pre>

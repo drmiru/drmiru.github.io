@@ -1,7 +1,7 @@
 ---
 id: 3298
 title: SMA Runbook to update SCVMM R2 UR3 DHCP Server Extension on all Hyper-V Hosts
-date: 2014-09-23T16:48:19+00:00
+date: 2014-09-23T16:48:19+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=3298
@@ -33,14 +33,10 @@ This time I just want to exchange the VMM DHCP Agent extension on all managed Hy
 
 The runbook I created performs the following steps
 
-  * Gets the required Assets from SMA (Variable and Credentials) which are:
-  
-    &#8211; SCVMM Server Name
-  
-    &#8211; PS Credential for SCVMM connection
-  
-    &#8211; PS Credential for Hyper-V Host WinRM connection
-  
+  * Gets the required Assets from SMA (Variable and Credentials) which are:  
+    &#8211; SCVMM Server Name  
+    &#8211; PS Credential for SCVMM connection  
+    &#8211; PS Credential for Hyper-V Host WinRM connection  
     &#8211; Software repository share location
   * Connects to SCVMM and reads out all Hyper-V Hosts
   * Creates a DSC Configuration for each host

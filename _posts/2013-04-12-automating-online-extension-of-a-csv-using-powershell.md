@@ -1,7 +1,7 @@
 ---
 id: 1057
 title: Automating online Extension of a CSV using Powershell
-date: 2013-04-12T11:55:13+00:00
+date: 2013-04-12T11:55:13+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1057
@@ -38,15 +38,13 @@ Before you&#8217;re going to kill your Failover Cluster, please consider that th
 
 &nbsp;
 
-**Now let&#8217;s get the Volume ID from Diskpart Output
-  
+**Now let&#8217;s get the Volume ID from Diskpart Output  
 ** 
 
     $volume = Invoke-Command -ComputerName $csv_owner -ScriptBlock {"list volume" | diskpart} | Select-String $volume_name | Select-String -Pattern '[0-9]{1,3}'
     $volume_id = $matches[0] 
 
-**Here comes the tricky part. As there is currently no CMDLET to extend a volume (if there is any please ping me) I had to use old fashion DISKPART command.
-  
+**Here comes the tricky part. As there is currently no CMDLET to extend a volume (if there is any please ping me) I had to use old fashion DISKPART command.  
 With the Volume ID we got from the previous command, we&#8217;re going to invoke the remote DISKPART command for volume extension**
 
 <pre class="crayon-selected">Invoke-Command -ComputerName $csv_owner -ScriptBlock {"RESCAN","SELECT VOLUME $($args[0])","EXTEND"| diskpart} -Args $volume_id</pre>

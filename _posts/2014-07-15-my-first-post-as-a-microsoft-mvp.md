@@ -1,7 +1,7 @@
 ---
 id: 3023
 title: My first post as a Microsoft MVP
-date: 2014-07-15T09:57:14+00:00
+date: 2014-07-15T09:57:14+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=3023

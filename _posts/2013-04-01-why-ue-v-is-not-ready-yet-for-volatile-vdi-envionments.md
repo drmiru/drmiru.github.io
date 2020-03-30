@@ -1,7 +1,7 @@
 ---
 id: 999
 title: Why UE-V is not ready yet for volatile VDI envionments
-date: 2013-04-01T20:50:56+00:00
+date: 2013-04-01T20:50:56+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=999

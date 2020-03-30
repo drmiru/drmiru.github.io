@@ -1,7 +1,7 @@
 ---
 id: 1086
 title: 'Hyper-V &#038; SCVMM &#8211; Constrained Delegation VS. CredSSP'
-date: 2013-05-24T17:02:36+00:00
+date: 2013-05-24T17:02:36+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1086
@@ -30,8 +30,7 @@ To explain the situation let&#8217;s first have a look at the following <a href=
 
 SCVMM does not require to configure Constrained Kerberos Delegation at all, because it always uses &#8220;fresh credentials&#8221; passed via <a href="http://en.wikipedia.org/wiki/Security_Support_Provider_Interface" target="_blank">CredSSP</a> when issuing commands and tasks. Therefore it uses pre-configured RunAs accounts or explicit credentials, where the second option is not really recommended for various reasons. This is a big enhancement especially for larger environments where you&#8217;d have to configure tons of delegations without SCVMM.
 
-**Powershell double-hop scenarios
-  
+**Powershell double-hop scenarios  
 ** 
 
 As mentioned above SCVMM solves the issue for you as it always issues commands remotely via WinRM on the target Hyper-V host using [CredSSP](http://en.wikipedia.org/wiki/Security_Support_Provider_Interface).

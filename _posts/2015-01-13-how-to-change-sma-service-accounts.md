@@ -1,7 +1,7 @@
 ---
 id: 3669
 title: How to change SMA Service Accounts
-date: 2015-01-13T19:36:31+00:00
+date: 2015-01-13T19:36:31+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=3669
@@ -22,12 +22,10 @@ tags:
 ---
 A SMA (Service Management Automation) infrastructure has typically two different service accounts being used for running the basic environment.
 
-**Runbook Service Account
-  
+**Runbook Service Account  
 ** This account is used to execute the Runbook Worker Service, to compile and launch the workflows (runbooks)
 
-**Web Service App Pool Account
-  
+**Web Service App Pool Account  
 ** The account is used as the web application pool identity of SMA REST web service
 
 &nbsp;
@@ -36,10 +34,8 @@ A SMA (Service Management Automation) infrastructure has typically two different
 
   * Stop all &#8220;Runbook Service&#8221; services on any runbook workers
   * Assign the new user account to all &#8220;Runbook Service&#8221; services
-  * Change the registry key
-  
-    HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\ServiceManagementAutomation\RunbookWorker\ServiceAccount  accordingly
-  
+  * Change the registry key  
+    HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\ServiceManagementAutomation\RunbookWorker\ServiceAccount  accordingly  
     (_although I&#8217;ve found that it works without changing this value, I&#8217;d still recommend to do it so_)
   * Add the new user to the local group  &#8220;Performance Monitor Users&#8221; on each runbook worker, remove the old account
   * Add the user as a new SQL login on the SQL server hosting the SMA database and assign &#8220;dbwowner&#8221; rights on the SMA database

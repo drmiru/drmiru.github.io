@@ -1,7 +1,7 @@
 ---
 id: 726
 title: Smart Card PIN pass-through not working with Windows 7 client on XenApp
-date: 2012-03-27T15:16:30+00:00
+date: 2012-03-27T15:16:30+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=726
@@ -20,12 +20,10 @@ tags:
   - Windows 7
   - XenApp
 ---
-**Issue description
-  
+**Issue description  
 ** 
 
-While fighting with the Citrix Single Sign On Service (SSONSVR.exe) on Windows 7 using Smart Card based login I had a deeper look at the architecture of SSONSVR service. For those which are not familiar with this component of the Receiver / Online Plugin, it&#8217;s basically a Citrix client component which caches the current logon credentials on a Windows based endpoint to enable the pass-through logon feature of XenApp. If a user logs on with username / password, SSONSVR caches the credentials and passes them over to the XenApp server resp. to the WI or WI service site.
-  
+While fighting with the Citrix Single Sign On Service (SSONSVR.exe) on Windows 7 using Smart Card based login I had a deeper look at the architecture of SSONSVR service. For those which are not familiar with this component of the Receiver / Online Plugin, it&#8217;s basically a Citrix client component which caches the current logon credentials on a Windows based endpoint to enable the pass-through logon feature of XenApp. If a user logs on with username / password, SSONSVR caches the credentials and passes them over to the XenApp server resp. to the WI or WI service site.  
 Now, if a user logs on to his Windows 7 client using Smart Card interactive logon with PIN, SSONSVR.exe is not invoked and therefore PIN pass through to a XenApp host is not working. Users will receive a RDS logon screen where they have to click on their user account and enter the PIN, which is of course very annoying.
 
 SSONSVR is implemented as a &#8220;Network Provider&#8221; and called by Winlogon via NPLogonNotify function**. <span style="color: #35383d; font-family: Arial; font-size: 9pt;">Upon a smart card logon the NPLogonNotify process is simply not invoked by Winlogon.exe anymore due to an architecture change of Winlogon within Vista / Windows 7 / 2008 R2.<br /> </span>**For more info about that see: [<span style="font-family: Arial; font-size: 9pt;">http://msdn.microsoft.com/en-us/library/bb905527.aspx</span>](http://msdn.microsoft.com/en-us/library/bb905527.aspx)<span style="color: #35383d;"><span style="font-family: Arial; font-size: 9pt;"> and </span><a href="http://support.citrix.com/article/CTX131223">http://support.citrix.com/article/CTX131223</a></span>

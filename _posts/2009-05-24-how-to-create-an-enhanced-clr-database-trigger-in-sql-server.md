@@ -1,7 +1,7 @@
 ---
 id: 74
 title: How to create an enhanced CLR Database Trigger in SQL Server
-date: 2009-05-24T13:04:44+00:00
+date: 2009-05-24T13:04:44+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=74
@@ -13,18 +13,14 @@ tags:
   - .net
   - SQL Server
 ---
-In SQL Server 2005 and later Triggers can be more than simple T-SQL statements. You can include complete procedures and program code.
-  
-This post describes how to  create a &#8220;Common Language Runtime&#8221; Trigger on a SQL Database which fires on INSERTS into a specific table.
-  
+In SQL Server 2005 and later Triggers can be more than simple T-SQL statements. You can include complete procedures and program code.  
+This post describes how to  create a &#8220;Common Language Runtime&#8221; Trigger on a SQL Database which fires on INSERTS into a specific table.  
 A CLR Trigger is a kind of stored procedure including .net compiled program code.
 
 **Step 1 (Create the .NET CLR Code)**
 
-Create a piece of code in Visual Studio or in an editor of your choice.
-  
-The sample code watches a table for inserts and starts a pwershell script with the inserted values as arguments. Of course you can do much more complex things than run a script.
-  
+Create a piece of code in Visual Studio or in an editor of your choice.  
+The sample code watches a table for inserts and starts a pwershell script with the inserted values as arguments. Of course you can do much more complex things than run a script.  
 You can use vb.net, c# or either c++ as source language
 
 Save  the file under C:\cla_trigger.vb
@@ -108,8 +104,7 @@ Save  the file under C:\cla_trigger.vb
 
 <pre>    End Sub</pre>
 
-**Step 2 (compile the code to a dll (class)**
-  
+**Step 2 (compile the code to a dll (class)**  
 C:\Windows\Microsoft.NET\Framework\v2.0.50727/vbc.exe /t:library /out:C:\CLRTrigger.dll /r:sqlaccess.dll C:\cla_trigger.vb
 
 **Step 3 (prepare the database for CLR Trigger Operations)**

@@ -1,7 +1,7 @@
 ---
 id: 1995
 title: Extending a Cluster Shared Volume (CSV) natively with Powershell
-date: 2013-12-13T01:04:23+00:00
+date: 2013-12-13T01:04:23+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1995

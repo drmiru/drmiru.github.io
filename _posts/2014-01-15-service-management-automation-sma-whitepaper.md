@@ -1,7 +1,7 @@
 ---
 id: 2103
 title: Service Management Automation (SMA) Whitepaper
-date: 2014-01-15T18:17:03+00:00
+date: 2014-01-15T18:17:03+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=2103

@@ -1,7 +1,7 @@
 ---
 id: 4247
 title: Starting SMA Runbooks in untrusted environments or dedicated workers
-date: 2015-08-18T23:54:00+00:00
+date: 2015-08-18T23:54:00+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=4247
@@ -33,9 +33,8 @@ If you have a multi-forest environment without trusts and/or an environment with
 
 &nbsp;
 
-[<img class="alignleft  wp-image-4253" src="http://www.miru.ch/wp-content/uploads/2015/08/SMA-Multi-Env-Worker.png" alt="SMA Multi Env Worker" width="508" height="375" srcset="http://www.miru.ch/wp-content/uploads/2015/08/SMA-Multi-Env-Worker.png 671w, http://www.miru.ch/wp-content/uploads/2015/08/SMA-Multi-Env-Worker-300x221.png 300w" sizes="(max-width: 508px) 100vw, 508px" />](http://www.miru.ch/wp-content/uploads/2015/08/SMA-Multi-Env-Worker.png)[
-  
-](http://www.miru.ch/wp-content/uploads/2015/08/SMA-Multi-Env-Worker.png) 
+[<img class="alignleft  wp-image-4253" src="../content/images/2015/08/SMA-Multi-Env-Worker.png" alt="SMA Multi Env Worker" width="508" height="375" srcset="../content/images/2015/08/SMA-Multi-Env-Worker.png 671w, ../content/images/2015/08/SMA-Multi-Env-Worker-300x221.png 300w" sizes="(max-width: 508px) 100vw, 508px" />](../content/images/2015/08/SMA-Multi-Env-Worker.png)[  
+](../content/images/2015/08/SMA-Multi-Env-Worker.png) 
 
 &nbsp;
 
@@ -45,11 +44,9 @@ If you have a multi-forest environment without trusts and/or an environment with
 
 The long answer is: You can&#8217;t do it out of the box with the current version. However I wanted to know if there might be a &#8220;dirty&#8221; way to achieve that. As I did some reverse engineering on how SMA runbook jobs are fired, the SQL traces showed interesting results. There are mainly two stored procedures being executed, when SMA web service triggers a runbook start.
 
-  *  [sma].[core].[createjob]
-  
+  *  [sma].[core].[createjob]  
     (creates a new job entry and a new job context entry)
-  * [sma].[queues].[message]
-  
+  * [sma].[queues].[message]  
     (creates a new message to inform the worker about new job)
 
 Therefore I created a little function which takes the required parameters to execute the two procedures via T-SQL. Along with other functions created under the former name &#8220;SMAHouseKeeping&#8221; I&#8217;ve put the runbook calling function into a module called c**SMATools** which can be <a href="https://gallery.technet.microsoft.com/Module-to-troubleshoot-and-ebafca16" target="_blank">downloaded from TechNet</a>**.**
@@ -72,8 +69,7 @@ Yes, there is one. If you&#8217;re using Azure Automation you might want to use 
 
 **Disclaimer**
 
-THE MODULE CODE AND ANY RELATED INFORMATION ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED,
-  
+THE MODULE CODE AND ANY RELATED INFORMATION ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED,  
 INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE. BE AWARE THAT MANIPULATING THE SMA DATABASE DIRECTLY IS ABSOLUTELY UNSUPPORTED AND IS COMPLETELY ON YOUR OWN RISK.
 
 &nbsp;

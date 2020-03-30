@@ -1,7 +1,7 @@
 ---
 id: 412
 title: How to reset a password on a windows box
-date: 2011-03-01T21:25:24+00:00
+date: 2011-03-01T21:25:24+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=412
@@ -35,6 +35,5 @@ So how that works?
   * Logon with your new password
   * Delete utilman.exe and rename utilman.exe.orig back to utilman.exe
 
-Surprised? Shocked? Don&#8217;t mind about tricks like this one, but think about your servers physical placement and who has access to them!
-  
+Surprised? Shocked? Don&#8217;t mind about tricks like this one, but think about your servers physical placement and who has access to them!  
 (and of course in a virtual world you might think about who can mount a ISO to VM and boot it  from that)

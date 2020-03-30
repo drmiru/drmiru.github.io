@@ -1,7 +1,7 @@
 ---
 id: 394
 title: Windows RDS 2008 R2 / Xenapp 6 Tipps
-date: 2011-03-01T21:31:34+00:00
+date: 2011-03-01T21:31:34+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=394

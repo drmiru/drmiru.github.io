@@ -1,7 +1,7 @@
 ---
 id: 3630
 title: Troubleshooting SMA (Service Management Automation) – Part 2
-date: 2014-12-20T00:07:04+00:00
+date: 2014-12-20T00:07:04+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=3630
@@ -32,8 +32,7 @@ See <a href="http://www.miru.ch/troubleshooting-sma-service-management-automatio
 
 In this post, I&#8217;ll focus on troubleshooting job states and worker issues.
 
-If you read <a href="http://www.miru.ch/troubleshooting-sma-service-management-automation-part-1/" target="_blank">Part 1</a>, then you should be aware how SMA distributes the jobs to the available workers.
-  
+If you read <a href="http://www.miru.ch/troubleshooting-sma-service-management-automation-part-1/" target="_blank">Part 1</a>, then you should be aware how SMA distributes the jobs to the available workers.  
 While this mechanism ensures fair sharing of runbook jobs it may also introduce some issues.
 
 ## 

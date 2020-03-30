@@ -1,7 +1,7 @@
 ---
 id: 1805
 title: Why I’m consistently returning to E2E Virtualization Conference
-date: 2013-11-03T18:53:29+00:00
+date: 2013-11-03T18:53:29+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1805

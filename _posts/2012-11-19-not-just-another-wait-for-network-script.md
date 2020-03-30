@@ -1,7 +1,7 @@
 ---
 id: 932
 title: Not just another „wait for network“ script
-date: 2012-11-19T13:50:21+00:00
+date: 2012-11-19T13:50:21+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=932

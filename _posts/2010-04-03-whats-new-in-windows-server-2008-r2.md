@@ -1,7 +1,7 @@
 ---
 id: 217
 title: 'What&#8217;s New in Windows Server 2008 R2'
-date: 2010-04-03T20:03:43+00:00
+date: 2010-04-03T20:03:43+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=217

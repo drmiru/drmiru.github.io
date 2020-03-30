@@ -1,7 +1,7 @@
 ---
 id: 531
 title: How to search for a VM by MAC address on XenServer and vSphere ESX via Powershell
-date: 2011-05-26T20:50:30+00:00
+date: 2011-05-26T20:50:30+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=531

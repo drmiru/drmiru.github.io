@@ -1,7 +1,7 @@
 ---
 id: 4698
 title: Sneak Peek on Nano Server 2016 TP5
-date: 2016-04-29T00:37:26+00:00
+date: 2016-04-29T00:37:26+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=4698
@@ -58,7 +58,7 @@ Nano Server is being managed remotely, and only remotely. There is no more RDP t
       * Windows Firewall rules can now be changed EC
       * WinRM can be turned on/off using the EC
     
-    ![](http://www.miru.ch/wp-content/uploads/2016/04/042816_2234_SneakPeakon1.png)
+![](../content/images/2016/04/042816_2234_SneakPeakon1.png) 
     
     ### Additional Feature/Role Packages
     
@@ -71,8 +71,7 @@ Nano Server is being managed remotely, and only remotely. There is no more RDP t
     
     The PowerShell Script to create new Nano Server images has been slightly changed which makes it at the end even simpler to create new base images for your Nano Server within a few minutes. Here&#8217;s a working example with the TP5 version, in this case for a Storage Node.
     
-    `<span style="color: #00b0f0; font-family: Consolas; font-size: 9pt;">Import-Module </span>``<span style="color: #00b0f0; font-family: Consolas; font-size: 9pt;">G:\NanoServer\NanoServerImageGenerator\NanoServerImageGenerator.psm1 -verbose</span>`
-  
+    `<span style="color: #00b0f0; font-family: Consolas; font-size: 9pt;">Import-Module </span>``<span style="color: #00b0f0; font-family: Consolas; font-size: 9pt;">G:\NanoServer\NanoServerImageGenerator\NanoServerImageGenerator.psm1 -verbose</span>`  
     `<span style="color: #00b0f0; font-family: Consolas; font-size: 9pt;">$Adminpw = ConvertTo-SecureString -String 'SomePassw0rd!' -AsPlainText -Force<br />
 </span>``<span style="color: #00b0f0; font-family: Consolas; font-size: 9pt;">$NodeName = "S2DNode1"<br />
 </span>```<span style="color: #00b0f0; font-family: Consolas; font-size: 9pt;">New-NanoServerImage -MediaPath G:\ -BasePath "E:\NanoServerTemp\$NodeName" -TargetPath "E:\LocalVMs\$NodeName\$NodeName.vhd" -Storage -Clustering -EnableRemoteManagementPort `<br />

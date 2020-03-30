@@ -1,7 +1,7 @@
 ---
 id: 1301
 title: How to return unused IP Addresses to Pools in SCVMM
-date: 2013-08-23T09:47:34+00:00
+date: 2013-08-23T09:47:34+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1301

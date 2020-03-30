@@ -1,7 +1,7 @@
 ---
 id: 588
 title: Xendesktop 5 and Hyper-V. Lessons learned from a joint venture
-date: 2011-06-14T23:37:51+00:00
+date: 2011-06-14T23:37:51+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=588

@@ -1,7 +1,7 @@
 ---
 id: 807
 title: Server 2012 Hyper-V and VMware vSphere comparison white paper
-date: 2012-06-05T07:36:03+00:00
+date: 2012-06-05T07:36:03+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=807

@@ -1,7 +1,7 @@
 ---
 id: 4735
 title: Change Storage Location of RDS VDI Collections
-date: 2016-05-28T01:44:48+00:00
+date: 2016-05-28T01:44:48+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=4735
@@ -34,7 +34,7 @@ While personal Desktop collections are stateful and based on a full copy of the 
 
 No matter which model you choose, when creating a new Desktop Collection, the master image gets copied to the destination volume or SMB share selected for the new collection. From there every new desktop provisioned is either again a full  clone or a so called &#8220;linked clone&#8221; with a differencing disk based on a checkpoint reflecting the original VM state after cloning from the master.
 
-[<img class="alignleft wp-image-4738" src="http://www.miru.ch/wp-content/uploads/2016/05/RDS-VDI-Change-Storage.pptx-PowerPoint-1024x771.png" alt="RDS-VDI-Change-Storage.pptx - PowerPoint" width="646" height="487" srcset="http://www.miru.ch/wp-content/uploads/2016/05/RDS-VDI-Change-Storage.pptx-PowerPoint-1024x771.png 1024w, http://www.miru.ch/wp-content/uploads/2016/05/RDS-VDI-Change-Storage.pptx-PowerPoint-300x226.png 300w, http://www.miru.ch/wp-content/uploads/2016/05/RDS-VDI-Change-Storage.pptx-PowerPoint-768x578.png 768w, http://www.miru.ch/wp-content/uploads/2016/05/RDS-VDI-Change-Storage.pptx-PowerPoint.png 1099w" sizes="(max-width: 646px) 100vw, 646px" />](http://www.miru.ch/change-storage-location-of-rds-vdi-collections/rds-vdi-change-storage-pptx-powerpoint/)
+[<img class="alignleft wp-image-4738" src="../content/images/2016/05/RDS-VDI-Change-Storage.pptx-PowerPoint-1024x771.png" alt="RDS-VDI-Change-Storage.pptx - PowerPoint" width="646" height="487" srcset="../content/images/2016/05/RDS-VDI-Change-Storage.pptx-PowerPoint-1024x771.png 1024w, ../content/images/2016/05/RDS-VDI-Change-Storage.pptx-PowerPoint-300x226.png 300w, ../content/images/2016/05/RDS-VDI-Change-Storage.pptx-PowerPoint-768x578.png 768w, ../content/images/2016/05/RDS-VDI-Change-Storage.pptx-PowerPoint.png 1099w" sizes="(max-width: 646px) 100vw, 646px" />](http://www.miru.ch/change-storage-location-of-rds-vdi-collections/rds-vdi-change-storage-pptx-powerpoint/)
 
 Unfortunately, there isn&#8217;t a PowerShell CMDLET or any GUI based method to relocate an existing pool and it&#8217;s provisioned desktops to a different storage location.
 

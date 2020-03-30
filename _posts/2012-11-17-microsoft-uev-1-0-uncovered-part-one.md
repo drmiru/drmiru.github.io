@@ -1,7 +1,7 @@
 ---
 id: 893
 title: Microsoft UEV 1.0 uncovered (part one)
-date: 2012-11-17T00:06:39+00:00
+date: 2012-11-17T00:06:39+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=893
@@ -123,7 +123,7 @@ I wanted to dig a bit deeper and find out how UEV is working under the hood.
 
 ### **Service Architecture**
 
-<img src="http://www.miru.ch/wp-content/uploads/2012/11/111612_2204_MicrosoftUE14.png" alt="" align="left" />
+<img src="../content/images/2012/11/111612_2204_MicrosoftUE14.png" alt="" align="left" /> 
 
 &nbsp;
 
@@ -150,7 +150,7 @@ Unfortunately I didn&#8217;t see any possibility to manage the exclusions centra
 
 ### **What about App-V?**
 
-<img src="http://www.miru.ch/wp-content/uploads/2012/11/111612_2204_MicrosoftUE2.png" alt="" align="left" />For more information about App-V service and process inclusions refer to this post:
+<img src="../content/images/2012/11/111612_2204_MicrosoftUE2.png" alt="" align="left" /> For more information about App-V service and process inclusions refer to this post:
 
 <http://blogs.technet.com/b/gladiatormsft/archive/2012/08/01/app-v-4-6-using-service-and-process-inclusions.aspx>
 
@@ -161,8 +161,7 @@ Unfortunately I didn&#8217;t see any possibility to manage the exclusions centra
 <span style="font-size: 12pt;"><strong>Current Limitations<br /> </strong></span>
 
   * The UEV Agent is not able to capture files and folders outside the %USERPROFILE% directory
-  * Restoring of application settings to initial values across multiple machines is not possible because the initial settings are stored under:
-  
+  * Restoring of application settings to initial values across multiple machines is not possible because the initial settings are stored under:  
     %USERPROFILE%\APPDATA\Local\Microsoft\UEV\%COMPUTERNAME%\TemplateName\
   * There is no history of the settings to roll them back to a certain date
 
@@ -170,28 +169,22 @@ Unfortunately I didn&#8217;t see any possibility to manage the exclusions centra
 
 ### <span style="font-size: 12pt;"><strong>UEV Resources<br /> </strong></span>
 
-UEV Agent Registry Settings
-  
+UEV Agent Registry Settings  
 <http://support.microsoft.com/kb/2770042>
 
-UEV on Technet
-  
+UEV on Technet  
 <http://technet.microsoft.com/en-us/library/jj680015.aspx>
 
-Installing UEV Group Policy Templates
-  
+Installing UEV Group Policy Templates  
 <http://technet.microsoft.com/en-us/library/jj679980.aspx>
 
-Managing UE-V 1.0 Settings Location Templates Using PowerShell
-  
+Managing UE-V 1.0 Settings Location Templates Using PowerShell  
 <http://technet.microsoft.com/en-us/library/jj679987.aspx>
 
-UEV Configuration Template Gallery
-  
+UEV Configuration Template Gallery  
 <http://gallery.technet.microsoft.com/site/search?f[0].Type=RootCategory&f[0].Value=UE-V>
 
-How To Enable Debug Logging in Microsoft User Experience Virtualization (UE-V)
-  
+How To Enable Debug Logging in Microsoft User Experience Virtualization (UE-V)  
 <http://support.microsoft.com/kb/2782997>
 
 &nbsp;

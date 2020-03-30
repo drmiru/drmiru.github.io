@@ -1,7 +1,7 @@
 ---
 id: 8
 title: VDI the future of workplaces?
-date: 2009-03-13T21:19:38+00:00
+date: 2009-03-13T21:19:38+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=8

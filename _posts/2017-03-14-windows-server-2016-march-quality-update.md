@@ -1,7 +1,7 @@
 ---
 id: 4866
 title: Windows Server 2016 March Quality Update
-date: 2017-03-14T21:09:56+00:00
+date: 2017-03-14T21:09:56+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=4866

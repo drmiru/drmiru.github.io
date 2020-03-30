@@ -1,7 +1,7 @@
 ---
 id: 580
 title: 'XenClient: unlock a locked VM'
-date: 2011-06-13T14:38:56+00:00
+date: 2011-06-13T14:38:56+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=580

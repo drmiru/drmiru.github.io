@@ -1,7 +1,7 @@
 ---
 id: 970
 title: How to use a dedicated interface / VLAN for Hyper-V replica traffic
-date: 2013-03-19T02:53:14+00:00
+date: 2013-03-19T02:53:14+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=970
@@ -31,7 +31,7 @@ In this post I&#8217;m covering **Hyper-V replica** and its replication traffic.
   * Hyper-V Cluster with replica broker role enabled, replicates a VM named VM1 to a Hyper-V standalone host in a DR site
   * You want the replication traffic to use the Live-Migration Network in the main site.
 
-![](http://www.miru.ch/wp-content/uploads/2013/03/032213_0615_Howtouseade1.jpg)
+![](../content/images/2013/03/032213_0615_Howtouseade1.jpg) 
 
 &nbsp;
 
@@ -52,14 +52,12 @@ Refer to these blog post on how to create and use certificates for Hyper-V repli
 
 &nbsp;
 
-**How to proceed….
-  
+**How to proceed….  
 ** 
 
 **This is a short workflow checklist for what you have to do**
 
-  * Edit the hosts file to add records for the destination host (either the replica broker network name or the standalone Hyper-V host)
-  
+  * Edit the hosts file to add records for the destination host (either the replica broker network name or the standalone Hyper-V host)  
     The host resolution should point to an IP on the Live Migration or Replication Network on the destination host / replica broker
   * If either source or destination or both are cluster nodes, add the replica broker role first (choose the hostname which will be resolved to the replication VLAN)
   * Create Certificates for source and destination replica server (if using clusters be sure to add the network name of the replica broker resource as a subject alternative name. You can also use a wildcard certificate)

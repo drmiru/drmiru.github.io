@@ -1,7 +1,7 @@
 ---
 id: 4614
 title: WMF 4.0 / .Net Framework Bug brakes Variable Scoping in Inlinescripts
-date: 2016-04-07T21:35:40+00:00
+date: 2016-04-07T21:35:40+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=4614

@@ -1,7 +1,7 @@
 ---
 id: 3806
 title: Set default values on Storage Pools to minimize layer 8 issues
-date: 2015-03-05T23:03:49+00:00
+date: 2015-03-05T23:03:49+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=3806

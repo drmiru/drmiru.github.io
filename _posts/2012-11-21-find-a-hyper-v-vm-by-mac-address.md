@@ -1,7 +1,7 @@
 ---
 id: 941
 title: Find a Hyper-V VM by MAC Address
-date: 2012-11-21T23:19:23+00:00
+date: 2012-11-21T23:19:23+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=941

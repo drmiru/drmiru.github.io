@@ -1,7 +1,7 @@
 ---
 id: 525
 title: RDS Session / Server Management via Powershell
-date: 2011-05-21T11:43:43+00:00
+date: 2011-05-21T11:43:43+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=525

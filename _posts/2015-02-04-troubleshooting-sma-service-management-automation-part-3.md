@@ -1,7 +1,7 @@
 ---
 id: 3715
 title: Troubleshooting SMA (Service Management Automation) – Part 3
-date: 2015-02-04T01:00:17+00:00
+date: 2015-02-04T01:00:17+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=3715
@@ -23,12 +23,10 @@ tags:
   - Service Management Automation
   - SMA
 ---
-As SMA is almost anywhere around in my daily job, I&#8217;m also faced with usual and unusual troubles of course. Especially the authentication part can be a tricky one. Therefore I decided to dedicate the 3rd and last episode of the &#8220;Troubleshooting SMA&#8221; series to the &#8220;Authentication&#8221; topic.
-  
+As SMA is almost anywhere around in my daily job, I&#8217;m also faced with usual and unusual troubles of course. Especially the authentication part can be a tricky one. Therefore I decided to dedicate the 3rd and last episode of the &#8220;Troubleshooting SMA&#8221; series to the &#8220;Authentication&#8221; topic.  
 In this post I&#8217;m focusing on several considerations regarding authentication within SMA Runbooks. After a relatively dry theory block, I&#8217;ll pick up some scenarios from the field.
 
-Find the first to blog post parts here&#8230;
-  
+Find the first to blog post parts here&#8230;  
 <a href="http://www.miru.ch/troubleshooting-sma-service-management-automation-part-2/" target="_blank">http://www.miru.ch/troubleshooting-sma-service-management-automation-part-2/</a>
 
 <a href="http://www.miru.ch/troubleshooting-sma-service-management-automation-part-1/" target="_blank">http://www.miru.ch/troubleshooting-sma-service-management-automation-part-1/</a>
@@ -77,7 +75,7 @@ Hopping from one machine to another using Powershell Remote Sessions is generall
   * CredSSP authentication must be enabled at least on the 2nd, 3rd, 4th hop etc..
   * Only works for domain joined / trusted environments
 
-[<img class="alignleft  wp-image-3733" alt="Winrm_Kerberos-Double-Hop" src="http://www.miru.ch/wp-content/uploads/2015/02/Winrm_Kerberos-Double-Hop.gif" width="502" height="350" />](http://www.miru.ch/wp-content/uploads/2015/02/Winrm_Kerberos-Double-Hop.gif)
+[<img class="alignleft  wp-image-3733" alt="Winrm_Kerberos-Double-Hop" src="../content/images/2015/02/Winrm_Kerberos-Double-Hop.gif" width="502" height="350" />](../content/images/2015/02/Winrm_Kerberos-Double-Hop.gif)
 
 &nbsp;
 

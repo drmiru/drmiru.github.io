@@ -1,7 +1,7 @@
 ---
 id: 1255
 title: How to delete obsolete Logical Networks in SCVMM within seconds
-date: 2013-08-07T20:46:17+00:00
+date: 2013-08-07T20:46:17+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1255
@@ -35,8 +35,8 @@ And here is how you run the script:
 
 <pre>RemoveLogicalNetwork.ps1 -LogicalNetworkName "LNET_LAB_01"</pre>
 
-[<img class="alignleft size-full wp-image-1259" title="RemoveLogicalNetwork" alt="" src="http://www.miru.ch/wp-content/uploads/2013/08/rmln.jpg" width="959" height="219" srcset="http://www.miru.ch/wp-content/uploads/2013/08/rmln.jpg 959w, http://www.miru.ch/wp-content/uploads/2013/08/rmln-300x68.jpg 300w" sizes="(max-width: 959px) 100vw, 959px" />](http://www.miru.ch/wp-content/uploads/2013/08/rmln.jpg)
+[<img class="alignleft size-full wp-image-1259" title="RemoveLogicalNetwork" alt="" src="../content/images/2013/08/rmln.jpg" width="959" height="219" srcset="../content/images/2013/08/rmln.jpg 959w, ../content/images/2013/08/rmln-300x68.jpg 300w" sizes="(max-width: 959px) 100vw, 959px" />](../content/images/2013/08/rmln.jpg)
 
-Get the script [**here**](http://www.miru.ch/wp-content/uploads/2013/08/RemoveLogicalNetwork.zip) and feel free to extend it or write me feedback and comments.
+Get the script [**here**](../content/images/2013/08/RemoveLogicalNetwork.zip) and feel free to extend it or write me feedback and comments.
 
 &nbsp;

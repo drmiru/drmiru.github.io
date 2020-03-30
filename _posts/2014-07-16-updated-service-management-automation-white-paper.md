@@ -1,7 +1,7 @@
 ---
 id: 3040
 title: 'Updated: Service Management Automation White Paper'
-date: 2014-07-16T07:16:32+00:00
+date: 2014-07-16T07:16:32+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=3040

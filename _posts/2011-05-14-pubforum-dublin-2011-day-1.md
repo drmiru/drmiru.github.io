@@ -1,7 +1,7 @@
 ---
 id: 480
 title: 'Pubforum Dublin 2011 / Day #1'
-date: 2011-05-14T09:53:34+00:00
+date: 2011-05-14T09:53:34+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=480

@@ -1,7 +1,7 @@
 ---
 id: 432
 title: Exchange 2010 SP1 Rollup 2 available
-date: 2011-03-18T22:27:54+00:00
+date: 2011-03-18T22:27:54+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=432

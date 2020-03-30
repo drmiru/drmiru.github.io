@@ -1,7 +1,7 @@
 ---
 id: 2185
 title: Introducing HVRSMA Toolkit
-date: 2014-01-31T23:55:12+00:00
+date: 2014-01-31T23:55:12+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=2185
@@ -78,7 +78,7 @@ All runbooks support either single-to-single host Replica, Cluster-to-single hos
   </p>
   
   <p>
-    <img alt="" src="http://www.miru.ch/wp-content/uploads/2014/02/020314_2112_Introducing1.png" />
+    <img alt="" src="../content/images/2014/02/020314_2112_Introducing1.png" />
   </p>
   
   <p>
@@ -298,7 +298,7 @@ All runbooks support either single-to-single host Replica, Cluster-to-single hos
   </p>
   
   <p>
-    <img alt="" src="http://www.miru.ch/wp-content/uploads/2014/02/020314_2112_Introducing2.png" />
+    <img alt="" src="../content/images/2014/02/020314_2112_Introducing2.png" />
   </p>
   
   <p>
@@ -306,15 +306,15 @@ All runbooks support either single-to-single host Replica, Cluster-to-single hos
   </p>
   
   <p>
-    <img alt="" src="http://www.miru.ch/wp-content/uploads/2014/02/020314_2112_Introducing3.png" />
+    <img alt="" src="../content/images/2014/02/020314_2112_Introducing3.png" />
   </p>
   
   <p>
-    <img alt="" src="http://www.miru.ch/wp-content/uploads/2014/02/020314_2112_Introducing4.png" />
+    <img alt="" src="../content/images/2014/02/020314_2112_Introducing4.png" />
   </p>
   
   <p>
-    <img alt="" src="http://www.miru.ch/wp-content/uploads/2014/02/020314_2112_Introducing5.png" />
+    <img alt="" src="../content/images/2014/02/020314_2112_Introducing5.png" />
   </p>
   
   <p>
@@ -322,7 +322,7 @@ All runbooks support either single-to-single host Replica, Cluster-to-single hos
   </p>
   
   <p>
-    <img alt="" src="http://www.miru.ch/wp-content/uploads/2014/02/020314_2112_Introducing6.png" />
+    <img alt="" src="../content/images/2014/02/020314_2112_Introducing6.png" />
   </p>
   
   <p>
@@ -338,7 +338,7 @@ All runbooks support either single-to-single host Replica, Cluster-to-single hos
   </p>
   
   <p>
-    <img alt="" src="http://www.miru.ch/wp-content/uploads/2014/02/020314_2112_Introducing7.png" />
+    <img alt="" src="../content/images/2014/02/020314_2112_Introducing7.png" />
   </p>
   
   <p>
@@ -346,7 +346,7 @@ All runbooks support either single-to-single host Replica, Cluster-to-single hos
   </p>
   
   <p>
-    <img alt="" src="http://www.miru.ch/wp-content/uploads/2014/02/020314_2112_Introducing8.png" />
+    <img alt="" src="../content/images/2014/02/020314_2112_Introducing8.png" />
   </p>
   
   <p>
@@ -354,7 +354,7 @@ All runbooks support either single-to-single host Replica, Cluster-to-single hos
   </p>
   
   <p>
-    <img alt="" src="http://www.miru.ch/wp-content/uploads/2014/02/020314_2112_Introducing9.png" />
+    <img alt="" src="../content/images/2014/02/020314_2112_Introducing9.png" />
   </p>
   
   <p>
@@ -362,7 +362,7 @@ All runbooks support either single-to-single host Replica, Cluster-to-single hos
   </p>
   
   <p>
-    <img alt="" src="http://www.miru.ch/wp-content/uploads/2014/02/020314_2112_Introducing10.png" />
+    <img alt="" src="../content/images/2014/02/020314_2112_Introducing10.png" />
   </p>
   
   <p>

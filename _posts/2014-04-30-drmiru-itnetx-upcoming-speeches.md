@@ -1,7 +1,7 @@
 ---
 id: 2569
 title: DRMIRU @ ITNETX / Upcoming Speeches
-date: 2014-04-30T14:48:35+00:00
+date: 2014-04-30T14:48:35+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=2569

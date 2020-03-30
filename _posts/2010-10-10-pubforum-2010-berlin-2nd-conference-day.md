@@ -1,7 +1,7 @@
 ---
 id: 289
 title: 'PubForum 2010 Berlin &#8211; 2nd conference day'
-date: 2010-10-10T09:06:07+00:00
+date: 2010-10-10T09:06:07+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=289
@@ -34,8 +34,7 @@ Just a cool session about a complex project and what a consultant has to deal wi
 
 **Session #3 HDX 3D from Roland Grass and Martin Rhode**
 
-HDX3D is a currently a beta add on feature on top of XenDesktop to bring rich graphics to the end user for high denanding applications in a centralized desktop environent. It&#8217;s intended to replace high end workstations under the desk with centralized desktops in the datacenter and deliver the grahpics to remote devices.
-  
+HDX3D is a currently a beta add on feature on top of XenDesktop to bring rich graphics to the end user for high denanding applications in a centralized desktop environent. It&#8217;s intended to replace high end workstations under the desk with centralized desktops in the datacenter and deliver the grahpics to remote devices.  
 HDX3D  With nVidia CUDA staff HDX is capturing encoded frames and sends this stream as a H.264 video to the client. If you don&#8217;t have a nVidia the CPU is rendering the JPEGXR stream. Beside the existing solutions from Teradici and HP I think the Citrix one rocks! So far we&#8217;ve seen it working very well even over high latency connections.
 
 **Session #4 RES Software, a day @ RES Software support**

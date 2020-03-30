@@ -1,7 +1,7 @@
 ---
 id: 439
 title: How to enable certificate based authentication on Exchange 2010
-date: 2011-04-10T10:17:44+00:00
+date: 2011-04-10T10:17:44+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=439
@@ -32,8 +32,7 @@ This article describes all steps to activate certificate based authentication to
       * <span style="font-size: x-small;">Set the Client Certificates radio button to Require.</span>
       * <span style="font-size: x-small;">Click Apply.</span>
 
-  * Unlock the IIS feature for certificate authentication
-  
+  * Unlock the IIS feature for certificate authentication  
     Run appcmd from %windir%\system32\inetsrv
 
 >   * <pre><span style="font-size: x-small;"><em>appcmd unlock config /section:clientCertificateMappingAuthentication</em></span></pre>
@@ -52,8 +51,8 @@ This article describes all steps to activate certificate based authentication to
 
 > Opening the OWA url should now ask for the certificate
 > 
-> [<img class="alignnone size-thumbnail wp-image-446" title="certverify" src="http://www.miru.ch/wp-content/uploads/2011/04/certverify1-150x150.gif" alt="" width="150" height="150" />](http://www.miru.ch/?attachment_id=446)
+> [<img class="alignnone size-thumbnail wp-image-446" title="certverify" src="../content/images/2011/04/certverify1-150x150.gif" alt="" width="150" height="150" />](http://www.miru.ch/?attachment_id=446)
 
-> ![](file:///C:/Users/mrueefli/AppData/Local/Temp/moz-screenshot.png)
+>![](file:///C:/Users/mrueefli/AppData/Local/Temp/moz-screenshot.png) 
 
  <span style="font-size: x-small;"></span>

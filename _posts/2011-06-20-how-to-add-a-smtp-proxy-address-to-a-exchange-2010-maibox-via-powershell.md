@@ -1,7 +1,7 @@
 ---
 id: 592
 title: How to add a smtp proxy address to a Exchange 2010 maibox via Powershell
-date: 2011-06-20T21:53:44+00:00
+date: 2011-06-20T21:53:44+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=592
@@ -15,8 +15,7 @@ categories:
 tags:
   - Exchange2010 Powershell
 ---
-This is a Powershell snippet to add a smtp proxy address to an existing mailbox in a Exchange 2010 environment.
-  
+This is a Powershell snippet to add a smtp proxy address to an existing mailbox in a Exchange 2010 environment.  
 It must run on a machine with installed Exchange 2010 Management Shell.
 
 <pre>#Load the Exchange 2010 SnapIns and establish a management session

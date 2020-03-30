@@ -1,7 +1,7 @@
 ---
 id: 2347
 title: Using DSC to keep SMA Runbook Workers up-to-date
-date: 2014-02-28T15:27:20+00:00
+date: 2014-02-28T15:27:20+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=2347
@@ -45,7 +45,7 @@ I&#8217;m currently using the push architecture of DSC, however I might change t
 
 ## <span style="text-decoration: underline;">Scenario Overview<br /> </span>
 
-![](http://www.miru.ch/wp-content/uploads/2014/02/022814_1327_UsingDSCtok1.png)
+![](../content/images/2014/02/022814_1327_UsingDSCtok1.png) 
 
 I currently used the Package and the File resource from DSC. Both are built-in when you install WinRM 4.0.
 
@@ -250,8 +250,7 @@ So here&#8217;s the complete Runbook:
 
 If you&#8217;re familiar with the <a href="https://blogs.technet.com/b/privatecloud/archive/2013/10/23/automation-service-management-automation-sma-runbook-toolkit-spotlight-smart-for-runbook-import-and-export.aspx" target="_blank">SMART tool </a>you can also download the runbook from <a href="http://gallery.technet.microsoft.com/Using-DSC-to-keep-SMA-a0fce35f" target="_blank">TechNet here</a> and import it using SMART.
 
-Note:
-  
+Note:  
 The unattend command line syntax is valid for R2 versions of OpsMgr and VMM Console and may differ if you are using another version.
 
 I usually keep DSC configurations separated from the logic, but to keep it a little bit simpler for this example I included the configuration within the SMA runbook.
@@ -260,8 +259,7 @@ I usually keep DSC configurations separated from the logic, but to keep it a lit
 
 ** Disclaimer**
 
-THE SAMPLE CODE AND ANY RELATED INFORMATION ARE PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED,
-  
+THE SAMPLE CODE AND ANY RELATED INFORMATION ARE PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED,  
 INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE
 
 &nbsp;

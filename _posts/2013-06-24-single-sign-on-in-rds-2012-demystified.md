@@ -1,7 +1,7 @@
 ---
 id: 1133
 title: Single Sign On in RDS 2012 demystified
-date: 2013-06-24T22:40:59+00:00
+date: 2013-06-24T22:40:59+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1133
@@ -36,12 +36,10 @@ tags:
 
 **The definition of the term &#8220;SSO&#8221;<span style="font-size: 10pt;"><br /> </span>**Single Sign On can be <span style="font-size: 10pt;">implemented in several ways, but what I&#8217;m talking about here is the fact, the user has to enter his credentials only once at the primary contact device (endpoint). Subsequent logons will then be authenticated via the original credential set, which can be user name and password or PIN if using Smart Card. The credential forwarding occurs on Kerberos / CredSSP level, so no freaky agent behind the scenes filling in some user credentials.<br /> </span>
 
-**Out of the box behaviour
-  
+**Out of the box behaviour  
 ** 
 
-<span style="font-size: 10pt;">Depending on how you design the solution the entry point for the user might be different. But however, I&#8217;m going to cover all possible pitfalls.<br /> By default the procedure to start a remote app or desktop is as follows:</span>**
-  
+<span style="font-size: 10pt;">Depending on how you design the solution the entry point for the user might be different. But however, I&#8217;m going to cover all possible pitfalls.<br /> By default the procedure to start a remote app or desktop is as follows:</span>**  
 ** 
 
   * <span style="font-size: 10pt;">User logs on to client computer providing his domain credentials / PIN<br /> </span>
@@ -53,22 +51,19 @@ tags:
 
 <span style="font-size: 10pt;">There are way too much authentication points and click steps until the user reaches the app / desktop. And you might be annoyed by pop-up boxes like these….<br /> </span>
 
-![](http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO1.png)<span style="font-size: 10pt;"><br /> <img src="http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO2.png" alt="" /><img src="http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO3.png" alt="" /><br /> </span>
+![](../content/images/2013/06/062413_2332_SingleSignO1.png) <span style="font-size: 10pt;"><br /> <img src="../content/images/2013/06/062413_2332_SingleSignO2.png" alt="" /><img src="../content/images/2013/06/062413_2332_SingleSignO3.png" alt="" /><br /> </span>
 
 &nbsp;
 
-**Components (tiers) involved
-  
+**Components (tiers) involved  
 ** 
 
-![](http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO4.png)**
-  
+![](../content/images/2013/06/062413_2332_SingleSignO4.png) **  
 ** 
 
 While the RDWeb site is using Kerberos for SSO, subsequent authentication processes use CredSSP by providing default or fresh credentials depending on the authentication mechanism at the web tier.
 
-**How to configure it correctly
-  
+**How to configure it correctly  
 ** 
 
 <span style="font-size: 10pt;">There are basically four steps to complete<br /> </span>
@@ -83,11 +78,11 @@ While the RDWeb site is using Kerberos for SSO, subsequent authentication proces
 
 **1. Issue a valid SSL certificate and assign it to the server components<span style="font-size: 10pt;"><br /> </span>**I&#8217;m not covering how to request and issue a SSL certificate here, you might know that already, I&#8217;m sure. But keep in mind the Key Usage must contain &#8220;Server Authentication&#8221;.<span style="font-size: 10pt;"><br /> </span>
 
-<span style="font-size: 10pt;">Assign the certificate for connection broking, rdp file-signing and web access<br /> <img src="http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO5.png" alt="" /><br /> </span>
+<span style="font-size: 10pt;">Assign the certificate for connection broking, rdp file-signing and web access<br /> <img src="../content/images/2013/06/062413_2332_SingleSignO5.png" alt="" /><br /> </span>
 
 **2. Enable SSO on Web tier**<span style="font-size: 10pt;"><br /> This step requires a bit more work including web config file editing. Be sure to create a backup of the files before screwing them up <span style="font-family: Wingdings;">J</span><br /> </span>
 
-![](http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO6.png)<span style="font-size: 10pt;"><br /> </span>
+![](../content/images/2013/06/062413_2332_SingleSignO6.png) <span style="font-size: 10pt;"><br /> </span>
 
 <span style="font-size: 10pt;">Edit: <span style="color: #5b9bd5;"><strong>%SYSTEMROOT%\Web\RDWeb\pages\web.config</strong></span><br /> </span>
 
@@ -151,44 +146,38 @@ While the RDWeb site is using Kerberos for SSO, subsequent authentication proces
 
 &nbsp;
 
-**3. Enable trusted rdp file signing for clients
-  
+**3. Enable trusted rdp file signing for clients  
 ** 
 
 <span style="font-size: 10pt;">Get the certificate thumbprint on your Connection Broker via Powershell<br /> </span>
 
 <pre><span style="font-family: Consolas; font-size: 10pt;">Get-Childitem CERT:\LocalMachine\My </span></pre>
 
-![](http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO7.png)<span style="font-size: 10pt;"><br /> </span>
+![](../content/images/2013/06/062413_2332_SingleSignO7.png) <span style="font-size: 10pt;"><br /> </span>
 
 <span style="font-size: 10pt;">Copy the thumbprint of the corresponding certificate to clipboard<br /> </span>
 
 <span style="font-size: 10pt;">Edit your clients GPO to include the thumbprint and to trust signed rdp files with this certificate<br /> </span>
 
-![](http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO8.png)<span style="font-size: 10pt;"><br /> </span>
+![](../content/images/2013/06/062413_2332_SingleSignO8.png) <span style="font-size: 10pt;"><br /> </span>
 
 &nbsp;
 
-**3. Enable Smart Card Support
-  
+**3. Enable Smart Card Support  
 ** 
 
-Enabling Smart Card Authentication is not a big deal as it has to be done only in the web tier. All other components support smart card based authentication by default.
-  
-Again, keep in mind that Microsoft does not provide any kind of PIN pass-through component yet, as Citrix does. As the user reaches the endpoint (RD Session or VDI Desktop), an additional PIN prompt will appear.
-  
-Additionally, if your CSP does not support global PIN caching, but only process based caching, the PIN has to be entered twice, first at RDWeb site, second at the RDP session layer.
-  
+Enabling Smart Card Authentication is not a big deal as it has to be done only in the web tier. All other components support smart card based authentication by default.  
+Again, keep in mind that Microsoft does not provide any kind of PIN pass-through component yet, as Citrix does. As the user reaches the endpoint (RD Session or VDI Desktop), an additional PIN prompt will appear.  
+Additionally, if your CSP does not support global PIN caching, but only process based caching, the PIN has to be entered twice, first at RDWeb site, second at the RDP session layer.  
 To enable Certificate based authentication on the RDWeb tier, complete the following on the IIS installation of your RDWeb Server:
 
-![](http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO9.png)
+![](../content/images/2013/06/062413_2332_SingleSignO9.png) 
 
 <span style="font-size: 10pt;">Also ensure that if using a 3<sup>rd</sup> party CSP, it has to be installed on all tiers.<br /> </span>
 
 &nbsp;
 
-**Unsupported / non-working scenarios
-  
+**Unsupported / non-working scenarios  
 ** 
 
   * <span style="font-size: 10pt;">SSO does not work if the clients are not domain joined<br /> </span>

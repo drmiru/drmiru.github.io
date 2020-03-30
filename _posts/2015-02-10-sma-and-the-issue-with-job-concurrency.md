@@ -1,7 +1,7 @@
 ---
 id: 3743
 title: SMA and the issue with job concurrency
-date: 2015-02-10T00:54:11+00:00
+date: 2015-02-10T00:54:11+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=3743
@@ -49,8 +49,7 @@ Some notes here&#8230;
 
 &nbsp;
 
-<span style="text-decoration: underline;">DISCLAIMER</span>
-  
+<span style="text-decoration: underline;">DISCLAIMER</span>  
 None of the above methods guarantee that job instances of a runbook can&#8217;t be created and run at the very same time, but depending on which one you choose, you can dramatically minimize the likeliness for this occurrence.
 
 &nbsp;

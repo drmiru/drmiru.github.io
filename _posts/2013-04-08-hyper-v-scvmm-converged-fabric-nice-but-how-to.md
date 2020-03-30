@@ -1,7 +1,7 @@
 ---
 id: 1033
 title: 'Hyper-V / SCVMM Converged Fabric : Nice.. but how to?'
-date: 2013-04-08T20:38:21+00:00
+date: 2013-04-08T20:38:21+02:00
 author: Michael Rüefli
 layout: post
 guid: http://www.miru.ch/?p=1033
@@ -24,30 +24,24 @@ Hyper-V with Server 2012 and SCVMM 2012 SP1 offer great network management and v
 
 ### Understanding the stuff&#8230;
 
-Comparing Methods To Implement Converged Fabrics For Windows Server 2012 Hyper-V
-  
+Comparing Methods To Implement Converged Fabrics For Windows Server 2012 Hyper-V  
 <http://www.aidanfinn.com/?p=14397>
 
-Basic Hyper-V Networking in System Center 2012 SP1 – Virtual Machine Manager
-  
+Basic Hyper-V Networking in System Center 2012 SP1 – Virtual Machine Manager  
 <http://www.thomasmaurer.ch/2013/02/basic-hyper-v-networking-in-system-center-2012-sp1-virtual-machine-manager/>
 
-Mapping The Virtual Networking In System Center 2012 SP1 Virtual Machine Manager
-  
+Mapping The Virtual Networking In System Center 2012 SP1 Virtual Machine Manager  
 <http://www.aidanfinn.com/?p=14161>
 
-Making Virtual Machine Manager 2012 SP1 Networking Work
-  
+Making Virtual Machine Manager 2012 SP1 Networking Work  
 <http://www.hypervtx.in/archives/hvredevoort/2013/03/making-virtual-machine-2012-sp1-networking-work/>
 
-Technet Blog: Networking in VMM 2012 SP1 – Logical Networks (Part I)
-  
+Technet Blog: Networking in VMM 2012 SP1 – Logical Networks (Part I)  
 <http://blogs.technet.com/b/scvmm/archive/2013/02/14/networking-in-vmm-2012-sp1-logical-networks-part-i.aspx>
 
 ### How to use it&#8230;.
 
-Hyper-V Converged Fabric with System Center 2012 SP1 – Virtual Machine Manager
-  
+Hyper-V Converged Fabric with System Center 2012 SP1 – Virtual Machine Manager  
 <http://www.thomasmaurer.ch/2013/04/hyper-v-converged-fabric-with-system-center-2012-sp1-virtual-machine-manager/>
 
 As there are also a lot of other posts covering how tos, I personally think the one from <a href="https://twitter.com/ThomasMaurer" target="_blank">@ThomasMaurer</a> and <a href="https://twitter.com/MichelLuescher" target="_blank">@MichelLuescher</a> is the most complete one.
