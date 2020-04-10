@@ -75,7 +75,7 @@ Hopping from one machine to another using Powershell Remote Sessions is generall
   * CredSSP authentication must be enabled at least on the 2nd, 3rd, 4th hop etc..
   * Only works for domain joined / trusted environments
 
-[<img class="alignleft  wp-image-3733" alt="Winrm_Kerberos-Double-Hop" src="../content/images/2015/02/Winrm_Kerberos-Double-Hop.gif" width="502" height="350" />](../content/images/2015/02/Winrm_Kerberos-Double-Hop.gif)
+[<img class="alignleft  wp-image-3733" alt="Winrm_Kerberos-Double-Hop" src="http://www.miru.ch/wp-content/uploads/2015/02/Winrm_Kerberos-Double-Hop.gif" width="502" height="350" />](http://www.miru.ch/wp-content/uploads/2015/02/Winrm_Kerberos-Double-Hop.gif)
 
 &nbsp;
 

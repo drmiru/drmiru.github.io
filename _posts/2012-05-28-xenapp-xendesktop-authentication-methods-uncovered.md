@@ -24,4 +24,4 @@ tags:
 ---
 After receiving a lot of positive feedback regarding my session @<a href="http://www.e2evc.com" target="_blank">E2EVC</a> I decided to publish the slides on my blog.
 
-Cloudentication, authentication methods for the Citrix private cloud <a title="Cloudentication, authentication methods for the Citrix private cloud" href="../content/images/2012/05/E2EVC-Vienna-Cloudentication.pptx" target="_blank">DOWNLOAD</a>
+Cloudentication, authentication methods for the Citrix private cloud <a title="Cloudentication, authentication methods for the Citrix private cloud" href="http://www.miru.ch/wp-content/uploads/2012/05/E2EVC-Vienna-Cloudentication.pptx" target="_blank">DOWNLOAD</a>

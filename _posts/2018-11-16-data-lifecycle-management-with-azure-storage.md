@@ -347,7 +347,7 @@ $rules = '{
                       </p>
                       
                       <p>
-                        <a href="../content/images/2018/11/storagemgmtpolrule-1.png"><img class="alignnone size-large wp-image-5008" src="../content/images/2018/11/storagemgmtpolrule-1-1024x440.png" alt="" width="1024" height="440" srcset="../content/images/2018/11/storagemgmtpolrule-1-1024x440.png 1024w, ../content/images/2018/11/storagemgmtpolrule-1-300x129.png 300w, ../content/images/2018/11/storagemgmtpolrule-1-768x330.png 768w, ../content/images/2018/11/storagemgmtpolrule-1.png 1380w" sizes="(max-width: 1024px) 100vw, 1024px" /></a>
+                        <a href="http://www.miru.ch/wp-content/uploads/2018/11/storagemgmtpolrule-1.png"><img class="alignnone size-large wp-image-5008" src="http://www.miru.ch/wp-content/uploads/2018/11/storagemgmtpolrule-1-1024x440.png" alt="" width="1024" height="440" srcset="http://www.miru.ch/wp-content/uploads/2018/11/storagemgmtpolrule-1-1024x440.png 1024w, http://www.miru.ch/wp-content/uploads/2018/11/storagemgmtpolrule-1-300x129.png 300w, http://www.miru.ch/wp-content/uploads/2018/11/storagemgmtpolrule-1-768x330.png 768w, http://www.miru.ch/wp-content/uploads/2018/11/storagemgmtpolrule-1.png 1380w" sizes="(max-width: 1024px) 100vw, 1024px" /></a>
                       </p>
                       
                       <p>

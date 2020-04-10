@@ -51,7 +51,7 @@ This article describes all steps to activate certificate based authentication to
 
 > Opening the OWA url should now ask for the certificate
 > 
-> [<img class="alignnone size-thumbnail wp-image-446" title="certverify" src="../content/images/2011/04/certverify1-150x150.gif" alt="" width="150" height="150" />](http://www.miru.ch/?attachment_id=446)
+> [<img class="alignnone size-thumbnail wp-image-446" title="certverify" src="http://www.miru.ch/wp-content/uploads/2011/04/certverify1-150x150.gif" alt="" width="150" height="150" />](http://www.miru.ch/?attachment_id=446)
 
 >![](file:///C:/Users/mrueefli/AppData/Local/Temp/moz-screenshot.png) 
 

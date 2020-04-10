@@ -33,7 +33,7 @@ I like the concept of Nano Server very much, so I try to always test new Server 
 
 ### Overview
 
-[<img class="alignleft size-full wp-image-4761" src="../content/images/2016/06/S2D.png" alt="S2D" width="594" height="176" srcset="../content/images/2016/06/S2D.png 594w, ../content/images/2016/06/S2D-300x89.png 300w" sizes="(max-width: 594px) 100vw, 594px" />](http://www.miru.ch/building-storage-spaces-direct-hyper-converged-cluster-using-nano-server-in-virtual-machines/s2d/)
+[<img class="alignleft size-full wp-image-4761" src="http://www.miru.ch/wp-content/uploads/2016/06/S2D.png" alt="S2D" width="594" height="176" srcset="http://www.miru.ch/wp-content/uploads/2016/06/S2D.png 594w, http://www.miru.ch/wp-content/uploads/2016/06/S2D-300x89.png 300w" sizes="(max-width: 594px) 100vw, 594px" />](http://www.miru.ch/building-storage-spaces-direct-hyper-converged-cluster-using-nano-server-in-virtual-machines/s2d/)
 
 &nbsp;
 

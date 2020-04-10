@@ -47,7 +47,7 @@ This gave me the hint for the root cause. The machine was configured to use a pr
 
 The result was similar to this:
 
-![](../content/images/2014/06/061314_2203_SCVMMSetupF11.png) 
+![](http://www.miru.ch/wp-content/uploads/2014/06/061314_2203_SCVMMSetupF11.png) 
 
 So what was soo wrong with the config? The main reason for the failure is, that a lot of tasks within SCVMM, even the Setup Wizard don&#8217;t resolve host names using the FQDN. So the exclusion as mentioned in the example above would not work, and the WinRM request would be forwared to the proxy. You might think..wait.. why do WinRM requests at all forward via WinHTTP? Simply because it is a SOAP based protocol, and therefore managed by the main http handlers present on the system.
 

@@ -51,14 +51,14 @@ tags:
 
 <span style="font-size: 10pt;">There are way too much authentication points and click steps until the user reaches the app / desktop. And you might be annoyed by pop-up boxes like these….<br /> </span>
 
-![](../content/images/2013/06/062413_2332_SingleSignO1.png) <span style="font-size: 10pt;"><br /> <img src="../content/images/2013/06/062413_2332_SingleSignO2.png" alt="" /><img src="../content/images/2013/06/062413_2332_SingleSignO3.png" alt="" /><br /> </span>
+![](http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO1.png) <span style="font-size: 10pt;"><br /> <img src="http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO2.png" alt="" /><img src="http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO3.png" alt="" /><br /> </span>
 
 &nbsp;
 
 **Components (tiers) involved  
 ** 
 
-![](../content/images/2013/06/062413_2332_SingleSignO4.png) **  
+![](http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO4.png) **  
 ** 
 
 While the RDWeb site is using Kerberos for SSO, subsequent authentication processes use CredSSP by providing default or fresh credentials depending on the authentication mechanism at the web tier.
@@ -78,11 +78,11 @@ While the RDWeb site is using Kerberos for SSO, subsequent authentication proces
 
 **1. Issue a valid SSL certificate and assign it to the server components<span style="font-size: 10pt;"><br /> </span>**I&#8217;m not covering how to request and issue a SSL certificate here, you might know that already, I&#8217;m sure. But keep in mind the Key Usage must contain &#8220;Server Authentication&#8221;.<span style="font-size: 10pt;"><br /> </span>
 
-<span style="font-size: 10pt;">Assign the certificate for connection broking, rdp file-signing and web access<br /> <img src="../content/images/2013/06/062413_2332_SingleSignO5.png" alt="" /><br /> </span>
+<span style="font-size: 10pt;">Assign the certificate for connection broking, rdp file-signing and web access<br /> <img src="http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO5.png" alt="" /><br /> </span>
 
 **2. Enable SSO on Web tier**<span style="font-size: 10pt;"><br /> This step requires a bit more work including web config file editing. Be sure to create a backup of the files before screwing them up <span style="font-family: Wingdings;">J</span><br /> </span>
 
-![](../content/images/2013/06/062413_2332_SingleSignO6.png) <span style="font-size: 10pt;"><br /> </span>
+![](http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO6.png) <span style="font-size: 10pt;"><br /> </span>
 
 <span style="font-size: 10pt;">Edit: <span style="color: #5b9bd5;"><strong>%SYSTEMROOT%\Web\RDWeb\pages\web.config</strong></span><br /> </span>
 
@@ -153,13 +153,13 @@ While the RDWeb site is using Kerberos for SSO, subsequent authentication proces
 
 <pre><span style="font-family: Consolas; font-size: 10pt;">Get-Childitem CERT:\LocalMachine\My </span></pre>
 
-![](../content/images/2013/06/062413_2332_SingleSignO7.png) <span style="font-size: 10pt;"><br /> </span>
+![](http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO7.png) <span style="font-size: 10pt;"><br /> </span>
 
 <span style="font-size: 10pt;">Copy the thumbprint of the corresponding certificate to clipboard<br /> </span>
 
 <span style="font-size: 10pt;">Edit your clients GPO to include the thumbprint and to trust signed rdp files with this certificate<br /> </span>
 
-![](../content/images/2013/06/062413_2332_SingleSignO8.png) <span style="font-size: 10pt;"><br /> </span>
+![](http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO8.png) <span style="font-size: 10pt;"><br /> </span>
 
 &nbsp;
 
@@ -171,7 +171,7 @@ Again, keep in mind that Microsoft does not provide any kind of PIN pass-through
 Additionally, if your CSP does not support global PIN caching, but only process based caching, the PIN has to be entered twice, first at RDWeb site, second at the RDP session layer.  
 To enable Certificate based authentication on the RDWeb tier, complete the following on the IIS installation of your RDWeb Server:
 
-![](../content/images/2013/06/062413_2332_SingleSignO9.png) 
+![](http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO9.png) 
 
 <span style="font-size: 10pt;">Also ensure that if using a 3<sup>rd</sup> party CSP, it has to be installed on all tiers.<br /> </span>
 

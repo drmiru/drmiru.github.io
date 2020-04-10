@@ -31,7 +31,7 @@ In this post I&#8217;m covering **Hyper-V replica** and its replication traffic.
   * Hyper-V Cluster with replica broker role enabled, replicates a VM named VM1 to a Hyper-V standalone host in a DR site
   * You want the replication traffic to use the Live-Migration Network in the main site.
 
-![](../content/images/2013/03/032213_0615_Howtouseade1.jpg) 
+![](http://www.miru.ch/wp-content/uploads/2013/03/032213_0615_Howtouseade1.jpg) 
 
 &nbsp;
 

@@ -45,7 +45,7 @@ I&#8217;m currently using the push architecture of DSC, however I might change t
 
 ## <span style="text-decoration: underline;">Scenario Overview<br /> </span>
 
-![](../content/images/2014/02/022814_1327_UsingDSCtok1.png) 
+![](http://www.miru.ch/wp-content/uploads/2014/02/022814_1327_UsingDSCtok1.png) 
 
 I currently used the Package and the File resource from DSC. Both are built-in when you install WinRM 4.0.
 

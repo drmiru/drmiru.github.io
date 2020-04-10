@@ -18,7 +18,7 @@ tags:
 ---
 Recently I received a support request from a customer &#8211; backup jobs of Azure VMs where failing. Some of the jobs where still working as expected, while others suddenly where not. The following error message was logged in the job log:<figure class="wp-block-image">
 
-<img src="../content/images/2020/02/BackupJob_failed_policy-2-1024x363.png" alt="" class="wp-image-5200" srcset="../content/images/2020/02/BackupJob_failed_policy-2-1024x363.png 1024w, ../content/images/2020/02/BackupJob_failed_policy-2-300x106.png 300w, ../content/images/2020/02/BackupJob_failed_policy-2-768x272.png 768w, ../content/images/2020/02/BackupJob_failed_policy-2.png 1405w" sizes="(max-width: 1024px) 100vw, 1024px" /> </figure> 
+<img src="http://www.miru.ch/wp-content/uploads/2020/02/BackupJob_failed_policy-2-1024x363.png" alt="" class="wp-image-5200" srcset="http://www.miru.ch/wp-content/uploads/2020/02/BackupJob_failed_policy-2-1024x363.png 1024w, http://www.miru.ch/wp-content/uploads/2020/02/BackupJob_failed_policy-2-300x106.png 300w, http://www.miru.ch/wp-content/uploads/2020/02/BackupJob_failed_policy-2-768x272.png 768w, http://www.miru.ch/wp-content/uploads/2020/02/BackupJob_failed_policy-2.png 1405w" sizes="(max-width: 1024px) 100vw, 1024px" /> </figure> 
 
 Digging into the Azure activity log showed a possible root cause.
 
@@ -44,4 +44,4 @@ As an example, you might name your resource group as follows:
 
 Within each backup policy, you then have to manually override the default group:<figure class="wp-block-image">
 
-<img src="../content/images/2020/02/bkppolicy_rg.png" alt="" class="wp-image-5198" srcset="../content/images/2020/02/bkppolicy_rg.png 823w, ../content/images/2020/02/bkppolicy_rg-300x224.png 300w, ../content/images/2020/02/bkppolicy_rg-768x573.png 768w" sizes="(max-width: 823px) 100vw, 823px" /> </figure>
+<img src="http://www.miru.ch/wp-content/uploads/2020/02/bkppolicy_rg.png" alt="" class="wp-image-5198" srcset="http://www.miru.ch/wp-content/uploads/2020/02/bkppolicy_rg.png 823w, http://www.miru.ch/wp-content/uploads/2020/02/bkppolicy_rg-300x224.png 300w, http://www.miru.ch/wp-content/uploads/2020/02/bkppolicy_rg-768x573.png 768w" sizes="(max-width: 823px) 100vw, 823px" /> </figure>

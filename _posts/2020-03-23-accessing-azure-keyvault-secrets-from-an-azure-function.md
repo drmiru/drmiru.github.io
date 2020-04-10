@@ -17,7 +17,7 @@ tags:
   - KeyVault
   - Serverless
 ---
-<figure class="wp-block-image"><img src="../content/images/FunctionApp_loves_KeyVault.png" alt="" class="wp-image-5212" /></figure> 
+<figure class="wp-block-image"><img src="http://www.miru.ch/wp-content/uploads/2020/03/FunctionApp_loves_KeyVault.png" alt="" class="wp-image-5212" /></figure> 
 
 Storing secrets, keys and certificates securely is not an optional discipline. Code, wherever it lands, must never include any clear text secrets. Azure Key Vault provides a secure way to store customer managed encryption keys, credentials and certificates.
 

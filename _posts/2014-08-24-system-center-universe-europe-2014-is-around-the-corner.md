@@ -40,11 +40,11 @@ Congress Center Basel, Switzerland.
 
 <img id="irc_mi" alt="" src="http://www.aepli.ch/mod_tumbnail/image.php?path=media/4_Objekte/2012-messezentrum-basel/MesseBasel0.jpg&size=720&h=488" width="397" height="265" /> 
 
-<img alt="" src="../content/images/2014/08/082414_1842_SystemCente1.png" width="399" height="193" /> 
+<img alt="" src="http://www.miru.ch/wp-content/uploads/2014/08/082414_1842_SystemCente1.png" width="399" height="193" /> 
 
 But not only the sessions provide real value for the attendees. There&#8217;ll be a dedicated **&#8220;Ask the Expert&#8221; area** throughout the conference, where attendees can ask questions, answered by various Microsoft MVPs.
 
-<img alt="" src="../content/images/2014/08/082414_1842_SystemCente2.png" width="400" height="209" /> 
+<img alt="" src="http://www.miru.ch/wp-content/uploads/2014/08/082414_1842_SystemCente2.png" width="400" height="209" /> 
 
 **Prices / Registration**
 

@@ -48,21 +48,21 @@ After downloading the tool, you have to extract the content and unblock the file
 
 <pre>Get-ChildItem C:\Downloads\SMAStudio2014-0.2.1-preview | Unblock-File</pre>
 
-To start the tool, just execute![](../content/images/2014/06/063014_2034_Afirstlooko1.png) 
+To start the tool, just execute![](http://www.miru.ch/wp-content/uploads/2014/06/063014_2034_Afirstlooko1.png) 
 
 Running it for the first time, asks for the SMA web service url.
 
-<img alt="" src="../content/images/2014/06/063014_2034_Afirstlooko2.png" width="439" height="364" /> 
+<img alt="" src="http://www.miru.ch/wp-content/uploads/2014/06/063014_2034_Afirstlooko2.png" width="439" height="364" /> 
 
 This setting is saved to &#8220;**settings.xml**&#8221; within the program folder.
 
-<img alt="" src="../content/images/2014/06/063014_2034_Afirstlooko3.png" width="903" height="616" /> 
+<img alt="" src="http://www.miru.ch/wp-content/uploads/2014/06/063014_2034_Afirstlooko3.png" width="903" height="616" /> 
 
 The tool organizes the runbooks in folders corresponding to the tags you submitted to your runbooks, which is very nice. Also SMA assets can be managed out of SMA Studio. It does not provide management of SMA connection asset objects yet.
 
 Comparing the current to a recent version is as easy as checking in and out, or creating a new one.
 
-<img alt="" src="../content/images/2014/06/063014_2034_Afirstlooko4.png" width="898" height="512" /> 
+<img alt="" src="http://www.miru.ch/wp-content/uploads/2014/06/063014_2034_Afirstlooko4.png" width="898" height="512" /> 
 
 &nbsp;
 

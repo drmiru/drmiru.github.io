@@ -42,7 +42,7 @@ This is like a staging area for write IO and lies on a SSD space. Like other ven
 
 **How this fits all together…** 
 
-![](../content/images/2013/07/071813_2125_Creatingati1.png) 
+![](http://www.miru.ch/wp-content/uploads/2013/07/071813_2125_Creatingati1.png) 
 
 &nbsp;
 
@@ -79,7 +79,7 @@ Get-VirtualDisk -FriendlyName Tiered_Space | Get-Disk | Initialize-Disk –Passt
 
 In the Server Manager you should now see a tiered space
 
-![](../content/images/2013/07/071813_2125_Creatingati2.png) **  
+![](http://www.miru.ch/wp-content/uploads/2013/07/071813_2125_Creatingati2.png) **  
 ** 
 
 &nbsp;

@@ -20,7 +20,7 @@ On September 29th 2015, Microsoft will host a free virtual event covering the l
 
 &nbsp;
 
-<a href="https://azure.microsoft.com/en-us/azurecon/?WT.mc_id=dx_MVP5000919" target="_blank"><img class="alignleft  wp-image-4270" src="../content/images/2015/09/2015-09-03-20_50_34-Azurecon-2015-_-Microsoft-Azure-‎-Microsoft-Edge-1024x434.png" alt="Azurecon 2015 _ Microsoft Azure ‎" width="1024" height="434" srcset="../content/images/2015/09/2015-09-03-20_50_34-Azurecon-2015-_-Microsoft-Azure-‎-Microsoft-Edge-1024x434.png 1024w, ../content/images/2015/09/2015-09-03-20_50_34-Azurecon-2015-_-Microsoft-Azure-‎-Microsoft-Edge-300x127.png 300w, ../content/images/2015/09/2015-09-03-20_50_34-Azurecon-2015-_-Microsoft-Azure-‎-Microsoft-Edge.png 1247w" sizes="(max-width: 1024px) 100vw, 1024px" /><br /> </a>
+<a href="https://azure.microsoft.com/en-us/azurecon/?WT.mc_id=dx_MVP5000919" target="_blank"><img class="alignleft  wp-image-4270" src="http://www.miru.ch/wp-content/uploads/2015/09/2015-09-03-20_50_34-Azurecon-2015-_-Microsoft-Azure-‎-Microsoft-Edge-1024x434.png" alt="Azurecon 2015 _ Microsoft Azure ‎" width="1024" height="434" srcset="http://www.miru.ch/wp-content/uploads/2015/09/2015-09-03-20_50_34-Azurecon-2015-_-Microsoft-Azure-‎-Microsoft-Edge-1024x434.png 1024w, http://www.miru.ch/wp-content/uploads/2015/09/2015-09-03-20_50_34-Azurecon-2015-_-Microsoft-Azure-‎-Microsoft-Edge-300x127.png 300w, http://www.miru.ch/wp-content/uploads/2015/09/2015-09-03-20_50_34-Azurecon-2015-_-Microsoft-Azure-‎-Microsoft-Edge.png 1247w" sizes="(max-width: 1024px) 100vw, 1024px" /><br /> </a>
 
 &nbsp;
 

@@ -23,7 +23,7 @@ tags:
   - RDS
   - SMA
 ---
-[<img class="alignleft size-medium wp-image-4281" src="../content/images/2015/09/RDSArchitectureW2K12-300x170.jpg" alt="RDSArchitectureW2K12" width="300" height="170" srcset="../content/images/2015/09/RDSArchitectureW2K12-300x170.jpg 300w, ../content/images/2015/09/RDSArchitectureW2K12.jpg 797w" sizes="(max-width: 300px) 100vw, 300px" />](../content/images/2015/09/RDSArchitectureW2K12.jpg)Microsoft based VDI deployments require to install a specific Windows Feature called &#8220;RDS-Virtualization&#8221; onto all Hyper-V hosts being part of a RDS VDI Deployment.
+[<img class="alignleft size-medium wp-image-4281" src="http://www.miru.ch/wp-content/uploads/2015/09/RDSArchitectureW2K12-300x170.jpg" alt="RDSArchitectureW2K12" width="300" height="170" srcset="http://www.miru.ch/wp-content/uploads/2015/09/RDSArchitectureW2K12-300x170.jpg 300w, http://www.miru.ch/wp-content/uploads/2015/09/RDSArchitectureW2K12.jpg 797w" sizes="(max-width: 300px) 100vw, 300px" />](http://www.miru.ch/wp-content/uploads/2015/09/RDSArchitectureW2K12.jpg)Microsoft based VDI deployments require to install a specific Windows Feature called &#8220;RDS-Virtualization&#8221; onto all Hyper-V hosts being part of a RDS VDI Deployment.
 
 After adding a Hyper-V host to an existing RDS VDI deployment, the host gets registered with a unique ID and it&#8217;s hostname within the broker database. The corresponding tables are rds.Server and rds.Rdvh.  Another important piece is the VmHostAgent service on the Hyper-V host, configured with certain parameters corresponding the deployment like the broker machines, VDI Desktop collections. The responsible key is:
 

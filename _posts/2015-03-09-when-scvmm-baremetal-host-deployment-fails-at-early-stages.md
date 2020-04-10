@@ -39,13 +39,13 @@ Adding the SCVMM boot image as a native boot image on the WDS host does not fix 
 
 Issuing **Find-SCComputer** returned the following information from the ILO.
 
-![](../content/images/2015/03/030915_1855_SCVMMBareme1.png) 
+![](http://www.miru.ch/wp-content/uploads/2015/03/030915_1855_SCVMMBareme1.png) 
 
 &nbsp;
 
 When starting a new baremetal deployment task I could see why the deployment will fail to register with SCVMM during WinPE phase.
 
-![](../content/images/2015/03/030915_1855_SCVMMBareme2.png) 
+![](http://www.miru.ch/wp-content/uploads/2015/03/030915_1855_SCVMMBareme2.png) 
 
 &nbsp;
 

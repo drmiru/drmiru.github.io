@@ -23,7 +23,7 @@ Here is the how to article from Duncan.
 
 I tested this in my lab using openfiler as iSCSI Target, and it works perfectly!! The IO is balanced over two vmkernels in fact. As long as openfiler also supports multiple tcp sessions to the same target lun, ESX 4.x does it too. The round robin feature which directs each 1000 IOs to another available path is also officially supported in vSphere 4. Consider to manually split up your paths, as the round robin setting does in fact not use more than one path parallel (1000 IOs -> path1, 1000 IOs -> path 2 and back again)
 
-[<img class="alignnone size-thumbnail wp-image-204" title="openfiler-iscsi-mp" src="../content/images/2010/03/openfiler-iscsi-mp-150x150.gif" alt="openfiler-iscsi-mp" width="150" height="150" />](../content/images/2010/03/openfiler-iscsi-mp.gif)
+[<img class="alignnone size-thumbnail wp-image-204" title="openfiler-iscsi-mp" src="http://www.miru.ch/wp-content/uploads/2010/03/openfiler-iscsi-mp-150x150.gif" alt="openfiler-iscsi-mp" width="150" height="150" />](http://www.miru.ch/wp-content/uploads/2010/03/openfiler-iscsi-mp.gif)
 
 And here&#8217;s another leading edge presentation from Nicholas Travers (EMC)  
-<a href="../content/images/2010/03/storage-best-practices.pdf" target="_blank">../content/images/2010/03/storage-best-practices.pdf</a>
+<a href="http://www.miru.ch/wp-content/uploads/2010/03/storage-best-practices.pdf" target="_blank">http://www.miru.ch/wp-content/uploads/2010/03/storage-best-practices.pdf</a>

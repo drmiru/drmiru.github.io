@@ -58,7 +58,7 @@ Currently the script has the following capabilities:
   * Check Clustered Storage Subsystem Health before pausing next node (wait for rebuild, includes pools and vdisks)
   * Logging to C:\Windows\Logs\ClusterUpdate.log (in [CMTrace](http://blog.tyang.org/2012/04/17/sccm-2012-log-parser-cmtrace-exe/) format)
 
-[<img class="alignleft size-medium wp-image-4811" src="../content/images/2016/12/CAUNanoCMTrace-300x262.png" alt="caunanocmtrace" width="300" height="262" srcset="../content/images/2016/12/CAUNanoCMTrace-300x262.png 300w, ../content/images/2016/12/CAUNanoCMTrace-768x670.png 768w, ../content/images/2016/12/CAUNanoCMTrace.png 860w" sizes="(max-width: 300px) 100vw, 300px" />](../content/images/2016/12/CAUNanoCMTrace.png)
+[<img class="alignleft size-medium wp-image-4811" src="http://www.miru.ch/wp-content/uploads/2016/12/CAUNanoCMTrace-300x262.png" alt="caunanocmtrace" width="300" height="262" srcset="http://www.miru.ch/wp-content/uploads/2016/12/CAUNanoCMTrace-300x262.png 300w, http://www.miru.ch/wp-content/uploads/2016/12/CAUNanoCMTrace-768x670.png 768w, http://www.miru.ch/wp-content/uploads/2016/12/CAUNanoCMTrace.png 860w" sizes="(max-width: 300px) 100vw, 300px" />](http://www.miru.ch/wp-content/uploads/2016/12/CAUNanoCMTrace.png)
 
 &nbsp;
 
