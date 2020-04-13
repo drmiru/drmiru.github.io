@@ -20,14 +20,16 @@ I&#8217;ve been using terraform for Azure IaC in various customer projects the l
 
 Here&#8217;s an example of a partial terraform backend configuration.
 
-<pre class="wp-block-code"><code>terraform {
+{% highlight ruby %}
+terraform {
   backend "azurerm" {
     storage_account_name  = "myiacblobstorage"
     container_name        = "terraform"
     key                   = "terraform.myProject.tfstate"
     access_key           = ""
   }
-}</code></pre>
+}
+{% endhighlight %}
 
 The access key is provided as a parameter on execution, usually gathered from an azure key vault at runtime of the pipeline.
 
@@ -46,13 +48,15 @@ The state file is used by Terraform so it can map the real status of your infras
   * Activate soft-delete option on your storage account for easy recovery
   * Automatically create snapshots of your state file(s) after each successful terraform apply run (ideally within the release pipeline). I&#8217;ve added an example how to achieve that using PowerShell below
 
-<pre class="wp-block-code"><code>$storageAccountName = "myiacblobstorage"
+{% highlight ruby %}
+$storageAccountName = "myiacblobstorage"
 $ContainerName = "terraform"
 $BlobName = "terraform.myproject.tfstate" 
 
 $storageAccount = Get-AzStorageAccount | Where-Object {$_.StorageAccountName -eq $storageAccountName}
 
 $blob = Get-AzStorageBlob -Context $context -Container $ContainerName -Blob $BlobName
-$snap = $blob.ICloudBlob.CreateSnapshot()</code></pre>
+$snap = $blob.ICloudBlob.CreateSnapshot()
+{% endhighlight %}
 
 Hope this helps to prevent issues with your terraform journey.
