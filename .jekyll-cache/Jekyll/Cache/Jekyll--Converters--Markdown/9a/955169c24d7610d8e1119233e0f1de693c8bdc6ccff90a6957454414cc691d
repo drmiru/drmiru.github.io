@@ -1,0 +1,17 @@
+I"�<p>Just coming back from a strange troubleshooting session where an application running on an AKS Cluster was not responding anymore after a network architecture change. It turned out quickly, that the root cause had to be searched in the recent configuration change. The change included a new routing configuration in the customers Azure global network. The AKS cluster’s network has been peered with a new hub network. The hub network is located in SwitzerlandNorth region whereas the AKS application vnet is located in WestEurope. So we have created a so called cross-region or “global” vnet peering. <figure class="wp-block-image"></figure></p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2020/03/globalvnetpeering.png" alt="" class="wp-image-5206" srcset="http://www.miru.ch/wp-content/uploads/2020/03/globalvnetpeering.png 709w, http://www.miru.ch/wp-content/uploads/2020/03/globalvnetpeering-300x168.png 300w" sizes="(max-width: 709px) 100vw, 709px" /> &lt;figcaption&gt;image source: Microsoft&lt;/figcaption&gt;&lt;/figure&gt;</p>
+
+<p>After changing the routes everything but the AKS’s load balancer frontend IP was reachable from on-premises.</p>
+
+<p>Long story short – The AKS cluster was using the basic SKU of Azure Load Balancer which does not support global vNet peering.</p>
+
+<p>More information:<br />
+<a href="https://docs.microsoft.com/en-us/azure/load-balancer/concepts-limitations">https://docs.microsoft.com/en-us/azure/load-balancer/concepts-limitations</a></p>
+
+<p><a href="https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview">https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview</a></p>
+
+<p>Hope this prevents some headaches</p>
+
+<p>Happy peering everyone!</p>
+:ET

@@ -1,0 +1,150 @@
+I"&&<h2 id="intro">Intro</h2>
+
+<p>In a previous post I covered Azure Storage DLM (policy based data lifecycle management) to leverage automatic storage tiering and archival. In this post I’m going to show how immutable compliant WORM storage can be enabled and used on Azure Blob Storage.</p>
+
+<h2 id="worm--not-a-tiny-slimy-animal">WORM – not a tiny, slimy animal</h2>
+
+<p>WORM stands for “Write-Once-Read-Many” or in other terms for compliant, immutable object storage, where data which has been written once, cannot be modified or deleted at anytime or for a given amount of time. Traditional WORM storage technologies such as magnetic/optical disks, storage systems from vendors like Netapp or Hitachi Data Systems, have done a good job in your on-premises data center. Nowadays as more and more customers are leveraging cloud object storage, they need such capabilities for their cloud storage as well.</p>
+
+<h2 id="how-azure-can-help">How Azure can help</h2>
+
+<p>Azure immutable blob storage operates on SW layer, hence it is a so called SOFT-WORM, while legacy media such as optic-magnetic drives support SW and HW-WORM.</p>
+
+<p>Typical application of WORM storage in Azure includes:</p>
+
+<ul>
+  <li><strong>Regulatory compliance:</strong> Immutable storage for Azure Blobs is designed to help financial institutions and related industries address SEC 17a-4(f), CFTC 1.31©-(d), FINRA etc. A technical whitepaper with details on how the feature addresses these regulatory requirements will be available soon. The <a href="https://www.microsoft.com/en-us/trustcenter/compliance">Azure Trust Center</a> contains detailed information about our compliance certifications.</li>
+  <li><strong>Secure document retention:</strong> Users receive maximum data protection as the immutable storage feature for Azure Blobs service ensures that data cannot be modified or deleted by any user including those with account administrative privileges.</li>
+  <li><strong>Legal hold:</strong> Immutable storage for Azure Storage Blobs enables users to store sensitive information critical to a litigation, criminal investigation, and more in a tamper-proof state for the desired duration.</li>
+</ul>
+
+<p>In detail the features are as follows:</p>
+
+<ul>
+  <li><strong>Legal hold policy support:</strong> When the retention interval is not known, users can set legal holds to store data immutably until the legal hold is cleared</li>
+  <li><strong>Time-based retention policy support:</strong> Users set policies to store data immutably for a specified interval of time.</li>
+  <li><strong>Support for all Blob tiers:</strong> WORM policies are independent of the Azure Blob Storage tier and will apply to all the tiers, hot, cool and archive. This allows customers to store the data in the most cost optimized tier for their workloads while maintaining the data immutability.</li>
+  <li><strong>Blob Container level configuration:</strong> immutable storage for Azure Storage Blobs allows users to configure time-based retention policies and legal hold tags at the container level. Users can create time-based retention policies, lock policies, extend retention intervals, set legal holds, clear legal holds etc. through simple container level settings. The policies apply to all the Blobs in the container, both existing and new Blobs.</li>
+</ul>
+
+<h2 id="typical-use-cases">Typical Use Cases</h2>
+
+<p><strong>Immutable Policies with time based retention</strong></p>
+
+<ul>
+  <li>General archive data with compliance requirements for future audits</li>
+  <li>Customer information data such as archived medical records, MRI/CRT images and its meta data</li>
+  <li>Archiving of security and audit logs</li>
+  <li>Data Lifecycle Management with defined immutability for certain data classifications</li>
+</ul>
+
+<p><strong>Legal Hold Policies</strong></p>
+
+<ul>
+  <li>Forensic investigations</li>
+  <li>Archive data with undefined retention dates</li>
+  <li>Criminal investigations with tamper proof requirements</li>
+</ul>
+
+<p> </p>
+
+<p>So far with the theory, now let’s explore the stuff in reality. In the following examples I’m going to use Azure CLI in combination with PowerShell (my favorite way for ad-hoc provisioning) 🙂</p>
+
+<h2 id="how-to-get-started">How to get started</h2>
+
+<p>Prerequisites:</p>
+
+<ul>
+  <li>General Purpose V2 (GPv2) or “Blob Storage” Azure Storage Account</li>
+  <li>Azure CLI 2.0 or AzureRM.Storage PowerShell Module (4.4.0-preview)</li>
+  <li>As an alternative to PS or CLI you can target the APIs directly using your favorite client method. Mine is definitely ARMClient.</li>
+</ul>
+
+<h4 id="example-1-create-retention-time-based-immutable-policy">Example 1: (create retention time based immutable policy)</h4>
+
+<p>This example demonstrates a use case, where data written to a blob storage container, must not be deleted, nor modified for a period of 2 years (referencing the creation date of a blob)</p>
+
+<ol>
+  <li>
+    <p>Create a resource group &lt;pre class=""&gt;az group create -n rgr-worm-demo -l westeurope&lt;/pre&gt;</p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Create a storage account &lt;pre class=""&gt;$storageAccount = az storage account create –name stowormdemo –resource-group rgr-worm-demo –access-tier hot –encryption-services blob –https-only true –kind StorageV2 –location westeurope –sku Standard_RAGRS</td>
+          <td>convertfrom-json&lt;/pre&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Create a blob container (which we are going to protect later) &lt;pre class=""&gt;$accessKey=((az storage account keys list –account-name $storageAccount.name –resource-group $storageAccount.resourceGroup</td>
+          <td>ConvertFrom-Json)</td>
+          <td>Where-Object {$_.keyname -eq ‘key1’}).value</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<p>az storage container create –name compliance –public-access off –account-name $storageAccount.name –account-key $accessKey&lt;/pre&gt;</p>
+
+<ol>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Create immutable policy &lt;pre class=""&gt;$pol=az storage container immutability-policy create –container-name compliance –account-name $storageAccount.name –period 730 –resource-group $storageAccount.resourceGroup</td>
+          <td>ConvertFrom-Json&lt;/pre&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Test WORM functionality<br />
+    -upload a text file (e.g. using Azure Storage Explorer)<br />
+    -try to delete or modify the file</li>
+</ol>
+
+<p>All “delete” and “modify/upload” operations are beeing denied now, as we set period of 720 days for the immutable policy.<figure class="wp-block-image"></figure></p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2018/12/AZworm-test1-1024x740.png" alt="" class="wp-image-5028" srcset="http://www.miru.ch/wp-content/uploads/2018/12/AZworm-test1-1024x740.png 1024w, http://www.miru.ch/wp-content/uploads/2018/12/AZworm-test1-300x217.png 300w, http://www.miru.ch/wp-content/uploads/2018/12/AZworm-test1-768x555.png 768w, http://www.miru.ch/wp-content/uploads/2018/12/AZworm-test1.png 1257w" sizes="(max-width: 1024px) 100vw, 1024px" /> &lt;/figure&gt;</p>
+
+<ol>
+  <li>Up to now, the immutable policy is still editable, meaning we could reduce the minimum retention interval to 1 day and delete the file the upcoming day. Of course, this is not what your compliance officers would like to happen. Therefore we need to lock the policy object.</li>
+</ol>
+
+<pre class="wp-block-preformatted">az storage container immutability-policy lock --account-name $storageAccount.name --container-name compliance --if-match $pol.etag<br /></pre>
+
+<p>If we try to modify the policy furthermore, we’ll receive the following error:</p>
+
+<p class="has-text-color has-vivid-red-color">
+  Operation not allowed on immutability policy with current state
+</p>
+
+<p>..which is desired of course. We do not want to have a worm policy to be modified after activation. The only modification allowed is the extend of the retention interval. </p>
+
+<pre class="wp-block-preformatted">az storage container immutability-policy extend --account-name $storageAccount.name --container-name compliance --if-match $pol.etag --period 800</pre>
+
+<p>####<br />
+Example 1: (create a legal hold policy) {#supported-values}</p>
+
+<p>This example demonstrates how to create a legal hold policy to prevent data deletion or modification for an infinite amount of time. Well not really infinite, because data is only hold immutable until the policy is removed (by removing the tags).</p>
+
+<p>Create another container for the test</p>
+
+<pre class="wp-block-preformatted">az storage container create --name legalstuff --public-access off --account-name $storageAccount.name --account-key $accessKey<br /></pre>
+
+<p>Now, let’s create a legal hold policy for this container</p>
+
+<pre class="wp-block-preformatted">az storage container legal-hold set --account-name $storageAccount.name --container-name legalstuff --tags caseid12192018001</pre>
+
+<p>After setting the legal hold policy, we cannot modify or delete data. In contrary to the retention time based immutable policy, the legal hold policy can be removed, just by removing the tags (assuming you have the required IAM permission). After removing the legal hold, data can be deleted / altered again.</p>
+
+<h2 id="need-more-details">Need more details?</h2>
+
+<p>For more information and supported values see: <a href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-immutable-storage">https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-immutable-storage</a></p>
+:ET

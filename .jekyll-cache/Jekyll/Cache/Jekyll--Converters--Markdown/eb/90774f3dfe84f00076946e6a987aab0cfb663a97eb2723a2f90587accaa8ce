@@ -1,0 +1,13 @@
+I"�<p>Imagine this:</p>
+
+<p>You have a 2008 R2 RDS host or a Win7 client machine and a logon script which want’s to copy some files, (templates) in my case, to C:\ProgramData, a UAC protected folder. UAC will prompt you (if UAC is enabled of course) even if you are member of the local administrators group. Well, there are solutions, but assigning Domain Admin permissions the executive account is not acceptable IMHO. I found some badly documented hacks arount the AppCompat Tool. The easiest way to get rid of this is to set the “<strong>__COMPAT_LAYER</strong>” environment variable. (yes these are TWO underscore characters.</p>
+
+<p>So just set the value of this varianle to set “<strong>RunAsInvoker”</strong> before you start something that tries to execute a UAC protected executable or tries to write to a UAC protected folder.</p>
+
+<p>Example:</p>
+
+<pre>set __COMPAT_LAYER=RunAsInvoker
+robocopy <a href="file://\\%logonserver%\netlogon\templates">\\%logonserver%\netlogon\templates</a> %ProgramData%\CompanyTemplates /S /E</pre>
+
+<p>This works also for Appsense EM actions, where you specify the executing user (which has to be a local admin of course or having apropriate access rights)</p>
+:ET

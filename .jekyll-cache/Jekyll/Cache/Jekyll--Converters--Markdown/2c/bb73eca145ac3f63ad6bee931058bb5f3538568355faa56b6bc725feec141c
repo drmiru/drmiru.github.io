@@ -1,0 +1,62 @@
+I"�<h3 id="cau-and-nano-huh">CAU and Nano, huh?</h3>
+
+<p>The past months I’ve been working more and more on the new deployment type of Windows Server 2016, the Nano Server. Nano Server is a great variant to deploy Windows Server for fabric roles like Hyper-V, Storage Spaces Direct or container hosts. When working with clusters, you might be familiar with CAU “<a href="https://technet.microsoft.com/en-us/library/hh831694(v=ws.11).aspx">Cluster aware Update</a>“, a tool delivered as a part of Failover Clustering Management Tools. It’s primary intent is to orchestrate updating a Windows Failover Cluster using Windows Update Client / WSUS, with no downtime. While this works great for Desktop and Core installations, it doesn’t for Nano Server. Reason for this. the required WMI classes are just not present in Nano Server.</p>
+
+<h3 id="nano-server-basics">Nano Server Basics</h3>
+
+<p>For more information on Nano Server in general, you might consider to read some of my recent posts:</p>
+
+<blockquote class="wp-embedded-content" data-secret="O5POdAyJSD">
+  <p>
+    <a href="http://www.miru.ch/deploy-packages-and-windows-updates-to-nano-servers/">Deploy Packages and Windows Updates to Nano Servers</a>
+  </p>
+</blockquote>
+
+<blockquote class="wp-embedded-content" data-secret="gHQdbSHp5R">
+  <p>
+    <a href="http://www.miru.ch/sneak-peek-on-nano-server-2016-tp5/">Sneak Peek on Nano Server 2016 TP5</a>
+  </p>
+</blockquote>
+
+<h3 id="so"><strong>So?</strong></h3>
+
+<p>So back to CAU (Cluster aware Update). I really needed this functionality in Nano Server as well, as I deploy S2D (Storage Spaced Direct) clusters primarily on Nano Server for various reasons. Therefore I’ve created a PowerShell script which basically imitates the CAU tool, without the need for the legacy WMI classes. The script uses CIM and Failover Cluster CMDLETs.</p>
+
+<p>Currently the script has the following capabilities:</p>
+
+<ul>
+  <li>Per node pre- and post-script</li>
+  <li>Global pre- and post-script</li>
+  <li>Check all cluster nodes up</li>
+  <li>Check Clustered Storage Subsystem Health (if present) before processing (includes pools and vdisks)</li>
+  <li>Gracefully suspending each node</li>
+  <li>Check if node is up (ClusSvc paused) after reboot</li>
+  <li>Check Clustered Storage Subsystem Health before pausing next node (wait for rebuild, includes pools and vdisks)</li>
+  <li>Logging to C:\Windows\Logs\ClusterUpdate.log (in <a href="http://blog.tyang.org/2012/04/17/sccm-2012-log-parser-cmtrace-exe/">CMTrace</a> format)</li>
+</ul>
+
+<p><a href="http://www.miru.ch/wp-content/uploads/2016/12/CAUNanoCMTrace.png"><img class="alignleft size-medium wp-image-4811" src="http://www.miru.ch/wp-content/uploads/2016/12/CAUNanoCMTrace-300x262.png" alt="caunanocmtrace" width="300" height="262" srcset="http://www.miru.ch/wp-content/uploads/2016/12/CAUNanoCMTrace-300x262.png 300w, http://www.miru.ch/wp-content/uploads/2016/12/CAUNanoCMTrace-768x670.png 768w, http://www.miru.ch/wp-content/uploads/2016/12/CAUNanoCMTrace.png 860w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>The script is available on <a href="https://github.com/drmiru/Powershell/tree/master/Cluster">my GitHub repo here</a>. Feel free to test and report any bugs.</p>
+
+<p>DISCLAIMER<br />
+Although, the script has been tested heavily, you are using it at your very own risk. I don’t take any responsibility for messed up Clusters.</p>
+
+<p> </p>
+:ET

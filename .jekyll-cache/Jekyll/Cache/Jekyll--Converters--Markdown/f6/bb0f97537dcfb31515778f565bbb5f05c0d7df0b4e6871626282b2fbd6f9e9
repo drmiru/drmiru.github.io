@@ -1,0 +1,42 @@
+I"�<p>I recently came along some issues while trying to import previously exported or copied virtual machines for a customer. The recent admin did not document what he tried to do so far, but several of the virtual machines where in a likely “inconsistent” state. Importing those VMs using the Hyper-V Manager GUI or Powershell CMDLETS failed with different errors, but all pointed to the same root causes.</p>
+
+<ul>
+  <li>VM has been exported from a recent hardware with CPUs of different Generation</li>
+  <li>VM has been copied manually while being in a saved state</li>
+  <li>VM has been copied manually, while mixing up config files and snapshots from different VMs (don’t ask me how this can happen, apparently with enough beer before going to work??)</li>
+</ul>
+
+<p>The following steps show how to get rid of most compatibility issues.</p>
+
+<p> </p>
+
+<p><strong>1. Create a compatibility report</strong></p>
+
+<pre>$report = compare-VM -Path 'C:\ClusterStorage\Volume1\CMIRUW702\VirtualMachines\CF91993E-B76B-4D0D-ADFD-4D4DEDACE5A4.XML'</pre>
+
+<p><strong>2. Show all incompatibilities</strong></p>
+
+<pre>$report | ft -auto</pre>
+
+<p><strong>3. Show first incompatibility</strong></p>
+
+<pre>$report.Incompatibilities[0].Source</pre>
+
+<p>You should get an output showing you the root cause for incompatibilities</p>
+
+<p><em>VMName Name SnapshotType CreationTime ParentSnapshotName</em><br />
+<em>—— —- ———— ———— ——————</em><br />
+<em>CMIRUW702 DEMO Clean Planned 24.11.2012 01:13:51</em></p>
+
+<p><strong>4. Fix the incompatibility (in this case, remove the snapshot)</strong></p>
+
+<pre>$report.Incompatibilities[0].Source | Remove-VMSavedState</pre>
+
+<p><strong>5. Import the VM using the modified report data</strong></p>
+
+<pre>import-vm -CompatibilityReport $report</pre>
+
+<p> </p>
+
+<p>Being aware that there are also error situations which can’t be fixed the steps above should help to save time and nervs.</p>
+:ET

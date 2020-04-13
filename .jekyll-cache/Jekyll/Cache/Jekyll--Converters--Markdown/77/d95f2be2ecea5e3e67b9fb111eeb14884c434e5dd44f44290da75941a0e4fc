@@ -1,0 +1,22 @@
+I"		<p><a href="http://www.miru.ch/wp-content/uploads/2015/09/RDSArchitectureW2K12.jpg"><img class="alignleft size-medium wp-image-4281" src="http://www.miru.ch/wp-content/uploads/2015/09/RDSArchitectureW2K12-300x170.jpg" alt="RDSArchitectureW2K12" width="300" height="170" srcset="http://www.miru.ch/wp-content/uploads/2015/09/RDSArchitectureW2K12-300x170.jpg 300w, http://www.miru.ch/wp-content/uploads/2015/09/RDSArchitectureW2K12.jpg 797w" sizes="(max-width: 300px) 100vw, 300px" /></a>Microsoft based VDI deployments require to install a specific Windows Feature called “RDS-Virtualization” onto all Hyper-V hosts being part of a RDS VDI Deployment.</p>
+
+<p>After adding a Hyper-V host to an existing RDS VDI deployment, the host gets registered with a unique ID and it’s hostname within the broker database. The corresponding tables are rds.Server and rds.Rdvh.  Another important piece is the VmHostAgent service on the Hyper-V host, configured with certain parameters corresponding the deployment like the broker machines, VDI Desktop collections. The responsible key is:</p>
+
+<p>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VmHostAgent</p>
+
+<p>If you have to re-deploy / stage such a Hyper-V host, the RDS VDI deployment does not know anything about the host anymore, as the host does not have the required assignment within its VmHostAgent configuration. Of course you could start to tweak the registry of the host, restarting several services to fix this issue. I’ve created a SMA runbook which does the work in a, let’s say, more “proper” way. It can be used to just add a fresh Hyper-V host to an existing deployment or to “re-add” a re-staged host. If the parameter -RemoveExistingHost is specified It removes the existing host from the deployment using the RDS PowerShell CMDLETs. If the removal fails, the host is cleared from the database using a native TSQL statement. Afterwards, the host is re-added to the deployment using the native RDS CMDLETs again.</p>
+
+<p>You can find the source code on <a href="https://gallery.technet.microsoft.com/scriptcenter/SMA-Runbook-to-fix-RDS-53c61973" target="_blank">TechNet</a></p>
+
+<p>Hope this helps,</p>
+
+<p>Feel free to comment if you have found a better way to fix this issue.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+:ET

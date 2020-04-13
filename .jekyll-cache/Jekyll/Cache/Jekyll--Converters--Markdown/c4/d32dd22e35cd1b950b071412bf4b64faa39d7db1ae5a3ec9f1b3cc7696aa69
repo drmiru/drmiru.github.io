@@ -1,0 +1,25 @@
+I"�<p><span style="color: #ff0000;"><strong>Update!: Regardless of the fact that the method described below still works for Windows 2012 incl. Domain Controllers, it is not a supported way and you use it at your own risk.</strong></span></p>
+
+<p>There are several ways to reset a local admin password. The one I’m posting here is one of the simplest one, and YES!, it works for a domain admin password too! So I think you’ll gonna think about your physical server storage and access security again after you’ve read this post.</p>
+
+<p>So how that works?</p>
+
+<ul>
+  <li>Use a windows bootable installation media (physical or ISO)</li>
+  <li>Choose Language</li>
+  <li>Choose “Repair” option</li>
+  <li>Choose instance of windows to repair</li>
+  <li>Select “command prompt” as recovery option</li>
+  <li>Change to %systemdrive%\Windows\System32</li>
+  <li>Rename utilman.exe to utilman.exe.orig</li>
+  <li>copy cmd.exe to utilman.exe</li>
+  <li>Reboot from local disk</li>
+  <li>At the logon prompt Press “Windows-Key – U” (this opens a command prompt</li>
+  <li>net user administrator MyNewDamnPassword</li>
+  <li>Logon with your new password</li>
+  <li>Delete utilman.exe and rename utilman.exe.orig back to utilman.exe</li>
+</ul>
+
+<p>Surprised? Shocked? Don’t mind about tricks like this one, but think about your servers physical placement and who has access to them!<br />
+(and of course in a virtual world you might think about who can mount a ISO to VM and boot it  from that)</p>
+:ET

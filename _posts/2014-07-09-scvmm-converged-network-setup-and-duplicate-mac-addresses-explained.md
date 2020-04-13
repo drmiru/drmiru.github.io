@@ -33,20 +33,20 @@ Pushing a logical switch including a virtual management adapter sometimes leads 
 
 Let&#8217;s have a look under the hood how this stuff is working and why we see THIS annoying event 16945 from MsLbfoSys provider in the system event log of our Hyper-V hosts.
 
-![](http://www.miru.ch/wp-content/uploads/2014/07/070914_2112_SCVMMConver1.png) 
+![](../images/2014/07/070914_2112_SCVMMConver1.png) 
 
 So here&#8217;s what&#8217;s happening when you deploy a logical switch with virtual Management OS NICs using SCVMM. BTW, there is no difference between the different available teaming modes (static, lacp or switch independent).  
 The following process is the same for all methods.
 
-![](http://www.miru.ch/wp-content/uploads/2014/07/070914_2112_SCVMMConver2.png) 
+![](../images/2014/07/070914_2112_SCVMMConver2.png) 
 
 &nbsp;
 
-![](http://www.miru.ch/wp-content/uploads/2014/07/070914_2112_SCVMMConver3.png) 
+![](../images/2014/07/070914_2112_SCVMMConver3.png) 
 
 &nbsp;
 
-![](http://www.miru.ch/wp-content/uploads/2014/07/070914_2112_SCVMMConver4.png) 
+![](../images/2014/07/070914_2112_SCVMMConver4.png) 
 
 IMHO, there&#8217;s absolutely no reason why SCVMM must clone the Team NICs MAC Address to the management vNIC. SCVMM itself has a Default MAC Address Pool, from where it assigns static and dynamic MAC addresses to host vNICs and Virtual Machine vNICs. So why it does not grant and assign a MAC address from the pool to the management vNIC?
 

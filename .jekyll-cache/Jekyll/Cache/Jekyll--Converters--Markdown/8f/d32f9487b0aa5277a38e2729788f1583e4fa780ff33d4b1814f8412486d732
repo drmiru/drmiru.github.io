@@ -1,0 +1,2 @@
+I"O<p>After having esx 3.x deployed, we noticed quiet fast that network based storage can’t be multipathed and load-balanced really. There are a small number of tricks using LACP, channeling.. but… This does not help at all. The following article describes in detail, why VI 3.x can’t load balance the IP based storage traffic.</p>
+:ET

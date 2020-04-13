@@ -37,7 +37,7 @@ My usual answer would be &#8220;use SCOM&#8221;. So Where does PAL fit into the 
 
 **<span style="text-decoration: underline;">Report Content Examples</span>**
 
-[<img class="alignleft size-thumbnail wp-image-1496" alt="PALReport" src="http://www.miru.ch/wp-content/uploads/2013/09/PALReport-150x150.jpg" width="150" height="150" srcset="http://www.miru.ch/wp-content/uploads/2013/09/PALReport-150x150.jpg 150w, http://www.miru.ch/wp-content/uploads/2013/09/PALReport-300x297.jpg 300w, http://www.miru.ch/wp-content/uploads/2013/09/PALReport.jpg 795w" sizes="(max-width: 150px) 100vw, 150px" />](http://www.miru.ch/wp-content/uploads/2013/09/PALReport.jpg)[<img class="size-thumbnail wp-image-1507 aligncenter" alt="PALReport2" src="http://www.miru.ch/wp-content/uploads/2013/09/PALReport2-150x150.jpg" width="150" height="150" />](http://www.miru.ch/wp-content/uploads/2013/09/PALReport2.jpg)
+[<img class="alignleft size-thumbnail wp-image-1496" alt="PALReport" src="../images/2013/09/PALReport-150x150.jpg" width="150" height="150" srcset="../images/2013/09/PALReport-150x150.jpg 150w, ../images/2013/09/PALReport-300x297.jpg 300w, ../images/2013/09/PALReport.jpg 795w" sizes="(max-width: 150px) 100vw, 150px" />](../images/2013/09/PALReport.jpg)[<img class="size-thumbnail wp-image-1507 aligncenter" alt="PALReport2" src="../images/2013/09/PALReport2-150x150.jpg" width="150" height="150" />](../images/2013/09/PALReport2.jpg)
 
 &nbsp;
 

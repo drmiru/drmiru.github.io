@@ -1,0 +1,2 @@
+I"�<p>Extending Cluster Shared Volumes is a common task which is required from time to time. Although my favorite action is to create a new volume if existing ones lack in free space, sometimes there’s no way around extending an existing volume. I’m really happy Microsoft did listen on our feedback we provided on Storage Replica, in the early stages of Server 2016 TP version, where we yelled for the feature (online-extending a replicated volume).</p>
+:ET

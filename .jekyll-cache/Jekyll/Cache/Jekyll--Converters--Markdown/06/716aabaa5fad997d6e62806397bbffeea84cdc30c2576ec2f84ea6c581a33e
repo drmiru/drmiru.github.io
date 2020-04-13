@@ -1,0 +1,2 @@
+I"�<p>One of the things I like with Powershell is the way you can handle object output and format conversations in a very easy and efficient way. In this example I’m going to show a Powershell script to generate a HTML report on the current Windows Storage Spaces Status. Although you can monitor the most relevant eventlogs like Cluster and Storage Spaces driver, it’s useful to have a single script, which generates a brief overview about the Windows Storage Space status and it’s configuration.</p>
+:ET

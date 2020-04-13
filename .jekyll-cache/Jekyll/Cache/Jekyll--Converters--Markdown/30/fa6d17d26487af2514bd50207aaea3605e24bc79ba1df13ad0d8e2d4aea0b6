@@ -1,0 +1,75 @@
+I"½<p>This article describes all steps to activate certificate based authentication to Outlook Web Application on Exchange 2010 / IIS 7.We assume here that you already have configured the SSL server certificate for the CAS server and the user accessing OWA has a valid user certificate for authentication installed.</p>
+
+<ul>
+  <li>Install certificate based auth feature</li>
+</ul>
+
+<blockquote>
+  <ul>
+    <li>Start a powershell console</li>
+    <li>
+      <pre>Import-Module ServerManager</pre>
+    </li>
+    <li>
+      <pre>Add-WindowsFeature web-client-auth</pre>
+    </li>
+  </ul>
+</blockquote>
+
+<ul>
+  <li><span style="font-size: x-small;">Open IIS Manager and highlight the server name in the left hand pane</span>
+    <ul>
+      <li><span style="font-size: x-small;">Double click the Authentication icon in the middle pane.</span></li>
+      <li><span style="font-size: x-small;">Right click on Active Directory Client Certificate Authentication and select Enable.</span></li>
+      <li><span style="font-size: x-small;">Select the OWA virtual directory in the left pane under the Default Web Site.</span></li>
+      <li><span style="font-size: x-small;">Double click on the SSL Settings icon.</span></li>
+      <li><span style="font-size: x-small;">Set the Client Certificates radio button to Require.</span></li>
+      <li><span style="font-size: x-small;">Click Apply.</span></li>
+    </ul>
+  </li>
+  <li>Unlock the IIS feature for certificate authentication<br />
+Run appcmd from %windir%\system32\inetsrv</li>
+</ul>
+
+<blockquote>
+  <ul>
+    <li>
+      <pre><span style="font-size: x-small;"><em>appcmd unlock config /section:clientCertificateMappingAuthentication</em></span></pre>
+    </li>
+    <li>
+      <pre><span style="font-size: x-small;"><em>appcmd set config "Default Web Site/OWA" -section:clientCertificateMappingAuthentication /enabled:true</em></span></pre>
+    </li>
+  </ul>
+</blockquote>
+
+<p><span style="font-size: x-small;"><br /> </span></p>
+
+<ul>
+  <li><span style="font-size: x-small;">Configure the OWA virtual directory from the Exchange Management shell. This will turn off forms based authentication, set Windows Authentication and Basic Authentication to false. Users will be required to present a certificate to access OWA after this step.</span></li>
+</ul>
+
+<p><span style="font-size: x-small;"><br /> </span></p>
+
+<blockquote>
+  <ul>
+    <li>
+      <pre><span style="font-size: x-small;"><em>set-owavirtualdirectory  -identity "server-name\OWA (Default Web Site)"  -WindowsAuthentication:$false -BasicAuthentication:$false  FormsAuthentication:$False</em></span></pre>
+    </li>
+    <li>
+      <pre><span style="font-size: x-small;"><em>Â </em><em>IISreset /noforce</em></span></pre>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p>Opening the OWA url should now ask for the certificate</p>
+
+  <p><a href="http://www.miru.ch/?attachment_id=446"><img class="alignnone size-thumbnail wp-image-446" title="certverify" src="http://www.miru.ch/wp-content/uploads/2011/04/certverify1-150x150.gif" alt="" width="150" height="150" /></a></p>
+</blockquote>
+
+<blockquote>
+  <p><img src="file:///C:/Users/mrueefli/AppData/Local/Temp/moz-screenshot.png" alt="" /></p>
+</blockquote>
+
+<p><span style="font-size: x-small;"></span></p>
+:ET

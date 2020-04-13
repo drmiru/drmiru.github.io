@@ -1,0 +1,38 @@
+I"M<p><strong><span style="text-decoration: underline;">What’s new in VMware vSphere 4 @ Magirus – Day 2</span></strong></p>
+
+<p>Again I’m outlining my personal impressions of this update course’s 2nd day.</p>
+
+<ul>
+  <li>– Networking (continued)<br />
+–&gt; PWLAN support (enables private vlans, promiscuous / isolated / community) to separate VMs lying on the same vlan. In fact a vlan can be split up again into different PWLANs.</li>
+  <li>– Nondisruptive Migration to Distributed Virtual Switches<br />
+–&gt; Create new distributed switch, define uplinks, add first adapter to uplink, define port groups, remap VMs to new Port Groups (wizard driven), add second adapters to uplinks</li>
+  <li>– Storage Management<br />
+–&gt; Pluggable Storage Architecture allows 3rd Party Modules for failover / multipathing<br />
+–&gt; iSCSI enhancements (bidirectional CHAP, reduced CPU overhead for swiSCSI, per target CHAP, swiSCSI no longer required Service Console<br />
+–&gt; HBA Round Robin Multipathing is no more just experimental 🙂<br />
+–&gt; Enhanced storage reporting, monitoring and alerting / triggering<br />
+–&gt; Thin provisioning now within GUI (thin provisioning does not support fault tolerance!)<br />
+–&gt; VMFS  dynamic grow (if storage supports that)<br />
+–&gt; Storage VMOTION supports change of provisioning mode when changing the Datastore (thick &lt;&gt; thin).  SVMOTION now in GUI together with VMOTION (Migrate). SVMOTION works now without using snapshots. (creates a destination disks, copies content -&gt;change block tracking -&gt;,  fast suspend/resume to switch to destination disk. SVMOTION works now with independent disks too (at least in the lab I saw it working)<br />
+–&gt; Replica Management (Resignaturing) is now Datastore based (admin can choose to use the existing label for mirror LUNs)</li>
+  <li>HA<br />
+–&gt; Host Monitoring can be disabled (useful for maintenance on hosts or network infrastructure to prevent disrupts or side effects)<br />
+–&gt; Specific Failoverhost can be configured<br />
+–&gt; Percentage or Number value can be assigned to failover policy<br />
+–&gt; VM Monitoring (checks vmware tools heartbeat). If a VM stucks in bluescreen, it gets restarted if configured so.</li>
+  <li>Fault Tolerance<br />
+–&gt; adds a secondary VM on another node (copies via vLockstep the whole state to the secondary VM)<br />
+–&gt; a lot of requirements and limitations make this technology not useful for a lot of use cases (1vCPU, no snaps, no paravirtualized guests, etc, etc.)<br />
+–&gt; requires dedicated vmknics on vmkernel PG)<br />
+–&gt; requires SSL verification enabled on vCenter! This means every host incl. vCenter must have a valid and trusted cert installed!!</li>
+</ul>
+
+<p>Saw today that RVTOOLS (<a href="http://www.robware.net/">http://www.robware.net/</a>).  RVTools is a small .NET 2.0 application which uses the VI SDK to display information about your virtual machines. Very useful.</p>
+
+<p>A must is the following website: <a href="http://vsphere-land.com/">http://vsphere-land.com/</a></p>
+
+<p>cheers</p>
+
+<p>drmiru</p>
+:ET

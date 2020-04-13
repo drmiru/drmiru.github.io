@@ -1,0 +1,2 @@
+I"�<p>If you have hundreds or thousands of VMs you could run into a problem if  someone wants to now the correspondig VM to the MAC address XYZ. Because the network administrator isn’t a big help finding virtual adapters on his physical network infrastructure, the hypervisor is the choice to search for the apropriate virtual NIC. If you have a plenty of VMs you would probably going crazy clicking through each VM’s NIC properties.</p>
+:ET

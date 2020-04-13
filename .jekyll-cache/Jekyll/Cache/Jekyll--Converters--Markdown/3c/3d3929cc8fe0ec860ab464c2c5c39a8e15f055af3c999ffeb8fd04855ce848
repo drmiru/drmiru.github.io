@@ -1,0 +1,2 @@
+I"b<p>In this post I’m not going through the topic why you should use a software defined network architecture (SDN), there are plenty of posts out there explaining why THIS is the way to go. Instead I’ll explain how the teaming works in Server 2012 R2 and how it can hurt you while pushing a logical switch from SCVMM to your Hyper-V Cluster Nodes.</p>
+:ET

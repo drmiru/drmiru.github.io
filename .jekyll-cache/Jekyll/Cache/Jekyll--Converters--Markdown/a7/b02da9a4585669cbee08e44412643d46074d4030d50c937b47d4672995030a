@@ -1,0 +1,2 @@
+I"n<p>XenDesktop 5.x provides very flexible and fine grained access policy rules to control resource access to broker desktops or applications. This post covers the basics behind the functionalities and provides a lot of examples for advanced configuration of Access Policy Rules. Advanced rules have to be configured with Powershell, so get your PS console ready!</p>
+:ET

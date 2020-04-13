@@ -28,7 +28,7 @@ The scripts checks if the Attribute has been set on vSphere side and if so, if i
   * XenDesktop SDK Powershell SnapIn has to be installed
   * vSphere PowerCLI 4.0 or later has to be installed
 
-And here it is&#8230; <a href="http://www.miru.ch/wp-content/uploads/2012/05/FixDDCHypAssignments.ps1_.txt" target="_blank">download</a>
+And here it is&#8230; <a href="../images/2012/05/FixDDCHypAssignments.ps1_.txt" target="_blank">download</a>
 
 <pre>#####################################################################
 # Scriptname:      FixDDCVCHosting.ps1

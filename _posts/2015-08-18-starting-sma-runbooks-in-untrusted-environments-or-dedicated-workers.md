@@ -33,8 +33,8 @@ If you have a multi-forest environment without trusts and/or an environment with
 
 &nbsp;
 
-[<img class="alignleft  wp-image-4253" src="http://www.miru.ch/wp-content/uploads/2015/08/SMA-Multi-Env-Worker.png" alt="SMA Multi Env Worker" width="508" height="375" srcset="http://www.miru.ch/wp-content/uploads/2015/08/SMA-Multi-Env-Worker.png 671w, http://www.miru.ch/wp-content/uploads/2015/08/SMA-Multi-Env-Worker-300x221.png 300w" sizes="(max-width: 508px) 100vw, 508px" />](http://www.miru.ch/wp-content/uploads/2015/08/SMA-Multi-Env-Worker.png)[  
-](http://www.miru.ch/wp-content/uploads/2015/08/SMA-Multi-Env-Worker.png) 
+[<img class="alignleft  wp-image-4253" src="../images/2015/08/SMA-Multi-Env-Worker.png" alt="SMA Multi Env Worker" width="508" height="375" srcset="../images/2015/08/SMA-Multi-Env-Worker.png 671w, ../images/2015/08/SMA-Multi-Env-Worker-300x221.png 300w" sizes="(max-width: 508px) 100vw, 508px" />](../images/2015/08/SMA-Multi-Env-Worker.png)[  
+](../images/2015/08/SMA-Multi-Env-Worker.png) 
 
 &nbsp;
 

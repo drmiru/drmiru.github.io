@@ -1,0 +1,2 @@
+I"�<p>Job concurrency can be something you really want, or on the other hand something you really want to avoid. What if you want to enforce a particular runbook to have only a single job instance running at any given time? Unfortunately, SMA doesn’t have a built-in method to control runbook concurrency as Orchestrator 2012 / R2 had it on a per runbook base. My fellow co-worker Fulvio Ferrarini reached out if there’s a known work around and referred to the following discussions:</p>
+:ET

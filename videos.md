@@ -10,7 +10,7 @@ bfa_virtual_template:
 s2mail:
   - 'yes'
 ---
-Welcome on my video stream page. Here you&#8217;ll find recordings from my recent speakings.
+Welcome on my video stream page. Here you'll find recordings from my recent speakings.
 
 ## CDC Germany 2017
 
@@ -54,7 +54,7 @@ Welcome on my video stream page. Here you&#8217;ll find recordings from my recen
 
 ## E2E Virtualization Conference Berlin 2015
 
-**Overview of Microsoft&#8217;s current Cloud Platform Stack**
+**Overview of Microsoft's current Cloud Platform Stack**
 
 
 

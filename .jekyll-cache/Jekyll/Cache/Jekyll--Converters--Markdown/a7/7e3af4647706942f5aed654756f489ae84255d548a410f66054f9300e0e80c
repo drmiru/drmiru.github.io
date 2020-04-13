@@ -1,0 +1,51 @@
+I"A
+<p><strong>Session #1 Authentication on Citrix level by Lalit Kaushal</strong></p>
+
+<ul>
+  <li>Basic about Kerberos authentication process on XenApp and XenDesktop and the involved components<br />
+KDC, TGS, TGT</li>
+  <li>Passthrough Session (passing the user credential from one session to another)</li>
+  <li>Passthrough Authentication (SSONSVR or Kerberos Ticket</li>
+  <li>Smart Card Authentication<br />
+– PNAgent always asks for PIN, some CSP like ActiveIdentiy provide PIN Caching<br />
+– CDM driver module includes smart card redirection which all runs in usermode<br />
+– scardhook.dll captures SC auth., forwards it to CtxSmartCardSvc, then to VC user moder API (PICA)<br />
+– 4 new services on behavior of Smart Card on XenApp 6 / XenDesktop</li>
+</ul>
+
+<p>Because we have several issues in our company regarding Smart Card Authentication to XenDesktop / XenApp I take a note of the Kerberos-combination. This could also be solution to simplify the Authentication process in our XE environment. (Logon locally wih SC, then go further via Keberos on WI to the VDA.</p>
+
+<p><strong>Session #2 Troubleshooting / Debugging Overview by Lalit Kaushal</strong></p>
+
+<p>Utilities to use: (tracing / dumping)<br />
+– CDFControl and <a href="http://support.citrix.com/article/CTX122741" target="_blank">CDFAnalyzer</a><br />
+– SystemDump<br />
+– UserDump<br />
+– DumpCheck<br />
+– ProcessMonitor<br />
+– ProcessExplorer<br />
+– ProcDump (debug CPU spikes)<br />
+– Wireshark / Fiddler<br />
+– WinDbg<br />
+!analyze -v<br />
+!mv m <module name="">  
+!analyze -m -hang  
+!locks  
+&#8211;&gt; read bottom up</module></p>
+
+<p>BTG (Brief troubleshooting guide)<br />
+<a href="http://support.citrix.com/article/CTX106727">http://support.citrix.com/article/CTX106727</a></p>
+
+<p>great overview session about debugging techniques. Thanks Lalit!</p>
+
+<p><strong>Session #3 Streaming / Application Delivery by Jesus Gonzales</strong> Some improvements to App Streaming 5.2 / 6</p>
+
+<ul>
+  <li>Isolation of Windows Services (RadeHlprService.exe controls the creation / deletion start and stop of isolated services (6.x)</li>
+  <li>Sandbox Reuse –&gt; Profile (bubble) sharing of different application started (Since 5.2)</li>
+  <li>No more CAB file in Version 6.0. It’s now a folder structure (This doesn’t look like a magic change, but there are some plans that citrix wants to mount a remote disk instead of streaming files down)</li>
+</ul>
+
+<p>So last session for this forum, just trying to catch the plane now and looking forward to Pubforum in Dublin 2011.<br />
+Great Forum!! Thanx everyone!</p>
+:ET

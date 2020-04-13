@@ -58,7 +58,7 @@ Nano Server is being managed remotely, and only remotely. There is no more RDP t
       * Windows Firewall rules can now be changed EC
       * WinRM can be turned on/off using the EC
     
-![](http://www.miru.ch/wp-content/uploads/2016/04/042816_2234_SneakPeakon1.png) 
+![](../images/2016/04/042816_2234_SneakPeakon1.png) 
     
     ### Additional Feature/Role Packages
     

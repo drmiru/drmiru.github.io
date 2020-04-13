@@ -1,0 +1,76 @@
+I"2<p>In this post I’m going to demonstrate a little bit of cross-platform automation using PowerShell and the PoSH-SSH module written by <a href="https://twitter.com/Carlos_Perez">Carlos Perez</a>. <span style="font-size: 12pt;"><br /> </span></p>
+
+<h3 id="install-posh-ssh-module">Install PoSH-SSH Module</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Install-Module PoSH-SSH -Force
+</code></pre></div></div>
+
+<h3 id="basics-on-working-with-posh-ssh-module">Basics on working with PoSH-SSH Module</h3>
+
+<p>The PoSH-SSH Module has all mostly used capabilities of a SSH cmdline client, but for now we’re focusing on interacting with SSH sessions and executing remote command and scripts. To open a new SSH session you have to supply a credential or an SSH key pair. In this example I’m using an SSH key-pair to authenticate against an Azure VM. <strong>Generate SSH Key-pair</strong> I’m using the git bash, of course this also works with other methods.<img src="http://www.miru.ch/wp-content/uploads/2017/11/110217_0554_PoshSSHtoau1.png" alt="" /> Protect the private key file..<img src="http://www.miru.ch/wp-content/uploads/2017/11/110217_0554_PoshSSHtoau2.png" alt="" /> Read the public key content and copy it to clipboard<img src="http://www.miru.ch/wp-content/uploads/2017/11/110217_0554_PoshSSHtoau3.png" alt="" /> Lastly update the ssh key on the Azure VM<img src="http://www.miru.ch/wp-content/uploads/2017/11/110217_0554_PoshSSHtoau4.png" alt="" /></p>
+
+<h3 id="working-with-ssh-sessions">Working with SSH Sessions</h3>
+
+<p>Let’s construct a credential first. As we use a ssh key to authenticate, the password can be anything but an empty string.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;span style="color: #00b0f0; font-family: Consolas;"&gt;$cred = get-credential "drmiru"&lt;/span&gt;
+			
+
+&lt;span style="color: #00b0f0; font-family: Consolas;"&gt;$session = New-SSHSession –ComputerName "vsl01.westeurope.cloudapp.azure.com" –Credential $cred -KeyFile .\.ssh\id_rsa -AcceptKey
+&lt;/span&gt;
+</code></pre></div></div>
+
+<p>There is no way to have an interactive shell after opening a SSH session, so we have to pass remote commands into the session as we do it with PowerShell using Invoke-Command CMDLET. Also we have to ensure commands we initiate do not prompt interactively for any input or the command will timeout. For Posh-SSH the equivalent to Invoke-Command is <strong>Invoke-SSHCommand</strong>. Each command is returned with two properties</p>
+
+<ul>
+  <li>Output [string[]]</li>
+  <li>ExitCode [int]</li>
+</ul>
+
+<p>Let’s do a little example. We want to list the content of the file system.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;span style="color: #00b0f0; font-family: Consolas;"&gt;(Invoke-SSHCommand -Command 'ls -la' -SSHSession $session).Output
+&lt;/span&gt;
+</code></pre></div></div>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2016/04/042816_2005_PoshSSHtoau6.png" alt="" /> As the command finishes on the remote system, it will print the return values from the remote command to the standard output. Another way to interact with the SSH session is to open a so called “Shell Stream”. This allows to send multiple commands, line by line. If required you can get the output line by line as well or the whole output after executing some commands in a row. Lets make a little example here. We try to write to a file (where we might not have permission with the current user).</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;span style="color: #00b0f0; font-family: Consolas;"&gt;$sshshellstream = New-SSHShellStream -Index $session.SessionID&lt;/span&gt;
+			
+
+&lt;span style="color: #00b0f0; font-family: Consolas;"&gt;$sshshellstream.WriteLine('touch /var/log/mylog.log')&lt;/span&gt;
+			
+
+&lt;span style="color: #00b0f0; font-family: Consolas;"&gt;$sshshellstream.WriteLine('echo "hello world" &gt; /var/log/mylog.log')&lt;/span&gt;
+			
+
+&lt;span style="color: #00b0f0; font-family: Consolas;"&gt;$sshshellstream.WriteLine('cat /var/log/mylog.log')&lt;/span&gt;
+			
+
+&lt;span style="color: #00b0f0; font-family: Consolas;"&gt;$Result = $sshshellstream.read()&lt;/span&gt;
+			
+
+&lt;span style="color: #00b0f0; font-family: Consolas;"&gt;write-Output $result
+&lt;/span&gt;
+</code></pre></div></div>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2017/11/110217_0554_PoshSSHtoau5.png" alt="" /> Now elevating our privileges to write the file..</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;span style="color: #00b0f0; font-family: Consolas;"&gt;$sshshellstream.WriteLine('sudo touch /var/log/mylog.log')&lt;/span&gt;
+			
+
+&lt;span style="color: #00b0f0; font-family: Consolas;"&gt;$sshshellstream.WriteLine('echo "hello world" &gt; /var/log/mylog.log')&lt;/span&gt;
+			
+
+&lt;span style="color: #00b0f0; font-family: Consolas;"&gt;$sshshellstream.WriteLine('cat /var/log/mylog.log')&lt;/span&gt;
+			
+
+&lt;span style="color: #00b0f0; font-family: Consolas;"&gt;$Result = $sshshellstream.read()&lt;/span&gt;
+			
+
+&lt;span style="color: #00b0f0; font-family: Consolas;"&gt;write-Output $result
+&lt;/span&gt;
+</code></pre></div></div>
+
+<p>These are just a few examples what you can do with PoSH-SSH to automate stuff on Linux boxes.</p>
+:ET

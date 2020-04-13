@@ -1,0 +1,31 @@
+I"�<p>Automating the world of datacenters and infrastructures has always been one of my passions. Starting with Service Management Automation (SMA), the capabilities have been extended in very cool ways. While still, SC Orchestrator is used heavily to automate IT processes, SMA is IMHO the little twinkle star. Released as a Version 1.0 together with Windows Azure Pack last year, the way Microsoft goes with automation in SMA has significantly changed the game. SMA is purely based on PowerShell Workflows. This brings some great enhancements like direct interoperability with DSC (Desired State Configuraton). PowerShell Workflows are rock solid, do support checkpoints and can be re-used even outside of SMA. Of course there are also some things you might miss in the current version of SMA when you compare it to SC Orchestrator.</p>
+
+<p>I expect some updates to be delivered during the vNext wave, however here’s my current with list for SMA vNext.</p>
+
+<ul>
+  <li>Multi Tenancy for SMA Admin Portal</li>
+  <li>Delegation for Assets and Runbooks to Tenants and Admins</li>
+  <li>Integration into Tenant Admin Portal as seen on Microsoft Azure</li>
+  <li>Bulk Import / Export of Runbooks (currently delivered by SMART)</li>
+  <li>Selection of specific Runbook Worker when executing / calling Runbooks</li>
+  <li>SMA Automation native Module Integration in PowerShell_ISE to better support external Runbook development (currently delivered by a community module)</li>
+  <li>Nested variable passing to PS Remote Sessions within inline scripts ($USING can’t actually be reused)</li>
+  <li>More granular Schedule Options, higher frequencies</li>
+</ul>
+
+<p>I definitely bet on SMA. It’s a cool product and leverages my PowerShell effort of the last 8 years. However I’d love to see some of the points on my wish list to appear in the next version.</p>
+
+<p>If you’re not aware of SMA, I’d recommend my SMA Whitepaper available <a href="http://gallery.technet.microsoft.com/Service-Management-fcd75828" target="_blank">on TechNet Gallery</a>.</p>
+
+<p>Feel free to post comments or drop me an email with additional feature requests, so I can include it in this post.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+:ET

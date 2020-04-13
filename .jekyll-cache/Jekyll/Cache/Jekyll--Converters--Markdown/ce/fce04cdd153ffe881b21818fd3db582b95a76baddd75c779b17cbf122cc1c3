@@ -1,0 +1,2 @@
+I"|<p>Enabling Hyper-V Replica is usually a no-brainer. But what if it fails to establish a replication? Weird error messages and corresponding weird event log entries don’t help to debug most of times. In this blog post I’m going to go through the basics of Hyper-V Replica and the most common configuration issues which can prevent a successful replication initialization.</p>
+:ET

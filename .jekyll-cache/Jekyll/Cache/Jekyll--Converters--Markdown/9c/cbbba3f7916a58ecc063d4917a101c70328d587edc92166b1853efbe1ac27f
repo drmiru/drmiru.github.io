@@ -1,0 +1,3 @@
+I"
+<p>It’s common to create and dispose / delete lots of virtual machine in an automated private cloud. SCVMM comes with it’s own implementation of a tiny DHCP-Server like service. The feature allows the assignment of IP addresses from a pool to deployed virtual machines. SCVMM tracks the assignments by adding them as “AllocatedIPAddress” object types. SCVMM R2 together with Server 2012 R2 will allow an integrated IP address management using IPAM extensions for SCVMM. For now we have to manage it ourselves.</p>
+:ET

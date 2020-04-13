@@ -1,0 +1,12 @@
+I"Q<p><span> As VDI turns from being a hype to getting a defacto standard, there are some questions and open issues I’m thinking about.</span></p>
+
+<p><span>Today’s “server based” computing technologies allow you to virtualize applications, operating systems or whole servers. So far so good. What if we think about the issues we are dealing each day with? Some of them might still resist even in 10 years?</span></p>
+
+<p><span>– User profile management<br /> – Printing<br /> – Network throughput and latency issues<br /> – Data and application to be in the near together</span></p>
+
+<p><span>So if we take today’s competitor’s vision (and there are a bunch of them), in a few years everyone can start his desktop from anywhere at any time using any kind of application providing any kind of data.<br /> Nice and easy.. or not? I always keep the few issues above in mind and guess what? They still resist even in a super cloud. The data has to move to the application or vice versa, the VDI has to move close to the user, if you like to work as locally, especially when you are a asian guy who is suffering the 200 to 500ms round trip times.</span></p>
+
+<p><span>At my opinion, today’s VDI technologies aren’t ready for solving these issues. But I’m very interested where we want to go tomorrow </span></p>
+
+<p><span><br /> </span></p>
+:ET

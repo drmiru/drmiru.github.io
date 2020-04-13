@@ -1,0 +1,83 @@
+I"�<p> </p>
+
+<p> </p>
+
+<p>This is the 2nd part of a 3 blog post series on troubleshooting SMA.</p>
+
+<p>See <a href="http://www.miru.ch/troubleshooting-sma-service-management-automation-part-1/" target="_blank">here for Part 1</a></p>
+
+<p>In this post, I’ll focus on troubleshooting job states and worker issues.</p>
+
+<p>If you read <a href="http://www.miru.ch/troubleshooting-sma-service-management-automation-part-1/" target="_blank">Part 1</a>, then you should be aware how SMA distributes the jobs to the available workers.<br />
+While this mechanism ensures fair sharing of runbook jobs it may also introduce some issues.</p>
+
+<p>##</p>
+
+<h2 id="whats-the-matter">What’s the matter?</h2>
+
+<ul>
+  <li>Workers with assigned jobs can go down, or have other serious problems preventing them from executing jobs</li>
+  <li>Jobs may hang in a queued or starting state because of an error described above</li>
+</ul>
+
+<p>While there are runbooks, you don’t care to start them over and over again if they failed, others will be sensitive to states from connected interfaces like Service Manager. You really want to keep the invoked runbook and having it executed properly even if the assigned runbook worker has an issue. So how can you spot on runbooks being in a problem state?</p>
+
+<p>To help me out with housekeeping and troubleshooting SMA, I’ve created a little Powershell Module (SMAHouseKeeping.psm1) to perform the following tasks:</p>
+
+<ul>
+  <li>List Jobs and their assignment to workers (can be helpful to identify a worker with problems)</li>
+  <li>Move Jobs from a worker to another worker (can be used to transfer queued or starting jobs to another worker)</li>
+</ul>
+
+<p><strong>Where to get the module</strong></p>
+
+<p><a href="https://gallery.technet.microsoft.com/Module-to-troubleshoot-and-ebafca16">https://gallery.technet.microsoft.com/Module-to-troubleshoot-and-ebafca16</a></p>
+
+<p><strong style="font-size: 1.17em;">How to use the module</strong></p>
+
+<p>To use the module you need</p>
+
+<ul>
+  <li>to unzip and unblock the downloaded files</li>
+  <li>read/write access to the SMA DB</li>
+</ul>
+
+<p>When importing the module you have to pass SQL Server and DB Name as Arguments for the module</p>
+
+<h2 id="examples"><strong>Examples:</strong></h2>
+
+<h3 id="importing-the-module"><em>**</em>Importing the module</h3>
+
+<p>(prevent this module from autoloading)</p>
+
+<pre>Import-Module C:\Scripts\SMAHouseKeeping\SMAHouseKeeping.psm1 -ArgumentList SQLSERVER01,SMA</pre>
+
+<p>(where “SQLSERVER” is the SQL Host and “SMA” is the name of the SMA database)</p>
+
+<h3 id="listing-job-to-worker-assignments">Listing job to worker assignments</h3>
+
+<pre>Get-SMAJobAssignment -JobState suspended
+Get-SMAJobAssignment -JobState queued
+Get-SMAJobAssignment -JobState starting
+Get-SMAJobAssignment -JobState stopped
+Get-SMAJobAssignment -JobState running
+Get-SMAJobAssignment -JobState completed</pre>
+
+<p> </p>
+
+<h3 id="moving-queued-jobs-to-another-runbook-worker">Moving queued jobs to another runbook worker</h3>
+
+<pre>Move-SMAJobQueue -SourceWorker worker1 -TargetWorker worker2 -JobState queued</pre>
+
+<p> </p>
+
+<h3 id="canceling-a-stuck-job">Canceling a stuck job</h3>
+
+<pre>Set-SMAJobState -JobID 848ecc75-d5bc-4ef7-b6ac-9335b86a269b -JobState failed</pre>
+
+<p> </p>
+
+<h3 id="and-btw">And BTW….</h3>
+
+<p><strong>THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE   RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER</strong></p>
+:ET

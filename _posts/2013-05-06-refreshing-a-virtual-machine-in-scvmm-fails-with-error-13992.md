@@ -37,7 +37,7 @@ tags:
 
 Each VM with a previously attached, shared ISO image fails to refresh with the following error message:
 
-![](http://www.miru.ch/wp-content/uploads/2013/05/050613_1933_Refreshinga11.jpg) 
+![](../images/2013/05/050613_1933_Refreshinga11.jpg) 
 
 As a result the VM is in an &#8220;Unsupported VM Configuration&#8221; state and there is no way to get rid of the attached ISO within SCVMM Console or SCVMM Powershell CMDLETs.
 

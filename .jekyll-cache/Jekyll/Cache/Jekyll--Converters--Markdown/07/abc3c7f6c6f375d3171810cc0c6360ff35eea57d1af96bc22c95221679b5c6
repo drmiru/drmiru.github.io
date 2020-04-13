@@ -1,0 +1,2 @@
+I"�<p>I recently came along some issues while trying to import previously exported or copied virtual machines for a customer. The recent admin did not document what he tried to do so far, but several of the virtual machines where in a likely “inconsistent” state. Importing those VMs using the Hyper-V Manager GUI or Powershell CMDLETS failed with different errors, but all pointed to the same root causes.</p>
+:ET

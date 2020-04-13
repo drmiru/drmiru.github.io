@@ -1,0 +1,38 @@
+I"a	<p><strong>Session #1 Rick Dehlinger about BYOC</strong></p>
+
+<p>Rick talks about an actual project where he’s currently into. Some interesting topics about universal workplace.</p>
+
+<ul>
+  <li>Datacenter / System consolidation</li>
+  <li>Active directory rationalization, simplification</li>
+  <li>Desktop refresh to Win7 x64</li>
+  <li>Application portfolio management / rationalization.</li>
+</ul>
+
+<p>Project solution stack:</p>
+
+<ul>
+  <li>User virtualization (Appsense)</li>
+  <li>Printer virtualization (thinprint)</li>
+  <li>App virtualization (AppV, Citrix)</li>
+  <li>Presentation virtualization (XenApp 6)</li>
+  <li>Server virtualization (vSphere)</li>
+</ul>
+
+<p>Just a cool session about a complex project and what a consultant has to deal with.</p>
+
+<p><strong>Session #3 HDX 3D from Roland Grass and Martin Rhode</strong></p>
+
+<p>HDX3D is a currently a beta add on feature on top of XenDesktop to bring rich graphics to the end user for high denanding applications in a centralized desktop environent. It’s intended to replace high end workstations under the desk with centralized desktops in the datacenter and deliver the grahpics to remote devices.<br />
+HDX3D  With nVidia CUDA staff HDX is capturing encoded frames and sends this stream as a H.264 video to the client. If you don’t have a nVidia the CPU is rendering the JPEGXR stream. Beside the existing solutions from Teradici and HP I think the Citrix one rocks! So far we’ve seen it working very well even over high latency connections.</p>
+
+<p><strong>Session #4 RES Software, a day @ RES Software support</strong></p>
+
+<p>The guys from RES SW support team explain on some slides their daily life @ support. A lot of interesting problems get outlined, some interesting stuff at all. As I watched their website I noticed a product called VDX (virtual desktop extender), which enables you to seamlessly integrate local apps into a virtual desktop sessions. That’s an interesting approach if we think about applications we can’t or we don’t want to deliver within the vitual deaktop session.</p>
+
+<p><strong>Session #5  Jorge Luis about Cloud computing stuff</strong></p>
+
+<p>A nice presentation about cloud computing, what it is,  and what it is not. Pros and cons and the common dangers are also beeing outlined.</p>
+
+<p>Alex later on guides us a bit trough berlin, very nice but a little bit cold 🙂</p>
+:ET

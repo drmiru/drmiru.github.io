@@ -1,0 +1,62 @@
+I"�
+<p><strong>Session #1 (Jim Moyle and Andrew Wood about “Nirvana Phone”</strong></p>
+
+<p>Using a single device for every computing and communication with a hypervisor. A nice discussion about having a primary computing device for everything. The basic idea behind is that you have a single, portable small form factor device with multiple OS on it and a lot of connectivity and add on stuff, like plugin in into a netbook device, a large screen device, etc.</p>
+
+<p><a href="http://bit.ly/NirvanaPhone">http://bit.ly/NirvanaPhone</a></p>
+
+<p><strong>Session #2 (Simon Frost about the Consumerazation of IT)</strong></p>
+
+<p>BYOC, today employees are excpected to be more flexible, IT has to support that. So where are the pain points?</p>
+
+<ul>
+  <li>Data Loss Prevention</li>
+  <li>Malware / Virus outbrakes</li>
+  <li>IT has to support “unknown” devices which may be in a horrible state</li>
+  <li>Tablets &amp; Smartphones are hard to manage, because they aren’t designed for beeing managed</li>
+</ul>
+
+<p>Whynot providing enterprise app stores to gain flexibility for users while staying within bounds of IT / Security?</p>
+
+<p><strong>Session # 3 (Shawn Bass about “Making Sense of Desktop Virtualization”)</strong></p>
+
+<p>What is Desktop virtualization about? what do companies try to achieve by implementing desktop virtualization?</p>
+
+<ul>
+  <li>Hardware abstraction</li>
+  <li>Loosley coupled OS, Applications, Data, Settings</li>
+  <li>Mobility</li>
+  <li>Faster Provisioning</li>
+  <li>Rapid Desktop DR</li>
+  <li>Effectively manage branch infrastructure</li>
+  <li>Optimize OS Migrations</li>
+  <li>Reducing costs for application delivery, shorten time to market</li>
+  <li>Support work from hom initatives</li>
+</ul>
+
+<p>Again a lightening fast speaking Shawn Bass with great content.</p>
+
+<p><strong>Session #4 VMware Ireland about.</strong>.</p>
+
+<p>Agility, Costs, Security Concerns, Consumerisation of IT. A pretty cool walk around covering products and initiatives from VMware</p>
+
+<p><strong>Session #5 Aidan Finn about Microsoft Private Clond Computing</strong></p>
+
+<p>SCVMM 2012 (new from the ground)</p>
+
+<ul>
+  <li>Manage 3rd party hypervisors (vSphere, Xenserver)</li>
+  <li>Bare metal Hyper-V deployment, Patch management</li>
+  <li>Dynamic Optimzation (like VMware has its DRS)</li>
+  <li>Power Optimization</li>
+  <li>PRO (Integrate with SCOM to respond on application-level performance monitor</li>
+</ul>
+
+<p>Project Concero</p>
+
+<ul>
+  <li>A Web portal to integrate public cloud (Azzure) with private cloud (SCVMM)</li>
+</ul>
+
+<p>Last session of today (I’ve visited) was Profile Migrator Demo from Helge Klein. A pretty cool tool which helps admins out of the common “where are my settings” hell while doing client migrations.</p>
+:ET

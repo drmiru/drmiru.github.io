@@ -1,0 +1,36 @@
+I"�<p>These two small Powershell functions could save an admins live at daily work 🙂</p>
+
+<pre>#---------------------------------------------------------------------------------------
+Function find_replace($file,$findstr,$replacestr)
+{
+	$input =  get-content $file
+	$output = $input -replace($findstr,$replacestr)
+	set-content $file $output
+}
+#---------------------------------------------------------------------------------------</pre>
+
+<p>Example:<br />
+<strong>find_replace “C:\test.txt” “blaa” “fooo”</strong></p>
+
+<pre>#---------------------------------------------------------------------------------------
+Function trim($file,$mode)
+{
+	$input = Get-Content $file
+	$output = $input | where {$_ -notmatch "^$" }
+	If ($mode -eq 'includeblanks')
+	{
+		$output = $output -replace(' ','')
+	}
+	Set-Content $file $output
+}
+#---------------------------------------------------------------------------------------</pre>
+
+<p>Example 1:**<br />
+trim “C:\test.txt”<br />
+** (removes empty lines in the file)<em>**</em></p>
+
+<p><strong>Example 2:<br />
+trim “C:\test.txt” includeblanks<br />
+** (removes also blank chars)</strong><br />
+**</p>
+:ET

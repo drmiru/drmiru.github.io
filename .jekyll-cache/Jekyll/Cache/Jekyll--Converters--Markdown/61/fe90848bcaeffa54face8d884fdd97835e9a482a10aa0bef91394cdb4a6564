@@ -1,0 +1,2 @@
+I"¸<p>After recently patching all 2012 R2 Hyper-V Cluster Nodes in our own datacenter, I noticed randomly BSODs. After a short investigation I was able to narrow it down a little bit. As soon VMM started to rebalance the VMs, one after each node went into BSOD. It seemed that the first live migration task succeeded, while subsequent tasks failed. As soon the second LM process started, the target host died. So WTFâ€¦ was going on here.</p>
+:ET

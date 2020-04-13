@@ -1,0 +1,28 @@
+I"�<p>This might be very useful for certain situations where you want to update a user’s or computer’s group membership without the need to re-logon / restart. The whole magic is behind the issued kerberos tickets after you logged on to a machine or a machine has been started. The tool “klist.exe” cannot only be used for troubleshooting to display the current issued TGT / TGS, it is also capable to purge all current tickets. The purge command results in a re-issuance of the tickets, as soon as the next auth or service request is taking place. Keep in mind that this method only works for services which authenticate via Kerberos. NTLM based authentication still requires a fresh logon with updated group membership token.</p>
+
+<p><strong><span style="text-decoration: underline;">To purge a user’s tickets:</span></strong></p>
+
+<pre>klist purge</pre>
+
+<p><strong><span style="text-decoration: underline;">To purge tickets of the local system account:</span></strong><br />
+Start a cmd or PoSH session with elevated privileges</p>
+
+<pre>klist -li 0:0x3e7 purge</pre>
+
+<p>klist is a tool that has been included by default since Vista/Server 2008.</p>
+
+<p>If you have a Windows 2003 Server / XP then you’re required to download klist here:<br />
+<a href="http://www.microsoft.com/downloads/details.aspx?familyid=9d467a69-57ff-4ae7-96ee-b18c4790cffd&amp;displaylang=en">http://www.microsoft.com/downloads/details.aspx?familyid=9d467a69-57ff-4ae7-96ee-b18c4790cffd&amp;displaylang=en</a></p>
+
+<p>Be aware then the 2003/XP version of klist does not support purging directly the system accoun’s tickets. You can use psexec from sysinternals to launch an interactive command line as the system account (psexec -s -i cmd.exe) and then execute klist purge)</p>
+
+<p>To generally control the lifetime of Kerberos tickets consider the following article.</p>
+
+<p><a href="http://technet.microsoft.com/en-us/library/Dd277401.aspx">http://technet.microsoft.com/en-us/library/Dd277401.aspx</a></p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+:ET

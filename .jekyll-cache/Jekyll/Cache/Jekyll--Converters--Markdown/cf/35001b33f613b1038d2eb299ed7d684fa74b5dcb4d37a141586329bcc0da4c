@@ -1,0 +1,3 @@
+I"
+<p>Some weeks ago Microsoft released Update Rollup 3 for System Center 2012 R2. Part of this RU, SCVMM components also got updated. This time, unfortunately it was not sufficient to update the SCVMM Server / Console components and to execute the post-update SQL script. Microsoft has also updated the SCVMM DHCP Agent extension running on all managed Hyper-V hosts. The <a href="http://support.microsoft.com/kb/2965414/en-us" target="_blank">KB article</a> states to manually check for a recent version and update it.</p>
+:ET

@@ -1,0 +1,2 @@
+I"�<p>In one of my recent <a href="http://www.miru.ch/automating-online-extension-of-a-csv-using-powershell/" target="_blank">posts</a>, I showed how to extend  a CSV using Powershell and DISKPART. As I’m constantly trying to avoid using “legacy” command line tools, I decided to find a way around DISKPART.Therefore I was able to create a Powershell Function to extend a CSV on a Windows Failover Cluster.</p>
+:ET

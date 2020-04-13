@@ -1,0 +1,55 @@
+I"�<p>A “Hybrid Runbook Worker” is basically an extension the the MMA (Microsoft Management Agent), meant to execute Azure Automation Runbooks on premises. For a general introduction I’m referring to the following documentation:</p>
+
+<p><a href="https://docs.microsoft.com/en-us/azure/automation/automation-hybrid-runbook-worker">https://docs.microsoft.com/en-us/azure/automation/automation-hybrid-runbook-worker</a></p>
+
+<p><a href="http://www.miru.ch/wp-content/uploads/2017/02/automation-hbw.png"><img class="alignleft size-full wp-image-4830" src="http://www.miru.ch/wp-content/uploads/2017/02/automation-hbw.png" alt="automation-hbw" width="806" height="504" srcset="http://www.miru.ch/wp-content/uploads/2017/02/automation-hbw.png 806w, http://www.miru.ch/wp-content/uploads/2017/02/automation-hbw-300x188.png 300w, http://www.miru.ch/wp-content/uploads/2017/02/automation-hbw-768x480.png 768w" sizes="(max-width: 806px) 100vw, 806px" /></a></p>
+
+<p>I really like the concept to have a single point of control for either Cloud- Hybrid- or on-premises automation. Additionally Azure Automation, as it’s a Cloud Service, it has more features, more frequent updates and enhancements that the on premises System Center Suite.</p>
+
+<p>So while I was thinking about the Hybrid Worker scenarios and some requirements I have in ongoing projects, I though about deploying Azure VMs as Hybrid Runbook Workers instead of using the “shared” ones could be a solution for some of them.</p>
+
+<p><strong>But Wait..</strong>. <span style="color: #ff0000;">Deploying Azure VMs and use them as Azure Automation Hybrid Runbook Workers? Is he nuts?</span></p>
+
+<p><a href="http://www.miru.ch/wp-content/uploads/2017/02/nuts.jpg"><img class="alignleft size-medium wp-image-4837" src="http://www.miru.ch/wp-content/uploads/2017/02/nuts-300x200.jpg" alt="nuts" width="300" height="200" srcset="http://www.miru.ch/wp-content/uploads/2017/02/nuts-300x200.jpg 300w, http://www.miru.ch/wp-content/uploads/2017/02/nuts.jpg 524w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>So here’s why..</p>
+
+<h3 id="fair-share-principle-of-azure-workers">Fair share principle of Azure Workers</h3>
+
+<p>Runbook jobs running more than 3 hours, will be suspended/resumed or restarted from scratch, depending on  the type of the runbook. After 3 subsequent events like this they are kind of “discarded”.<br />
+<a href="https://docs.microsoft.com/en-us/azure/automation/automation-runbook-execution#fairshare">See here</a> for more information about “fair share” in Azure Automation.</p>
+
+<h3 id="scalability">Scalability</h3>
+
+<p>If you have thousands of jobs executed each day, performance of the shared workers in azure can become an issue, especially if you use a lot of nested Workflow based runbooks. Hybrid Workers are added to Hybrid Worker Groups and follow the same “static random” queuing mechanism, as SMA workers do. Scaling up your workers (memory / CPU / IOPs) is only possible with Hybrid Workers.</p>
+
+<h3 id="outbound-network-connections--special-binaries">Outbound Network Connections / Special Binaries</h3>
+
+<p>You can’t install anything on a Azure Runbook Worker, neither can you connect from a runbook executed on a AA Worker to external networks or into a virtual machine running in one of your network security groups. Another reason are Modules, PowerShell SnapIns or even custom management consoles you might need to deploy for automation purposes. You can only import PowerShell Modules into your Azure Automation account which follow the requirements documented <a href="https://docs.microsoft.com/en-us/azure/automation/automation-integration-modules">here</a>.</p>
+
+<h3 id="when-to-use-the-default-cloud-bases-workers">When to use the default Cloud bases Workers?</h3>
+
+<p>If those three use cases do not apply for you, I’d recommend to use the Azure Workers for the following reasons:</p>
+
+<ul>
+  <li>No additional cost for the workers running as Azure VMs</li>
+  <li>Any imported custom modules are automatically distributed, which is not the case for Hybrid Workers at the time writing</li>
+  <li>Less complexity</li>
+</ul>
+
+<p> </p>
+:ET

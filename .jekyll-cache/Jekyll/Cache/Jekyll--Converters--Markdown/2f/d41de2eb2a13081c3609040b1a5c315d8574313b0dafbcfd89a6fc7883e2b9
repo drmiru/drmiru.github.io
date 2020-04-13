@@ -1,0 +1,63 @@
+I"�
+<p>After a lot of unsuccessful tries (even with Appsense Personalization Manager it’s hard to save and restore user certificates, if AppData is not redirected), I found a valuable way to export and import user certificates at Logoff / Logon.</p>
+
+<p><span style="text-decoration: underline;">Prerequisites:</span></p>
+
+<ul>
+  <li>Powershell 2.0 installed</li>
+  <li>Execution Policy must be set accordingly</li>
+  <li>Users logging on / off must have the permission to execute scripts of course</li>
+</ul>
+
+<p>These two scripts do the job.</p>
+
+<p><strong>ExportCert.ps1</strong></p>
+
+<ul>
+  <li>Exports all user certificates to a destination folder in a PKCS12 format (.pfx)</li>
+  <li>Accepts filters based on issuer attributes</li>
+  <li>Exports User or Machine Certificates from local cert store</li>
+</ul>
+
+<p>Usage:</p>
+
+<pre>Powershell.exe ./ExportCert.ps1 &lt;destinationpath&gt; &lt;certstore&gt;  [optional &lt;filter&gt;]
+</pre>
+
+<p>Example:</p>
+
+<pre>Powershell.exe C:\Scripts\ExportCert.ps1 H:\Profile\Certs CurrentUser DC=Microsoft</pre>
+
+<p>This command exports all user certificates from CurrentUser store to H:\Profile\Certs and excludes certificates where issuer attribute contains “DC=Microsoft”</p>
+
+<p><strong>ImportCert.ps1</strong></p>
+
+<ul>
+  <li>Imports all Certificates within a given folder into User or Machine cert store</li>
+</ul>
+
+<p>Usage:</p>
+
+<pre>Powershell.exe ./ImportCert.ps1 &lt;sourcepath&gt; &lt;certstore&gt;
+</pre>
+
+<p>Example:</p>
+
+<pre>Powershell.exe C:\Scripts\ImportCert.ps1 H:\Profile\Certs CurrentUser</pre>
+
+<p>This command imports all user certificates into the  CurrentUser store to H:\Profile\Certs</p>
+
+<p><strong>Integrating the scripts into a Appsense Environment Manager Config</strong></p>
+
+<p>As currently the Appsense EM does not support Powershell scripts as custom actions, we have to wrap the call of powershell scripts around a simple VBscript. If you download the scripts <a href="http://www.miru.ch/wp-content/uploads/2011/05/PS-CertMgmt.zip" target="_blank">here</a>, you’ll find usable examples for how to call the Import / Export Scripts at logon / logoff using EM custom actions.</p>
+
+<p>Special Notes:</p>
+
+<ul>
+  <li>The scripts are provided as they are without any warranty. Use at your own risk</li>
+  <li>The password for private key protection of the PFX is not that strong as it has to be automatically set on import, but I’m currently thinking about other possibilities.</li>
+  <li>Any bugs or feature requests are welcome</li>
+</ul>
+
+<p><a href="http://www.miru.ch/wp-content/uploads/2011/05/PS-CertMgmt.zip" target="_blank"><img class="alignleft size-thumbnail wp-image-466" title="download-button" src="http://www.miru.ch/wp-content/uploads/2011/05/download-button-150x150.jpg" alt="" width="75" height="75" /></a></p>
+:ET

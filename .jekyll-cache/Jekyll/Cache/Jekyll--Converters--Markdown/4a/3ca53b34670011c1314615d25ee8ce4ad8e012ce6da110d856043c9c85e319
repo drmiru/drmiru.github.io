@@ -1,0 +1,64 @@
+I"�<p>After recently patching all 2012 R2 Hyper-V Cluster Nodes in our own datacenter, I noticed randomly BSODs. After a short investigation I was able to narrow it down a little bit. As soon VMM started to rebalance the VMs, one after each node went into BSOD. It seemed that the first live migration task succeeded, while subsequent tasks failed. As soon the second LM process started, the target host died. So WTF… was going on here.</p>
+
+<p>Analyzing the memory dump, I could see <strong>Mslbfoprovider.sys</strong> was mostly causing the BSOD. Crawling through the KB articles of all patches CAU has deployed to the nodes, I found that <strong>KB2887595</strong> replaced <strong>Mslbfoprovider.sys</strong> which is the core driver for NIC load balancing and failover teaming (NETLBFO).</p>
+
+<p>Digging a bit deeper into the dumpy analysis I could see that the last function called was related to VMQ.<br />
+STACK_TEXT:<br />
+fffff800`4876a8c8 fffff800`46dc97e9 : 00000000`0000000a 00000000`00000028 00000000`00000002 00000000`00000000 : nt!KeBugCheckEx<br />
+fffff800`4876a8d0 fffff800`46dc803a : 00000000`00000000 00000000`00000003 fffff800`00691000 fffff800`4876aa10 : nt!KiBugCheckDispatch+0x69<br />
+fffff800`4876aa10 fffff800`0213572f : fffff800`02134dfe 00000000`00000000 00000000`00000000 fffff800`4876ab58 : nt!KiPageFault+0x23a<br />
+<span style="color: #ff0000;">fffff800<code class="highlighter-rouge">4876aba8 fffff800</code>02134dfe : 00000000<code class="highlighter-rouge">00000000 00000000</code>00000000 fffff800<code class="highlighter-rouge">4876ab58 00000000</code>00000000 : MsLbfoProvider!vmqcGetFirstMappedMNic+0xf</span><br />
+fffff800`4876abb0 fffff800`0069c44b : 00000000`00000000 00000000`00000000 00000000`00000000 ffffe000`0ce416c0 : MsLbfoProvider!LbfoReceiveNetBufferListsComplete+0x92<br />
+fffff800`4876ac00 fffff800`0068d09d : 00000000`00000002 00000000`00000000 ffffe000`79a8c910 00000000`00000000 : NDIS!ndisInvokeNextReceiveCompleteHandler+0xf35b<br />
+fffff800`4876ac90 fffff800`0068cf42 : ffffe000`101521a0 00000000`00000002 ffffe000`79a8c910 ffffe000`0cccfc10 : NDIS!ndisReturnNetBufferListsInternal+0x12d<br />
+fffff800`4876acf0 fffff800`01a54071 : 00000000`00000000 00000000`00000000 ffffe000`0d8051c0 00000000`00000000 : NDIS!NdisReturnNetBufferLists+0x72<br />
+fffff800`4876ad50 fffff800`01a539db : ffffe000`0ccd2000 ffffe000`0f710001 ffffe000`79a8c910 00000000`00000001 : vmswitch!VmsPtNicPvtPacketRouted+0x1b1<br />
+fffff800`4876ade0 fffff800`01a536ae : 00000003`00000002 00000000`00000000 ffffe000`79a8c910 fffff800`4876ae00 : vmswitch!VmsExtIoPacketRouted+0x28b<br />
+fffff800`4876ae90 fffff800`006911b5 : fffff800`4876af49 00000000`00000000 00000000`00000000 fffff800`01a53a15 : vmswitch!VmsExtPtSendNetBufferListsComplete+0x9e<br />
+fffff800`4876aee0 fffff800`0069078b : ffffe000`0f7f11a0 ffffe000`79a8c910 fffff800`00000005 00000000`00000000 : NDIS!ndisMSendCompleteNetBufferListsInternal+0x135<br />
+fffff800`4876afb0 fffff800`01a53a2d : ffffe000`0f7f11a0 ffffe000`79a8c910 ffffe000`0f76a000 fffff800`01a53580 : NDIS!NdisMSendNetBufferListsComplete+0x2bb<br />
+fffff800`4876b120 fffff800`01a535d2 : 00000000`00000200 00000000`00000000 fffff800`4876b178 00000000`00000000 : vmswitch!VmsExtIoPacketRouted+0x2dd<br />
+fffff800`4876b1d0 fffff800`0069c4c6 : ffffe000`0f7f11a0 00000000`00000000 fffff800`4876b1a8 00000000`00000000 : vmswitch!VmsExtMpReturnNetBufferLists+0x42</p>
+
+<p>I you’re unfamilar with VMQ I’d highly recommend the following post series.</p>
+
+<p><a href="http://blogs.technet.com/b/networking/archive/2013/09/10/vmq-deep-dive-1-of-3.aspx" target="_blank">http://blogs.technet.com/b/networking/archive/2013/09/10/vmq-deep-dive-1-of-3.aspx</a></p>
+
+<p><a href="http://blogs.technet.com/b/networking/archive/2013/09/10/vmq-deep-dive-2-of-3.aspx" target="_blank">http://blogs.technet.com/b/networking/archive/2013/09/10/vmq-deep-dive-2-of-3.aspx</a></p>
+
+<p><a href="http://blogs.technet.com/b/networking/archive/2013/09/10/vmq-deep-dive-3-of-3.aspx" target="_blank">http://blogs.technet.com/b/networking/archive/2013/09/10/vmq-deep-dive-3-of-3.aspx</a></p>
+
+<p> </p>
+
+<h3 id="debugging-continues">Debugging continues….</h3>
+
+<p>However, I decided to uninstall the update KB2887595 as my first trial and error step. The issue was then gone. I checked the firmware and the drivers to ensure that my hosts are on the most recent level available from Intel, they where, so no option to update anything here.</p>
+
+<p>After that I picked a second node suffering the BSOD behavior and just disabled VMQ by the following command.</p>
+
+<pre>Get-NetAdapter | ? {$_.InterfaceDescription -match  '82599'} | Set-NetAdapterVmq -Enabled $false</pre>
+
+<p>The filter I used is related to the physical NICs which we use in our hosts (Intel 82599 dual-port 10Gbps). After disabling VMQ, I stressed the live migration by migrating a bunch of VMs to the target host where I just disabled VMQ.</p>
+
+<p>Everything was fine and no more BSOD.</p>
+
+<p>So using Powershell I disabled and re-enabled VMQ on all the remaining nodes where even KB2887595 still was installed.</p>
+
+<pre>Invoke-Command node1,node2,node3,node4,node5 -Scriptblock {Get-NetAdapter | ? {$_.InterfaceDescription -match  '82599'} | Set-NetAdapterVmq -Enabled $false}</pre>
+
+<pre>Invoke-Command node1,node2,node3,node4,node5 -Scriptblock {Get-NetAdapter | ? {$_.InterfaceDescription -match  '82599'} | Set-NetAdapterVmq -Enabled $true}</pre>
+
+<p>The I verified VMQ was enabled again.</p>
+
+<pre>Invoke-Command node1,node2,node3,node4,node5 -Scriptblock {Get-NetAdapter | ? {$_.InterfaceDescription -match  '82599'} | Get-NetAdapterVmq}</pre>
+
+<p>After this procedure I stressed the whole cluster again by live migrating VMs around like a fool. No more issues, no more BSODs.</p>
+
+<p>So everything fine now? Apparently yes, beside the fact that it leaves me in a “head scratching” state without having a clue what happened to VMQ by installing KB2887595. The issue may or may not be related to the NIC types and drivers I use. I’ll continue to observe this at my customers and update this post as soon I have more information about the root cause.</p>
+
+<p>Once again, before you deploy patches to your productive environment, test..test..test… and test.. 🙂</p>
+
+<p><span style="color: #ff0000;">Update: 22.12.2013 : 04:07 pm</span></p>
+
+<p><span style="color: #ff0000;">Unfortunately the issue came back after a few live migrations. BTW, I use a converged logical switch setup. So next try was to disable VMQ optimization on the Live Migration Native Port Profile, but even after remediating the logical switch, the issue was still there. So for the moment it leaves me with either disabling VMQ on the physical NICs or uninstall the rollup patch. I’ll keep this post up to date as soon I have new findings.</span></p>
+:ET

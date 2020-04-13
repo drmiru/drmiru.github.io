@@ -1,0 +1,9 @@
+I"�<p>Assuming that you followed Appsense <a href="http://www.miru.ch/wp-content/uploads/2012/05/Office-Personalization.docx" target="_blank">best practice for Office</a> personalization Settings, you might still have an issue with Office (Outlook) when using the “send via email” function out of 3rd party applications like (Acrobat Reader, IE, etc.)</p>
+
+<p>To address that issue, add the following key for each user on the logon trigger (so it exists outside of the Office PM bubble).</p>
+
+<p>[HKEY_CURRENT_USER\Software\Microsoft\Office\11.0\Outlook]<br />
+“LastUILanguage”=dword:00000407</p>
+
+<p>The value can be any valid language.</p>
+:ET

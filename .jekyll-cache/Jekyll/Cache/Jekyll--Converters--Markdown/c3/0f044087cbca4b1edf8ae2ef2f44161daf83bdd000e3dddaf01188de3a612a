@@ -1,0 +1,16 @@
+I"�<p>If a XenClient VM which is registered to a synchronizer couln’t contact the synchronizer for a while it will be marked as “locked” on the XenClient. The default lease time for “offline” VMs is 14 days.</p>
+
+<p>The only way is to manually override the state using the following procedure.</p>
+
+<p>Open a XenClient shell by pressing Ctrl+Shift+T</p>
+
+<pre>xec-vm</pre>
+
+<pre>UUID=`xec-vm --name &lt;locked_vm_name&gt; get uuid`</pre>
+
+<pre>db-write /vm/${UUID}/backend/state/operation READY</pre>
+
+<pre>Press Ctrl + q to refresh Citrix Receiver for XenClient</pre>
+
+<p>The lease time can be configured while assigning  a image to a user within the synchronizer management interface</p>
+:ET

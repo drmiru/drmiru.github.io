@@ -1,0 +1,2 @@
+I"8<p>If you want to unregister all VMs on a particular vSphere Cluster / Host you’re pretty done using the GUI, registering all VMs on a datastore could take you to the “hell of clicking masters” depending on the amount of VMs to register. I created two powershell functions which do that stuff for you.</p>
+:ET

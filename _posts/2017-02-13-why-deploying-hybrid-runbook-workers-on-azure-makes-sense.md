@@ -22,7 +22,7 @@ A &#8220;Hybrid Runbook Worker&#8221; is basically an extension the the MMA (Mic
 
 <https://docs.microsoft.com/en-us/azure/automation/automation-hybrid-runbook-worker>
 
-[<img class="alignleft size-full wp-image-4830" src="http://www.miru.ch/wp-content/uploads/2017/02/automation-hbw.png" alt="automation-hbw" width="806" height="504" srcset="http://www.miru.ch/wp-content/uploads/2017/02/automation-hbw.png 806w, http://www.miru.ch/wp-content/uploads/2017/02/automation-hbw-300x188.png 300w, http://www.miru.ch/wp-content/uploads/2017/02/automation-hbw-768x480.png 768w" sizes="(max-width: 806px) 100vw, 806px" />](http://www.miru.ch/wp-content/uploads/2017/02/automation-hbw.png)
+[<img class="alignleft size-full wp-image-4830" src="../images/2017/02/automation-hbw.png" alt="automation-hbw" width="806" height="504" srcset="../images/2017/02/automation-hbw.png 806w, ../images/2017/02/automation-hbw-300x188.png 300w, ../images/2017/02/automation-hbw-768x480.png 768w" sizes="(max-width: 806px) 100vw, 806px" />](../images/2017/02/automation-hbw.png)
 
 I really like the concept to have a single point of control for either Cloud- Hybrid- or on-premises automation. Additionally Azure Automation, as it&#8217;s a Cloud Service, it has more features, more frequent updates and enhancements that the on premises System Center Suite.
 
@@ -30,7 +30,7 @@ So while I was thinking about the Hybrid Worker scenarios and some requirements 
 
 **But Wait..**. <span style="color: #ff0000;">Deploying Azure VMs and use them as Azure Automation Hybrid Runbook Workers? Is he nuts?</span>
 
-[<img class="alignleft size-medium wp-image-4837" src="http://www.miru.ch/wp-content/uploads/2017/02/nuts-300x200.jpg" alt="nuts" width="300" height="200" srcset="http://www.miru.ch/wp-content/uploads/2017/02/nuts-300x200.jpg 300w, http://www.miru.ch/wp-content/uploads/2017/02/nuts.jpg 524w" sizes="(max-width: 300px) 100vw, 300px" />](http://www.miru.ch/wp-content/uploads/2017/02/nuts.jpg)
+[<img class="alignleft size-medium wp-image-4837" src="../images/2017/02/nuts-300x200.jpg" alt="nuts" width="300" height="200" srcset="../images/2017/02/nuts-300x200.jpg 300w, ../images/2017/02/nuts.jpg 524w" sizes="(max-width: 300px) 100vw, 300px" />](../images/2017/02/nuts.jpg)
 
 &nbsp;
 

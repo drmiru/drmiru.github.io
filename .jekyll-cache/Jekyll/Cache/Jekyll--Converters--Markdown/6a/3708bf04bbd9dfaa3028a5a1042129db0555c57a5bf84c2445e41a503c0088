@@ -1,0 +1,46 @@
+I"�<p>Once upon a time there was a cool wrapper dll for accessing TS session info from scripts and .NET programs without accessing the complex and poorly documented WTS API. The dll was called WTSadmin.dll. Unfortunately this assembly does not work any more on 2008 R2 RDS. Googling and binging sent me to a project named <a href="http://code.google.com/p/cassia/" target="_blank">Cassia</a>, which is in fact another wrapper for the WTS API. And theeeeeere.. is a Powershell module using the Cassia wrapper. It can be downloaded <a href="http://archive.msdn.microsoft.com/PSTerminalServices" target="_blank">here</a>.</p>
+
+<p>I prefer to use the zip file and copy the module folder into %systemroot%\system32\WindowsPowerShell\V1.0\Modules</p>
+
+<p>After that you can import the module manually or using a profile.</p>
+
+<pre>import-module  PSTerminalServices</pre>
+
+<p>And here is a little example which extracts the client IP address of the current user’s session (also works for ICA sessions of course)</p>
+
+<pre>$username = $env:USERNAME
+$session = Get-TSSession | ? { $_.UserName -match $username} | select *
+If ($session)
+{
+   $clientip = $session.ClientIPAddress.ToString()
+   write-host "Client IP is: $clientip"
+}
+
+</pre>
+
+<p>If you want to manage the RDS Configuration you have to import the RemoteDesktopServices module (built in after RDS role install)</p>
+
+<pre>import-module RemoteDesktopServices
+
+</pre>
+
+<p>After importing the module you can browse the RDS configuration as a file system.</p>
+
+<p>Getting config items:</p>
+
+<pre>ls RDS:\RDSConfiguration
+
+</pre>
+
+<p>Adding a license server</p>
+
+<pre>cd RDS:\RDSConfiguration\LicensingSettings\SpecifiedLicenseServers</pre>
+
+<pre>New-Item -name licensehost.domain.com
+
+</pre>
+
+<p>More info about RDS:\ provider <a href="http://blogs.msdn.com/b/powershell/archive/2009/01/09/managing-remote-desktop-services-aka-terminal-services-using-windows-powershell.aspx" target="_blank">here</a></p>
+
+<pre></pre>
+:ET

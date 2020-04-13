@@ -1,0 +1,40 @@
+I"g	<p>A SMA (Service Management Automation) infrastructure has typically two different service accounts being used for running the basic environment.</p>
+
+<p>**Runbook Service Account<br />
+** This account is used to execute the Runbook Worker Service, to compile and launch the workflows (runbooks)</p>
+
+<p>**Web Service App Pool Account<br />
+** The account is used as the web application pool identity of SMA REST web service</p>
+
+<p> </p>
+
+<h2 id="changing-the-runbook-service-account">Changing the Runbook Service Account</h2>
+
+<ul>
+  <li>Stop all “Runbook Service” services on any runbook workers</li>
+  <li>Assign the new user account to all “Runbook Service” services</li>
+  <li>Change the registry key<br />
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ServiceManagementAutomation\RunbookWorker\ServiceAccount  accordingly<br />
+(<em>although I’ve found that it works without changing this value, I’d still recommend to do it so</em>)</li>
+  <li>Add the new user to the local group  “Performance Monitor Users” on each runbook worker, remove the old account</li>
+  <li>Add the user as a new SQL login on the SQL server hosting the SMA database and assign “dbwowner” rights on the SMA database</li>
+  <li>Start all “Runbook Service” services on any runbook workers</li>
+</ul>
+
+<p> </p>
+
+<h2 id="changing-the-app-pool-service-account">Changing the app pool service account</h2>
+
+<ul>
+  <li>Stop the SMA IIS application pool on any node hosting the SMA web service</li>
+  <li>Change the SMA app pool identity on any node hosting the SMA web service</li>
+  <li>Add the the new user to the local group  “Performance Monitor Users” on any node hosting the SMA web service, remove the old account</li>
+  <li>Start the IIS application pool</li>
+</ul>
+
+<h3 id="general-permission-considerations"> General permission considerations</h3>
+
+<p>Neither to the runbook service account, nor to the app pool account you should assign extended privileges. The service accounts does not require special permissions, beside the membership of the local Performance Monitor Users group and the right to “logon as a service”. To work with permissions, use SMA credential assets instead and tend to use different credentials for different target systems and services. This prevents you having a “all in one master hero service account”.</p>
+
+<p>Keep calm and automate the world…..</p>
+:ET

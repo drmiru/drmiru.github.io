@@ -1,0 +1,24 @@
+I"4<p>This post describes how to configure a VMware Workstation 6.5 VM to run an ESX 3.x Hypervisor inside it.<br />
+Follow the steps below…</p>
+
+<p>– Create a new Linux VM<br />
+– Add 768 MB RAM or more<br />
+– Add 1-2 CPUs<br />
+– Add a local SCSI disk with at least 4GB</p>
+
+<p>Edit the .vmx file and add the following lines:</p>
+
+<p>### ESX on Workstation Add on<br />
+ethernet0.virtualDev = “e1000”<br />
+ethernet0.connectionType = “bridged”<br />
+ethernet0.adressType = “generated”<br />
+monitor_control.restrict_backdoor = TRUE<br />
+monitor_control.vt32 = TRUE<br />
+monitor.virtual_exec = hardware<br />
+### End ESX on Workstation Add on</p>
+
+<p>– save the .VMX File and start the VM<br />
+– boot from ISO file or physical CDROM to install your copy of ESX 3.x</p>
+
+<p>You’re done!</p>
+:ET

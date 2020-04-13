@@ -1,0 +1,2 @@
+I"<p>Windows Defender Application Guard (Application Guard) was introduced with Windows 10 build 1709  and is designed to protect from current and future attacks against internet exposed applications such as Edge or Office applications. WDAG leverages Microsoft virtualization and hardware isolation technology, in fact Hyper-V containers to isolate applications from the operating system. Hyper-V containers seem to be an ideal solution for this as the have a more secure virtualization abstraction layer than classic container.</p>
+:ET

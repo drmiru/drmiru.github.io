@@ -1,0 +1,44 @@
+I"6<p><strong>Starting point</strong></p>
+
+<p>I recently had a customer asking me how to configure client to server content redirection on XenApp 6.5. After listening to his requirements I noticed that plain client to server redirection will not fit all the reqs. He requested that if users click on URLs or links within documents or applications, the request should be forwarded to a published browser on a XenApp farm. A filter based on URLs should be available to decide whether a URL request will be served by the published browser rather than with the local browser. The solution should work with both current Citrix Receiver types (Native and Enterprise PNagent).</p>
+
+<p><strong>The Solution</strong></p>
+
+<p>I created a small solution called “URLRedirect” which does exactly that. The solution consists of the following components:</p>
+
+<ul>
+  <li>A reg file which creates a new custom application named <span style="color: #0000ff;">CTX.HTTP</span> type in HKEY_CLASSES_ROOT</li>
+  <li>two reg files which set the default program for opening http/https requests to <span style="color: #0000ff;">CTX.HTTP</span> application</li>
+  <li>A powershell script which contains the main intelligence to launch the URL either via local or published browser</li>
+  <li>A text file to include / exclude URLs</li>
+</ul>
+
+<p> </p>
+
+<p><strong>Installation / Configuration</strong></p>
+
+<p>As this is version 1.0, there are still some things to do manually :-), I promise that I’ll create an installer / uninstaller  some day</p>
+
+<ul>
+  <li>Download URLRedirect <a title="URLRedirect download" href="http://www.miru.ch/downloads/URLRedirect.zip" target="_blank">HERE</a></li>
+  <li>Extract the zip to a folder on the client of your choice (if you choose <strong><span style="color: #008000;">C:\Scripts\URLRedirect</span></strong> there is not much customization for you)</li>
+  <li>Edit the <span style="color: #008000;"><strong>URLRedirect.ps1</strong></span> Powershell script to fit your needs (static constants)</li>
+  <li><a title="how-to-bulk-unblock-files-in-windows-7" href="http://nicholasrogoff.wordpress.com/2010/09/01/how-to-bulk-unblock-files-in-windows-7-or-server-2008/" target="_blank">Unblock</a> the Powershell script and set the PS <a href="http://technet.microsoft.com/en-us/library/dd347628.aspx" target="_blank">execution policy</a> to “RemoteSigned”, as a more secure alternative you can also <a href="http://www.hanselman.com/blog/SigningPowerShellScripts.aspx" target="_blank">sign</a> the Script.</li>
+  <li>Edit the <strong><span style="color: #008000;">HKCR_CTX.HTTP.reg</span></strong> file (adapt the path to the powershell script  where you extracted it)</li>
+  <li>Edit the <span style="color: #008000;"><strong>urls.txt</strong></span> to either define which URLs should be included or excluded from being redirected (depending on what you set for $filtermode in the PS script)</li>
+  <li>Apply the <strong><span style="color: #008000;">HKCR_CTX.HTTP.reg</span></strong> as an administrative user</li>
+  <li>Apply <strong><span style="color: #008000;">HKCU_shell_http.reg</span></strong> and <strong><span style="color: #008000;">HKCU_shell_https.reg</span></strong> to all users using any profile management or scripting solution</li>
+</ul>
+
+<p><strong>Disclaimer</strong></p>
+
+<p>The solution has been successfully tested with Receiver 3.2 and ReveiverEnterprise 3.2 on Windows 7 together with XenApp 6.5 and Web Interface 5.4, but it may also work for lower versions. Currently it does NOT work with PNAgent together with Citrix StoreFront Services.<br />
+The solution is provided as is without any warranty or support. You use it at your own risk.</p>
+
+<p><strong>Bug Reporting</strong></p>
+
+<p>If you notice any bugs or if you have nice ideas or feature requests, tweet me @DRMIRU, or write me an email to: michael(at)miru.ch</p>
+
+<p>**<br />
+**</p>
+:ET

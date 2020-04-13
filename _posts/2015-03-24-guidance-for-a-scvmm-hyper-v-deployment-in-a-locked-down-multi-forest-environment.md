@@ -32,7 +32,7 @@ Multi-forest in general is documented, but not the specific trust authentication
 
 ### Environment
 
-![](http://www.miru.ch/wp-content/uploads/2015/03/032415_2016_Guidancefor1.png) 
+![](../images/2015/03/032415_2016_Guidancefor1.png) 
 
 ### 
 
@@ -75,7 +75,7 @@ For detailed information on that see the following TechNet documentation: <https
         <span style="font-size: 10pt;">Unable to verify RunAs credentials account for Host Management with error: ID 405<br /> </span></p> 
         
         <p>
-          <img alt="" src="http://www.miru.ch/wp-content/uploads/2015/03/032415_2016_Guidancefor2.png" /></td> 
+          <img alt="" src="../images/2015/03/032415_2016_Guidancefor2.png" /></td> 
           
           <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
             <span style="font-size: 10pt;">Grant the RunAs account from Forest B &#8220;allowed to authenticate&#8221; permission on the SCVMM computer object in Forest A</span>
@@ -139,7 +139,7 @@ For detailed information on that see the following TechNet documentation: <https
                         <span style="font-size: 10pt;">Unable to add Hyper-V Hosts and Clusters with error:<br /> </span></p> 
                         
                         <p>
-                          <img alt="" src="http://www.miru.ch/wp-content/uploads/2015/03/032415_2016_Guidancefor3.png" /></td> 
+                          <img alt="" src="../images/2015/03/032415_2016_Guidancefor3.png" /></td> 
                           
                           <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
                             <ul>

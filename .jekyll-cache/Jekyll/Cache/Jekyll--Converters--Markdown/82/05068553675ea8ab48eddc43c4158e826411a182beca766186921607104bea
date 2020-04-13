@@ -1,0 +1,2 @@
+I"<p>Recently I received a support request from a customer – backup jobs of Azure VMs where failing. Some of the jobs where still working as expected, while others suddenly where not. The following error message was logged in the job log:<figure class="wp-block-image"></figure></p>
+:ET

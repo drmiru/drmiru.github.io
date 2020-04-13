@@ -1,0 +1,69 @@
+I"<p><img src="http://www.miru.ch/wp-content/uploads/2013/04/040213_1942_HowtheKerbe1.jpg" alt="" /></p>
+
+<p>It’s like a little but really mean ghost which seems to follow me over all my IT career, it’s called “kerberos token”. I’ve debugged a lot of kerberos errors the last years, but the overall evergreen is a parameter called “MaxTokenSize”. Depending on the Windows OS version it has a default value of 12’000 bytes(WinXP,Vista,Win7) and 48’000 bytes (Win8). The kerberos token size grows depending on the following facts:</p>
+
+<ul>
+  <li>Amount of direct and indirect Domain group memberships</li>
+  <li>Whether user has or has not a SID history and if so, the number of entries</li>
+  <li>Authentication method (username/password or multifactor like Smart Cards)</li>
+  <li>User is enabled for Kerberos delegation</li>
+</ul>
+
+<p>You can “calculate” or in other, better words, “estimate” the kerberos token size with the following formula. (Quoted from: <a href="http://support.microsoft.com/kb/327825/en-us">KB327825</a>)</p>
+
+<p><span style="color: black; font-size: 10pt;"><em>TokenSize = 1200 + 40d + 8s</em><br /> </span></p>
+
+<p><span style="color: black; font-size: 10pt;"><em>This formula uses the following values:</em><br /> </span></p>
+
+<ul>
+  <li><span style="color: black; font-size: 10pt;"><em>d: The number of domain local groups a user is a member of plus the number of universal groups outside the user’s account domain that the user is a member of plus the number of groups represented in security ID (SID) history.</em><br /> </span></li>
+  <li><span style="color: black; font-size: 10pt;"><em>s: The number of security global groups that a user is a member of plus the number of universal groups in a user’s account domain that the user is a member of.</em><br /> </span></li>
+  <li><span style="color: black; font-size: 10pt;"><em>1200: The estimated value for ticket overhead. This value can vary, depending on factors such as DNS domain name length, client name, and other factors.</em><br /> </span></li>
+</ul>
+
+<p><span style="font-size: 14pt;"><strong>Things that may occur, if the size exceeds the OS defined values: </strong><br /> </span></p>
+
+<ul>
+  <li>Domain Join does not work (“<span style="color: red;">not enough storage to perform this operation</span>“, and other possible weird error messages)</li>
+  <li>Kerberos delegation fails</li>
+  <li>Access and single sign on to kerberos enabled services fails and NTLM fall back is showing a logon pop up box</li>
+  <li>WinRM / Remote Powershell sessions fail to establish with the following error: “<span style="color: red;">The WinRM client cannot process the request. It cannot determine the content type of the HTTP response from the destination computer</span>“</li>
+</ul>
+
+<p><span style="font-size: 12pt;"> </span><span style="font-size: 14pt;"><strong>How to increase the default values?</strong></span></p>
+
+<p>(Requires a reboot after modification)<br />
+The supported max value is 65335. However you should consider methods to reduce the token size, rather than use the max value everywhere.</p>
+
+<p>**<span style="text-decoration: underline;">For basic services</span><br />
+** Add the following Registry Key to all your Windows clients and servers</p>
+
+<pre>New-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\LSA\Kerberos\Parameters -Name "MaxTokenSize" -Value 65335 -PropertyType "DWORD"</pre>
+
+<p>**<span style="text-decoration: underline;">For WinRM / Remote Powershell and other HTTP based services</span><br />
+** Add the following Registry value to all your servers</p>
+
+<pre>New-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Services\HTTP\Parameters -Name "MaxFieldLength" -Value 65335 -PropertyType "DWORD" New-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Services\HTTP\Parameters -Name "MaxRequestBytes" -Value 40000 -PropertyType "DWORD"</pre>
+
+<p> </p>
+
+<p><span style="font-size: 12pt;"><strong>Other useful resources:</strong></span></p>
+
+<p><span style="font-size: 10pt;">(Quoted from ShaneC33’s Blog)<br /> </span></p>
+
+<p><span style="font-size: 10pt;">How to use Group Policy to add the MaxTokenSize registry entry to multiple computers<br /> </span></p>
+
+<p><a href="http://support.microsoft.com/kb/938118/EN-US"><span style="color: blue; font-size: 10pt; text-decoration: underline;">http://support.microsoft.com/kb/938118/EN-US</span></a><span style="font-size: 10pt;"><br /> </span></p>
+
+<p><span style="font-size: 10pt;">New resolution for problems with Kerberos authentication when user belongs to many groups<br /> <a href="http://support.microsoft.com/kb/327825"><span style="color: blue; text-decoration: underline;">http://support.microsoft.com/kb/327825</span></a><br /> </span></p>
+
+<p><span style="font-size: 10pt;">“HTTP 400 – Bad Request (Request Header too long)” error in Internet Information Services (IIS)<br /> <a href="http://support.microsoft.com/default.aspx?scid=kb;EN-US;2020943"><span style="color: blue; text-decoration: underline;">http://support.microsoft.com/default.aspx?scid=kb;EN-US;2020943</span></a><br /> </span></p>
+
+<p><span style="font-size: 10pt;">Users who are members of more than 1,015 groups may fail logon authentication<br /> <a href="http://support.microsoft.com/kb/328889/"><span style="color: blue; text-decoration: underline;">http://support.microsoft.com/kb/328889/</span></a><br /> </span></p>
+
+<p><span style="font-size: 10pt;">Group Policy may not be applied to users belonging to many groups<br /> <a href="http://support.microsoft.com/kb/263693/"><span style="color: blue; text-decoration: underline;">http://support.microsoft.com/kb/263693/</span></a><br /> </span></p>
+
+<p> </p>
+
+<p><span style="font-size: 12pt;"><br /> </span></p>
+:ET

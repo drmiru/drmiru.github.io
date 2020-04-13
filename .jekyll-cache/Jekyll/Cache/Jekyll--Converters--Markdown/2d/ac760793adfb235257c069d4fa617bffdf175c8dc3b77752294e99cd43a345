@@ -1,0 +1,71 @@
+I"3<p> </p>
+
+<p>After two months of blogging-abstinence (mainly caused by finishing my MCSE private cloud certification) I’m starting with a series of blog posts about experiences I made within Hyper-V projects. First of all I must admit that I’ve been a big VMware enthusiast for the past years. (always fighting in a good mood with <a href="http://www.aidanfinn.com/">Aidan Finn</a>, AKA Mr. Hyper-V <span style="font-family: Wingdings;">🙂</span>) …But since I’ve seen the potential of Server 2012 together with the System Center 2012 product family I had to look closer than I did on Hyper-V 2008 R2. Currently I’m involved in projects where using Hyper-V as an alternative to VMware or replacing VMware is the use case, including migration and transition path of course.</p>
+
+<p>In this post I’m covering <strong>Hyper-V replica</strong> and its replication traffic. If you want to know what Hyper-V replica does and how it works I recommend to read <a href="http://www.aidanfinn.com/?p=12147">Aidan’s post</a>.</p>
+
+<p><strong>Scenario:</strong></p>
+
+<ul>
+  <li>Hyper-V Cluster with replica broker role enabled, replicates a VM named VM1 to a Hyper-V standalone host in a DR site</li>
+  <li>You want the replication traffic to use the Live-Migration Network in the main site.</li>
+</ul>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2013/03/032213_0615_Howtouseade1.jpg" alt="" /></p>
+
+<p> </p>
+
+<p>Some short facts before we go deeper.</p>
+
+<ul>
+  <li>Hyper-V Replica uses http/https protocol to transfer block changes occurring within virtual machine disk files.</li>
+  <li>By default it uses Kerberos mutual authentication between a pair of Hyper-V hosts (meaning Replica-Source and Replica-Destination host)</li>
+</ul>
+
+<p>Now if you look at the two facts above you’ll notice that it might not be too easy to separate the replica traffic if using Kerberos authentication. How come? Kerberos requires proper DNS and Active Directory configuration to work. Enabling a VM for replication involves the definition of the target host by name / fqdn. Usually your target host name will respond with the IP address bound to the management interface / vSwitch / virtual network adapter, wherever you defined the primary IP. Replication traffic is sent via the management interface from the source host to the management interface of the destination host. What we want is to use the live migration VLAN for replication traffic in this example. While this may sound weird when thinking about WAN connections, it may be more interesting when replication lots of virtual machines within the same data center to a recovery or repro-environment. You really not want to have your management VLAN filled with replication traffic.</p>
+
+<p><span style="color: #5b9bd5; font-size: 12pt;"><strong><span style="font-family: Wingdings;">–&gt; </span>To tweak the replication traffic occurring on a different VLAN, you have to use certificate based mutual authentication, where you can “fake” the name resolution between source and destination replica hosts.<br /> </strong></span></p>
+
+<p>Refer to these blog post on how to create and use certificates for Hyper-V replica (also covering replica broker scenario for clusters)</p>
+
+<p><a href="http://blogs.technet.com/b/virtualization/archive/2012/03/13/hyper-v-replica-certificate-requirements.aspx">http://blogs.technet.com/b/virtualization/archive/2012/03/13/hyper-v-replica-certificate-requirements.aspx</a></p>
+
+<p><a href="http://blogs.technet.com/b/virtualization/archive/2012/07/02/requesting-certificates-for-hyper-v-replica-from-cas.aspx">http://blogs.technet.com/b/virtualization/archive/2012/07/02/requesting-certificates-for-hyper-v-replica-from-cas.aspx</a></p>
+
+<p> </p>
+
+<p>**How to proceed….<br />
+**</p>
+
+<p><strong>This is a short workflow checklist for what you have to do</strong></p>
+
+<ul>
+  <li>Edit the hosts file to add records for the destination host (either the replica broker network name or the standalone Hyper-V host)<br />
+The host resolution should point to an IP on the Live Migration or Replication Network on the destination host / replica broker</li>
+  <li>If either source or destination or both are cluster nodes, add the replica broker role first (choose the hostname which will be resolved to the replication VLAN)</li>
+  <li>Create Certificates for source and destination replica server (if using clusters be sure to add the network name of the replica broker resource as a subject alternative name. You can also use a wildcard certificate)</li>
+  <li>Import the certificates and if required private root CA certificates on each hyper-V host (local machine cert store)</li>
+  <li>
+    <div>
+  If using either private, self-signed or certificates, add the following registry value to all Hyper-V hosts<br /> HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\Replication<br /> DisableCertRevocationCheck = 1 (REG_DWORD)
+</div>
+  </li>
+  <li>
+    <div>
+  Enable the destination host replica settings to accept replications from the replica broker&#8211;&gt; Now you should be able to enable a VM for replication while having the replication traffic handled by the LM interfaces. I've tested this configuration with physical separation as well as with a converged fabric configuration.&lt;/p&gt;
+</div>
+  </li>
+</ul>
+
+<p> </p>
+
+<p>Other helpful resources:</p>
+
+<p><a href="http://blogs.technet.com/b/virtualization/archive/2012/03/27/why-is-the-quot-hyper-v-replica-broker-quot-required.aspx">http://blogs.technet.com/b/virtualization/archive/2012/03/27/why-is-the-quot-hyper-v-replica-broker-quot-required.aspx</a></p>
+
+<p><a href="http://blogs.technet.com/b/virtualization/archive/2012/04/09/configure-your-replica-server-to-receive-replication-traffic-from-specific-primary-server-s.aspx">http://blogs.technet.com/b/virtualization/archive/2012/04/09/configure-your-replica-server-to-receive-replication-traffic-from-specific-primary-server-s.aspx</a></p>
+
+<p><a href="http://blogs.technet.com/b/virtualization/archive/2012/06/15/interpreting-replication-health-part-1.aspx">http://blogs.technet.com/b/virtualization/archive/2012/06/15/interpreting-replication-health-part-1.aspx</a></p>
+
+<p><a href="http://blogs.technet.com/b/virtualization/archive/2012/06/21/interpreting-replication-health-part-2.aspx">http://blogs.technet.com/b/virtualization/archive/2012/06/21/interpreting-replication-health-part-2.aspx</a></p>
+:ET

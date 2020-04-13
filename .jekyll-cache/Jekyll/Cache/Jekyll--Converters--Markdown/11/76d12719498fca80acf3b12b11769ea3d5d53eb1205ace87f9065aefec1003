@@ -1,0 +1,5 @@
+I"&<p>The traditional Windows BSOD has turned into a rarely occuring phenomen, sometimes you might see still see it. Didn’t you crossed your hands over your head and thought… What the f*** shall I do with this information on the bluescreen?<br />
+I’ve collected some useful links which will help you to get a knowledge of analyzing crash dumps (system and application crashes). Finally it shows you which component was responsible to crash your system / application.<br />
+An important note here:<br />
+MOST of user executed applications can’t be responsible for a system crash cause they are executed in the user mode of the operating system memory. So mainly kernel mode sw/hw drivers are causing your winbox to show a BSOD. Instead of asking your users, “which application did you start before it crashed?” you better have a look into the following pages and make yourself fit in basics of crash dump analysis. A special thank here to Mark Russinovich, Dmitri Vostokov and Lalit Kaushal for sharing their tremendous knowledge about this stuff.</p>
+:ET

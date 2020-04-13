@@ -1,0 +1,8 @@
+I"�<p>Somebody has stolen an IP address which belongs to one of your vSphere guests and you have an IP conflict reported in Windows Event Log? Just note the suspicious MAC and execute the following statement within vSphere PowerCLI</p>
+
+<pre>Get-VM | Get-NetworkAdapter | ? {$_.MacAddress -match '<strong>00:50:56:AF:00:61</strong>'} | % {get-vm -Id (($_.Id).split('/')[0])}</pre>
+
+<p> </p>
+
+<p> </p>
+:ET

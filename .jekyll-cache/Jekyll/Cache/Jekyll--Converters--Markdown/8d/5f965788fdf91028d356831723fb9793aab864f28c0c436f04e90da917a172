@@ -1,0 +1,79 @@
+I"�<p>Extending Cluster Shared Volumes is a common task which is required from time to time. Although my favorite action is to create a new volume if existing ones lack in free space, sometimes there’s no way around extending an existing volume. I’m really happy Microsoft did listen on our feedback we provided on Storage Replica, in the early stages of Server 2016 TP version, where we yelled for the feature (online-extending a replicated volume).</p>
+
+<p>By default, online extension of replicated volumes is disabled. It’s a “per Replication Group” setting which has to be enabled via PowerShell.</p>
+
+<p>In the following example, we’re going to extend a volume, based on a virtual disk of a S2D (Storage Spaces Direct) cluster, which has some volumes replicated to another S2D Cluster using the Cluster-to-Cluster SR scenario.</p>
+
+<p><a href="http://www.miru.ch/wp-content/uploads/2017/02/sr_clustertocluster.png"><img class="alignleft size-medium wp-image-4856" src="http://www.miru.ch/wp-content/uploads/2017/02/sr_clustertocluster-300x215.png" alt="" width="300" height="215" srcset="http://www.miru.ch/wp-content/uploads/2017/02/sr_clustertocluster-300x215.png 300w, http://www.miru.ch/wp-content/uploads/2017/02/sr_clustertocluster.png 427w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>To enable volume resize, the feature has to be activated on the affected source Replication Group</strong></p>
+
+<pre class="">Set-SRGroup -ComputerName S2DCL01 -Name 'SourceRG01' -AllowVolumeResize $true</pre>
+
+<p><strong>Next, we extend the virtual disk on the source cluster as well as on the destination cluster</strong></p>
+
+<pre class="">Get-VirtualDisk -FriendlyName vdisk1 -CimSession S2DCL01 | Resize-VirtualDisk -Size 400GB
+
+Get-VirtualDisk -FriendlyName vdisk1 -CimSession S2DCL02 | Resize-VirtualDisk -Size 400GB</pre>
+
+<p><span style="color: #ff0000;">!We have to make sure, that both of the virtual disks have exactly the same size.</span></p>
+
+<p>If the virtual disks are “multiresilient” disks, the resize command is as follows:</p>
+
+<pre class="">Get-VirtualDisk -FriendlyName vdisk1 -CimSession S2DCL01 | Get-StorageTier | ? ResiliencySettingName -eq 'Performance' | Resize-StorageTier -Size 100GB</pre>
+
+<pre class="">Get-VirtualDisk -FriendlyName vdisk1 -CimSession S2DCL01 | Get-StorageTier | ? ResiliencySettingName -eq 'Capacity' | Resize-StorageTier -Size 800GB</pre>
+
+<p><strong>Get the supported max size of the source volume partition</strong></p>
+
+<pre class="">$Partition = Get-VirtualDisk -FriendlyName vdisk1 -CimSession S2DCL01 | Get-Disk | Get-Partition | ? {$_.Type -eq 'Basic'}
+
+$MaxSize = ($Partition | Get-PartitionSupportedSize).SizeMax</pre>
+
+<p> </p>
+
+<p><strong>Resize the volume partition on the source</strong></p>
+
+<pre class="">$Partition | Resize-Partition -Size $MaxSize</pre>
+
+<h3 id="a-few-side-notes">A few side notes</h3>
+
+<ul>
+  <li>The destination volume / partition doesn’t have to be resized, as the change gets replicated on the destination volume</li>
+  <li>
+    <p>After the extend process it’s highly recommended to disable volume resizing again, just because of the fact some administrator might extend a volume without knowing, that it is part of a SR-Partnership. &lt;pre class=""&gt;Set-SRGroup -ComputerName S2DCL01 -Name ‘SourceRG01’ -AllowVolumeResize $false&lt;/pre&gt;</p>
+  </li>
+  <li>The above example uses WinRM from a management server, hence the steps also work for Nano Server</li>
+  <li>
+    <p>SR CMDLETs have to be installed on the management server: &lt;pre class=""&gt;Add-WindowsFeature RSAT-Storage-Replica&lt;/pre&gt;</p>
+  </li>
+  <li>If volume resizing is not enabled, you can extend the virtual disk, but as soon as you want to extend the CSV partition, you’ll receive the following CIM exception:<br />
+<span style="color: #ff0000;">Resize-Partition : Failed</span><br />
+<span style="color: #ff0000;">Activity ID: {a5fa44ea-d115-4cb8-b535-f7c3fdab14cd}</span><br />
+<span style="color: #ff0000;">At line:1 char:76</span><br />
+<span style="color: #ff0000;">+ … ession S2DCL01 | Get-Partition) | Resize-Partition -Size 377822859264</span><br />
+<span style="color: #ff0000;">+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span><br />
+ <span style="color: #ff0000;">+ CategoryInfo : NotSpecified: (StorageWMI:ROOT/Microsoft/…/MSFT_Partition) [Resize-Partition], CimExce</span><br />
+ <span style="color: #ff0000;">ption</span><br />
+ <span style="color: #ff0000;">+ FullyQualifiedErrorId : StorageWMI 4,Resize-Partition</span><br />
+ <span style="color: #ff0000;">+ PSComputerName : S2DCL01</span></li>
+</ul>
+
+<p>Hope this prevents some headaches.</p>
+:ET

@@ -1,0 +1,40 @@
+I"<figure class="wp-block-image"><img src="http://www.miru.ch/wp-content/uploads/2020/03/FunctionApp_loves_KeyVault.png" alt="" class="wp-image-5212" /></figure>
+
+<p>Storing secrets, keys and certificates securely is not an optional discipline. Code, wherever it lands, must never include any clear text secrets. Azure Key Vault provides a secure way to store customer managed encryption keys, credentials and certificates.</p>
+
+<p>Using Azure Functions you have several ways to access secrets from an Azure Key Vault. No matter which option you choose, the Function App needs access to the Key Vault. This is accomplished with a Key Vault Access Policy. I highly recommend to provision a MSI (managed service identity) for your Function App, so the access policy to read and list secrets in Key Vault can be assigned to the MSI.</p>
+
+<h3 id="option-1-get-key-vault-secret-at-runtime-of-the-function">Option 1: Get Key Vault Secret at runtime of the function</h3>
+
+<p>In this example I’m going to show how to get a Key Vault secret via PowerShell.</p>
+
+<pre class="wp-block-code"><code>#Get Access Key for Eventhub Namespace from KeyVault
+Write-Host "Getting secret: $eventHubKeySecret from key vault: $keyVaultName"
+$eventHubkey = (Get-AzKeyVaultSecret -VaultName $keyVaultName -SecretName $eventHubKeySecret).SecretValueText
+if (!$eventHubkey) {
+    throw "Unable to get EventHub Access Key from KeyVault"
+}</code></pre>
+
+<p>Key Vaults are billed based on API operations (eg. get key/secret). If your function is being called billions of times a month, you might have to think about the resulting costs. To limit the amount of key operations against your vault, you have another option:</p>
+
+<h3 id="option-2-get-key-vault-secret-on-function-app-startup-using-application-settings">Option 2: Get Key Vault Secret on Function App startup using application settings</h3>
+
+<p>Another way is to reference the URI of the secret in the application settings of the function app, so the secrets get loaded, at startup time of the Function App.</p>
+
+<pre class="wp-block-code"><code>mySecret = @Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret;SecretVersion=ec96f02080254f109c51a1f14cdb1931)</code></pre>
+
+<p>As any other app setting it can be referenced as an environment variable inside the function.</p>
+
+<p>$mySecret = $ENV:mySecret</p>
+
+<p>A few restrictions apply with this method:</p>
+
+<ul>
+  <li>Only system managed MSI are supported</li>
+  <li>Key Vault Firewall settings, limiting network access (e.g. to the Function App) are currently not supported</li>
+</ul>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Both options provide a way to securely store and access KeyVault secrets and keys from within a Function App. As Always, it’s recommended to have an automatic rollover procedure for keys and secrets.</p>
+:ET

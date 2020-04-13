@@ -1,0 +1,2 @@
+I"<p>Deleting a Logical Network within VMM can be painful if it’s already configured end-to-end, meaning all components plugged together and Hyper-V Hosts equipped with a Logical Switch accordingly. If you’re not an expert on how the different components are plumbed together, you’ll probably waste a lot of time digging the various dependencies. To save also time for my own while playing in LAB and Demo environments I created a little Powershell script that does all the work for me. It performs the following steps.</p>
+:ET

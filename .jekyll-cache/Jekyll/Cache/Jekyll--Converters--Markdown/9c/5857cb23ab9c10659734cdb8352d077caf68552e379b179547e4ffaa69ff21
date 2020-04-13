@@ -1,0 +1,32 @@
+I"Q<p>Designing and deploying a virtual desktop environment can be a pai* in the a** if you do not watch carefully the most common keypoints, errors and misunderstandings.</p>
+
+<ul>
+  <li>A virtual desktop is not cheaper than a physical one if you calculate the investments</li>
+  <li>You still need to manage your endpoint even if it’s a thin client. If you plan to use thin clients, keep an eye on the central management at least.</li>
+  <li>Because you have to deliver the desktop via one of the well known remote display protocols (RDP, ICA, PCoIP) you also have to deal with common usability issues as with traditional server based computing. If your recent SBC project did fail, you have a good chance that your VDI project will fail too. So check the reasons why SBC dit not succeed first.</li>
+  <li>A virtual desktop is not generally faster than a local workstation only because it runs on high performant server hardware</li>
+  <li>Carefully check your requirements (why do we need to deploy virtual desktops, what are the exact use cases, who are the stakeholders of such a project)</li>
+  <li>Check if you have ressource intensive applications and identify the business criticality</li>
+  <li>watch the skills of your administrators<br />
+keep in mind that your admins have to deal with a couple  of different technologies such as:<br />
+– server / client hypervisors<br />
+– network and storage design / scaling<br />
+– application delivery / virtualization / streaming<br />
+– user environment and profile management<br />
+You could think, ok, no big deal, we had these topics since we are born.. but trust me in a VDI environment, everything is a kind of different.</li>
+  <li>choose the right VDI broker product which suits your requirements read the ultimate comparison matrix <a href="http://www.miru.ch/?p=240" target="_self">here</a></li>
+  <li>deploy a profile management solution</li>
+  <li>deploy a application virtualization solution (tradidional SW deployment will kill your nervs in a pooled VDI environment)</li>
+  <li>Don’t calculate with a base image for all users of 1v CPU and 512MB RAM, come on, your users aren’t just starting wordpad and adobe reader in real life, or are they?</li>
+  <li>Take your time and optimize your “golden image”</li>
+  <li>If you are using XenDesktop just check these docs. They cover a lot of knowledge to keep in mind before you click the install button.<br />
+<a href="https://community.citrix.com/kits/#/kit/1067009" target="_blank">https://community.citrix.com/kits/#/kit/1067009</a><br />
+<a href="http://support.citrix.com/article/CTX126190" target="_blank">http://support.citrix.com/article/CTX126190</a><br />
+<a href="http://community.citrix.com/display/ocb/2010/09/21/Desktop+Virtualization+From+the+User+Perspective" target="_blank">http://community.citrix.com/display/ocb/2010/09/21/Desktop+Virtualization+From+the+User+Perspective</a><br />
+<a href="https://www1.gotomeeting.com/register/625937032" target="_blank">https://www1.gotomeeting.com/register/625937032</a></li>
+</ul>
+
+<p>If you do not agree with these findings feel free to comment.</p>
+
+<p>Michael</p>
+:ET

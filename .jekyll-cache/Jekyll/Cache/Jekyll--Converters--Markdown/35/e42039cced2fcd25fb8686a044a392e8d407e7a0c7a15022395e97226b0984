@@ -1,0 +1,4 @@
+I"w<p>In SQL Server 2005 and later Triggers can be more than simple T-SQL statements. You can include complete procedures and program code.<br />
+This post describes how to  create a “Common Language Runtime” Trigger on a SQL Database which fires on INSERTS into a specific table.<br />
+A CLR Trigger is a kind of stored procedure including .net compiled program code.</p>
+:ET

@@ -35,8 +35,8 @@ And here is how you run the script:
 
 <pre>RemoveLogicalNetwork.ps1 -LogicalNetworkName "LNET_LAB_01"</pre>
 
-[<img class="alignleft size-full wp-image-1259" title="RemoveLogicalNetwork" alt="" src="http://www.miru.ch/wp-content/uploads/2013/08/rmln.jpg" width="959" height="219" srcset="http://www.miru.ch/wp-content/uploads/2013/08/rmln.jpg 959w, http://www.miru.ch/wp-content/uploads/2013/08/rmln-300x68.jpg 300w" sizes="(max-width: 959px) 100vw, 959px" />](http://www.miru.ch/wp-content/uploads/2013/08/rmln.jpg)
+[<img class="alignleft size-full wp-image-1259" title="RemoveLogicalNetwork" alt="" src="../images/2013/08/rmln.jpg" width="959" height="219" srcset="../images/2013/08/rmln.jpg 959w, ../images/2013/08/rmln-300x68.jpg 300w" sizes="(max-width: 959px) 100vw, 959px" />](../images/2013/08/rmln.jpg)
 
-Get the script [**here**](http://www.miru.ch/wp-content/uploads/2013/08/RemoveLogicalNetwork.zip) and feel free to extend it or write me feedback and comments.
+Get the script [**here**](../images/2013/08/RemoveLogicalNetwork.zip) and feel free to extend it or write me feedback and comments.
 
 &nbsp;

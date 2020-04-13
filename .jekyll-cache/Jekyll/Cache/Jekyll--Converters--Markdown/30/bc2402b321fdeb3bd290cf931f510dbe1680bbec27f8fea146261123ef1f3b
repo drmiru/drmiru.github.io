@@ -1,0 +1,2 @@
+I"Q<p>In this article I’m going to highlight some of the most common multi-forest scenarios you may have to deal with operating a System Center Virtual Machine Manager. The official Technet documentation claims that multi-forests scenarios are supported using Kerberos. Unfortunately I did not find an official deep dive on that yet.</p>
+:ET

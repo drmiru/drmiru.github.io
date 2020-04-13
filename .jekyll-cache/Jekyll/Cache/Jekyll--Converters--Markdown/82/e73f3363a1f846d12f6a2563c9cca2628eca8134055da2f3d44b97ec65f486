@@ -1,0 +1,40 @@
+I"�<p>Network Watcher is a regional service that enables you to monitor and diagnose conditions at a network scenario level in, to, and from Azure. Scenario level monitoring enables you to diagnose problems at an end-to-end network level view. Network diagnostic and visualization tools available with Network Watcher help you understand, diagnose, and gain insights to your network in Azure. Network Watcher is enabled through the creation of a Network Watcher resource. This resource allows you to utilize Network Watcher capabilities.</p>
+
+<p>By default, a resource group called “NetworkWatcherRG” is created automatically, the first time you create a virtual network in your subscription. This might or might not be a desired behavior, especially when you govern your environment using Azure Policies.</p>
+
+<p>I recently came across an annoying issue with Azure Network Watcher when having Azure Policies in place that required certain tags to be submitted on resource / resource group creation.</p>
+
+<p>When trying to enable the NetworkWatcher for a new region, the request got denied:</p>
+
+<p class="has-background has-vivid-red-background-color">
+  Resource &#8216;NetworkWatcherRG' was disallowed by policy
+</p>
+
+<p>The reason for this, the Network Watcher is a hidden resource, but still it is a resource which has to live inside a resource group. Microsofts automatically created a resource group with the name “NetworkWatcherRG”. So first, the name of the resource group is not compliant with my naming standards, secondly I’m enforcing certain tags to be set, when a resource group is created. That’s why this failed.</p>
+
+<h2 id="how-to-make-it-the-compliant-way">How to make it the “compliant” way.</h2>
+
+<h3 id="1-disable-automatic-creation-of-network-watcher">1. Disable automatic creation of Network Watcher</h3>
+
+<p class="has-background has-luminous-vivid-amber-background-color">
+  Disclaimer! Once you opted out of the automatic creation, you have to contact support to have it back -opted in&#8221;
+</p>
+
+<p><strong>PowerShell</strong></p>
+
+<pre class="wp-block-preformatted">Register-AzProviderFeature -FeatureName DisableNetworkWatcherAutocreation -ProviderNamespace Microsoft.Network
+Register-AzResourceProvider -ProviderNamespace Microsoft.Network </pre>
+
+<p><strong>Azure CLI</strong></p>
+
+<pre class="wp-block-preformatted">az feature register --name DisableNetworkWatcherAutocreation --namespace Microsoft.Network
+az provider register -n Microsoft.Network </pre>
+
+<h3 id="2-automate-network-watcher-instance-creation">2. Automate Network Watcher instance creation</h3>
+
+<p>Whatever process and tools you choose, ensure every subscription gets his resource group for the network watcher instances. I’d recommend to choose the resource group where you put your other network core resources in, such as network gateways and firewalls. I’m using Azure Blueprints to ensure, every new subscription get’s the basic resources and policies assigned.<figure class="wp-block-image"></figure></p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2019/12/networkwatcher02.png" alt="" class="wp-image-5186" srcset="http://www.miru.ch/wp-content/uploads/2019/12/networkwatcher02.png 906w, http://www.miru.ch/wp-content/uploads/2019/12/networkwatcher02-300x43.png 300w, http://www.miru.ch/wp-content/uploads/2019/12/networkwatcher02-768x109.png 768w" sizes="(max-width: 906px) 100vw, 906px" /> &lt;/figure&gt;</p>
+
+<p>You can find an example blueprint to achieve this in my Github repo <a href="https://github.com/drmiru/AzureBlueprints/tree/master/blueprints/NetworkWatcher" target="_blank" rel="noreferrer noopener" aria-label="here (opens in a new tab)">here</a></p>
+:ET

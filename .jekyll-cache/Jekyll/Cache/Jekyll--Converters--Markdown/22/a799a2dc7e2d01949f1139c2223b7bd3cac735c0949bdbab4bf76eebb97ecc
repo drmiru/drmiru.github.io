@@ -1,0 +1,2 @@
+I"<p>This is a “lessons learned” post and a follow up to an earlier post on “<a href="http://www.miru.ch/scvmm-in-multi-forest-environments/">SCVMM in multi-forest environments</a>” to keep others away from “trial and error” when integrating SCVMM with Hyper-V in a secured environment. So what does “secured” and “locked down” mean in this context? Let me first describe the environment and use case a bit. The options to change the architecture below where limited due to customer’s internal security regulations.</p>
+:ET

@@ -1,0 +1,25 @@
+I"�<p>If you use Logical Network / Logical Switch capabilities in SCVMM, and you hopefully do so ;-), then you might want to change virtual port profile / uplink port profile settings from time to time. Changes to the following properties can be made on the fly:</p>
+
+<ul>
+  <li>Security Settings</li>
+  <li>Bandwidth Settings (QoS)</li>
+  <li>Offload Settings (except SRIOV, which can’t be changed to an already deployed Logical Switch)</li>
+  <li>Uplink Port Profile load balancing / teaming mode</li>
+</ul>
+
+<p>A common misunderstanding is that VMM will propagate the changes automatically to all vNICs. When you change parameters of one ore more of the settings above, those changes will not be propagated to the VM vNICs automatically. In the mean time, the vNIC or Logical Switch compliance state changes to “not compliant”.</p>
+
+<p>How to propagate changes to all related objects?</p>
+
+<p>For virtual Network Adapters</p>
+
+<pre class="crayon-selected">Get-SCVirtualMachine | Get-SCVirtualNetworkAdapter | where-object {$_.VirtualNetworkAdapterComplianceStatus -ne "Compliant"} | Repair-SCVirtualNetworkAdapter -RunAsynchronously</pre>
+
+<p>For host Logical Switch instances</p>
+
+<pre> Get-SCVMhost | Get-SCVirtualNetwork  | where-object {$_.LogicalSwitchComplianceStatus -ne 'Compliant'} | Repair-SCVirtualNetwork -RunAsynchronously</pre>
+
+<p>Of course it might require a bit of research first, how and why the compliance state is not fulfilled, before firing of the commands above. Leaving out the repair-* CMDLETs prints out a list of the objects not in a compliant state and as well the reason for not being so.</p>
+
+<p>Hope this helps to save some time.</p>
+:ET

@@ -1,0 +1,74 @@
+I"�<h3 id="introduction">Introduction</h3>
+
+<p>Azure Pipelines is a part of Azure DevOps service portfolio. <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/index?view=vsts">Azure Pipelines</a> help you to build,configure and run your CI/CD (continuous integration / continuous delivery) processes for application development and infrastructure as code.</p>
+
+<p>While build pipelines are used to compile and create working code, deployment pipelines install or deploy the working code to a target application, web service, container or anything else which runs your code.<figure class="wp-block-image"></figure></p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2019/01/pipelines-image-designer.png" alt="" class="wp-image-5063" srcset="http://www.miru.ch/wp-content/uploads/2019/01/pipelines-image-designer.png 824w, http://www.miru.ch/wp-content/uploads/2019/01/pipelines-image-designer-300x131.png 300w, http://www.miru.ch/wp-content/uploads/2019/01/pipelines-image-designer-768x335.png 768w" sizes="(max-width: 824px) 100vw, 824px" /> &lt;figcaption&gt;image source: Microsoft&lt;/figcaption&gt;&lt;/figure&gt;</p>
+
+<h3 id="agents">Agents</h3>
+
+<p>To automatically build and release your code, you agents. For each stage (build/deploy) at least one. The agents execute the tasks you define within the pipeline definition. Therefore we speak about build-agents and release-agents. Agents provide run times for pipelines on VMs. There are various options to run a build- or release-pipeline:</p>
+
+<h4 id="microsoft-hosted-agents">Microsoft-hosted agents</h4>
+
+<p>With Microsoft-hosted agents, maintenance and upgrades are taken care of for you. Each time you run a pipeline, you get a fresh virtual machine. The virtual machine is discarded after the pipeline job has finished, either successfully or with errors. For many people this is the simplest way to build and deploy because you don’t have to care about the agents. The following operating systems can be selected as the agent os, depending on your needs and type of code you have to build or deploy.</p>
+
+<ul>
+  <li>Ubuntu 16.04 (<code class="highlighter-rouge">ubuntu-16.04</code>)</li>
+  <li>Visual Studio 2017 on Windows Server 2016 (<code class="highlighter-rouge">vs2017-win2016</code>)</li>
+  <li>macOS 10.13 (<code class="highlighter-rouge">macOS-10.13</code>)</li>
+  <li>Windows Server 1803 (<code class="highlighter-rouge">win1803</code>) – for running Windows containers</li>
+  <li>Visual Studio 2015 on Windows Server 2012R2 (<code class="highlighter-rouge">vs2015-win2012r2</code>)</li>
+</ul>
+
+<p>While this sounds like a perfect solution, there are drawbacks as with every solutions. As we don’t have access to the virtual machine, we have limited access to the underlying operating system and limited options to install stuff we might need for our pipeline tasks. Additionally, if we have to install modules and other binaries first, those steps are repeated over and over again on each subsequent run of the pipeline job, as we remember, the agent vm is discarded behind the scenes. For details on limitations for Microsoft-hosted agents see here: <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=vsts&amp;tabs=yaml#capabilities-and-limitations">Capabilities and Limitations</a></p>
+
+<h2 id="install">Self-hosted agents</h2>
+
+<p>An agent that you set up and manage on your own to run build and deployment jobs is a <strong>self-hosted agent</strong>. Running as a virtual machine they can run on-premises or on any cloud of your choice. You simply install a DevOps agent binary and connect the agent to your Azure DevOps agent pool. Self-hosted agents give you more control to install dependent software required for your build and release jobs. Again, we have several options for the operating system hosting the agent service:</p>
+
+<ul>
+  <li><a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-osx?view=vsts">macOS agent</a></li>
+  <li><a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=vsts">Red Hat agent</a></li>
+  <li><a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=vsts">Ubuntu 14.04 agent</a></li>
+  <li><a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=vsts">Ubuntu 16.04 agent</a></li>
+  <li><a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=vsts">Windows agent v2</a></li>
+</ul>
+
+<p>Self-hosted agents maximise your flexibility in terms of required, depended software and 3rd party tools you might use for your job tasks. The downside of this, you have to run and take care about the agent VMs, which is of course less cost-optimised.</p>
+
+<h4 id="agent-pools">Agent Pools</h4>
+
+<p>Self-hosted agents can be grouped into agent pools. When you create a build or release pipeline, you specify which pool it uses to run the jobs.<figure class="wp-block-image"></figure></p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2019/01/Agents-pools-Azure-Pipelines-_-Microsoft-Docs.png" alt="" class="wp-image-5066" srcset="http://www.miru.ch/wp-content/uploads/2019/01/Agents-pools-Azure-Pipelines-_-Microsoft-Docs.png 543w, http://www.miru.ch/wp-content/uploads/2019/01/Agents-pools-Azure-Pipelines-_-Microsoft-Docs-300x280.png 300w" sizes="(max-width: 543px) 100vw, 543px" /> &lt;figcaption&gt;image source: Microsoft&lt;/figcaption&gt;&lt;/figure&gt;</p>
+
+<p>Typical use cases, where you want to create agent pools are:</p>
+
+<ul>
+  <li>Segregation of duty (different teams use and manage agents)</li>
+  <li>Isolation / Security (you don’t want to share sensitive credentials and code among different teams)</li>
+  <li>Load balancing and high availability (one is still one – if it fails there is no more)</li>
+</ul>
+
+<h3 id="agents-on-azure-container-instances-aci">Agents on Azure Container Instances (ACI)</h3>
+
+<p>Recently I read a <a href="https://blogs.msdn.microsoft.com/devops/2019/01/07/azure-devops-agents-on-azure-container-instances-aci/">blog post</a> from <a href="https://social.msdn.microsoft.com/profile/M%C3%A1t%C3%A9+Barab%C3%A1s">Mate Barabas</a> on how to use ACI for DevOps Pipleines. If you don’t know about Azure Container Instances you might want to have a look at the <a href="https://docs.microsoft.com/en-us/azure/container-instances/">official docs here</a>. In short, ACI are single use purpose container instances, without any need to care about the container host os. If you do not need any orchestration for app deployment and maintenance, they provide a flexible pay-as-you-use container solution.</p>
+
+<h4 id="the-beauty-of-running-devops-agents-on-aci">The beauty of running DevOps agents on ACI</h4>
+
+<p>Having DevOps agents running on ACI is the king-way of using Self-hosted agents (IMHO). Why I like this so much? Well, it’s scalable, flexible (you can use Windows or Linux containers) and on top, it’s more cost effective because you don’t have spin up and pay virtual machine instances which bum around most of the time.</p>
+
+<h3 id="wrap-up">Wrap Up</h3>
+
+<p>Azure DevOps has a lot of flexible options to run your build and release (deployment) jobs. The pipeline definitions have jobs with tasks which have to run somewhere. Either on</p>
+
+<ul>
+  <li>Microsoft-hosted agents (on Azure)</li>
+  <li>Self-hosted agents (on-premises or on any cloud)</li>
+  <li>Self-hosted agent running on ACI</li>
+</ul>
+
+<p>Hope to have you back for later posts, where I’m going to cover Azure DevOps Pipelines in more detail. Stay tuned!</p>
+:ET

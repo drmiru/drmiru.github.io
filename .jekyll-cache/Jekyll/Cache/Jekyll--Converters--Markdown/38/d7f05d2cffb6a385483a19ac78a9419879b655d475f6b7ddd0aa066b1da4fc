@@ -1,0 +1,62 @@
+I"(<p>This week i decided to take myself into a Hyper-V installation running on a Server 2008 R2 SP1 Core. To share my experience and to conserve my own knowledge I’d like to share my personal experiences in this blog post.</p>
+
+<h1 id="the-start-over">The start over</h1>
+
+<p>For each of you who haven’t seen a core server after initial image deploy, I’ve captured the scree after changing the admin password.</p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2011/06/060611_1944_InstallingH13.png" alt="" width="510" height="384" /></p>
+
+<h2 id="configuring-networking">Configuring Networking</h2>
+
+<p>List interfaces and note down the IDX numbers</p>
+
+<p><span style="font-family: Consolas;"><span style="background-color: silver;">Netsh interface ipv4 show interfaces</span><br /> </span></p>
+
+<p>Set the IP addess for the management interface</p>
+
+<p><span style="font-family: Consolas; background-color: silver;">Netsh interface ipv4 set address name=”21″ address=10.2.1.140 mask=255.255.255.0 gateway=10.2.1.1<br /> </span></p>
+
+<p>Set the DNS Servers</p>
+
+<p><span style="font-family: Consolas;"><span style="background-color: silver;">Netsh interface ipv4 add dnsserver name=”21″ address=10.2.1.160 index=1<br /> Netsh interface ipv4 add dnsserver name=”21″ address=10.2.1.161 index=2</span><br /> </span></p>
+
+<p>Rename the host</p>
+
+<p><span style="font-family: Consolas; background-color: silver;">Netdom renamecomputer localhost /NewName:SHYPVC01<br /> </span></p>
+
+<p>Join the host to a domain</p>
+
+<p><span style="font-family: Consolas; background-color: silver;">Netdom join localhost /miru.lab /userD:<username> /passwordD:<password><br /> &lt;/span&gt;</password></username></span></p>
+
+<p>Enable remote management</p>
+
+<p><span style="font-family: Consolas; background-color: silver;">Cscript \windows\system32\scregedit.wsf /ar 0<br /> </span></p>
+
+<p><span style="font-family: Consolas; background-color: silver;">Netsh advfirewall set currentprofile settings remotemanagement enable<br /> </span></p>
+
+<p>Install Powershell</p>
+
+<p><span style="font-family: Consolas; background-color: silver;">start /w ocsetup NetFx2-ServerCore<br /> </span></p>
+
+<p><span style="font-family: Consolas; background-color: silver;">start /w ocsetup MicrosoftWindowsPowerShell<br /> </span></p>
+
+<p>Enable Powershell Remoting</p>
+
+<p>Start powershell from C:\windows\system32\windowspowershell\v1.0\</p>
+
+<p><span style="font-family: Consolas; background-color: silver;">Enable-PSRemoting<br /> </span></p>
+
+<p>Install Hyper-V Role</p>
+
+<p><span style="font-family: Consolas; background-color: silver;">start /w ocsetup Microsoft-Hyper-V<br /> </span></p>
+
+<p>So from now on, you’ll be much more comfortable using SCVMM and all the stuff of RSAT to remotely manage your core host. Server core requires you less patching and the possibility of getting rid of curious windows admins thinking “ehh. let’s have a look what that server does” and logging in just for fun by clicking around fancy GUIs. Me personally I think the core installation will become more important with Server 8, because there are dozens of new modules and thousands of new CMDLETS making it way better to manage a core instance via PowerShell.</p>
+
+<p>More details about how to manage a Server core instance in a later article.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+:ET

@@ -1,0 +1,2 @@
+I"�<p>At some point in time every SDN deployment hits it’s scale limit. In Microsofts SDNv1, a single NVGRE gateway can serve up to 100 tenant virtual networks and 200-300Mbit/s throughput. To scale out the network virtualization deployment, additional gateways or gateway clusters have to be deployed. But how can we migrate existing virtualized tenant VM networks from one gateway to another?</p>
+:ET

@@ -1,0 +1,23 @@
+I"�<p>Deleting a Logical Network within VMM can be painful if it’s already configured end-to-end, meaning all components plugged together and Hyper-V Hosts equipped with a Logical Switch accordingly. If you’re not an expert on how the different components are plumbed together, you’ll probably waste a lot of time digging the various dependencies. To save also time for my own while playing in LAB and Demo environments I created a little Powershell script that does all the work for me. It performs the following steps.</p>
+
+<ul>
+  <li>Gather dependency information from Logical Networks, Network Sites, IP Pools, VM Networks, Uplink Port Profiles and Logical Switches relying on the Logical Network to be deleted</li>
+  <li>Delete the components in the correct order</li>
+</ul>
+
+<p>The Script fully supports the <strong>-whatif p</strong>arameter, so you can see what the script would delete, before you screw up your SDN 🙂</p>
+
+<p>I decided to remove the Logical Switch the Logical Network belongs to from all affected Hyper-V Hosts. The Logical Switch as an object itself, is left alone, so the script doesn’t touch it. You can modify the script according your needs of course.</p>
+
+<p>And here is how you run the script:</p>
+
+<pre>RemoveLogicalNetwork.ps1 -LogicalNetworkName "LNET_LAB_01" -whatif</pre>
+
+<pre>RemoveLogicalNetwork.ps1 -LogicalNetworkName "LNET_LAB_01"</pre>
+
+<p><a href="http://www.miru.ch/wp-content/uploads/2013/08/rmln.jpg"><img class="alignleft size-full wp-image-1259" title="RemoveLogicalNetwork" alt="" src="http://www.miru.ch/wp-content/uploads/2013/08/rmln.jpg" width="959" height="219" srcset="http://www.miru.ch/wp-content/uploads/2013/08/rmln.jpg 959w, http://www.miru.ch/wp-content/uploads/2013/08/rmln-300x68.jpg 300w" sizes="(max-width: 959px) 100vw, 959px" /></a></p>
+
+<p>Get the script <a href="http://www.miru.ch/wp-content/uploads/2013/08/RemoveLogicalNetwork.zip"><strong>here</strong></a> and feel free to extend it or write me feedback and comments.</p>
+
+<p> </p>
+:ET

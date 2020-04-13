@@ -48,7 +48,7 @@ Each provider further manages one or multiple package sources (repositories) whe
         
         <div class="entry-content single">
           <p>
-            <a href="http://www.miru.ch/deploy-packages-and-windows-updates-to-nano-servers/oneget-architecture/"><img class="alignleft wp-image-4770" src="http://www.miru.ch/wp-content/uploads/2016/07/oneget-architecture.png" alt="oneget-architecture" width="589" height="323" srcset="http://www.miru.ch/wp-content/uploads/2016/07/oneget-architecture.png 784w, http://www.miru.ch/wp-content/uploads/2016/07/oneget-architecture-300x165.png 300w, http://www.miru.ch/wp-content/uploads/2016/07/oneget-architecture-768x421.png 768w" sizes="(max-width: 589px) 100vw, 589px" /></a>
+            <a href="http://www.miru.ch/deploy-packages-and-windows-updates-to-nano-servers/oneget-architecture/"><img class="alignleft wp-image-4770" src="../images/2016/07/oneget-architecture.png" alt="oneget-architecture" width="589" height="323" srcset="../images/2016/07/oneget-architecture.png 784w, ../images/2016/07/oneget-architecture-300x165.png 300w, ../images/2016/07/oneget-architecture-768x421.png 768w" sizes="(max-width: 589px) 100vw, 589px" /></a>
           </p>
         </div></article>
       </div>

@@ -1,0 +1,182 @@
+I"&<p>Microsoft UEV could be called as “just another profile management solution”. I agree it’s a bit late for MS to publish the solution as there are vendors like Appsense or RES, which focus on user virtualization and user workspace management since many years with success. In the meantime UEV can be a value add for customers which think traditional roaming profile just suck, but don’t want/can spend a fortune for a high end solution… and… It’s included in MDOP 2012. For an overview about UEV I’d like to refer to a geek mate of mine, <a href="http://helgeklein.com/blog/2012/04/microsoft-user-experience-virtualization-ue-v-facts-and-review/">Helge Klein</a>. Find his article <a href="http://helgeklein.com/blog/2012/04/microsoft-user-experience-virtualization-ue-v-facts-and-review/">here</a>.</p>
+
+<p>I wanted to dig a bit deeper and find out how UEV is working under the hood.</p>
+
+<p><span style="color: #ed7d31;"><strong><span style="text-decoration: underline;">Disclaimer:<br /> </span>At the time I wrote this article I did not find any official documentation on the application architecture of UEV 1.0. All stuff I’m sharing is based on own reverse engineering and may not be 100% correct.<br /> </strong></span></p>
+
+<p><span style="font-size: 12pt;"><strong>Components involved<br /> </strong></span></p>
+
+<div>
+  <table style="border-collapse: collapse;" border="0">
+    <colgroup> <col style="width: 274px;" /> <col style="width: 363px;" /></colgroup> <tr style="background: #ffd966;">
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-bottom: solid #c9c9c9 1.5pt; border-right: none;">
+        <strong>Component</strong>
+      </td>
+      
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid #c9c9c9 1.5pt;">
+        <strong>Description</strong>
+      </td>
+    </tr>
+    
+    <tr style="background: #ededed;">
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-bottom: solid #c9c9c9 0.25pt; border-right: solid #c9c9c9 0.25pt;">
+        <strong>Microsoft.Uev.AgentDriver.sys</strong>
+      </td>
+      
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid #c9c9c9 0.25pt;">
+        File System Filter Driver
+      </td>
+    </tr>
+    
+    <tr>
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-bottom: solid #c9c9c9 0.25pt; border-right: solid #c9c9c9 0.25pt;">
+        <strong>AgentService.exe</strong>
+      </td>
+      
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid #c9c9c9 0.25pt;">
+        UEV Agent Core Service
+      </td>
+    </tr>
+    
+    <tr style="background: #ededed;">
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-bottom: solid #c9c9c9 0.25pt; border-right: solid #c9c9c9 0.25pt;">
+        <strong>UevTrayApp.exe</strong>
+      </td>
+      
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid #c9c9c9 0.25pt;">
+      </td>
+    </tr>
+    
+    <tr>
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-bottom: solid #c9c9c9 0.25pt; border-right: solid #c9c9c9 0.25pt;">
+        <strong>mavinject64.exe</strong>
+      </td>
+      
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid #c9c9c9 0.25pt;">
+        Usermode process launched by AgentService.exe which Injects into application start / stop sequence. It reads settings from the package file at startup and injects them into the real registry. When the application is shut down it injects again and reads from the real registry to save the settings in the package file.
+      </td>
+    </tr>
+    
+    <tr style="background: #ededed;">
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-bottom: solid #c9c9c9 0.25pt; border-right: solid #c9c9c9 0.25pt;">
+        <strong>mavinject32.exe</strong>
+      </td>
+      
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid #c9c9c9 0.25pt;">
+        Same as mavinject64.exe but for 32-bit processes.
+      </td>
+    </tr>
+    
+    <tr>
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-bottom: solid #c9c9c9 0.25pt; border-right: solid #c9c9c9 0.25pt;">
+        <strong>Microsoft.Uev.AppAgent.dll</strong>
+      </td>
+      
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid #c9c9c9 0.25pt;">
+      </td>
+    </tr>
+    
+    <tr style="background: #ededed;">
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-bottom: solid #c9c9c9 0.25pt; border-right: solid #c9c9c9 0.25pt;">
+        <strong>ApplicationXXX.xml</strong>
+      </td>
+      
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid #c9c9c9 0.25pt;">
+        XML Application Settings Template containing HKCU Keys and Folders from User Profile to capture
+      </td>
+    </tr>
+    
+    <tr>
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-bottom: solid #c9c9c9 0.25pt; border-right: solid #c9c9c9 0.25pt;">
+        <strong>ApplicationXXX.pkgx</strong>
+      </td>
+      
+      <td style="padding-top: 2px; padding-left: 7px; padding-bottom: 2px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid #c9c9c9 0.25pt;">
+        Binary Application Settings Package File containing the settings. It can be extracted to plain XML by using the PS CMDLET<span style="font-family: Consolas;">Export-UevPackage</span>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<p> </p>
+
+<h3 id="service-architecture"><strong>Service Architecture</strong></h3>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2012/11/111612_2204_MicrosoftUE14.png" alt="" align="left" /></p>
+
+<p> </p>
+
+<p><span style="font-size: 12pt;"><strong>Settings that are captured<br /> </strong></span></p>
+
+<ul>
+  <li>HKCU Registry Hive</li>
+  <li>Folders and Files in %USERPROFILE%</li>
+</ul>
+
+<p> </p>
+
+<p> </p>
+
+<p><span style="font-size: 12pt;"><strong>How to exclude / include file types<br /> </strong></span></p>
+
+<p>Currently UEV only includes an exclusion filter for file types. To edit or add additional excluded file types you have to edit the following registry key:</p>
+
+<p>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\UEV\Agent\Configuration\ExcludedFileTypes</p>
+
+<p>Unfortunately I didn’t see any possibility to manage the exclusions centrally.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h3 id="what-about-app-v"><strong>What about App-V?</strong></h3>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2012/11/111612_2204_MicrosoftUE2.png" alt="" align="left" /> For more information about App-V service and process inclusions refer to this post:</p>
+
+<p><a href="http://blogs.technet.com/b/gladiatormsft/archive/2012/08/01/app-v-4-6-using-service-and-process-inclusions.aspx">http://blogs.technet.com/b/gladiatormsft/archive/2012/08/01/app-v-4-6-using-service-and-process-inclusions.aspx</a></p>
+
+<p> </p>
+
+<p> </p>
+
+<p><span style="font-size: 12pt;"><strong>Current Limitations<br /> </strong></span></p>
+
+<ul>
+  <li>The UEV Agent is not able to capture files and folders outside the %USERPROFILE% directory</li>
+  <li>Restoring of application settings to initial values across multiple machines is not possible because the initial settings are stored under:<br />
+%USERPROFILE%\APPDATA\Local\Microsoft\UEV\%COMPUTERNAME%\TemplateName\</li>
+  <li>There is no history of the settings to roll them back to a certain date</li>
+</ul>
+
+<p>###</p>
+
+<h3 id="uev-resources-"><span style="font-size: 12pt;"><strong>UEV Resources<br /> </strong></span></h3>
+
+<p>UEV Agent Registry Settings<br />
+<a href="http://support.microsoft.com/kb/2770042">http://support.microsoft.com/kb/2770042</a></p>
+
+<p>UEV on Technet<br />
+<a href="http://technet.microsoft.com/en-us/library/jj680015.aspx">http://technet.microsoft.com/en-us/library/jj680015.aspx</a></p>
+
+<p>Installing UEV Group Policy Templates<br />
+<a href="http://technet.microsoft.com/en-us/library/jj679980.aspx">http://technet.microsoft.com/en-us/library/jj679980.aspx</a></p>
+
+<p>Managing UE-V 1.0 Settings Location Templates Using PowerShell<br />
+<a href="http://technet.microsoft.com/en-us/library/jj679987.aspx">http://technet.microsoft.com/en-us/library/jj679987.aspx</a></p>
+
+<p>UEV Configuration Template Gallery<br />
+<a href="http://gallery.technet.microsoft.com/site/search?f[0].Type=RootCategory&amp;f[0].Value=UE-V">http://gallery.technet.microsoft.com/site/search?f[0].Type=RootCategory&amp;f[0].Value=UE-V</a></p>
+
+<p>How To Enable Debug Logging in Microsoft User Experience Virtualization (UE-V)<br />
+<a href="http://support.microsoft.com/kb/2782997">http://support.microsoft.com/kb/2782997</a></p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+:ET

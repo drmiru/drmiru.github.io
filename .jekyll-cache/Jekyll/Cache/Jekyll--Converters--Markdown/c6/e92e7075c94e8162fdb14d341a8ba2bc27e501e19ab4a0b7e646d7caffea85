@@ -1,0 +1,2 @@
+I"<p>One of the awesome capabilities in Service Management Automation I like very much, is the ability to link SMA Runbooks with VM Cloud action events. Action events are triggered when SPF executes actions against Windows Azure or System Center Virtual Machine Manager. There are a lot of actions you can choose to trigger and fire up a particular SMA Runbook. Refer to <a href="http://technet.microsoft.com/en-us/library/dn457800.aspx" target="_blank">this link</a> for a complete list of action events and their related objects.</p>
+:ET

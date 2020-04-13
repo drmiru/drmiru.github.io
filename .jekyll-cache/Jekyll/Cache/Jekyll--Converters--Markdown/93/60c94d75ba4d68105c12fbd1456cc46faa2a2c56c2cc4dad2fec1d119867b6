@@ -1,0 +1,21 @@
+I"�<p>The process for creating a new clustered space includes a fair amount of single steps to be processed in the right order, no matter if you use the Server Manager GUI or PowerShell.</p>
+
+<ul>
+  <li>creating the virtual disk</li>
+  <li>partitioning and formatting the virtual disk</li>
+  <li>adding the virtual disk to the cluster</li>
+  <li>converting it into CSVFS</li>
+</ul>
+
+<p>The Powershell cmdlet <strong>New-Volume</strong> has been introduced with Server 2012 R2. It significantly simplifies the process of creating a new clustered space by combining the steps above into a single cmdlet. The following example shows how easy it is using this cmdlet.</p>
+
+<pre>#Creating new clustered space
+New-Volume -StoragePoolFriendlyName Pool1 -FriendlyName vdisk1 -PhysicalDiskRedundancy 3 -FileSystem CSVFS_NTFS  -NumberOfColumns 4 -ResiliencySettingName Mirror -Size 1TB</pre>
+
+<p>The next examples creates a new tiered, clustered space</p>
+
+<pre>#Creating new clustered space
+$ssd_tier = Get-StoragePool -FriendlyName Pool1 | get-StorageTier | where {$_.Mediatype -eq 'SSD'}
+$hdd_tier = Get-StoragePool -FriendlyName Pool1 | get-StorageTier | where {$_.Mediatype -eq 'HDD'}
+New-Volume -StoragePoolFriendlyName Pool1 -FriendlyName vdisk1_tiered -PhysicalDiskRedundancy 3 -FileSystem CSVFS_NTFS  -NumberOfColumns 4 -ResiliencySettingName Mirror -StorageTiers $ssd_tier, $hdd_tier -StorageTierSizes 200GB,1TB</pre>
+:ET

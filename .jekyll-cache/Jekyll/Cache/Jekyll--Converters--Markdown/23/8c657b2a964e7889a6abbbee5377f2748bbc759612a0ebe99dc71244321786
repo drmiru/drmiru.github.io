@@ -1,0 +1,39 @@
+I"�	<p>Leaving the “Default” user profile as it is can hurt your VDI / RDS deployment, because Windows needs certain amount of time to create a new user profile from the initial default one. The Default has not been initialized, meaning e.g. the HKCU hive is not generated, active setup has not initialized components.</p>
+
+<p>You can gain up to 25 seconds less for logons (depending on other parameters too of course)<br />
+There are several ways to create a new Default user profile on a Windows 7 client,</p>
+
+<p>The most popular one is the official way from Microsoft documented here: <a href="http://support.microsoft.com/kb/973289/en-us">http://support.microsoft.com/kb/973289/en-us</a></p>
+
+<p>BUT…Personally I think that’s a bit too complex, we just want to copy another users profile to the default one or not? Here is another way which worked several times for me.</p>
+
+<ol>
+  <li>Create a local user, log on with this user and make your changes to the profile as you have to</li>
+  <li>Log off and log on with an administrator account (you may need to reboot first as sometimes the user’s hive is not completely unloaded at logoff)</li>
+  <li>
+    <p>Open the registry editor and change the following value to match your model users profile<br />
+    <strong>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\Default</strong><br />
+    (Change %SystemDrive%\Users*<em>Default** to %SystemDrive%\Users*</em>yourlocaluser<strong>) &lt;/p&gt; 
+    –&gt; **If you want to Replace the original Default Profile, continue with step 4. Otherwise you’re already done.</strong>&lt;/li&gt;</p>
+
+    <ul>
+      <li>Open Computer Advanced Properties and navigate to “User Profiles”. Sekect  the <strong>Default</strong> profile and choose “Copy to”. Select %SystemDrive%\Users**Default** as the destination and select “Everyone” as the permitted user to use the profile</li>
+      <li>Change the registry value back to %SystemDrive%\Users**Default**</li>
+      <li>Open Regedit and load the ntuser.dat hive of the copied profile</li>
+      <li>Remove all entries referencing to “yourlocaluser” in the hive</li>
+      <li>Unload the hive&lt;/ol&gt;</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Be aware that this method is not officially supported by Microsoft. However I&amp;#8217;ve used it a couple of times without running into any issues.
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&amp;nbsp;
+</code></pre></div></div>
+:ET

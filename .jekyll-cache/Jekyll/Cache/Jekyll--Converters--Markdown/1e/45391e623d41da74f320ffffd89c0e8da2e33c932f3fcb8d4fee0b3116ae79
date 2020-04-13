@@ -1,0 +1,10 @@
+I"f<p>Have you ever been interested to include (to dot source) another powershell script into your own one?</p>
+
+<p>It’s as simpe as this post: just decide where to include the script (typically at the beginning).<br />
+Add the following line:</p>
+
+<p>. C:\somepath\somepowershellscript.ps1</p>
+
+<p>that’s all. you now have access to all functions defined in the source script.<br />
+Use this method to include my “<a href="http://www.miru.ch/downloads/scripts/globalfunctions.ps1" target="_blank">globalfunctions.ps1</a>” which includes a lot of useful functions… and it’s even growing all days 🙂</p>
+:ET

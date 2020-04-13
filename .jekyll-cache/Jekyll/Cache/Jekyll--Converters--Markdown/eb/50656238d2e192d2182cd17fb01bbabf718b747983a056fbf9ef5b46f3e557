@@ -1,0 +1,20 @@
+I"X<p>The following code enables a file based locking mechanism within a powershell script. It checks for existance of a lock file and checks if a running process exists, which is capturing this file. This can be used in situations, where a script is beeing launched paralell by another script or programm, but you want to have your script executed exclusively and serialized.</p>
+
+<p><span style="font-family:Times New Roman; font-size:12pt">The following code enables a file based locking mechanism within a powershell script. It checks for existance of a lock file and checks if a running process exists, which is capturing this file. This can be used in situations, where a script is beeing launched parallel by another script or programm, but you want to have your script executed exclusively and serialized.<br /> </span></p>
+
+<p><span style="font-family:Times New Roman; font-size:12pt"><br /></span><span style="color:#92d050; font-family:Courier New; font-size:10pt">#################################################<br />#Scriptname:     checklock.ps1<br />#Author:         Michael Rüefli (www.miru.ch)<br />#Date:           21.11.2009<br />#Description:    The code uses a file locking mechanism to ensure that the<br />#                script beeing started is running exclusively. Mostly used where<br />#                a powershell script is started parallel within a few seconds<br />#<br />#Usage:          Paste your code in the MAIN section and set the $lockfile paramater to match your needs<br />############################################<br /> </span></p>
+
+<p><span style="color:#c4bc96; font-family:Courier New; font-size:10pt">$lockfile = “d:\lock.lck”<br />$lockstatus = 0<br />While ($lockstatus -ne 1)<br />{<br />If (Test-Path $lockfile)<br />{<br />echo “Lock file found!”<br />$pidlist = Get-content $lockfile<br />If (!$pidlist)<br />{<br />$PID | Out-File $lockfile<br />$lockstatus = 1<br />}<br />$currentproclist = Get-Process | ? { $_.id -match $pidlist }<br />If ($currentproclist)<br />{<br />echo “lockfile in use by other process!”<br />$rndwait = New-Object system.Random<br />$rndwait= $rndwait.next(1,4)<br />echo “Sleeping for $rndwait seconds”<br />Start-Sleep $rndwait<br />}<br />Else<br />{<br /> </span></p>
+
+<p><span style="color:#c4bc96; font-family:Courier New; font-size:10pt">Remove-Item $lockfile -Force<br />$PID | Out-File $lockfile<br />$lockstatus = 1<br /> </span></p>
+
+<p><span style="color:#c4bc96; font-family:Courier New; font-size:10pt">}<br />}<br />Else<br />{<br />$PID | Out-File $lockfile<br />$lockstatus = 1<br />}<br />}<br /> </span></p>
+
+<p><span style="color:#c4bc96; font-family:Courier New; font-size:10pt">#———————————————————————————————–<br />## Main Script Part<br />## Here you can paste your code, in fact what the script has to do<br />echo “Hi, it seems that no other script is doing the same as me now.. so I can do my job exclusively”<br /> </span></p>
+
+<p><span style="color:#c4bc96; font-family:Courier New; font-size:10pt">## End of Main Part<br />#———————————————————————————————–<br />#remove the lockfile<br />Remove-Item $lockfile –Force<br /> </span></p>
+
+<p> </p>
+
+<p><a href="http://images.google.ch/imgres?imgurl=http://www.gnr8.biz/images/blue_lock%2520main.jpg&amp;imgrefurl=http://www.gnr8.biz/product_info.php%3Fproducts_id%3D304&amp;usg=__zSEp805411nm-VqQyBYugBeRgwE=&amp;h=432&amp;w=432&amp;sz=49&amp;hl=de&amp;start=2&amp;tbnid=FZ87K5zi-ppJzM:&amp;tbnh=126&amp;tbnw=126&amp;prev=/images%3Fq%3Dlock%26gbv%3D2%26hl%3Dde"><img src="http://www.miru.ch/wp-content/uploads/2010/01/112109-1453-howtoimplem1.jpg" alt="" border="0" /></a><span style="color:#c4bc96; font-family:Courier New; font-size:10pt"><br /> </span></p>
+:ET

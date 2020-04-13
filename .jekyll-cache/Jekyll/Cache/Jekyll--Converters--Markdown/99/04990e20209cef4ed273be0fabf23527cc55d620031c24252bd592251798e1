@@ -1,0 +1,2 @@
+I"�<p>Even this happens very rarely on a Hyper-V host 😉 ,  it might still be useful under some circumstances to kill a hung or stucked VM. Most of the times the hung situation is caused by a guest shutdown request which does not get completed successfully. The GUI doesn’t provide you a solution here (neither SCVMM, Hyper-V Manager or Failover Cluster Manager). Good old Powershell will solve it for you.</p>
+:ET

@@ -1,0 +1,35 @@
+I"[<p>Even this happens very rarely on a Hyper-V host 😉 ,  it might still be useful under some circumstances to kill a hung or stucked VM. Most of the times the hung situation is caused by a guest shutdown request which does not get completed successfully. The GUI doesn’t provide you a solution here (neither SCVMM, Hyper-V Manager or Failover Cluster Manager). Good old Powershell will solve it for you.</p>
+
+<p>Here are the steps in detail:</p>
+
+<p><strong>First we want to get the GUID of our affected VM</strong></p>
+
+<pre>$vmname = "CMIRUW702"
+$id = (get-vm | ? {$_.name -eq $vmname} | select id).id.guid</pre>
+
+<p><strong>Now as we have to GUID we search for the VM worker process holding the virtual machine resources</strong></p>
+
+<pre>$vm_pid = (Get-WmiObject Win32_Process | ? {$_.Name -match 'vmwp' -and $_.CommandLine -match $id}).ProcessId</pre>
+
+<p><strong>And finally kill the VM worker process</strong></p>
+
+<pre>stop-process $vm_pid -Force</pre>
+
+<p> </p>
+
+<p><strong>Here again all together as a function:</strong></p>
+
+<pre>function KillVM{  
+param($vmname)
+  $id = (get-vm | ? {$_.name -eq "$vmname"} | select id).id.guid
+  If ($id) {write-host "VM GUID found: $id"}
+  Else {write-warning "VM or GUID not found for VM: $vmname"; break}
+  $vm_pid = (Get-WmiObject Win32_Process | ? {$_.Name -match 'vmwp' -and $_.CommandLine -match $id}).ProcessId
+  If ($vm_pid) {write-host "Found VM worker process id: $vm_pid"}
+  Else {write-warning "No VM worker process found for VM: $vmname"}
+  Write-host "Killing VM worker process of VM: $vmname"
+  stop-process $vm_pid -Force
+}</pre>
+
+<p>Have fun!</p>
+:ET

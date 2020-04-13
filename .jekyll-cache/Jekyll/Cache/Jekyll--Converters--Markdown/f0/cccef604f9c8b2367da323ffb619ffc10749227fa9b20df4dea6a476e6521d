@@ -1,0 +1,166 @@
+I":/<p><span style="font-size: 10pt;">Server 2012 RDS has been a huge game changer for shared hosted desktops as well as for hosted VDI deployments. The capabilities you get out of the box fit the requirements of a lot companies I’d say, and when I say a lot I don’t mean all. There are still uses cases where Citrix has to be in place and I feel that being still a good point because it keeps the innovation cycle up and running.<br /> </span></p>
+
+<p><span style="font-size: 10pt;">However in this post I’m going to cover a topic that arises in almost every RDS project.<br /> </span></p>
+
+<ul>
+  <li><span style="font-size: 10pt;">Does RDS / Connection Broker / RDS Web / RDS Gateway support Single Sign On authentication?<br /> </span></li>
+  <li><span style="font-size: 10pt;">What with Remote Apps and different collections?<br /> </span></li>
+  <li><span style="font-size: 10pt;">What about Smart Card?<br /> </span></li>
+</ul>
+
+<p><strong>The definition of the term “SSO”<span style="font-size: 10pt;"><br /> </span></strong>Single Sign On can be <span style="font-size: 10pt;">implemented in several ways, but what I’m talking about here is the fact, the user has to enter his credentials only once at the primary contact device (endpoint). Subsequent logons will then be authenticated via the original credential set, which can be user name and password or PIN if using Smart Card. The credential forwarding occurs on Kerberos / CredSSP level, so no freaky agent behind the scenes filling in some user credentials.<br /> </span></p>
+
+<p>**Out of the box behaviour<br />
+**</p>
+
+<p><span style="font-size: 10pt;">Depending on how you design the solution the entry point for the user might be different. But however, I’m going to cover all possible pitfalls.<br /> By default the procedure to start a remote app or desktop is as follows:</span>**<br />
+**</p>
+
+<ul>
+  <li><span style="font-size: 10pt;">User logs on to client computer providing his domain credentials / PIN<br /> </span></li>
+  <li><span style="font-size: 10pt;">User launches the RDWeb website<br /> </span></li>
+  <li><span style="font-size: 10pt;">User enters domain credentials / PIN (with cert based auth)<br /> </span></li>
+  <li><span style="font-size: 10pt;">User launches app / desktop<br /> </span></li>
+  <li><span style="font-size: 10pt;">User confirms untrusted rdp file signing message<br /> </span></li>
+  <li><span style="font-size: 10pt;">If Smart Cards are used, another PIN prompt to complete<br /> </span></li>
+</ul>
+
+<p><span style="font-size: 10pt;">There are way too much authentication points and click steps until the user reaches the app / desktop. And you might be annoyed by pop-up boxes like these….<br /> </span></p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO1.png" alt="" /> <span style="font-size: 10pt;"><br /> <img src="http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO2.png" alt="" /><img src="http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO3.png" alt="" /><br /> </span></p>
+
+<p> </p>
+
+<p>**Components (tiers) involved<br />
+**</p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO4.png" alt="" /> **<br />
+**</p>
+
+<p>While the RDWeb site is using Kerberos for SSO, subsequent authentication processes use CredSSP by providing default or fresh credentials depending on the authentication mechanism at the web tier.</p>
+
+<p>**How to configure it correctly<br />
+**</p>
+
+<p><span style="font-size: 10pt;">There are basically four steps to complete<br /> </span></p>
+
+<ul>
+  <li><span style="font-size: 10pt;">Issue and assign a valid SSL certificate to RDS Gateways, RD Web Servers and RD Connection Brokers<br /> </span></li>
+  <li><span style="font-size: 10pt;">Provide the certificate’s thumbprint within GPO to enable trusted rdp file signing<br /> </span></li>
+  <li><span style="font-size: 10pt;">Enable Web SSO on the RD Web Servers<br /> </span></li>
+  <li><span style="font-size: 10pt;">Create GPO for Credential Delegation Settings<br /> </span></li>
+  <li><span style="font-size: 10pt;">Add the RDWeb URL to IE’s “Local Intranet” Zone<br /> </span></li>
+</ul>
+
+<p><span style="font-size: 10pt;">…how to get there?<br /> </span></p>
+
+<p><strong>1. Issue a valid SSL certificate and assign it to the server components<span style="font-size: 10pt;"><br /> </span></strong>I’m not covering how to request and issue a SSL certificate here, you might know that already, I’m sure. But keep in mind the Key Usage must contain “Server Authentication”.<span style="font-size: 10pt;"><br /> </span></p>
+
+<p><span style="font-size: 10pt;">Assign the certificate for connection broking, rdp file-signing and web access<br /> <img src="http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO5.png" alt="" /><br /> </span></p>
+
+<p><strong>2. Enable SSO on Web tier</strong><span style="font-size: 10pt;"><br /> This step requires a bit more work including web config file editing. Be sure to create a backup of the files before screwing them up <span style="font-family: Wingdings;">J</span><br /> </span></p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO6.png" alt="" /> <span style="font-size: 10pt;"><br /> </span></p>
+
+<p><span style="font-size: 10pt;">Edit: <span style="color: #5b9bd5;"><strong>%SYSTEMROOT%\Web\RDWeb\pages\web.config</strong></span><br /> </span></p>
+
+<p><span style="font-size: 10pt;"><strong>Find the Authentication key and change it from:<br /> </strong></span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;"><strong><span style="color: red;">&lt;!– </span>&lt;authentication mode=”Windows”/&gt; <span style="color: red;">–&gt;</span><br /> </strong></span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;">&lt;authentication mode=”Forms”&gt;<br /> </span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;">&lt;forms loginUrl=”default.aspx” name=”TSWAAuthHttpOnlyCookie” protection=”All” requireSSL=”true” /&gt;<br /> </span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;">&lt;/authentication&gt;<br /> </span></p>
+
+<p><span style="font-size: 10pt;">To:<br /> </span></p>
+
+<p><span style="color: red; font-family: Consolas; font-size: 10pt;"><strong>&lt;authentication mode=”Windows”/&gt;<br /> </strong></span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;"><span style="color: red;"><strong>&lt;!–</strong></span>&lt;authentication mode=”Forms”&gt;<br /> </span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;">&lt;forms loginUrl=”default.aspx” name=”TSWAAuthHttpOnlyCookie” protection=”All” requireSSL=”true” /&gt;<br /> </span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;">&lt;/authentication&gt; <span style="color: red;"><strong>–&gt;</strong></span><br /> </span></p>
+
+<p> </p>
+
+<p><span style="font-size: 10pt;"><strong>Comment out the module and security sections:<br /> </strong></span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;"><system.webServer><br /> &lt;/span&gt;</system.webServer></span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;"><br /> <strong><span style="color: red;">&lt;!–</span><br /> </strong>&lt;modules runAllManagedModulesForAllRequests=”true”&gt;<br /> </span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;">&lt;remove name=”FormsAuthentication” /&gt;<br /> </span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;">&lt;add name=”RDWAFormsAuthenticationModule” type=”Microsoft.TerminalServices.Publishing.Portal.FormAuthentication.TSFormsAuthentication” /&gt;<br /> </span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;">&lt;/modules&gt; <strong><span style="color: red;">–&gt;</span><br /> </strong></span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;"><span style="color: red;"><br /> <strong>&lt;!–</strong></span> <security><br /> &lt;/span&gt;</security></span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;"><authentication><br /> &lt;/span&gt;</authentication></span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;">&lt;windowsAuthentication enabled=”true” /&gt;<br /> </span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;">&lt;anonymousAuthentication enabled=”false” /&gt;<br /> </span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;">&lt;/authentication&gt;<br /> </span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;">&lt;/security&gt; <span style="color: red;"><strong>–&gt;</strong><br /> </span></span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;">&lt;httpRedirect enabled=”true” /&gt;<br /> </span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;">&lt;/system.webServer&gt;<br /> </span></p>
+
+<p> </p>
+
+<p><span style="font-size: 10pt;">Edit: <span style="color: #5b9bd5;"><strong>%SYSTEMROOT%\Web\RDWeb\Pages\en-us\Default.aspx</strong><br /> </span></span></p>
+
+<p><span style="font-size: 10pt;">Change the following line to specify the private mode by default:<br /> </span></p>
+
+<p><span style="font-family: Consolas; font-size: 10pt;">//<br /> // Page Variables<br /> //<br /> public string sHelpSourceServer, sLocalHelp, sRDCInstallUrl, strWorkspaceName;<br /> public Uri baseUrl, stylesheetUrl, renderFailCssUrl;<br /> <span style="color: red;"><strong>public bool bShowPublicCheckBox = false, bPrivateMode = true, bRTL = false;<br /> </strong></span></span></p>
+
+<p> </p>
+
+<p>**3. Enable trusted rdp file signing for clients<br />
+**</p>
+
+<p><span style="font-size: 10pt;">Get the certificate thumbprint on your Connection Broker via Powershell<br /> </span></p>
+
+<pre><span style="font-family: Consolas; font-size: 10pt;">Get-Childitem CERT:\LocalMachine\My </span></pre>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO7.png" alt="" /> <span style="font-size: 10pt;"><br /> </span></p>
+
+<p><span style="font-size: 10pt;">Copy the thumbprint of the corresponding certificate to clipboard<br /> </span></p>
+
+<p><span style="font-size: 10pt;">Edit your clients GPO to include the thumbprint and to trust signed rdp files with this certificate<br /> </span></p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO8.png" alt="" /> <span style="font-size: 10pt;"><br /> </span></p>
+
+<p> </p>
+
+<p>**3. Enable Smart Card Support<br />
+**</p>
+
+<p>Enabling Smart Card Authentication is not a big deal as it has to be done only in the web tier. All other components support smart card based authentication by default.<br />
+Again, keep in mind that Microsoft does not provide any kind of PIN pass-through component yet, as Citrix does. As the user reaches the endpoint (RD Session or VDI Desktop), an additional PIN prompt will appear.<br />
+Additionally, if your CSP does not support global PIN caching, but only process based caching, the PIN has to be entered twice, first at RDWeb site, second at the RDP session layer.<br />
+To enable Certificate based authentication on the RDWeb tier, complete the following on the IIS installation of your RDWeb Server:</p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2013/06/062413_2332_SingleSignO9.png" alt="" /></p>
+
+<p><span style="font-size: 10pt;">Also ensure that if using a 3<sup>rd</sup> party CSP, it has to be installed on all tiers.<br /> </span></p>
+
+<p> </p>
+
+<p>**Unsupported / non-working scenarios<br />
+**</p>
+
+<ul>
+  <li><span style="font-size: 10pt;">SSO does not work if the clients are not domain joined<br /> </span></li>
+  <li><span style="font-size: 10pt;">Smart Card PIN pass-through is not supported for RD sessions<br /> </span></li>
+  <li><span style="font-size: 10pt;">Smart card SSO at RDWeb portal without a PIN prompt is only working when CSP (smart card middleware) supports global PIN caching. Most providers only support “per process” caching.</span></li>
+</ul>
+:ET

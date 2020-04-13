@@ -1,0 +1,45 @@
+I"Z<p>The rollup can be downloaded <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=0059546f-f43d-4c7e-8367-81c6d5642bf3&amp;displaylang=en" target="_blank">here</a>.</p>
+
+<p>To apply the update follow this order:</p>
+
+<ul>
+  <li>Edge transport servers</li>
+  <li>Client access servers</li>
+  <li>Hub transport servers</li>
+  <li>UM servers</li>
+  <li>Mailbox servers</li>
+</ul>
+
+<p>If you have DAGs follow this procedure to upgrade all DAG members. (Thanks to <a href="http://howdouc.blogspot.com/" target="_blank">Tim Harrington</a> for original post)</p>
+
+<p>Exchange 2010 SP1 provides some new scripts to help with performing maintenance on DAG members.  To apply the update to a DAG member, the following steps should be taken:</p>
+
+<p><strong>Step 1</strong> – From the Exchange installation path (in my case C:\Program Files\Microsoft\Exchange Server\V14\Scripts), run: <em>.\StartDagServerMaintenance.ps1 –ServerName “MBXServerName”</em></p>
+
+<p><a href="http://lh5.ggpht.com/_7DQiUObw70M/TLMwBdBUTII/AAAAAAAAARQ/pYLEWQOjlhE/s1600-h/RUDAGStartMaintmarkup4.jpg"><img title="RU-DAG-StartMaint-markup" src="http://lh6.ggpht.com/_7DQiUObw70M/TLMwBjnwSgI/AAAAAAAAARU/5fIpPjudFeA/RUDAGStartMaintmarkup_thumb2.jpg?imgmax=800" border="0" alt="RU-DAG-StartMaint-markup" width="500" height="75" /></a></p>
+
+<p>This script will:</p>
+
+<ul>
+  <li>Run Suspend-MailboxDatabaseCopy for each database copy hosted on the DAG member</li>
+  <li>Pauses the node in the cluster, which prevents it from being and becoming the PAM</li>
+  <li>Sets the value of the DatabaseCopyAutoActivationPolicy parameter on the DAG member to Blocked</li>
+  <li>Moves all active databases currently hosted on the DAG member to other DAG members</li>
+</ul>
+
+<p><strong>Step 2</strong> – Install the update rollup as described above</p>
+
+<p><strong>Step 3</strong> – From the Exchange installation path (in my case C:\Program Files\Microsoft\Exchange Server\V14\Scripts), run: <em>.\StopDagServerMaintenance.ps1 –ServerName “MBXServerName”</em></p>
+
+<p><a href="http://lh6.ggpht.com/_7DQiUObw70M/TLMwCBz6haI/AAAAAAAAARY/d8ceYqNtxLU/s1600-h/RUDAGStopMaintmarkup3.jpg"><img title="RU-DAG-StopMaint-markup" src="http://lh6.ggpht.com/_7DQiUObw70M/TLMwCcwV-UI/AAAAAAAAARc/iYgrEJKL2wQ/RUDAGStopMaintmarkup_thumb1.jpg?imgmax=800" border="0" alt="RU-DAG-StopMaint-markup" width="508" height="56" /></a></p>
+
+<p>This script will:</p>
+
+<ul>
+  <li>Run Resume-MailboxDatabaseCopy for each database copy hosted on the DAG member</li>
+  <li>Resumes the node in the cluster, which it enables full cluster functionality for the DAG member</li>
+  <li>Sets the value of the DatabaseCopyAutoActivationPolicy parameter on the DAG member to Unrestricted</li>
+</ul>
+
+<p><strong>Step 4</strong> – (Optional) Use the <em>RedistributeActiveDatabases.ps1</em> script to re-balance the active database copies across the DAG</p>
+:ET

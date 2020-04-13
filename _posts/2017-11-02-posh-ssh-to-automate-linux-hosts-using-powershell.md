@@ -27,7 +27,7 @@ In this post I&#8217;m going to demonstrate a little bit of cross-platform autom
 
 ### Basics on working with PoSH-SSH Module
 
-The PoSH-SSH Module has all mostly used capabilities of a SSH cmdline client, but for now we&#8217;re focusing on interacting with SSH sessions and executing remote command and scripts. To open a new SSH session you have to supply a credential or an SSH key pair. In this example I&#8217;m using an SSH key-pair to authenticate against an Azure VM. **Generate SSH Key-pair** I&#8217;m using the git bash, of course this also works with other methods.![](http://www.miru.ch/wp-content/uploads/2017/11/110217_0554_PoshSSHtoau1.png) Protect the private key file..![](http://www.miru.ch/wp-content/uploads/2017/11/110217_0554_PoshSSHtoau2.png) Read the public key content and copy it to clipboard![](http://www.miru.ch/wp-content/uploads/2017/11/110217_0554_PoshSSHtoau3.png) Lastly update the ssh key on the Azure VM![](http://www.miru.ch/wp-content/uploads/2017/11/110217_0554_PoshSSHtoau4.png) 
+The PoSH-SSH Module has all mostly used capabilities of a SSH cmdline client, but for now we&#8217;re focusing on interacting with SSH sessions and executing remote command and scripts. To open a new SSH session you have to supply a credential or an SSH key pair. In this example I&#8217;m using an SSH key-pair to authenticate against an Azure VM. **Generate SSH Key-pair** I&#8217;m using the git bash, of course this also works with other methods.![](../images/2017/11/110217_0554_PoshSSHtoau1.png) Protect the private key file..![](../images/2017/11/110217_0554_PoshSSHtoau2.png) Read the public key content and copy it to clipboard![](../images/2017/11/110217_0554_PoshSSHtoau3.png) Lastly update the ssh key on the Azure VM![](../images/2017/11/110217_0554_PoshSSHtoau4.png) 
 
 ### Working with SSH Sessions
 
@@ -49,7 +49,7 @@ Let&#8217;s do a little example. We want to list the content of the file system.
     <span style="color: #00b0f0; font-family: Consolas;">(Invoke-SSHCommand -Command 'ls -la' -SSHSession $session).Output
     </span>
 
-![](http://www.miru.ch/wp-content/uploads/2016/04/042816_2005_PoshSSHtoau6.png) As the command finishes on the remote system, it will print the return values from the remote command to the standard output. Another way to interact with the SSH session is to open a so called &#8220;Shell Stream&#8221;. This allows to send multiple commands, line by line. If required you can get the output line by line as well or the whole output after executing some commands in a row. Lets make a little example here. We try to write to a file (where we might not have permission with the current user).
+![](../images/2016/04/042816_2005_PoshSSHtoau6.png) As the command finishes on the remote system, it will print the return values from the remote command to the standard output. Another way to interact with the SSH session is to open a so called &#8220;Shell Stream&#8221;. This allows to send multiple commands, line by line. If required you can get the output line by line as well or the whole output after executing some commands in a row. Lets make a little example here. We try to write to a file (where we might not have permission with the current user).
 
     <span style="color: #00b0f0; font-family: Consolas;">$sshshellstream = New-SSHShellStream -Index $session.SessionID</span>
     			
@@ -69,7 +69,7 @@ Let&#8217;s do a little example. We want to list the content of the file system.
     <span style="color: #00b0f0; font-family: Consolas;">write-Output $result
     </span>
 
-![](http://www.miru.ch/wp-content/uploads/2017/11/110217_0554_PoshSSHtoau5.png) Now elevating our privileges to write the file..
+![](../images/2017/11/110217_0554_PoshSSHtoau5.png) Now elevating our privileges to write the file..
 
     <span style="color: #00b0f0; font-family: Consolas;">$sshshellstream.WriteLine('sudo touch /var/log/mylog.log')</span>
     			

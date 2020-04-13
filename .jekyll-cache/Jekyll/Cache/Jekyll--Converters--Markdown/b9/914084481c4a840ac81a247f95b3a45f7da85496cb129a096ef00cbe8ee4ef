@@ -1,0 +1,24 @@
+I"[<p>First you have to disable HA on the pool</p>
+
+<p><strong>#xe pool-ha-disable</strong></p>
+
+<p>List the hosts in the pool</p>
+
+<p><strong>#xe host-list</strong></p>
+
+<p>Promote the new slave</p>
+
+<p>**# xe pool-designate-new-master host-uuid=<type the="" uuid="" of="" new="" master="">**</type></p>
+
+<blockquote>
+  <p>If the pool master is not available the switch has to be enforced to succeed.</p>
+</blockquote>
+
+<p><strong>#xe pool-emergency-transition-to-master</strong></p>
+
+<p>re-establish connectio to the slave hosts</p>
+
+<p><strong>#xe pool-recover-slave</strong></p>
+
+<p>You’re done!</p>
+:ET

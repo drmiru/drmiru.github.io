@@ -11,7 +11,7 @@ aktt_notify_twitter:
 categories:
   - Virtualization
 ---
-I&#8217;ve published a new version of <a href="http://www.miru.ch/wp-content/uploads/2011/05/Globalfunctions.zip" target="_blank">Globalfunctions.ps1</a> Powershell script, which includes a lot of userful functions for your daily PS scripting life.
+I&#8217;ve published a new version of <a href="../images/2011/05/Globalfunctions.zip" target="_blank">Globalfunctions.ps1</a> Powershell script, which includes a lot of userful functions for your daily PS scripting life.
 
 To use the functions just &#8220;DOT source&#8221; the script in your original script:  
 . <somepathto>\Globalfunctions.ps1

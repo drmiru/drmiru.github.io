@@ -1,0 +1,2 @@
+I"�<p>The time will come, where you have to “re-home” your RDS VDI collections, respectively the master images and the deployed desktop instances to a new storage location. In this post I’ll guide through the steps which worked for me. <em><strong>As they involve direct modifications to the RDS Database, this is probably not officially supported and you’ll do it on your own risk!</strong></em></p>
+:ET

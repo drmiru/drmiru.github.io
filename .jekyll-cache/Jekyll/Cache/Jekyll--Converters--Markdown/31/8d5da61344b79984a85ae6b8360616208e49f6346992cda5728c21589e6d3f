@@ -1,0 +1,19 @@
+I"<p>A lot of customers I’m currently engaged in Hyper-V Projects have started their Hyper-V 2012 deployments without SCVMM. As they are trying to integrated it actually one of the most popular questions arising is:</p>
+
+<p>What about SCVMM and Constrained Kerberos Delegation?</p>
+
+<p>To explain the situation let’s first have a look at the following <a href="http://www.aidanfinn.com/?p=13711" target="_blank"><strong>post</strong></a> from Aidan Finn which provides great information about the delegation problem and how to solve it.</p>
+
+<p>SCVMM does not require to configure Constrained Kerberos Delegation at all, because it always uses “fresh credentials” passed via <a href="http://en.wikipedia.org/wiki/Security_Support_Provider_Interface" target="_blank">CredSSP</a> when issuing commands and tasks. Therefore it uses pre-configured RunAs accounts or explicit credentials, where the second option is not really recommended for various reasons. This is a big enhancement especially for larger environments where you’d have to configure tons of delegations without SCVMM.</p>
+
+<p>**Powershell double-hop scenarios<br />
+**</p>
+
+<p>As mentioned above SCVMM solves the issue for you as it always issues commands remotely via WinRM on the target Hyper-V host using <a href="http://en.wikipedia.org/wiki/Security_Support_Provider_Interface">CredSSP</a>.</p>
+
+<p>But you might run into another issue while working with Server Manager 2012 or System Center Orchestrator, because Powershell does not allow double-hop scenarios using Kerberos delegation, but CredSSP.</p>
+
+<p>Powershell Remoting supporting <a href="http://en.wikipedia.org/wiki/Security_Support_Provider_Interface">CredSSP</a> was introduced with Version 2.0. <a href="http://en.wikipedia.org/wiki/Security_Support_Provider_Interface">CredSSP</a> Support for WSMAN is disabled by default.</p>
+
+<p>See <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ee309365(v=vs.85).aspx" target="_blank"><strong>here</strong></a> on how to enable it via CMDLETs or Group Policy.</p>
+:ET

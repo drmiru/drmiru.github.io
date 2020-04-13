@@ -1,0 +1,27 @@
+I"<p>In a recent <a href="http://www.miru.ch/why-i-think-azure-pack-isnt-just-for-service-providers/" target="_blank">blog post</a> I wrote about the importance of Windows Azure Pack and Service Management Automation and why I think, Windows Azure Pack isn’t just for Service Providers. I’m glad to release a whitepaper today, giving guidlines to deploy and manage SMA.</p>
+
+<p>So what can you ecpect from reading this whitepaper?</p>
+
+<ul>
+  <li>Concepts and architecture of System Center 2012 R2 Service Management Automation</li>
+  <li>Prerequisites to deploy SMA in your organization</li>
+  <li>Installing and configuring the various SMA components</li>
+  <li>Basics on PowerShell workflow scripting</li>
+  <li>Creating and authoring SMA runbooks</li>
+  <li>Linking runbooks to SPF / VM Cloud action events</li>
+  <li>Interoperability with System Center Orchestrator Runbooks</li>
+  <li>Converting Orchestrator runbooks to SMA</li>
+  <li>Scaling an SMA infrastructure</li>
+  <li>Extending SMA with custom modules</li>
+</ul>
+
+<p>Additionally you’ll find a collection of useful links on SMA, PowerShell workflow concepts and Windows Azure Pack.</p>
+
+<p>Special thanks go to Michel Lüscher and Kristian Nese for their time invested to review the whitepaper.</p>
+
+<p>Download the whitepaper <a href="http://gallery.technet.microsoft.com/Service-Management-fcd75828" target="_blank">here in the TechNet Gallery</a></p>
+
+<p>I hope this document can help you with a fire start on Service Management Automation.</p>
+
+<p>Happy reading!</p>
+:ET

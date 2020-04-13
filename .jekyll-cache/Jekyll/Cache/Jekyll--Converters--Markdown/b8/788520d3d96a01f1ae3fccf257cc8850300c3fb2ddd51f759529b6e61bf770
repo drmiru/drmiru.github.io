@@ -1,0 +1,2 @@
+I"`<p>In an earlier post I showed <a href="http://www.miru.ch/sma-workflows-and-remoting-how-to-deal-with-variable-scoping/" target="_blank">how-to-deal-with-variable-scoping</a> inside PowerShell Workflows to be usable within InlineScript blocks. While the $USING way is simple and easy it conflicts with proper error handling inside InlineScripts.</p>
+:ET

@@ -1,0 +1,2 @@
+I"<p>Some times things go wrong and sh** hits the fan. But in my case I was pretty sure I’m doing everything correctly when installing a HA SCVMM Cluster. So almost at the end of the SCVMM Server setup process, the setup engine throw an exception and performed a full rollback.</p>
+:ET

@@ -1,0 +1,2 @@
+I"R<p>Using Appsense Environment Manager to copy files at computer startup trigger can lead to headaches, because the action is executed by default without respect to the network connection / domain connection status. Therefore I created an intelligent Powershell script which can be used as a reusable condition prior to the copy jobs.</p>
+:ET

@@ -1,0 +1,2 @@
+I"�<p>Due to an administrative action, restore or rebuild of the vCenter database,  assignments between the hypervisor connection from DDC’s pool management service and the vSphere vCenter might be lost. The XenDesktop PoolManagementService manages the assignment by adding a special annotation attribute to each VM which has been added to a pool. The attribute name is CTXGuestOSId where the value represents the SID of the VM’s AD computer account.</p>
+:ET

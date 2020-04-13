@@ -22,7 +22,7 @@ tags:
   - Token size
   - WinRM
 ---
-![](http://www.miru.ch/wp-content/uploads/2013/04/040213_1942_HowtheKerbe1.jpg)
+![](../images/2013/04/040213_1942_HowtheKerbe1.jpg)
 
 It&#8217;s like a little but really mean ghost which seems to follow me over all my IT career, it&#8217;s called &#8220;kerberos token&#8221;. I&#8217;ve debugged a lot of kerberos errors the last years, but the overall evergreen is a parameter called &#8220;MaxTokenSize&#8221;. Depending on the Windows OS version it has a default value of 12&#8217;000 bytes(WinXP,Vista,Win7) and 48&#8217;000 bytes (Win8). The kerberos token size grows depending on the following facts:
 

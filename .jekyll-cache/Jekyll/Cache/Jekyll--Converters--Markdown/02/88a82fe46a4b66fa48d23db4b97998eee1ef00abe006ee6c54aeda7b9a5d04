@@ -1,0 +1,2 @@
+I"�<p>If a XenClient VM which is registered to a synchronizer couln’t contact the synchronizer for a while it will be marked as “locked” on the XenClient. The default lease time for “offline” VMs is 14 days.</p>
+:ET

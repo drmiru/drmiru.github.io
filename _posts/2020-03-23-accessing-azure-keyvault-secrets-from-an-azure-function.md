@@ -17,7 +17,7 @@ tags:
   - KeyVault
   - Serverless
 ---
-<figure class="wp-block-image"><img src="http://www.miru.ch/wp-content/uploads/2020/03/FunctionApp_loves_KeyVault.png" alt="" class="wp-image-5212" /></figure> 
+<figure class="wp-block-image"><img src="../images/2020/03/FunctionApp_loves_KeyVault.png" alt="" class="wp-image-5212" /></figure> 
 
 Storing secrets, keys and certificates securely is not an optional discipline. Code, wherever it lands, must never include any clear text secrets. Azure Key Vault provides a secure way to store customer managed encryption keys, credentials and certificates.
 
@@ -27,12 +27,15 @@ Using Azure Functions you have several ways to access secrets from an Azure Key 
 
 In this example I&#8217;m going to show how to get a Key Vault secret via PowerShell.
 
-<pre class="wp-block-code"><code>#Get Access Key for Eventhub Namespace from KeyVault
+{% highlight ruby %}
+#Get Access Key for Eventhub Namespace from KeyVault
 Write-Host "Getting secret: $eventHubKeySecret from key vault: $keyVaultName"
 $eventHubkey = (Get-AzKeyVaultSecret -VaultName $keyVaultName -SecretName $eventHubKeySecret).SecretValueText
 if (!$eventHubkey) {
     throw "Unable to get EventHub Access Key from KeyVault"
-}</code></pre>
+}
+{% endhighlight %}
+
 
 Key Vaults are billed based on API operations (eg. get key/secret). If your function is being called billions of times a month, you might have to think about the resulting costs. To limit the amount of key operations against your vault, you have another option:
 

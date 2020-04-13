@@ -1,0 +1,26 @@
+I"A<p>This simple but useful approach became very popular if I watch my blog hit stats. So here’s the final part for Hyper-V.</p>
+
+<p>How to identify a virtual machine if you just know it’s MAC Address?</p>
+
+<p>For SCVMM 2012 SP1</p>
+
+<pre>Get-SCVirtualNetworkAdapter -All | ? MACAddress -eq '00:50:56:AF:00:6D' | Select Name,MACAddress,VirtualNetWork</pre>
+
+<p>For Hyper-V Manager</p>
+
+<pre>Get-VM | Get-VMNetworkAdapter | ? MacAddress -eq '00155D640F05' | select VMName,MacAddress,IPAdd resses</pre>
+
+<p> </p>
+
+<p>Just to refer my recent posts…</p>
+
+<p><a title="Powershell one-liner to find XenServer guest by MAC address" href="http://www.miru.ch/2012/07/powershell-one-liner-to-find-xenserver-guest-by-mac-address/" rel="bookmark">Powershell one-liner to find XenServer guest by MAC address</a></p>
+
+<p><a title="Powershell one-liner to find vSphere guest by MAC address" href="http://www.miru.ch/2012/04/powershell-one-liner-to-find-vsphere-guest-by-mac-address/" rel="bookmark">Powershell one-liner to find vSphere guest by MAC address</a></p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+:ET

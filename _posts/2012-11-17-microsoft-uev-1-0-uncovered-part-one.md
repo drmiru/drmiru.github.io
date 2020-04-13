@@ -123,7 +123,7 @@ I wanted to dig a bit deeper and find out how UEV is working under the hood.
 
 ### **Service Architecture**
 
-<img src="http://www.miru.ch/wp-content/uploads/2012/11/111612_2204_MicrosoftUE14.png" alt="" align="left" /> 
+<img src="../images/2012/11/111612_2204_MicrosoftUE14.png" alt="" align="left" /> 
 
 &nbsp;
 
@@ -150,7 +150,7 @@ Unfortunately I didn&#8217;t see any possibility to manage the exclusions centra
 
 ### **What about App-V?**
 
-<img src="http://www.miru.ch/wp-content/uploads/2012/11/111612_2204_MicrosoftUE2.png" alt="" align="left" /> For more information about App-V service and process inclusions refer to this post:
+<img src="../images/2012/11/111612_2204_MicrosoftUE2.png" alt="" align="left" /> For more information about App-V service and process inclusions refer to this post:
 
 <http://blogs.technet.com/b/gladiatormsft/archive/2012/08/01/app-v-4-6-using-service-and-process-inclusions.aspx>
 

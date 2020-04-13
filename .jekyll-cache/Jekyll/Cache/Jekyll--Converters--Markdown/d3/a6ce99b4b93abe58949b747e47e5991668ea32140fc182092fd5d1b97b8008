@@ -1,0 +1,27 @@
+I"�
+<p><span style="text-decoration: underline;"><strong>What’s new in VMware vSphere 4 @ Magirus – Day 1 </strong></span></p>
+
+<p>Not motivated to list all new features, there are many sites including VMware one,  which list them completeley. Just wanted to highlight featurea and facts that I’ll keep in mind.</p>
+
+<ul>
+  <li>– Service Console (linux kernel 2.6) and VM Kernel are now 64Bit native and SC is encapsuled within a dedicated VMDK, so SC is now a VM in fact (what a surprise :-). Requires a local VMFS partition to host the SC!!!</li>
+  <li>– Native SATA Support (cool for Labs)</li>
+  <li>– Asymmetric LUN Access (LUA)</li>
+  <li>– Paravirtualized SCSI Adapter for VMs</li>
+  <li>– vCenter linked Mode (manage more than one vCenter within the same GUI (each VC keeps it’s own database, some information synced via ADAM between VC Instances)<br />
+–&gt; only supported if all VCs are within the same forest/domain or whithin a two-way trust environment</li>
+  <li>– Update Manager supports now Patch staging (pre download patches to Hosts, remmediate later). Unfortunately there is no multi-repository support, still only one Update Manager and patch repository per vCenter. Local Repositories can be managed within vCenter Client.</li>
+  <li>– Orchestrator (devel, automation, orchestration) is installed by default with vCenter. There is no much information about that. 🙁</li>
+  <li>– Upgrade VMs. Upgrade VMware Tools first before vHW! Upgrade vHW only if all of the nodes within the ESX cluster are on 4.0!</li>
+  <li>– Direct upgrade of ESX Hosts is performed using Update Manager, but only works if existing ESX installation has a local VMFS (even if it’s possible to select a shared VMFS to place the Service Console vmdk, this is only a theoretic alternative I think.)</li>
+  <li>– Performance Graph enhancements (looks similar to legacy vmktools), very nice</li>
+  <li>– Perfmon Integration in Windows guests. Counters available for virtual CPU etc.</li>
+  <li>– Alarms / Events. A bunch of new events and triggers to monitor the infrastructure (cpu, network, storage, hosts, vms, clusters, etc.)</li>
+  <li>– vApp : import or create your own vApp. (container with multiple VMs exportable as OVF / OFA with enhanced properties)</li>
+  <li>– vNetwork Distributed Switch Architecture<br />
+-&gt; enables support for Cisco NEXUS 1000 virtual switch<br />
+-&gt; distributed virtual switches are configured on vCenter level, connected hosts get configured with hidden vSwitches and Uplinks to manage the connectivity to the physical environment. Base for VMsafeAPI and vShield zones</li>
+</ul>
+
+<p>enough for now… let’s go to the lab…</p>
+:ET

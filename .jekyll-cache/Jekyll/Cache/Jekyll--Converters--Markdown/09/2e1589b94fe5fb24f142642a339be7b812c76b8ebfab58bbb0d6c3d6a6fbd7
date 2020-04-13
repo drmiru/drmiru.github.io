@@ -1,0 +1,80 @@
+I"<h1 id="what-is-wap-console-connect">What is WAP Console Connect?</h1>
+
+<p><span style="font-family: Times New Roman; font-size: 12pt;">WAP Remote Console Connect <span style="color: #1c1c1c;">allows tenants to connect to their virtuals machine through a SSL-tunnelled RDP connection regardless of the virtual machine having an IP address or Remote Desktop connectivity enabled.</span> The good thing here, it also works for Linux based VMs in the same way. The “bad” thing, the connection, even when RDP based, doesn’t allow client interactions like clip board, local drives, smart cards, etc. I’m not sure if this is be design for security reasons. However, when connecting via Internet, a dedicated Remote Desktop Gateway is required, as the RD Gateway gets a special “claim based authentication”-configuration making it unusable for other purposes like Remote Desktop Sessions or Remote Apps.<br /> </span></p>
+
+<p><span style="font-family: Times New Roman; font-size: 12pt;"><strong>This post’s intend is to highlight the most common mistakes when implementing Windows Azure Pack Console Connect feature</strong>.<br /> I’m not going in detail through the installation and configuration procedure, as this is documented in <a href="http://technet.microsoft.com/en-us/library/dn469415.aspx" target="_blank">this TechNet Article</a>.<br /> </span></p>
+
+<p><span style="font-family: Times New Roman; font-size: 12pt;">To give you a basic understanding, I pasted the original Microsoft big picture here.<br /> </span></p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2014/03/031914_2159_Troubleshoo1.gif" alt="" /> <span style="font-family: Times New Roman; font-size: 12pt;"><br /> </span></p>
+
+<p><span style="font-family: Times New Roman; font-size: 12pt;">Image: Remote Console Connect Architecture (Image Source: Microsoft)<br /> </span></p>
+
+<h2 id="how-it-works-in-a-nutshell">How it works “in a nutshell”</h2>
+
+<p>While it is a bit more complex in detail, I tried to simplify the process for a short overview.</p>
+
+<ul>
+  <li>User connects to Tenant Portal and selects a virtual machine to connect to its remote console (not RDP)</li>
+  <li>Azure Pack connects via Service Provider Foundation to SCVMM and asks for an access token</li>
+  <li>SCVMM knows the Hyper-V Host, the VM is currently running on and creates a claim token using the private key of the installed VMM Gateway Certificate</li>
+  <li>The token together with a dynamic issued RDP file are returned to Azure Pack Tenant Portal and user is asked if he wants to open the signed RDP file</li>
+  <li>RDP Connection is established via RD Gateway to the Hyper-V Host, the VM currently runs on</li>
+  <li>The Hyper-V Host verifies the claim token using the public key of the VMM Gateway Certificate and grants access to the VM Remote Console</li>
+</ul>
+
+<p> </p>
+
+<h2 id="these-are-the-basic-requirements-to-get-this-thing-up-and-running">These are the basic requirements to get this thing up and running.</h2>
+
+<ul>
+  <li>A valid SSL Certificate on SCVMM host with “Client Authentication” as enhanced key usage. If as self-signed certificate is used, it must also to be present on each Hyper-V Host (Local Machine Cert Store)</li>
+  <li>A valid SSL Certificate on the RD Gateway host with “Server Authentication” as enhanced key usage</li>
+  <li>Remote Console Connect configuration on SCVMM host</li>
+  <li>Federated Authentication Gateway component installed on the RD Gateway</li>
+  <li>Trusted certificate thumbprint set for RDP file signing on RD Gateway (the thumbprint of the certificate from Step 1)</li>
+  <li>RDP Client 8.1 on the endpoint. <a href="http://support.microsoft.com/kb/2830477/en-us" target="_blank">See here for a Windows 7 version of RDP 8.1 Client</a></li>
+</ul>
+
+<h2 id="most-common-deployment-mistakes">Most common deployment mistakes</h2>
+
+<p><span style="text-decoration: underline;"><strong>Mistake 1:<br /> </strong></span></p>
+
+<ul>
+  <li>A self-signed SSL certificate has been used on SCVMM to generate the access tokens, but the certificate has not been imported into the computers certificate store on each Hyper-V Host</li>
+  <li>A self-signed SSL certificate has been used on SCVMM to generate the access tokens, but the certificate’s public key has not been imported in the “Trusted Root Certificate Authorities” container on each Hyper-V Host<br />
+**<span style="color: red;">In both cases above, Your browser will get a JSON file containing a not very helpful error message, instead of receiving an RDP File when trying to connect a VM Console</span><br />
+**</li>
+</ul>
+
+<p><span style="text-decoration: underline;"><strong>Mistake 2:<br /> </strong></span></p>
+
+<ul>
+  <li>The certificate has been issued with an invalid cryptographic service provider type -&gt; “Microsoft Enhanced RSA and AES Cryptographic Provider” is required.</li>
+</ul>
+
+<p><span style="color: red;"><strong>In this case the VMM Logs will display the following error:<br /> </strong></span></p>
+
+<p style="margin-left: 36pt;">
+  SCVMM Version=3.2.7620.0<br /> SCVMM flavor=C-buddy-RTL-AMD64<br /> Default Assembly Version=3.2.7620.0<br /> Executable Name=vmmservice.exe<br /> Executable Version=3.2.7510.0<br /> Base Exception Target Site=140727707248024<br /> Base Exception Assembly name=mscorlib.dll<br /> Base Exception Method Name=<span style="color: red;"><strong>System.Security.Cryptography.CryptographicException.ThrowCryptographicException<br /> </strong></span>Exception Message=<span style="color: red;"><strong>Invalid algorithm specified</strong></span>.
+</p>
+
+<p><span style="text-decoration: underline;"><strong>Mistake 3:<br /> </strong></span></p>
+
+<ul>
+  <li>The thumbprint of the SSL certificate installed on SCVMM has not been registered on the RD Gateway host</li>
+  <li>The SSL Certificate for RD Gateway Host has been changed or renewed without restarting the host<br />
+<img src="http://www.miru.ch/wp-content/uploads/2014/03/032114_2114_Troubleshoo1.png" alt="" /></li>
+</ul>
+
+<p><span style="text-decoration: underline;"><strong>Mistake 4:<br /> </strong></span></p>
+
+<ul>
+  <li>The RD Gateway URL defined on the VM Cloud in WAP Portal does not match the CN of the RD Gateway Certficate.</li>
+  <li>The Certificate used for RD Gateway does not have DNS=<gatewayFQDN> set as a -Subject Alternative Name&#8221;</gatewayFQDN></li>
+  <li>In this case you’ll see the following error message:<br />
+<img src="http://www.miru.ch/wp-content/uploads/2014/03/032114_2114_Troubleshoo2.png" alt="" /></li>
+</ul>
+
+<p>While there are other pitfalls like SSL-Offloading, Load-Balancing etc., I hope this post covers the most often occurring issues and questions I see around Windows Azure Pack Console Connect feature. However, if you know other important pitfalls, feel free to ping me: <a href="http://www.twitter.com/DRMIRU" target="_blank">@DRMIRU</a></p>
+:ET

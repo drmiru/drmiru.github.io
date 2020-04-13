@@ -1,0 +1,2 @@
+I"z<p>The following code enables a file based locking mechanism within a powershell script. It checks for existance of a lock file and checks if a running process exists, which is capturing this file. This can be used in situations, where a script is beeing launched paralell by another script or programm, but you want to have your script executed exclusively and serialized.</p>
+:ET

@@ -1,0 +1,2 @@
+I"<p>I came along a weird issue when trying to automate a SCVMM Hyper-V Bare metal Deployment using System Center Orchestrator 2012 SP1. As the System Center Integration Pack for SCVMM is focused on virtual machine automation tasks, I had to create my own Powershell scripts.</p>
+:ET

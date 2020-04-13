@@ -27,7 +27,7 @@ By default, online extension of replicated volumes is disabled. It&#8217;s a &#8
 
 In the following example, we&#8217;re going to extend a volume, based on a virtual disk of a S2D (Storage Spaces Direct) cluster, which has some volumes replicated to another S2D Cluster using the Cluster-to-Cluster SR scenario.
 
-[<img class="alignleft size-medium wp-image-4856" src="http://www.miru.ch/wp-content/uploads/2017/02/sr_clustertocluster-300x215.png" alt="" width="300" height="215" srcset="http://www.miru.ch/wp-content/uploads/2017/02/sr_clustertocluster-300x215.png 300w, http://www.miru.ch/wp-content/uploads/2017/02/sr_clustertocluster.png 427w" sizes="(max-width: 300px) 100vw, 300px" />](http://www.miru.ch/wp-content/uploads/2017/02/sr_clustertocluster.png)
+[<img class="alignleft size-medium wp-image-4856" src="../images/2017/02/sr_clustertocluster-300x215.png" alt="" width="300" height="215" srcset="../images/2017/02/sr_clustertocluster-300x215.png 300w, ../images/2017/02/sr_clustertocluster.png 427w" sizes="(max-width: 300px) 100vw, 300px" />](../images/2017/02/sr_clustertocluster.png)
 
 &nbsp;
 

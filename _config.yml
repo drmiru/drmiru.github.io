@@ -7,14 +7,14 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site
 
 # Comments
-disqus_shortname:   default
+disqus_shortname:   "drmiru-1"
 
 # Social
 analytics-id:       "default"
 twitter:            drmiru
 facebook:           default
-instagram:          default
-github:             default
+instagram:          michael.rueefli
+github:             drmiru
 
 # personal
 location:           Switzerland

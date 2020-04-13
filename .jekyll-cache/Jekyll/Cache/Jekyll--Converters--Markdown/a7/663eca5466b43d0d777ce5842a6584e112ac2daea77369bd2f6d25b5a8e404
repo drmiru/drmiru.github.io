@@ -1,0 +1,34 @@
+I"b<p>Pubforum is no more, it’s now called <strong>E2E virtualization conference</strong>. The most of us think that it’s a good change to gain a more professional touch also for the sponsors by this rebranding.</p>
+
+<p><strong>Session # (Hyper-V Q+A)</strong></p>
+
+<p><a href="http://www.aidanfinn.com/">Aidan Finn</a> open a 15min Q+A session about Hyper-V. He’s the man if you have any issues or design questions about Hyper-V deployments.</p>
+
+<p><strong>Session #  (<a href="http://www.viridisit.se/eng/blog/">Nicke Kallen</a> about App-V application virtualization)</strong></p>
+
+<ul>
+  <li>About BP around virtualizing applications</li>
+  <li>What should be installed in the base image / what not . He pinpoints that most of the redistributable should be in the base image (C, C#, F#, j# C++, .NET).</li>
+  <li>What does the improvements with Office 2010 and App-V really mean?
+    <ul>
+      <li>Not much. There are still issues where it does not make really sense to virtualize Office on a fat client</li>
+      <li>Could be good for XenApp / VDI where you maintain a single image</li>
+    </ul>
+  </li>
+  <li>Nicke shows a demo of 4.6 SP1 sequencer</li>
+</ul>
+
+<p>A cool session at all. I’m glad to know that there is a guy out there who can help me out of difficulties while creating App-V Packages.</p>
+
+<p><strong>Session # (<a href="http://www.wedel.no/">Daniel Wedel</a> about Web Interface 5.4)</strong></p>
+
+<p>A really cool overview about news and hints, as well as BPs. I’ll wait for the presentation to be available.</p>
+
+<p>Later on, <a href="http://www.poppelgaard.com/">Thomas Poppelgaard</a> and <a href="http://de.linkedin.com/pub/helmut-hauser/8/402/90">Helmut Hauser</a> showed us HDX 3D experiences and what it can / can’t provide at the moment.</p>
+
+<p>Last Session for today was about <strong>IOPS</strong>, by <a href="http://www.jimmoyle.com/">Jim Moyle</a>.</p>
+
+<p>He pinpoints the pain in the  *ss topics around large scale VDI deployments, what IOPS is all about , how it can be measured and which methods can be used to be more flexible.</p>
+
+<p>After all, now it’s time for some networking.</p>
+:ET

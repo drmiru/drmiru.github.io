@@ -1,0 +1,2 @@
+I"=<p>This article describes all steps to activate certificate based authentication to Outlook Web Application on Exchange 2010 / IIS 7.We assume here that you already have configured the SSL server certificate for the CAS server and the user accessing OWA has a valid user certificate for authentication installed.</p>
+:ET

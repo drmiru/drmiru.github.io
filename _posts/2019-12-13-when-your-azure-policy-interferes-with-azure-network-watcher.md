@@ -55,6 +55,6 @@ az provider register -n Microsoft.Network </pre>
 
 Whatever process and tools you choose, ensure every subscription gets his resource group for the network watcher instances. I&#8217;d recommend to choose the resource group where you put your other network core resources in, such as network gateways and firewalls. I&#8217;m using Azure Blueprints to ensure, every new subscription get&#8217;s the basic resources and policies assigned.<figure class="wp-block-image">
 
-<img src="http://www.miru.ch/wp-content/uploads/2019/12/networkwatcher02.png" alt="" class="wp-image-5186" srcset="http://www.miru.ch/wp-content/uploads/2019/12/networkwatcher02.png 906w, http://www.miru.ch/wp-content/uploads/2019/12/networkwatcher02-300x43.png 300w, http://www.miru.ch/wp-content/uploads/2019/12/networkwatcher02-768x109.png 768w" sizes="(max-width: 906px) 100vw, 906px" /> </figure> 
+<img src="../images/2019/12/networkwatcher02.png" alt="" class="wp-image-5186" srcset="../images/2019/12/networkwatcher02.png 906w, ../images/2019/12/networkwatcher02-300x43.png 300w, ../images/2019/12/networkwatcher02-768x109.png 768w" sizes="(max-width: 906px) 100vw, 906px" /> </figure> 
 
 You can find an example blueprint to achieve this in my Github repo <a href="https://github.com/drmiru/AzureBlueprints/tree/master/blueprints/NetworkWatcher" target="_blank" rel="noreferrer noopener" aria-label="here (opens in a new tab)">here</a>

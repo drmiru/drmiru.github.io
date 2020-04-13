@@ -29,7 +29,7 @@ Windows Azure Pack (codename &#8220;KATAL&#8221;) has been released together wit
 
 The following picture illustrates the architecture from a high level perspective.
 
-![](http://www.miru.ch/wp-content/uploads/2013/11/111813_2202_WhyIthinkAz1.png)  
+![](../images/2013/11/111813_2202_WhyIthinkAz1.png)  
 Source: Microsoft
 
 &nbsp;
@@ -98,7 +98,7 @@ Well if you ever wanted to enable self-service for virtual machines you probably
       </ul>
       
       <p>
-        <img alt="" src="http://www.miru.ch/wp-content/uploads/2013/11/111813_2202_WhyIthinkAz2.png" />
+        <img alt="" src="../images/2013/11/111813_2202_WhyIthinkAz2.png" />
       </p>
       
       <h1>
@@ -122,7 +122,7 @@ Well if you ever wanted to enable self-service for virtual machines you probably
       </p>
       
       <p>
-        <img alt="" src="http://www.miru.ch/wp-content/uploads/2013/11/111813_2202_WhyIthinkAz3.png" />
+        <img alt="" src="../images/2013/11/111813_2202_WhyIthinkAz3.png" />
       </p>
       
       <p>

@@ -1,0 +1,2 @@
+I"r<p>Storage Spaces allows you to define default values on a Storage Pool, so every new created virtual disk (space) is using those values, even if the administrator does not provide them or doesn’t know how to provide them. A common issue arises when fabric administrators are using one of the GUI options to create spaces, either the Server Manager or SCVMM. Why?</p>
+:ET

@@ -1,0 +1,73 @@
+I"�<p>In this article I’m going to highlight some of the most common multi-forest scenarios you may have to deal with operating a System Center Virtual Machine Manager. The official Technet documentation claims that multi-forests scenarios are supported using Kerberos. Unfortunately I did not find an official deep dive on that yet.</p>
+
+<p><span style="font-size: 14pt;"><strong>Managing Hyper-V Hosts and Clusters in multiple AD Forests<br /> </strong></span></p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2013/08/081213_2304_SCVMMinmult1.png" alt="" /></p>
+
+<p>This works pretty straight forward as long as you configure a host management “Run As account” for each forest. There is no need to trust the foreign forest (from a SCVMM management perspective).<br />
+Why? Because SCVMM uses CredSSP and provides “fresh credentials” for each task submitted to the remote host.</p>
+
+<p><strong><em>Update:</em></strong> <em>(special thanks to <a href="http://www.thomasmaurer.ch">Thomas Maurer</a> for this feedback)</em></p>
+
+<p>The following limitations apply when adding untrusted hosts:</p>
+
+<ul>
+  <li>Updating VMM agent on host fails. Host must be removed and re-added to VMM</li>
+  <li>Creating a host cluster or adding a cluster node fails</li>
+  <li>Cluster validation fails</li>
+  <li>A converged network setup with management interface being part of the logical switch fails (WMI error)</li>
+  <li>VMM console does not display host or cluster properties when run from a remote client due to certificate errors on WSMAN level</li>
+</ul>
+
+<p> </p>
+
+<p><span style="font-size: 14pt;"><strong>Accessing SCVMM via console from a different AD Forest<br /> </strong></span></p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2013/08/081213_2304_SCVMMinmult2.png" alt="" /> **<br />
+**</p>
+
+<p>This is a tricky one because a lot scenarios are as follows:</p>
+
+<ul>
+  <li>SCVMM is located in a so called “resource forest”</li>
+  <li>Admin / User Account is located in a user or so called “account forest”.</li>
+  <li>The resource forest has an outgoing one-way trust to one or multiple account forests</li>
+</ul>
+
+<p>If a user from the account forest tries to access SCVMM in the resource forest, the SQL server instance running the VMM database tries to verify the AD user object from the account forest.</p>
+
+<p>–&gt; <span style="color: #2f5496;"><strong>Thx to <a href="http://www.server-talk.eu">Michel Luescher</a> from Microsoft Switzerland for the hint!<br /> </strong></span></p>
+
+<p>VMM Console shows the following error after entering the user credentials from the account forest:</p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2013/08/081213_2304_SCVMMinmult3.png" alt="" /></p>
+
+<p>To verify the root cause execute the following SQL query against your VMM Database using the SQL instance service account:</p>
+
+<p><span style="font-family: Consolas; font-size: 9pt;"><span style="color: blue;">select</span><br /> <span style="color: fuchsia;">suser_sid<span style="color: blue;"><br /> <span style="color: gray;">(<span style="color: red;">‘AccountForest\user’<span style="color: gray;">)<br /> </span></span></span></span></span></span></p>
+
+<p>If the query returns “NULL”, your SQL Server or the underlying service account is not able to resolve the user’s SID from the account forest.</p>
+
+<p><strong>To make this scenario working properly, you basically have two possibilities</strong>.</p>
+
+<ol>
+  <li>Enable a two-way trust between the account and the resource forest</li>
+  <li>Run the VMM SQL server instance under a service account from the account forest. Additionally you can enable selective forest authentication to leverage security level.</li>
+</ol>
+
+<p>Both solution are not very sexy from a security point of view. However I’d prefer solution 2) as it has less impact overall while assuming you have a single account forest. Otherwise you have to enable outgoing trust relationships from all required account forests to the VMM resource forest.</p>
+
+<p>Ok, so …. but..</p>
+
+<p>What if…</p>
+
+<p>…both solutions above are not accepted for whatever reasons.</p>
+
+<p>Well you can still create user accounts in the resource forest as an exception. The main pitfall here is that VMM users can’t manage their account respectively their passwords in the resource forest. You could implement a custom solution or the IISPWD website enabling users to change their resource account password. However, there is no notification mechanism in the VMM management console telling the users that their password is going to expire.</p>
+
+<p>Other resources:</p>
+
+<p><a href="http://social.technet.microsoft.com/wiki/contents/articles/884.scvmm-implementation-in-cross-domains-topology.aspx">http://social.technet.microsoft.com/wiki/contents/articles/884.scvmm-implementation-in-cross-domains-topology.aspx</a></p>
+
+<p><a href="http://technet.microsoft.com/en-us/library/bb740760.aspx">http://technet.microsoft.com/en-us/library/bb740760.aspx</a></p>
+:ET

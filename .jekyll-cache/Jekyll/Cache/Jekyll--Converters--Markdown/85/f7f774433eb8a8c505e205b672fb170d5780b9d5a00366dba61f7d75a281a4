@@ -1,0 +1,44 @@
+I"4
+<p>I’ve been using terraform for Azure IaC in various customer projects the last months. One thing which is really critical is to have a proper terraform backend configuration. As long as you’re the only one working with a specific terraform configuration you only have to care about your own state file. But for production environments, where deployments are usually triggered by a CI/CD pipeline, you’re no longer handling with local state files and have to store them on a cloud storage. For Azure, it’s obviously an Azure Storage Account where you put your state file inside a blob container.</p>
+
+<p>Here’s an example of a partial terraform backend configuration.</p>
+
+<pre class="wp-block-code"><code>terraform {
+  backend "azurerm" {
+    storage_account_name  = "myiacblobstorage"
+    container_name        = "terraform"
+    key                   = "terraform.myProject.tfstate"
+    access_key           = ""
+  }
+}</code></pre>
+
+<p>The access key is provided as a parameter on execution, usually gathered from an azure key vault at runtime of the pipeline.</p>
+
+<blockquote class="wp-block-quote">
+  <p>'
+    Wait.. what&#8217;s this statefile (.tfstate) exactly for?
+  </p>
+</blockquote>
+
+<p>The state file is used by Terraform so it can map the real status of your infrastructure to the configuration applied by your Terraform templates. On every terraform validate/plan/apply cycle the state file gets updated so it reflects the current state of the configured Azure environment (like a mirror). The file (something.tfstate) is stored locally (by default) within the .terraform folder if you do not configure the backend (as shown above). Prior to any operation, Terraform does a refresh to update the state with the real infrastructure. If you lose this statefile, terraform will create a fresh, empty state file, which would result in all defined objects to be recreated. This will obviously fail as they already exist. The worst case here, terraform will delete and recreate all your defined resources. Theoretically there’s a way to recover from a lost state file by using the “terraform import” method. But as you have to import any single resource, this can become a nightmare if your project contains several resources.</p>
+
+<h2 id="considerations-for-handling-the-state-file">Considerations for handling the state file</h2>
+
+<ul>
+  <li>Store the state file on an Azure Storage Account and every DevOps engineer working on the same project should always reflect this file in the backend configuration</li>
+  <li>Protect the file or the upper blob container with proper SAS tokens</li>
+  <li>Activate soft-delete option on your storage account for easy recovery</li>
+  <li>Automatically create snapshots of your state file(s) after each successful terraform apply run (ideally within the release pipeline). I’ve added an example how to achieve that using PowerShell below</li>
+</ul>
+
+<pre class="wp-block-code"><code>$storageAccountName = "myiacblobstorage"
+$ContainerName = "terraform"
+$BlobName = "terraform.myproject.tfstate" 
+
+$storageAccount = Get-AzStorageAccount | Where-Object {$_.StorageAccountName -eq $storageAccountName}
+
+$blob = Get-AzStorageBlob -Context $context -Container $ContainerName -Blob $BlobName
+$snap = $blob.ICloudBlob.CreateSnapshot()</code></pre>
+
+<p>Hope this helps to prevent issues with your terraform journey.</p>
+:ET

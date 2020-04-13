@@ -24,7 +24,7 @@ XenDesktop 5.x provides very flexible and fine grained access policy rules to co
 <span style="font-size: 12pt;"><strong>Background</strong></span>  
 XenDesktop access policies define the rules used to control access of users to Desktop / Application resources in the site. Access checks are based on the attributes of users&#8217; connections from their devices to the XenDesktop site. The access policy comprises a set of rules while each rule contains a set of connection filters, resource filters, and access right grants.
 
-[<img class="alignleft size-medium wp-image-835" title="AccessPolicyRules" src="http://www.miru.ch/wp-content/uploads/2012/07/AccessPolicyRules-273x300.jpg" alt="" width="385" height="422" srcset="http://www.miru.ch/wp-content/uploads/2012/07/AccessPolicyRules-273x300.jpg 273w, http://www.miru.ch/wp-content/uploads/2012/07/AccessPolicyRules-933x1024.jpg 933w, http://www.miru.ch/wp-content/uploads/2012/07/AccessPolicyRules.jpg 1405w" sizes="(max-width: 385px) 100vw, 385px" />](http://www.miru.ch/wp-content/uploads/2012/07/AccessPolicyRules.jpg)
+[<img class="alignleft size-medium wp-image-835" title="AccessPolicyRules" src="../images/2012/07/AccessPolicyRules-273x300.jpg" alt="" width="385" height="422" srcset="../images/2012/07/AccessPolicyRules-273x300.jpg 273w, ../images/2012/07/AccessPolicyRules-933x1024.jpg 933w, ../images/2012/07/AccessPolicyRules.jpg 1405w" sizes="(max-width: 385px) 100vw, 385px" />](../images/2012/07/AccessPolicyRules.jpg)
 
 &nbsp;
 
@@ -66,7 +66,7 @@ The GUI is very limited and can only be used to configure basic rules as (any co
 **<span style="font-size: 12pt;">Using Powershell</span>  
 ** Be aware that, after modifying an Access Policy Rule with Powershell, the policy can&#8217;t be edited anymore using the GUI.
 
-![](http://www.miru.ch/wp-content/uploads/2012/07/APR-GUI-error-300x47.jpg) 
+![](../images/2012/07/APR-GUI-error-300x47.jpg) 
 
 By default, each Desktop Group gets two Access Policy Rules, when the Desktop Group is created. Let&#8217;s say the Desktop Group is named VDI\_WIN7, the following Policies will be created automatically: VDI\_WIN7\_Direct (policy for all direct connections) VDI\_WIN7_AG (policy for all connections via Access Gateway) You can either edit these policies or unassign them from the Desktop Group, which I would prefer to have a fall back to the default settings if you crack up the settings via Powershell.  
 Here are the steps to create and assign two new custom policies to a paricular Desktop Group named VDI_WIN7

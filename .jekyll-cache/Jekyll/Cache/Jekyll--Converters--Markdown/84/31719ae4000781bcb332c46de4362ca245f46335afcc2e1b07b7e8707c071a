@@ -1,0 +1,39 @@
+I"4<p>Azure Policy is a comprehensive tool to control and govern your azure environments. Whether you want to audit or prevent things from happening in your azure subscriptions, there are plenty of built-in policies you can customize according to your needs. Now I often get the question when and where policies get evaluated once created.</p>
+
+<p>Once a policy or policy initiative has been assigned to a scope (Management Group, Subscription or Resource Group), it usually takes up to 30 minutes to take effect. The policy then evaluates compliance state against all underlying resources (for policies with audit effect). Same applies for changes to existing policy assignments.</p>
+
+<p>While policy effect “deny” prevents affected deployments at submission time on ARM level, recurring policy evaluation against compliance state occurs then every 24 hours.</p>
+
+<p>If you want to initiate a manual instant policy evaluation cycle, you can leverage the ARM REST APIs. Here’s an example to trigger an evaluation cycle on subscription level.</p>
+
+<pre class="wp-block-code"><code>$subscriptionId = "&lt;your subscription id goes here&gt;"
+$uri = "https://management.azure.com/subscriptions/$subscriptionId/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview"
+$azContext = Get-AzContext
+$azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+$profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
+$token = $profileClient.AcquireAccessToken($azContext.Tenant.Id)
+$authHeader = @{
+    'Content-Type'='application/json'
+    'Authorization'='Bearer ' + $token.AccessToken
+}
+Invoke-RestMethod -Method Post -Uri $uri -UseBasicParsing -Headers $authHeader
+</code></pre>
+
+<p>And a similar example to trigger the eval cycle on a specific resource group.</p>
+
+<pre class="wp-block-code"><code>$subscriptionId = "&lt;your subscription id goes here&gt;"
+$resourceGroupName = "&lt;your resource group goes here&gt;"
+$uri = "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview"
+$azContext = Get-AzContext
+$azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+$profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
+$token = $profileClient.AcquireAccessToken($azContext.Tenant.Id)
+$authHeader = @{
+    'Content-Type'='application/json'
+    'Authorization'='Bearer ' + $token.AccessToken
+}
+Invoke-RestMethod -Method Post -Uri $uri -UseBasicParsing -Headers $authHeader
+</code></pre>
+
+<p>A happy governance day!</p>
+:ET

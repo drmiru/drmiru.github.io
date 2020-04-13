@@ -1,0 +1,59 @@
+I"�	<p>I came along a weird issue when trying to automate a SCVMM Hyper-V Bare metal Deployment using System Center Orchestrator 2012 SP1. As the System Center Integration Pack for SCVMM is focused on virtual machine automation tasks, I had to create my own Powershell scripts.</p>
+
+<p><span style="font-size: 12pt; text-decoration: underline;"><strong>The Difficulty<br /> </strong></span></p>
+
+<p>System Center Orchestrator is built in x86 architecture (yes.. still the 2012 SP1 version I’m using on a Server 2012). Therefore the built-in Script execution action executes the PoSh code in x86 Powershell environment. This is not very useful for x64 based management modules or snapIns like SCVMM, Exchange 2010/2013 or SCCM. Trying to execute a SCVMM CMDLET like in the example here:</p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2013/05/052613_1142_Howtoexecut1.png" alt="" /></p>
+
+<p>..ends with an Error (CMDLET is unknown)</p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2013/05/052613_1142_Howtoexecut2.png" alt="" /></p>
+
+<p>This happens because SCVMM PoSh modules are not available in x86 Powershell environments.</p>
+
+<p><span style="font-size: 12pt; text-decoration: underline;"><strong>The Workarounds<br /> </strong></span></p>
+
+<p>There are basically three different workarounds I’m currently aware of. If you know other or better ones please let me know.</p>
+
+<ol>
+  <li>**Use Run Program Action<br />
+**</li>
+</ol>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2013/05/052613_1142_Howtoexecut3.png" alt="" /></p>
+
+<p style="margin-left: 36pt;">
+  <ol>
+    <li>
+      <strong>Run the code inside a x64-Bit Powershell environment<br /> </strong>
+    </li>
+  </ol>
+  
+  <p>
+    <img src="http://www.miru.ch/wp-content/uploads/2013/05/052613_1142_Howtoexecut4.png" alt="" />
+  </p>
+  
+  <p>
+    &nbsp;
+  </p>
+  
+  <ol>
+    <li>
+      <strong>Use ExecutePS Integration Pack 1.1 from Charlesjoy on <a href="http://orchestrator.codeplex.com/releases/view/76101">CodePlex</a></strong><br /> <a href="http://orchestrator.codeplex.com/releases/view/76101">http://orchestrator.codeplex.com/releases/view/76101</a>
+    </li>
+  </ol>
+  
+  <p>
+    &nbsp;
+  </p>
+  
+  <p>
+    <strong>Which one would I choose?</strong>
+  </p>
+  
+  <p>
+    Well for simple tasks I'd choose option 2 because it doesn't require additional IP installation and knowledge. For more sophisticated tasks I'll take the ExecutePS IP which is the Ferrari IMHO to execute Powershell code inside System Center Orchestrator.
+  </p>
+</p>
+:ET

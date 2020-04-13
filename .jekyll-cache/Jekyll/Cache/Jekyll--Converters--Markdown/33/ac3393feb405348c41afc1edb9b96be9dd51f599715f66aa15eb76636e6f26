@@ -1,0 +1,10 @@
+I"�<p>A run in a very special issue when I tried to pass arguments to a powershell script if one of the arguments contained single quotes within the argument string like “this is damn ‘quote’ inside the arg!!” Your powershell script would then think that these are separated arguments. You won’t get the hell out of this sh*t. One possible solution is to place the “wracky” argument at the end, in fact use is as last argument. Install the <a title="Powershell Community Extensions" href="http://pscx.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=1615" target="_blank">Powershell Community Extensions </a>and use the <strong>join-string</strong> cmdlet. Here’s an example.</p>
+
+<p><span style="color:#92d050; font-family:Courier New"># save this code as a ps script and use two arguments to pass to the script.<br /> # use single quotes within the 2nd argument, eg.    “This is the ‘2nd’ Argument”<br /> </span></p>
+
+<p><span style="color:#ddd9c3; font-family:Courier New">$user=$args[0]<br /> $msg=@()<br /> $i = 1 for ( $i ; $i -lt $args.count; $i++ )<br /> {<br /> $msg += $args[$i]<br /> }<em><br /> </em></span></p>
+
+<p><span style="color:#ddd9c3; font-family:Courier New">$msg = ($msg | join-string -separator ” “)<br /> write-host ‘The Script Arguments where now: “‘$user’” “‘$msg’”‘<br /> </span></p>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2010/01/011110-2123-powershelld11.jpg" alt="" /></p>
+:ET

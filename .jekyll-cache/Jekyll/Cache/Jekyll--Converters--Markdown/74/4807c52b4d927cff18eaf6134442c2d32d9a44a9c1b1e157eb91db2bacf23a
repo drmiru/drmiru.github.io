@@ -1,0 +1,2 @@
+I"µ<p>In one of my <a href="http://www.miru.ch/2013/04/why-ue-v-is-not-ready-yet-for-volatile-vdi-envionments/">recent posts</a> I covered an issue with Microsoft UE-V regarding open applications at logoff. To keep it short here, application settings of opened applications are not synced back to the central location store when logging off. This behaviour is by design in the current UE-V release and might change in a future version.</p>
+:ET

@@ -28,7 +28,7 @@ In this article I&#8217;m going to highlight some of the most common multi-fores
 
 <span style="font-size: 14pt;"><strong>Managing Hyper-V Hosts and Clusters in multiple AD Forests<br /> </strong></span>
 
-![](http://www.miru.ch/wp-content/uploads/2013/08/081213_2304_SCVMMinmult1.png) 
+![](../images/2013/08/081213_2304_SCVMMinmult1.png) 
 
 This works pretty straight forward as long as you configure a host management &#8220;Run As account&#8221; for each forest. There is no need to trust the foreign forest (from a SCVMM management perspective).  
 Why? Because SCVMM uses CredSSP and provides &#8220;fresh credentials&#8221; for each task submitted to the remote host.
@@ -47,7 +47,7 @@ The following limitations apply when adding untrusted hosts:
 
 <span style="font-size: 14pt;"><strong>Accessing SCVMM via console from a different AD Forest<br /> </strong></span>
 
-![](http://www.miru.ch/wp-content/uploads/2013/08/081213_2304_SCVMMinmult2.png) **  
+![](../images/2013/08/081213_2304_SCVMMinmult2.png) **  
 ** 
 
 This is a tricky one because a lot scenarios are as follows:
@@ -62,7 +62,7 @@ If a user from the account forest tries to access SCVMM in the resource forest, 
 
 VMM Console shows the following error after entering the user credentials from the account forest:
 
-![](http://www.miru.ch/wp-content/uploads/2013/08/081213_2304_SCVMMinmult3.png) 
+![](../images/2013/08/081213_2304_SCVMMinmult3.png) 
 
 To verify the root cause execute the following SQL query against your VMM Database using the SQL instance service account:
 

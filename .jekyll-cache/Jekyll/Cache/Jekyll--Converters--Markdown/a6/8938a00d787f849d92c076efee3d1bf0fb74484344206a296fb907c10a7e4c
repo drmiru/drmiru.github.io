@@ -1,0 +1,63 @@
+I"<p>In this post I wanted to give a short wrap up about my experiences upgrading existing Hyper-V 2012 Clusters and VMM 2012 SP1 to the new R2 version. I decided to leave out all print screens to keep the post short and useful as a guidline.</p>
+
+<h3 id="general-considerations">General considerations</h3>
+
+<p>However you manage your current environment, be sure to have at least one management PC or jump server with either Windows 8.1 or Server 2012 R2 ready before you start. If Windows 8.1, then install the <a href="http://www.microsoft.com/en-us/download/details.aspx?id=39296" target="_blank">RSAT Tools for Windows 8.1</a></p>
+
+<p> </p>
+
+<h3 id="scvmm">SCVMM</h3>
+
+<p>This should be your first piece to upgrade as it’s the heart of your private cloud. VMM 2012 SP1  can’t properly manage Hyper-V 2012 R2 hosts and clusters. Basic features work, but as as said, not all.</p>
+
+<p><span style="text-decoration: underline;"><strong>Procedure</strong></span></p>
+
+<ol>
+  <li>Uninstall existing ADK</li>
+  <li>Download and install ADK 8.1 from http://www.microsoft.com/en-us/download/details.aspx?id=39982</li>
+  <li>Uninstall VMM Rollup Packs</li>
+  <li>Uninstall VMM Service and Console (as there is no inplace upgrade support)</li>
+  <li>Choose to retain the VMM database</li>
+  <li>Install VMM R2</li>
+  <li>Update the VMM Agents on all Hyper-V nodes, Library- and Infrastructure servers (PXE,WSUS, etc)</li>
+  <li>Remove SCOM Connection if present</li>
+  <li>Re-Install SCOM Mgmt Console with R2 Version</li>
+  <li>Reconfigure SCOM Connection</li>
+</ol>
+
+<h3 id="hyper-v-nodes--clusters">Hyper-V Nodes / Clusters</h3>
+
+<p>This is  a bit more tricky than the management part above. You can’t mix 2012 and 2012 R2 nodes in the same cluster.</p>
+
+<p>This is my favorite method:</p>
+
+<ol>
+  <li>Evict half of the nodes from the Hyper-V cluster (I hope you sized your environment correctly to support all workloads on half of the physical resources. Otherwise talk to the service owners, which service you can safely take down during the upgrade phase 🙂</li>
+  <li>Rebuild the evicted nodes with R2 (if you have already Baremetal Deployment with VMM in place this saves you a lot of time of course)</li>
+  <li>Configure Logical Switches and Networking as you did on the 2012 nodes</li>
+  <li>Create a new cluster within the same host group</li>
+  <li>Migrate Live Migrate VMs to the new cluster</li>
+  <li>Remove the old cluster / nodes and rebuild them with R2</li>
+  <li>Join the remaing node to the new cluster</li>
+  <li>Redistribute your workloads</li>
+</ol>
+
+<h3 id="virtual-machines-and-services"> Virtual Machines and Services</h3>
+
+<ul>
+  <li>Check and verify VM and Service Templates, some of mine where invalid after the upgrade (had to reattach the VHD files from the library server)</li>
+  <li>There is currently no way to migrate Gen1 VM to Gen2 version. If you create new Gen2 VMs and attach the existing virtual disks the VM won’t boot (inaccessivle boot device as it expects a IDE controller attached disk). I wouln’t go that far to say there is no way to fix that, but out of the box you cannot migrate a Gen1 VM to Gen2.</li>
+  <li>Gen2 VMs support the following operating systems:
+    <ul>
+      <li>Windows Server 2012</li>
+      <li>Windows Server 2012 R2 Preview</li>
+      <li>64-bit versions of Windows 8</li>
+      <li>64-bit versions of Windows 8.1 Preview</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="additional-notes"> Additional Notes</h3>
+
+<p>As this is a quick post It might be subject to change, as I’ll do more migrations in the future. Watch for updates.</p>
+:ET

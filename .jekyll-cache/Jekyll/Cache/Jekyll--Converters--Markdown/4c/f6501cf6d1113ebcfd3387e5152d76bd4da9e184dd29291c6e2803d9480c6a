@@ -1,0 +1,67 @@
+I"�<p>Yesterday Microsoft made <a href="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-technical-preview?wt.mc_id=WW_CE_OMS_OO_BLOG_NONE">Windows Server 2016 TP5</a> public available. With it, Nano Server also comes in a new version and the two flavors. <span style="font-size: 12pt;"><br /> </span></p>
+
+<ul>
+  <li>WIM Image being part of the ISO Media</li>
+  <li>Native VHD Disk Image</li>
+</ul>
+
+<p>For those still new to Nano Server, it will be the new flagship for server types such as (not mentioning as final a list),</p>
+
+<ul>
+  <li>Hyper-V Compute Nodes</li>
+  <li>Storage Nodes (Storage Spaces and Storage Spaces Direct)</li>
+  <li>Web Servers</li>
+  <li>Containers Hosts</li>
+  <li>DNS Servers</li>
+</ul>
+
+<p>Nano Server not only has a very low footprint (~ 700MB for a Hyper-V-, or Storage-Failover-Cluster Node), it also minimizes the attack surface, required reboots and maximizes the overall performance for its specific roles, which it is deployed for. To get more information on Nano Server in general I’ve included a few resources here: Nano Server Blog: <a href="https://blogs.technet.microsoft.com/nanoserver">https://blogs.technet.microsoft.com/nanoserver</a> Getting Started with Nano Server: <a href="https://technet.microsoft.com/en-us/library/mt126167.aspx">https://technet.microsoft.com/en-us/library/mt126167.aspx</a></p>
+
+<h3 id="whats-next">What’s next?</h3>
+
+<p>It’s pretty clear at this stage, that Tp5 will be the last technical preview before RTM. This means basically that the product is now feature-complete. Microsoft is targeting RTM for fall 2016. Now, what’s new to TP5 of Nano Server? Just to focus on some important things here…</p>
+
+<h2 id="enhancements-to-nano-server-tp5">Enhancements to Nano Server TP5</h2>
+
+<h3 id="emergency-console">Emergency Console</h3>
+
+<p>Nano Server is being managed remotely, and only remotely. There is no more RDP to a Nano Server or a local console, nor a min-GUI option. IMHO this is a right move, so people aren’t messing up with configurations and custom installation on a productive fabric / datacenter hosts. The less GUIs, the less changes are being made to a Windows Server, it’s just that fact. There are basically two option to manage your Nano Servers.</p>
+
+<ul>
+  <li>PowerShell Remoting (WinRM)</li>
+  <li>
+    <div>
+  <a href="https://blogs.technet.microsoft.com/nanoserver/2016/02/09/introducing-server-management-tools/">Server Management Tools</a>
+</div>
+
+    <p> &lt;/li&gt; &lt;/ul&gt;</p>
+
+    <p>However, if things go wrong and you have accidently to use the console, the EC (Emergency Console) might be your friend. Microsoft really heard our feedback loud and clear and enhanced the EC features in TP5. These are…</p>
+
+    <ul>
+      <li>TCP/IP v4/v6 Settings can now be changed using the EC</li>
+      <li>Windows Firewall rules can now be changed EC</li>
+      <li>WinRM can be turned on/off using the EC</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2016/04/042816_2234_SneakPeakon1.png" alt="" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>### Additional Feature/Role Packages
+
+  * DCB (Data Center Bridging)
+  * Secure Boot
+  * Shielded VMs
+  * PowerShell DSC
+
+### Deployment
+
+The PowerShell Script to create new Nano Server images has been slightly changed which makes it at the end even simpler to create new base images for your Nano Server within a few minutes. Here&amp;#8217;s a working example with the TP5 version, in this case for a Storage Node.
+
+`&lt;span style="color: #00b0f0; font-family: Consolas; font-size: 9pt;"&gt;Import-Module &lt;/span&gt;``&lt;span style="color: #00b0f0; font-family: Consolas; font-size: 9pt;"&gt;G:\NanoServer\NanoServerImageGenerator\NanoServerImageGenerator.psm1 -verbose&lt;/span&gt;`  
+`&lt;span style="color: #00b0f0; font-family: Consolas; font-size: 9pt;"&gt;$Adminpw = ConvertTo-SecureString -String 'SomePassw0rd!' -AsPlainText -Force&lt;br /&gt; &lt;/span&gt;``&lt;span style="color: #00b0f0; font-family: Consolas; font-size: 9pt;"&gt;$NodeName = "S2DNode1"&lt;br /&gt; &lt;/span&gt;```&lt;span style="color: #00b0f0; font-family: Consolas; font-size: 9pt;"&gt;New-NanoServerImage -MediaPath G:\ -BasePath "E:\NanoServerTemp\$NodeName" -TargetPath "E:\LocalVMs\$NodeName\$NodeName.vhd" -Storage -Clustering -EnableRemoteManagementPort `&lt;br /&gt; &lt;/span&gt;```&lt;span style="color: #00b0f0; font-family: Consolas;"&gt;&lt;span style="font-size: 9pt;"&gt;-ComputerName "$NodeName" -AdministratorPassword $adminpw -DeploymentType Host -Edition Datacenter -DomainName cloudnext.poc -ReuseDomainNode &lt;/span&gt; &lt;/span&gt;`
+
+&lt;span style="font-family: Times New Roman; font-size: 12pt;"&gt; Stay tuned for more Nano stuff to come…&lt;/span&gt;
+</code></pre></div></div>
+:ET

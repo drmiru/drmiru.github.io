@@ -1,0 +1,202 @@
+I"�5<p>This is a “lessons learned” post and a follow up to an earlier post on “<a href="http://www.miru.ch/scvmm-in-multi-forest-environments/">SCVMM in multi-forest environments</a>” to keep others away from “trial and error” when integrating SCVMM with Hyper-V in a secured environment. So what does “secured” and “locked down” mean in this context? Let me first describe the environment and use case a bit. The options to change the architecture below where limited due to customer’s internal security regulations.</p>
+
+<p>So you might ask, why don’t you just enable “forest wide” authentication and why don’t you place VMM into the same network security zone as the Hyper-V hosts? Well humm.. just because I was not allowed to <span style="font-family: Wingdings;">J</span>. So I searched for documentation on this particular scenario <strong>-&gt; fail</strong>.</p>
+
+<p>Multi-forest in general is documented, but not the specific trust authentication mode. Additionally the <a href="https://technet.microsoft.com/en-us/library/gg710871.aspx">required ports for SCVMM documentation</a> is not 100% complete. Enough said… let’s see how to get this thing up and running.<span style="font-size: 12pt;"><br /> </span></p>
+
+<h3 id="environment">Environment</h3>
+
+<p><img src="http://www.miru.ch/wp-content/uploads/2015/03/032415_2016_Guidancefor1.png" alt="" /></p>
+
+<p>###</p>
+
+<p> </p>
+
+<ul>
+  <li>SCVMM in Forest A (Service Forest)</li>
+  <li>Hyper-V Nodes in Forest B (Fabric Forest)</li>
+  <li>Two-Way Trust with “selective authentication”</li>
+  <li>SCVMM and Hyper-V Hosts in different VLANs, segregated by Layer 7 Firewall</li>
+</ul>
+
+<h3 id="selective-forest-authentication-in-a-nutshell">Selective forest authentication in a nutshell</h3>
+
+<p>Enabling this option on the forest trust properties requires any user / group in the trusting forest to be granted explicitly on computer objects with the “allowed to authenticate” permission on the trusted forest.<br />
+For detailed information on that see the following TechNet documentation: <a href="https://technet.microsoft.com/en-us/library/cc755844%28v=ws.10%29.aspx">https://technet.microsoft.com/en-us/library/cc755844%28v=ws.10%29.aspx</a></p>
+
+<h3 id="issues-to-solve">Issues to solve</h3>
+
+<div>
+  <table style="border-collapse: collapse;" border="0">
+    <colgroup> <col style="width: 28px;" /> <col style="width: 356px;" /> <col style="width: 312px;" /></colgroup> <tr style="background: #00b0f0;">
+      <td style="padding-left: 7px; padding-right: 7px; border: solid 0.5pt;">
+        <span style="color: white; font-size: 10pt;"><strong> #</strong></span>
+      </td>
+      
+      <td style="padding-left: 7px; padding-right: 7px; border-top: solid 0.5pt; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
+        <span style="color: white; font-size: 10pt;"><strong>Issue</strong></span>
+      </td>
+      
+      <td style="padding-left: 7px; padding-right: 7px; border-top: solid 0.5pt; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
+        <span style="color: white; font-size: 10pt;"><strong>Solution</strong></span>
+      </td>
+    </tr>
+    
+    <tr>
+      <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
+        <span style="font-size: 10pt;">1</span>
+      </td>
+      
+      <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
+        <span style="font-size: 10pt;">Unable to verify RunAs credentials account for Host Management with error: ID 405<br /> </span>&lt;/p&gt; 
+        
+        <p>
+          <img alt="" src="http://www.miru.ch/wp-content/uploads/2015/03/032415_2016_Guidancefor2.png" />&lt;/td&gt; 
+          
+          <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
+            <span style="font-size: 10pt;">Grant the RunAs account from Forest B -allowed to authenticate&#8221; permission on the SCVMM computer object in Forest A</span>
+          </td>&lt;/tr&gt; 
+          
+          <tr>
+            <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
+              <span style="font-size: 10pt;">2</span>
+            </td>
+            
+            <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
+              <span style="font-size: 10pt;">Unable to add Hyper-V Hosts and Clusters with error:<br /> </span>&lt;/p&gt; 
+              
+              <p>
+                &nbsp;
+              </p>
+              
+              <p>
+                <span style="color: #c00000;"><em>Unable to connect via WMI. Hostname: hv001.forestA.local<br /> Server &#8216;hv001.forestA.local' does not exist or access denied. Check firewall settings.<br /> The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)</em></span>&lt;/td&gt; 
+                
+                <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
+                  <span style="font-size: 10pt;">The TechNet documentation on -<a href="https://technet.microsoft.com/en-us/library/gg710871.aspx">required ports for SCVMM</a>&#8221; does mention the following ports for SCVMM Agent installation:<br /> </span>&lt;/p&gt; 
+                  
+                  <p>
+                    <span style="font-size: 10pt;">TCP 445<br /> </span>
+                  </p>
+                  
+                  <p>
+                    <span style="font-size: 10pt;">TCP 135<br /> </span>
+                  </p>
+                  
+                  <p>
+                    <span style="font-size: 10pt;">TCP 139<br /> </span>
+                  </p>
+                  
+                  <p>
+                    <span style="font-size: 10pt;">TCP 80<br /> </span>
+                  </p>
+                  
+                  <p>
+                    &nbsp;
+                  </p>
+                  
+                  <p>
+                    <span style="font-size: 10pt;">Assuming that no firewall admin in the world will allow RPC dynamic ports &gt;1024 from SCVMM to all Hyper-V nodes. we have <a href="https://support.microsoft.com/en-us/kb/154596">to fix the RPC port range</a>. In this example I used: 51000-51500, and request the firewall rule accordingly<br /> </span>
+                  </p>
+                  
+                  <p>
+                    &nbsp;
+                  </p>
+                  
+                  <p>
+                    <span style="color: #ffc000; font-size: 10pt;"><strong>Note! <span style="color: black;">The endpoint mapper (tcp 135) and the RPC port range must also be opened to any CNO (Cluster named Object) resp. to it's IP address<span style="color: #ffc000;"><br /> </span></span></strong></span>&lt;/td&gt; &lt;/tr&gt; 
+                    
+                    <tr>
+                      <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
+                        <span style="font-size: 10pt;">3</span>
+                      </td>
+                      
+                      <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
+                        <span style="font-size: 10pt;">Unable to add Hyper-V Hosts and Clusters with error:<br /> </span>&lt;/p&gt; 
+                        
+                        <p>
+                          <img alt="" src="http://www.miru.ch/wp-content/uploads/2015/03/032415_2016_Guidancefor3.png" />&lt;/td&gt; 
+                          
+                          <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
+                            <ul>
+                              <li>
+                                <span style="font-size: 10pt;">Grant the SCVMM Service account from Forest A -allowed to authenticate&#8221; permission on all Hyper-V hosts in Forest B<br /> </span>
+                              </li>
+                              <li>
+                                <span style="font-size: 10pt;">Grant the SCVMM Service account from Forest A -read&#8221; permission in Forest B<br /> </span>
+                              </li>
+                              <li>
+                                <span style="font-size: 10pt;">Allow LDAP/LDAPs connection from SCVMM in Forest A to all Domain Controllers in<br /> Forest B<br /> </span>
+                              </li>
+                              <li>
+                                <span style="font-size: 10pt;">Ensure the selected RunAs Account has local Administrator permissions on all Hyper-V hosts<br /> </span>
+                              </li>
+                              <li>
+                                <span style="font-size: 10pt;">Ensure name resolution works between both forests</span>
+                              </li>
+                            </ul>
+                          </td>&lt;/tr&gt; 
+                          
+                          <tr>
+                            <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
+                              <span style="font-size: 10pt;">4</span>
+                            </td>
+                            
+                            <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
+                              <span style="font-size: 10pt;">Cluster Service suddenly stops on certain nodes after some days of operation. Trying to restart the service results in error:<br /> </span>&lt;/p&gt; 
+                              
+                              <p>
+                                <span style="color: #c00000;"><em>RPC Endpoint mapper / no endpoint available</em></span>&lt;/td&gt; 
+                                
+                                <td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">
+                                  <span style="font-size: 10pt;">Increase the RPC port range to a minimum of 200 ports. Cluster-intercommunication also requires RPC ports. Depending on other management tasks and interfaces the documented minimum range of 100 ports can become too small.</span>
+                                </td>&lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/div&gt; 
+                                
+                                <p>
+                                  &nbsp;
+                                </p>
+                                
+                                <h3>
+                                  In short you need to…
+                                </h3>
+                                
+                                <ul>
+                                  <li>
+                                    Configure all Hyper-V Hosts to use a fixed range for RPC Ports starting somewhere from &gt; 5000 (depending on the existing ports in the firewall ruleset)
+                                  </li>
+                                  <li>
+                                    Configure the firewall ruleset accordingly
+                                  </li>
+                                  <li>
+                                    Grant the Host Management RunAs account from Forest B -allowed to authenticate&#8221; permission on the SCVMM computer object in Forest A
+                                  </li>
+                                  <li>
+                                    Grant the SCVMM Service account from Forest A -allowed to authenticate&#8221; permission on all Hyper-V hosts and CNOs in Forest B
+                                  </li>
+                                  <li>
+                                    Grant the SCVMM Service account from Forest A -read&#8221; permission in Forest B
+                                  </li>
+                                  <li>
+                                    Allow LDAP/LDAPs connection from SCVMM in Forest A to all Domain Controllers in<br /> Forest B
+                                  </li>
+                                  <li>
+                                    Ensure the selected Host Management RunAs Account has local Administrator permissions on all Hyper-V hosts
+                                  </li>
+                                  <li>
+                                    Ensure name resolution works between both forests
+                                  </li>
+                                </ul>
+                                
+                                <p>
+                                  &nbsp;
+                                </p>
+                                
+                                <p>
+                                  Hope this helps and saves some nerves…. Mine are gone for today 😉
+                                </p>
+                                
+                                <p>
+                                  &nbsp;
+                                </p>
+</p></td></tr></p></td></tr></p></td></p></td></tr></p></td></tr></table></div>
+:ET

@@ -60,7 +60,7 @@ If you are absolutely unfamiliar with Hyper-V Replica, I recommend to carefully 
 **Error Code <span style="color: red;">0x00002EFE</span>  
 ** 
 
-![](http://www.miru.ch/wp-content/uploads/2013/11/110513_2142_WhenHyperVR1.png) 
+![](../images/2013/11/110513_2142_WhenHyperVR1.png) 
 
 **Possible root causes:  
 ** 
@@ -74,7 +74,7 @@ If you are absolutely unfamiliar with Hyper-V Replica, I recommend to carefully 
 
 **Error Code <span style="color: red;">0x80004004<br /> </span>**
 
-![](http://www.miru.ch/wp-content/uploads/2013/11/110513_2142_WhenHyperVR2.png) **  
+![](../images/2013/11/110513_2142_WhenHyperVR2.png) **  
 ** 
 
 &nbsp;
@@ -94,7 +94,7 @@ If you are absolutely unfamiliar with Hyper-V Replica, I recommend to carefully 
     **Error Code <span style="color: red;">0x80070005</span>  
 ** 
     
-![](http://www.miru.ch/wp-content/uploads/2013/11/110513_2142_WhenHyperVR3.png) 
+![](../images/2013/11/110513_2142_WhenHyperVR3.png) 
     
     **Possible root causes:  
 ** 

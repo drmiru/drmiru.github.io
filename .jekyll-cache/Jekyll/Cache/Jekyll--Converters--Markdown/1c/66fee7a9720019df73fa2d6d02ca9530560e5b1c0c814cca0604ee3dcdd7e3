@@ -1,0 +1,57 @@
+I"%<h3 id="the-unpleasant-question">The unpleasant question</h3>
+
+<p>While deploying Service Management Automation out in the field over the last 2 years, I’m more and more confronted with an unpleasant question:</p>
+
+<p><em>How can we choose the runbook worker, which is going to execute a particular runbook?</em></p>
+
+<h3 id="why-would-you-need-that">Why would you need that?</h3>
+
+<p>If you have a multi-forest environment without trusts and/or an environment with lots of DMZs and other sensitive network zones, you might not be allowed to connect from your regular runbook workers to any of the sensitive target systems. Orchestrator had (still has) the option to execute a particular runbook on a runbook worker of choice.</p>
+
+<p> </p>
+
+<p><a href="http://www.miru.ch/wp-content/uploads/2015/08/SMA-Multi-Env-Worker.png"><img class="alignleft  wp-image-4253" src="http://www.miru.ch/wp-content/uploads/2015/08/SMA-Multi-Env-Worker.png" alt="SMA Multi Env Worker" width="508" height="375" srcset="http://www.miru.ch/wp-content/uploads/2015/08/SMA-Multi-Env-Worker.png 671w, http://www.miru.ch/wp-content/uploads/2015/08/SMA-Multi-Env-Worker-300x221.png 300w" sizes="(max-width: 508px) 100vw, 508px" /></a><a href="http://www.miru.ch/wp-content/uploads/2015/08/SMA-Multi-Env-Worker.png"><br />
+</a></p>
+
+<p> </p>
+
+<p>–&gt; Well, the short answer is: You can’t do that with SMA without creating multiple SMA instances.</p>
+
+<h3 id="but-wait-theres-more"> But wait, there’s more.</h3>
+
+<p>The long answer is: You can’t do it out of the box with the current version. However I wanted to know if there might be a “dirty” way to achieve that. As I did some reverse engineering on how SMA runbook jobs are fired, the SQL traces showed interesting results. There are mainly two stored procedures being executed, when SMA web service triggers a runbook start.</p>
+
+<ul>
+  <li> [sma].[core].[createjob]<br />
+(creates a new job entry and a new job context entry)</li>
+  <li>[sma].[queues].[message]<br />
+(creates a new message to inform the worker about new job)</li>
+</ul>
+
+<p>Therefore I created a little function which takes the required parameters to execute the two procedures via T-SQL. Along with other functions created under the former name “SMAHouseKeeping” I’ve put the runbook calling function into a module called c<strong>SMATools</strong> which can be <a href="https://gallery.technet.microsoft.com/Module-to-troubleshoot-and-ebafca16" target="_blank">downloaded from TechNet</a><strong>.</strong></p>
+
+<p>To have a SMA runbook job executed on a specific worker you simply have to provide the following parameters.</p>
+
+<pre>Invoke-cSMARunbook -RunbookName "My-Runbook" -WorkerName "MyWorker" -WebServiceEndpoint https://MySMAWebService</pre>
+
+<p>To call a runbook with input parameters, you have to provide them in XML string format.</p>
+
+<pre>Invoke-cSMARunbook -RunbookName a_masta -WorkerName smaw002 -RunbookParameters '&lt;Parameters&gt;&lt;Parameter name="message" value="Hello World" isValueNull="0"/&gt;&lt;/Parameters&gt;' -WebServiceEndpoint https://sma01</pre>
+
+<p>###</p>
+
+<h3 id="any-other-supported-way">Any other, “supported”, way?</h3>
+
+<p>Yes, there is one. If you’re using Azure Automation you might want to use the concept of “hybrid Workers”, which does basically mean, you’re authoring and calling your runbooks on your public Azure Automation account, but the runbook code itself is executed on a “on premises” worker. Using this architecture you can put one or more worker in a runbook server group. When calling a runbook, you’re able to specify the target runbook group. Having multiple groups enables you to differentiate where code is executed at rest. See <a href="https://azure.microsoft.com/en-us/documentation/articles/automation-hybrid-runbook-worker/" target="_blank">here</a> for more information about Hybrid Runbook Worker scenario with Azure Automation.</p>
+
+<p> </p>
+
+<p><strong>Disclaimer</strong></p>
+
+<p>THE MODULE CODE AND ANY RELATED INFORMATION ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED,<br />
+INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE. BE AWARE THAT MANIPULATING THE SMA DATABASE DIRECTLY IS ABSOLUTELY UNSUPPORTED AND IS COMPLETELY ON YOUR OWN RISK.</p>
+
+<p> </p>
+
+<p> </p>
+:ET

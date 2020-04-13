@@ -23,7 +23,7 @@ This is greate news, as now everyone can create own managed keys to encrypt Azur
 
 SSE uses Azure Key Vault behind the scenes, a highly available and scalable secure storage for RSA cryptographic keys backed by either a Software Storage or FIPS 140-2 Level 2 validated Hardware Security Modules (HSMs).
 
-[<img class="alignleft size-medium wp-image-4945" src="http://www.miru.ch/wp-content/uploads/2018/03/keys-300x200.jpg" alt="" width="300" height="200" srcset="http://www.miru.ch/wp-content/uploads/2018/03/keys-300x200.jpg 300w, http://www.miru.ch/wp-content/uploads/2018/03/keys.jpg 500w" sizes="(max-width: 300px) 100vw, 300px" />](http://www.miru.ch/wp-content/uploads/2018/03/keys.jpg)
+[<img class="alignleft size-medium wp-image-4945" src="../images/2018/03/keys-300x200.jpg" alt="" width="300" height="200" srcset="../images/2018/03/keys-300x200.jpg 300w, ../images/2018/03/keys.jpg 500w" sizes="(max-width: 300px) 100vw, 300px" />](../images/2018/03/keys.jpg)
 
 &nbsp;
 
