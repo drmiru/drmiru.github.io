@@ -33,6 +33,7 @@ defaults:
   values:
     permalink: "/blog/:title/"
     layout: post
+    comments: true
     author: "Michael Rueefli"
 
 # Jekyll
