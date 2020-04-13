@@ -27,9 +27,8 @@ I recently came across an annoying issue with Azure Network Watcher when having 
 When trying to enable the NetworkWatcher for a new region, the request got denied:  
 
 
-<p class="has-background has-vivid-red-background-color">
-  Resource &#8216;NetworkWatcherRG&#8217; was disallowed by policy
-</p>
+> <font color="red"> Resource 'NetworkWatcherRG' was disallowed by policy </font>
+
 
 The reason for this, the Network Watcher is a hidden resource, but still it is a resource which has to live inside a resource group. Microsofts automatically created a resource group with the name &#8220;NetworkWatcherRG&#8221;. So first, the name of the resource group is not compliant with my naming standards, secondly I&#8217;m enforcing certain tags to be set, when a resource group is created. That&#8217;s why this failed.
 
@@ -42,14 +41,16 @@ The reason for this, the Network Watcher is a hidden resource, but still it is a
 </p>
 
 **PowerShell**
-
-<pre class="wp-block-preformatted">Register-AzProviderFeature -FeatureName DisableNetworkWatcherAutocreation -ProviderNamespace Microsoft.Network
-Register-AzResourceProvider -ProviderNamespace Microsoft.Network </pre>
+{% highlight ruby %}
+Register-AzProviderFeature -FeatureName DisableNetworkWatcherAutocreation -ProviderNamespace Microsoft.Network
+Register-AzResourceProvider -ProviderNamespace Microsoft.Network
+{% endhighlight %}
 
 **Azure CLI**
 
-<pre class="wp-block-preformatted">az feature register --name DisableNetworkWatcherAutocreation --namespace Microsoft.Network
-az provider register -n Microsoft.Network </pre>
+{% highlight ruby %}az feature register --name DisableNetworkWatcherAutocreation --namespace Microsoft.Network
+az provider register -n Microsoft.Network
+{% endhighlight %}
 
 ### 2. Automate Network Watcher instance creation
 

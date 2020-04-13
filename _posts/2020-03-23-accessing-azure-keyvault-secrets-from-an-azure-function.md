@@ -27,7 +27,7 @@ Using Azure Functions you have several ways to access secrets from an Azure Key 
 
 In this example I&#8217;m going to show how to get a Key Vault secret via PowerShell.
 
-{% highlight ruby %}
+{% highlight PowerShell %}
 #Get Access Key for Eventhub Namespace from KeyVault
 Write-Host "Getting secret: $eventHubKeySecret from key vault: $keyVaultName"
 $eventHubkey = (Get-AzKeyVaultSecret -VaultName $keyVaultName -SecretName $eventHubKeySecret).SecretValueText
@@ -43,11 +43,14 @@ Key Vaults are billed based on API operations (eg. get key/secret). If your func
 
 Another way is to reference the URI of the secret in the application settings of the function app, so the secrets get loaded, at startup time of the Function App.
 
-<pre class="wp-block-code"><code>mySecret = @Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret;SecretVersion=ec96f02080254f109c51a1f14cdb1931)</code></pre>
+{% highlight ruby %}
+mySecret = @Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret;SecretVersion=ec96f02080254f109c51a1f14cdb1931)
+{% endhighlight %}
 
 As any other app setting it can be referenced as an environment variable inside the function.
-
+{% highlight ruby %}
 $mySecret = $ENV:mySecret
+{% endhighlight %}
 
 A few restrictions apply with this method:
 

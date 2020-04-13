@@ -22,9 +22,10 @@ Recently I received a support request from a customer &#8211; backup jobs of Azu
 
 Digging into the Azure activity log showed a possible root cause.
 
-<p class="has-text-color has-background has-vivid-red-color has-very-light-gray-background-color">
-  &#8220;Failure&nbsp;Details&#8221;:&nbsp;&#8220;An&nbsp;invalid&nbsp;policy&nbsp;is&nbsp;configured&nbsp;on&nbsp;the&nbsp;VM&nbsp;which&nbsp;is&nbsp;preventing&nbsp;Snapshot&nbsp;operation.&nbsp;Please&nbsp;correct&nbsp;the&nbsp;policy&nbsp;and&nbsp;retry&nbsp;the&nbsp;operation.&#8221;
-</p>
+
+> <font color="red"> "Failure Details": "An invalid policy is configured on the VM which is preventing Snapshot operation. Please correct the policy and retry the operation."</font>
+
+
 
 ### What happened?
 
@@ -35,8 +36,9 @@ This, such as other automated resource creations like NetworkWatcher, is not rea
 ### How to avoid this
 
 While still keeping the tagging policy in place, the only workaround is to create the resource group manually, according to the required naming schema by Azure Backup Service.
-
-<pre class="wp-block-preformatted">&lt;rg name>&lt;n>&lt;optional suffix></pre>
+{% highlight ruby %}
+<rg name><n><optional suffix>
+{% endhighlight %}
 
 As an example, you might name your resource group as follows:
 
