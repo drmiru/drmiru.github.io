@@ -10,7 +10,7 @@ aktt_notify_twitter:
   - 'no'
 categories:
   - Powershell
-  - Virtualization
+  
   - XenServer
 tags:
   - MAC Address find VM Powershell

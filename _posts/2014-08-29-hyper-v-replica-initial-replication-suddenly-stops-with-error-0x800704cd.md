@@ -13,7 +13,7 @@ s2mail:
 categories:
   - Cloud and Datacenter Management
   - Hyper-V
-  - Virtualization
+  
 tags:
   - Hyper-V
   - Replica

@@ -16,7 +16,7 @@ categories:
   - Powershell
   - Storage
   - Storage Spaces Direct
-  - Virtualization
+  
 tags:
   - Resize
   - Storage Replica

@@ -9,7 +9,7 @@ permalink: /updated-version-globalfunctions-ps1/
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
 ---
 I&#8217;ve published a new version of <a href="../images/2011/05/Globalfunctions.zip" target="_blank">Globalfunctions.ps1</a> Powershell script, which includes a lot of userful functions for your daily PS scripting life.
 

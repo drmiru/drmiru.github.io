@@ -11,7 +11,7 @@ bfa_virtual_template:
 categories:
   - Application Virtualization
   - Security
-  - Virtualization
+  
 tags:
   - Container
   - Defender

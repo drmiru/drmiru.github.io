@@ -7,7 +7,7 @@ layout: post
 guid: http://www.miru.ch/?p=8
 permalink: /vdi-the-future-of-workplaces/
 categories:
-  - Virtualization
+  
 ---
 <span> As VDI turns from being a hype to getting a defacto standard, there are some questions and open issues I&#8217;m thinking about.</span>
 

@@ -9,7 +9,7 @@ permalink: /fim-ressources-in-a-nutshell/
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
 ---
 If you are new to FIM (Forefront Identity Manager) , this blog article might help you a lot.
 

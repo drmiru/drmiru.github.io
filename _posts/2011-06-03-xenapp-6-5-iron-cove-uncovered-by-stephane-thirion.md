@@ -9,7 +9,7 @@ permalink: /xenapp-6-5-iron-cove-uncovered-by-stephane-thirion/
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
   - XenApp
 tags:
   - XenApp Iron Cove

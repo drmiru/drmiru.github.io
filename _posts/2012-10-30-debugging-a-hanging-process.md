@@ -11,7 +11,7 @@ aktt_notify_twitter:
 categories:
   - Citrix
   - Debugging
-  - Virtualization
+  
 tags:
   - Debug
   - hang

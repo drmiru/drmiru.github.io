@@ -18,7 +18,7 @@ categories:
   - Microsoft
   - Security
   - System Center
-  - Virtualization
+  
 tags:
   - Cross-Forest
   - Kerberos

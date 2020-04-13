@@ -10,7 +10,7 @@ aktt_notify_twitter:
   - 'no'
 categories:
   - Citrix
-  - Virtualization
+  
 ---
 Citrix has relased a brandnew whitepaper about communication ports used by citrix products now including XenServer.
 

@@ -17,7 +17,7 @@ post_description_display:
 categories:
   - Powershell
   - System Center
-  - Virtualization
+  
 tags:
   - Powershell
   - SCVMM

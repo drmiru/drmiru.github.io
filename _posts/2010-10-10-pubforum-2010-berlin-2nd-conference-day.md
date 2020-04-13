@@ -9,7 +9,7 @@ permalink: /pubforum-2010-berlin-2nd-conference-day/
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
 tags:
   - HDX3D BYOC Cloud PubForum
 ---

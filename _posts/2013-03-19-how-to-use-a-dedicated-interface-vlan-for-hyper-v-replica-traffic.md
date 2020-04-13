@@ -15,7 +15,7 @@ aktt_tweeted:
 categories:
   - Hyper-V
   - Microsoft
-  - Virtualization
+  
 tags:
   - Hyper-V
   - Replica

@@ -16,7 +16,7 @@ categories:
   - Microsoft
   - Scripting
   - System Center
-  - Virtualization
+  
 tags:
   - force
   - Host

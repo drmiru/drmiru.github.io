@@ -7,7 +7,7 @@ layout: post
 guid: http://www.miru.ch/?p=43
 permalink: /how-to-run-an-esx-3x-host-inside-vmware-workstation-65/
 categories:
-  - Virtualization
+  
 tags:
   - ESX
   - VMware

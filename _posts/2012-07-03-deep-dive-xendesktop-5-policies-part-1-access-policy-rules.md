@@ -11,7 +11,7 @@ aktt_notify_twitter:
 categories:
   - Citrix
   - Desktop Virtualization
-  - Virtualization
+  
   - XenDesktop
 tags:
   - Access Policy Rules

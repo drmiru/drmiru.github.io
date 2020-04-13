@@ -7,7 +7,7 @@ layout: post
 guid: http://www.miru.ch/?p=175
 permalink: /microsoft-launches-security-essentials/
 categories:
-  - Virtualization
+  
 ---
 Microsoft has launched it&#8217;s new PC security solution  &#8220;Security Essentials&#8221;, an all in one client protection suite, all free and after a first look at it &#8211; really not too bad. It protects from virues and malware.
 

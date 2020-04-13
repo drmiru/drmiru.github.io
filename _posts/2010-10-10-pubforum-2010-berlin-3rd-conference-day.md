@@ -9,7 +9,7 @@ permalink: /pubforum-2010-berlin-3rd-conference-day/
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
 tags:
   - Authentication Debugging Streaming PubForum
 ---

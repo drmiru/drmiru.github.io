@@ -14,7 +14,7 @@ categories:
   - Hyper-V
   - Powershell
   - System Center
-  - Virtualization
+  
 tags:
   - CredSSP
   - double-hop

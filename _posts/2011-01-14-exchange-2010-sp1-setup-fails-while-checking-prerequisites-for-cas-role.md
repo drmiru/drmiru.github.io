@@ -9,7 +9,7 @@ permalink: /exchange-2010-sp1-setup-fails-while-checking-prerequisites-for-cas-r
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
 ---
 Trying to install Exchange 2010 SP1 on 2008 R2 was not that easy as I thought. Everything but the CAS role could be installed.  
 After installing latest windows patches setup asked always for two additional hotfixes while checking prerequisites for CAS role. Google and MS KB showed up weird results..

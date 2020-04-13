@@ -60,3 +60,27 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.tagcloud {
+  .tagcloud-tag {
+    display: inline;
+    white-space: nowrap;
+    padding: 0.6em;
+  }
+  .tagcloud-tag-s a {
+    // default font size
+    color: rgb(73, 96, 231);
+  }
+  .tagcloud-tag-m a {
+    font-size: 1.1em;
+    color: rgb(106, 156, 250);
+  }
+  .tagcloud-tag-l a {
+    font-size: 1.3em;
+    color: rgb(8, 95, 66);
+  }
+  .tagcloud-tag-xl a {
+    font-size: 1.6em;
+    color: rgb(187, 10, 34);
+  }
+}

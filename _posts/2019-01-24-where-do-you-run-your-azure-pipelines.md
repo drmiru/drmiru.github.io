@@ -8,7 +8,6 @@ guid: http://www.miru.ch/?p=5056
 permalink: /where-do-you-run-your-azure-pipelines/
 bfa_virtual_template:
   - hierarchy
-image: /wp-content/uploads/2019/01/devops-cycle.png
 categories:
   - Azure
   - DevOps

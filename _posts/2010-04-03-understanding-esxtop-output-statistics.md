@@ -7,7 +7,7 @@ layout: post
 guid: http://www.miru.ch/?p=220
 permalink: /understanding-esxtop-output-statistics/
 categories:
-  - Virtualization
+  
 ---
 The following doc outlines in detail the esxtop output.  A must for everyone before using esxtop on your host to discover bottlenecks and performance issues.
 

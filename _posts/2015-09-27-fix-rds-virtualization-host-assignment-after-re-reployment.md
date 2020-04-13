@@ -16,7 +16,7 @@ categories:
   - Hyper-V
   - Microsoft
   - RDS
-  - Virtualization
+  
 tags:
   - Hyper-V
   - Powershell

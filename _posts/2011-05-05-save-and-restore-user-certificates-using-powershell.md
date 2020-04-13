@@ -14,7 +14,7 @@ categories:
   - Powershell
   - Scripting
   - Security
-  - Virtualization
+  
 tags:
   - Appsense Certificates Powershell
 ---

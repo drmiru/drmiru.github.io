@@ -13,7 +13,7 @@ s2mail:
 categories:
   - Microsoft
   - User Virtualization
-  - Virtualization
+  
 tags:
   - Logoff
   - UE-V

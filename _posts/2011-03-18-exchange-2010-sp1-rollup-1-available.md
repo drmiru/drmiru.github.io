@@ -9,7 +9,7 @@ permalink: /exchange-2010-sp1-rollup-1-available/
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
 ---
 The rollup can be downloaded <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=0059546f-f43d-4c7e-8367-81c6d5642bf3&displaylang=en" target="_blank">here</a>.
 

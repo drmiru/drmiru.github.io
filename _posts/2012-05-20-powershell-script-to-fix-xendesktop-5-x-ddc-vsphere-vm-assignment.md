@@ -12,7 +12,7 @@ categories:
   - Citrix
   - Desktop Virtualization
   - Powershell
-  - Virtualization
+  
   - XenDesktop
 tags:
   - Powershell

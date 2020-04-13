@@ -14,7 +14,7 @@ categories:
   - Failover Cluster
   - Storage
   - Storage Spaces
-  - Virtualization
+  
 tags:
   - Failover Cluster
   - Storage Spaces

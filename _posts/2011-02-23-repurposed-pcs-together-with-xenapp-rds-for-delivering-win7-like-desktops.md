@@ -11,7 +11,7 @@ aktt_notify_twitter:
 categories:
   - Application Virtualization
   - Desktop Virtualization
-  - Virtualization
+  
 tags:
   - Repurposed VDI Desktops XenApp
 ---

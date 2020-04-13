@@ -9,7 +9,7 @@ permalink: '/vsphere-5-%e2%80%93-what%e2%80%99s-new-a-closer-look-under-the-hood
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
   - VMware
 tags:
   - vSphere 5 ESXi

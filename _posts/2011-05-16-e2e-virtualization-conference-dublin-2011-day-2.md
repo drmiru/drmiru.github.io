@@ -9,7 +9,7 @@ permalink: /e2e-virtualization-conference-dublin-2011-day-2/
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
 ---
 Pubforum is no more, it&#8217;s now called **E2E virtualization conference**. The most of us think that it&#8217;s a good change to gain a more professional touch also for the sponsors by this rebranding.
 

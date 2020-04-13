@@ -10,7 +10,7 @@ aktt_notify_twitter:
   - 'no'
 categories:
   - Desktop Virtualization
-  - Virtualization
+  
 tags:
   - Cisco UCS
 ---

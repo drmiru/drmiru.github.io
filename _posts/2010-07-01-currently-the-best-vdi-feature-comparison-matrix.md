@@ -7,7 +7,7 @@ layout: post
 guid: http://www.miru.ch/?p=240
 permalink: /currently-the-best-vdi-feature-comparison-matrix/
 categories:
-  - Virtualization
+  
 ---
 Ruben Spruit and his team created a VDI Smackdown white paper which includes a complete feature comparison Matrix.
 

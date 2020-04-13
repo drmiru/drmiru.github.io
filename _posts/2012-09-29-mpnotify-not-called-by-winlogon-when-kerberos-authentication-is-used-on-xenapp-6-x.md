@@ -11,7 +11,7 @@ aktt_notify_twitter:
 categories:
   - Appsense
   - Citrix
-  - Virtualization
+  
 tags:
   - Appsense
   - Kerberos

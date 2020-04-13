@@ -15,7 +15,7 @@ categories:
   - Powershell
   - Service Management Automation
   - System Center
-  - Virtualization
+  
 tags:
   - Powershell DSC
   - SCVMM

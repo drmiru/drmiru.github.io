@@ -9,7 +9,7 @@ permalink: /pubforum-dublin-2011-day-1/
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
 ---
 **Session #1 (Jim Moyle and Andrew Wood about &#8220;Nirvana Phone&#8221;**
 

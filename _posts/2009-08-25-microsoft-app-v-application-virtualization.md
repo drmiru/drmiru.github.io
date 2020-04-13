@@ -10,7 +10,7 @@ aktt_notify_twitter:
   - 'no'
 categories:
   - vb
-  - Virtualization
+  
 tags:
   - App-V
   - Softgrid

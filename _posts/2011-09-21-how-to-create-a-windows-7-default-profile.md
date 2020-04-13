@@ -13,7 +13,7 @@ s2mail:
 bfa_virtual_template:
   - hierarchy
 categories:
-  - Virtualization
+  
 ---
 Leaving the &#8220;Default&#8221; user profile as it is can hurt your VDI / RDS deployment, because Windows needs certain amount of time to create a new user profile from the initial default one. The Default has not been initialized, meaning e.g. the HKCU hive is not generated, active setup has not initialized components.
 

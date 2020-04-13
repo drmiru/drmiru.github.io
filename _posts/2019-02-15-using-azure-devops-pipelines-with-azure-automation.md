@@ -8,7 +8,6 @@ guid: http://www.miru.ch/?p=5077
 permalink: /using-azure-devops-pipelines-with-azure-automation/
 bfa_virtual_template:
   - hierarchy
-image: /wp-content/uploads/2019/02/2019-02-15-22_49_09-AutomationLab-CD-Pipelines.png
 categories:
   - Azure Automation
   - DevOps

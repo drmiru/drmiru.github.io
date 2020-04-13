@@ -10,7 +10,7 @@ aktt_notify_twitter:
   - 'no'
 categories:
   - Application Virtualization
-  - Virtualization
+  
 tags:
   - App-V
   - fail over

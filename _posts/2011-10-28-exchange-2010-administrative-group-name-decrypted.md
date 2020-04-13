@@ -9,7 +9,7 @@ permalink: /exchange-2010-administrative-group-name-decrypted/
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
 ---
 I&#8217;m sure almost everyone dealing with upgrading an existing Exchange Org to MS Exchange 2010 wondered about the name of the administrative group created automatically under the configuration container.
 

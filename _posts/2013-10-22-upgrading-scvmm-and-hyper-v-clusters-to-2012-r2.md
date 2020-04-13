@@ -15,7 +15,7 @@ categories:
   - Hyper-V
   - Microsoft
   - System Center
-  - Virtualization
+  
 tags:
   - Hyper-V
   - Server 2012 R2

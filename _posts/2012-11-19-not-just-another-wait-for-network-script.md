@@ -14,7 +14,7 @@ categories:
   - Appsense
   - Powershell
   - User Virtualization
-  - Virtualization
+  
 tags:
   - Appsense
   - Powershell

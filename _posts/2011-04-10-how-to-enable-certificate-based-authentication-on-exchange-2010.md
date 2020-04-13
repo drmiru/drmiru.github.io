@@ -11,7 +11,7 @@ aktt_notify_twitter:
 categories:
   - Exchange
   - Microsoft
-  - Virtualization
+  
 tags:
   - Certificate OWA IIS
 ---

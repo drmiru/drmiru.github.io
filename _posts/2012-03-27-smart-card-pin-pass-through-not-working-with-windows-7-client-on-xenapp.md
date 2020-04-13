@@ -12,7 +12,7 @@ categories:
   - Citrix
   - Security
   - Smart Card
-  - Virtualization
+  
   - XenApp
 tags:
   - PIN pass-through

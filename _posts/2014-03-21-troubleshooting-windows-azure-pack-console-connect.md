@@ -14,7 +14,7 @@ categories:
   - Cloud and Datacenter Management
   - Hyper-V
   - System Center
-  - Virtualization
+  
   - Windows Azure Pack
 tags:
   - Console Connect

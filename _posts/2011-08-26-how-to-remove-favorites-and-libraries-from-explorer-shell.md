@@ -9,7 +9,7 @@ permalink: /how-to-remove-favorites-and-libraries-from-explorer-shell/
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
 ---
 I tried multiple solutions to remove these annoying links in the windows explorer shell (win7 / 2008 R2), but none worked perfectly. But thanks to Appsense EM it&#8217;s pretty easy to get rid of these useless things.
 

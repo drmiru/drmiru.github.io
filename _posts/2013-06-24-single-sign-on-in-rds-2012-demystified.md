@@ -19,7 +19,7 @@ categories:
   - RDS
   - Security
   - Smart Card
-  - Virtualization
+  
 tags:
   - Authentication
   - RDS

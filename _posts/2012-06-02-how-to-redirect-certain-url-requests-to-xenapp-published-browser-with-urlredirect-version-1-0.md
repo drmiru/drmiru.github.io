@@ -15,7 +15,7 @@ categories:
   - Citrix
   - Powershell
   - Scripting
-  - Virtualization
+  
   - XenApp
 tags:
   - Published Application

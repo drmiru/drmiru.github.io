@@ -9,7 +9,7 @@ permalink: /how-to-change-the-pool-master-in-a-xenserver-farm/
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
   - XenServer
 ---
 First you have to disable HA on the pool

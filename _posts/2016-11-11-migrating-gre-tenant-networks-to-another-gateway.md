@@ -12,7 +12,7 @@ categories:
   - Cloud and Datacenter Management
   - Hyper-V
   - Powershell
-  - Virtualization
+  
 tags:
   - Network Virtualization
   - NVGRE

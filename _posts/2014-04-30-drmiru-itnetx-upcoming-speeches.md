@@ -13,7 +13,7 @@ s2mail:
 categories:
   - Cloud and Datacenter Management
   - Microsoft
-  - Virtualization
+  
 tags:
   - E2eVC
   - itnetx

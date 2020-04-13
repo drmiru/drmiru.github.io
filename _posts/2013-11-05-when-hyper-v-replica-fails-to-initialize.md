@@ -13,7 +13,7 @@ s2mail:
 categories:
   - Hyper-V
   - Kerberos
-  - Virtualization
+  
 tags:
   - Hyper-V
   - Kerberos

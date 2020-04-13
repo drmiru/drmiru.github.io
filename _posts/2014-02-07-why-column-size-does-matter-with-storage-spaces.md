@@ -14,7 +14,7 @@ categories:
   - Microsoft
   - Storage
   - Storage Spaces
-  - Virtualization
+  
 tags:
   - Performance
   - Storage Spaces

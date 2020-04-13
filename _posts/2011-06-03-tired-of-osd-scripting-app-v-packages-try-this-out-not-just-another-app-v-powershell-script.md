@@ -11,7 +11,7 @@ aktt_notify_twitter:
 categories:
   - Application Virtualization
   - Powershell
-  - Virtualization
+  
 ---
 How to create a App-V package that fits different environments and location based configurations? Well there are several ways to achieve that.
 

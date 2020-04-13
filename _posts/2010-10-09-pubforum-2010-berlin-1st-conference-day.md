@@ -7,7 +7,7 @@ layout: post
 guid: http://www.miru.ch/?p=263
 permalink: /pubforum-2010-berlin-1st-conference-day/
 categories:
-  - Virtualization
+  
 tags:
   - PubForum Citrix VDI AccessGateway NetScaler Profiles
 ---

@@ -7,7 +7,7 @@ layout: post
 guid: http://www.miru.ch/?p=114
 permalink: /whats-new-in-vmware-vsphere-4-magirus-day-2/
 categories:
-  - Virtualization
+  
 tags:
   - VMware
   - vSphere

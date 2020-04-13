@@ -14,7 +14,7 @@ categories:
   - Hyper-V
   - Microsoft
   - System Center
-  - Virtualization
+  
 tags:
   - System Center 2012 R2
   - TechEd

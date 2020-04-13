@@ -9,7 +9,7 @@ permalink: /bulk-unregister-register-vms-on-vsphere/
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
 ---
 If you want to unregister all VMs on a particular vSphere Cluster / Host you&#8217;re pretty done using the GUI, registering all VMs on a datastore could take you to the &#8220;hell of clicking masters&#8221; depending on the amount of VMs to register. I created two powershell functions which do that stuff for you.
 

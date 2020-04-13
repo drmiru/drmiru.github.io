@@ -16,7 +16,7 @@ categories:
   - Powershell
   - Service Management Automation
   - System Center
-  - Virtualization
+  
   - Windows Azure Pack
 tags:
   - Automation

@@ -14,7 +14,7 @@ categories:
   - Cloud and Datacenter Management
   - Microsoft
   - Nano Server
-  - Virtualization
+  
 tags:
   - Nano Server
   - Powershell

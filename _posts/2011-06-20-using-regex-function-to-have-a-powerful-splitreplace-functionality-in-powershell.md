@@ -11,7 +11,7 @@ aktt_notify_twitter:
 categories:
   - Powershell
   - Scripting
-  - Virtualization
+  
 tags:
   - Powershell Split Replace RegEx
 ---

@@ -11,7 +11,7 @@ aktt_notify_twitter:
 categories:
   - Citrix
   - Powershell
-  - Virtualization
+  
   - VMware
   - XenDesktop
 tags:

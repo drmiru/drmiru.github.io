@@ -9,7 +9,7 @@ permalink: /microsoft-mvp-for-another-year/
 bfa_virtual_template:
   - hierarchy
 categories:
-  - Virtualization
+  
 tags:
   - Community
   - Microsoft

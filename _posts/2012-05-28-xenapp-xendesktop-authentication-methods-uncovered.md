@@ -13,7 +13,7 @@ categories:
   - Citrix
   - Desktop Virtualization
   - Smart Card
-  - Virtualization
+  
 tags:
   - Authentication
   - Citrix

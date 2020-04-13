@@ -16,7 +16,7 @@ categories:
   - Microsoft
   - Powershell
   - System Center
-  - Virtualization
+  
 tags:
   - Converged Setup
   - MAC Address

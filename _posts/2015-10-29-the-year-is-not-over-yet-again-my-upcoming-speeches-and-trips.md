@@ -17,7 +17,7 @@ categories:
   - Microsoft
   - Service Management Automation
   - System Center
-  - Virtualization
+  
 tags:
   - Automation
   - Azure

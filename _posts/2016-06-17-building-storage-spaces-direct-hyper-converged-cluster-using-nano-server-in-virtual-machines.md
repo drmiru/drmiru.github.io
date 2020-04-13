@@ -15,7 +15,7 @@ categories:
   - Microsoft
   - Nano Server
   - Storage Spaces
-  - Virtualization
+  
 tags:
   - S2D
   - SDS

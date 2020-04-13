@@ -14,7 +14,7 @@ categories:
   - Hyper-V
   - Microsoft
   - System Center
-  - Virtualization
+  
 tags:
   - Converged Fabric
   - Hyper-V

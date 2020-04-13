@@ -7,7 +7,7 @@ layout: post
 guid: http://www.miru.ch/?p=199
 permalink: /how-to-convert-a-vmdk-to-vhd-and-vice-versa/
 categories:
-  - Virtualization
+  
 ---
 Starwind Software offers a free tool to convert virtual disk files from vmdk to vhd format and vice versa. This is especially useful if using Provisioning Server and there is the need to update PVS Agent or Hypervisor Tools inside the guest (such as vmware tools). Just convert to vmdk, boot and update your stuff, then convert back to vhd&#8230; done!
 

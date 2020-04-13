@@ -12,7 +12,7 @@ s2mail:
   - 'yes'
 categories:
   - Hyper-V
-  - Virtualization
+  
 tags:
   - BSOD
   - Hyper-V

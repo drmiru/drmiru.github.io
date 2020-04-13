@@ -11,7 +11,7 @@ aktt_notify_twitter:
 categories:
   - Citrix
   - Netscaler
-  - Virtualization
+  
 tags:
   - Netscaler redirect web interface
 ---

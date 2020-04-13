@@ -14,7 +14,7 @@ categories:
   - Cloud and Datacenter Management
   - Hyper-V
   - System Center
-  - Virtualization
+  
 tags:
   - Baremetal
   - Hyper-V

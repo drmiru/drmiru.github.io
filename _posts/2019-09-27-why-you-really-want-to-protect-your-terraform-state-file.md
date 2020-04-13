@@ -11,7 +11,7 @@ bfa_virtual_template:
 categories:
   - Azure
   - DevOps
-  - Virtualization
+  
 tags:
   - IaC
   - terraform

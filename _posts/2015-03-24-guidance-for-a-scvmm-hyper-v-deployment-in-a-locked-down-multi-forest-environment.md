@@ -16,7 +16,7 @@ categories:
   - Kerberos
   - Security
   - System Center
-  - Virtualization
+  
 tags:
   - Active Directory
   - Cross-Forest

@@ -10,7 +10,7 @@ aktt_notify_twitter:
   - 'no'
 categories:
   - PVS
-  - Virtualization
+  
 tags:
   - KMS PVS
 ---

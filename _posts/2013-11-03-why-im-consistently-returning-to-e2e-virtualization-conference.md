@@ -18,7 +18,7 @@ categories:
   - Desktop Virtualization
   - Microsoft
   - User Virtualization
-  - Virtualization
+  
   - VMware
 tags:
   - Community

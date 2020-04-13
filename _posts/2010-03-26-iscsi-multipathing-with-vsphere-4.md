@@ -7,7 +7,7 @@ layout: post
 guid: http://www.miru.ch/?p=203
 permalink: /iscsi-multipathing-with-vsphere-4/
 categories:
-  - Virtualization
+  
 tags:
   - iSCSI MPIO vSphere4 Multipathing
 ---

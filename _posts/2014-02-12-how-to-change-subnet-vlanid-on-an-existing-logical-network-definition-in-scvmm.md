@@ -15,7 +15,7 @@ categories:
   - Microsoft
   - Powershell
   - System Center
-  - Virtualization
+  
 tags:
   - Logical Networks
   - SCVMM

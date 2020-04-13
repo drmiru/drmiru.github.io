@@ -8,7 +8,7 @@ guid: http://www.miru.ch/?p=236
 permalink: /how-to-mass-modify-vm-config-parameters-using-powercli/
 categories:
   - Powershell
-  - Virtualization
+  
 ---
 Greate post here, although a greate blog for datacenter admins!
 

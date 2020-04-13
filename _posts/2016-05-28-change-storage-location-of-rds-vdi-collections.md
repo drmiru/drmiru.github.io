@@ -15,7 +15,7 @@ categories:
   - Microsoft
   - RDS
   - Storage
-  - Virtualization
+  
 tags:
   - RDS
   - Storage

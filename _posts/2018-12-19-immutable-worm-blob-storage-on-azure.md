@@ -12,7 +12,7 @@ categories:
   - Azure
   - Microsoft
   - Storage
-  - Virtualization
+  
 tags:
   - Azure Storage
   - Compliance

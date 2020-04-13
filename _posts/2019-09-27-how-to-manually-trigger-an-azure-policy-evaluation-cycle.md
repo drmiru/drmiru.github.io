@@ -11,7 +11,7 @@ bfa_virtual_template:
 categories:
   - Azure
   - Microsoft
-  - Virtualization
+  
 tags:
   - Azure
   - Governance

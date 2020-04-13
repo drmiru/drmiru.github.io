@@ -7,7 +7,7 @@ layout: post
 guid: http://www.miru.ch/?p=217
 permalink: /whats-new-in-windows-server-2008-r2/
 categories:
-  - Uncategorized
-  - Virtualization
+  - Windows Server
+  
 ---
 <a href="http://www.microsoft.com/windowsserver2008/en/us/whats-new.aspx" target="_blank">http://www.microsoft.com/windowsserver2008/en/us/whats-new.aspx</a>

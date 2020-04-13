@@ -13,7 +13,7 @@ s2mail:
 categories:
   - Hyper-V
   - Microsoft
-  - Virtualization
+  
 tags:
   - Hyper-V
   - Performance

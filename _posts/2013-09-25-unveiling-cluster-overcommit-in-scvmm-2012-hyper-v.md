@@ -14,7 +14,7 @@ categories:
   - Hyper-V
   - Microsoft
   - Powershell
-  - Virtualization
+  
 tags:
   - Cluster
   - Hyper-V

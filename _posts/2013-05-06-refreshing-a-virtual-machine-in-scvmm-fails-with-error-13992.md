@@ -16,7 +16,7 @@ categories:
   - Hyper-V
   - Microsoft
   - Powershell
-  - Virtualization
+  
 tags:
   - Hyper-V
   - SCVMM

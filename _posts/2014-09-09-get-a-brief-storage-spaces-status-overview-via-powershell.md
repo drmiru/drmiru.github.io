@@ -17,7 +17,7 @@ categories:
   - Scripting
   - Storage
   - Storage Spaces
-  - Virtualization
+  
 tags:
   - Powershell
   - Storage Spaces

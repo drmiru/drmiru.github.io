@@ -1,6 +1,6 @@
 # Site
 title:              MIRU.CH
-bio:                'Jekyll version of the Massively theme by HTML5UP'
+bio:                'Michael Rueefli is one of the ‘make it noble’ partners, supporting clients and partners in training, concepts, designs and implementations around Microsoft Azure and DevOps.As a long-standing Microsoft MVP, he supports communities worldwide with his Microsoft Azure and Data Center know-how. He is a regular speaker at international events and conferences. He also shares his knowledge on his private blog: www.miru.ch'
 description:        "A blog about cloud & datacenter"
 locale:             en_US
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -51,13 +51,32 @@ sass:
   sass_dir:         _sass
   style:            compressed
 
+jekyll-archives:
+  enabled:
+    - year
+    - month
+    - tags
+    - categories
+  layout: 'page'
+  layouts:
+    year: year
+    month: month
+    tag: tag_and_category
+  permalinks:
+    year: '/:year/'
+    month: '/:year/:month/'
+    tag: '/tag/:name/'
+    category: '/category/:name/'
+
 # Gems
-gems:
+plugins:
   - jekyll-mentions
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-gist
   - jekyll-paginate
+  #- jekyll-archives
+ 
 
 paginate: 6
 paginate_path: "/blog/page:num/"

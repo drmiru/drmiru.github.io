@@ -14,7 +14,7 @@ categories:
   - Cloud and Datacenter Management
   - Microsoft
   - System Center
-  - Virtualization
+  
 tags:
   - Failover Cluster
   - SCVMM

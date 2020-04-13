@@ -11,7 +11,7 @@ bfa_virtual_template:
 s2mail:
   - 'yes'
 categories:
-  - Virtualization
+  
 tags:
   - E2eVC
 ---

@@ -10,7 +10,7 @@ aktt_notify_twitter:
   - 'no'
 categories:
   - Citrix
-  - Virtualization
+  
   - XenApp
 tags:
   - RDS XenApp Tuning

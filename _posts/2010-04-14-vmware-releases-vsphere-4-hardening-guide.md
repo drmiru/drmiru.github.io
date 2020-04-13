@@ -7,7 +7,7 @@ layout: post
 guid: http://www.miru.ch/?p=224
 permalink: /vmware-releases-vsphere-4-hardening-guide/
 categories:
-  - Virtualization
+  
 ---
 It&#8217;s still beta but, vmware has released a document covering security and hardening guidelines.
 

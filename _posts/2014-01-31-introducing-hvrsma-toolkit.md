@@ -15,7 +15,7 @@ categories:
   - Hyper-V
   - Microsoft
   - System Center
-  - Virtualization
+  
 tags:
   - Hyper-V
   - Hyper-V Replica

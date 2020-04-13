@@ -9,7 +9,7 @@ permalink: /xendesktop-5-and-hyper-v-lessons-learned-from-a-joint-venture/
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
 ---
 This Citrix Blog article posted by Thomas Berger covers lessons learned implementing Xendesktop 5 i
 

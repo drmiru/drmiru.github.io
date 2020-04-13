@@ -9,7 +9,7 @@ permalink: /crash-dump-analysis/
 aktt_notify_twitter:
   - 'no'
 categories:
-  - Virtualization
+  
 ---
 The traditional Windows BSOD has turned into a rarely occuring phenomen, sometimes you might see still see it. Didn&#8217;t you crossed your hands over your head and thought&#8230; What the f\*** shall I do with this information on the bluescreen?  
 I&#8217;ve collected some useful links which will help you to get a knowledge of analyzing crash dumps (system and application crashes). Finally it shows you which component was responsible to crash your system / application.  
