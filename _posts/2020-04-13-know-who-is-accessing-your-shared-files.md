@@ -33,10 +33,13 @@ This is where the REST API of MCAS (Microsoft Cloud App Security) can jump in. W
 - In the upper right corner, click the settings button
 - Navigate to Security Extentions / API tokens
 - Create a new API token (note it down somewhere safe, I prefer an Azure KeyVault)
+- Note the MCAS URL (refer to the API documentation link) -> e.g. yourtenantname.eu2.portal.cloudappsecurity.com
 
 ### PowerShell Example
 
 {% highlight ruby %}
+$mcasUrl = 'yourtenantname.eu2.portal.cloudappsecurity.com'
+
 #Secret for Workspace key
 Write-Host "Getting secret: $workSpaceKeySecret from key vault: $keyVaultName"
 $workSpaceKey = (Get-AzKeyVaultSecret -VaultName $keyVaultName -SecretName $workSpaceKeySecret).SecretValueText
@@ -70,7 +73,7 @@ $filter = @"
 }
 "@
 
-$result = Invoke-WebRequest -Method Post -Uri "https://makeitnoblelabs.eu2.portal.cloudappsecurity.com/api/v1/activities/" -Headers $authHeader -body $filter
+$result = Invoke-WebRequest -Method Post -Uri "https://$mcasUrl/api/v1/activities/" -Headers $authHeader -body $filter
 $sharings = ($result.Content -creplace 'Level','Level_2' -creplace 'EventName','EventName_2' | ConvertFrom-Json -depth 50).data
 $shareReport = @()
 Foreach ($sharedObj in $sharings) {
