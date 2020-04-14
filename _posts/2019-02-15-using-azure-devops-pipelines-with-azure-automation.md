@@ -35,7 +35,8 @@ So, let&#8217;s see how this is built.
   1. De-activate auto sync (we don&#8217;t want to sync the runbooks automatically on code change commits)
   2. Create a new script runbook (Start-DevOpsSourceControlSync), which initiates the manual synchronization. We will call the runbook at a later stage from the CD pipeline
 
-<pre class="wp-block-code"><code>param(
+{% highlight ruby %}
+param(
     [Parameter(mandatory=$false)]
     [string]$connectionName = "AzureRunAsConnection",
 
@@ -76,7 +77,7 @@ while ($syncJobResult.ProvisioningState -eq 'New' -or $syncJobResult.Provisionin
     start-sleep -Seconds 3
 }
 $syncJobResult
-</code></pre>
+{% endhighlight %}
 
 4. Create Service Connection  
 <figure class="wp-block-image">
@@ -92,7 +93,8 @@ $syncJobResult
 
 <img src="../images/2019/02/2019-02-15-22_29_51-AutomationLab-CD-Pipelines.png" alt="" class="wp-image-5086" srcset="../images/2019/02/2019-02-15-22_29_51-AutomationLab-CD-Pipelines.png 655w, ../images/2019/02/2019-02-15-22_29_51-AutomationLab-CD-Pipelines-300x201.png 300w" sizes="(max-width: 655px) 100vw, 655px" /> </figure> <figure class="wp-block-image"><img src="../images/2019/02/2019-02-15-22_30_53-AutomationLab-CD-Pipelines-1024x355.png" alt="" class="wp-image-5087" srcset="../images/2019/02/2019-02-15-22_30_53-AutomationLab-CD-Pipelines-1024x355.png 1024w, ../images/2019/02/2019-02-15-22_30_53-AutomationLab-CD-Pipelines-300x104.png 300w, ../images/2019/02/2019-02-15-22_30_53-AutomationLab-CD-Pipelines-768x266.png 768w, ../images/2019/02/2019-02-15-22_30_53-AutomationLab-CD-Pipelines.png 1597w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure> <figure class="wp-block-image"><img src="../images/2019/02/2019-02-15-22_19_00-AutomationLab-CD-Pipelines-1024x446.png" alt="" class="wp-image-5083" srcset="../images/2019/02/2019-02-15-22_19_00-AutomationLab-CD-Pipelines-1024x446.png 1024w, ../images/2019/02/2019-02-15-22_19_00-AutomationLab-CD-Pipelines-300x131.png 300w, ../images/2019/02/2019-02-15-22_19_00-AutomationLab-CD-Pipelines-768x335.png 768w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption>Add the following inline code</figcaption></figure> 
 
-<pre class="wp-block-code"><code>#Define constants
+{% highlight ruby %}
+#Define constants
 $automationAccountName = "d-aut-automationlab-01"
 $resourceGroupName = "rgr-automationdemo-d"
 
@@ -102,7 +104,7 @@ $automationAccount = Get-AzureRMAutomationAccount -Name $automationAccountName -
 #start sync runbook
 $job = Start-AzureRMAutomationRunbook -Name "Start-DevOpsSourceControlSync" -AutomationAccountName $automationAccount.AutomationAccountName -ResourceGroupName $automationAccount.ResourceGroupName -Parameters $runbookParameters 
 
-# Get Job Status, wait for completion or failure
+#Get Job Status, wait for completion or failure
 $jobResult = Get-AzureRMAutomationJob -Id $job.JobId -AutomationAccountName $automationAccount.AutomationAccountName -ResourceGroupName $automationAccount.ResourceGroupName
 while ($jobResult.Status -eq 'New' -or $jobResult.Status -eq 'Running'){
     $jobResult = Get-AzureRMAutomationJob -Id $job.JobId -AutomationAccountName $automationAccount.AutomationAccountName -ResourceGroupName $automationAccount.ResourceGroupName
@@ -110,7 +112,7 @@ while ($jobResult.Status -eq 'New' -or $jobResult.Status -eq 'Running'){
     start-sleep -Seconds 3
 }
 $jobResult.Status
-</code></pre>
+{% endhighlight %}
 
 As you can see, we now have a fully integrated CI/CD pipeline, everytime someone pushes code changes to our master branch. Needless to note that in production environments you&#8217;d have multiple stages for the deployments and branch policy for master branch, preventing direct pushes. But for the purpose of this demo I wanted to keep the steps as simple as possible.
 

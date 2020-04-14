@@ -24,7 +24,8 @@ Azure Pipelines is a part of Azure DevOps service portfolio. [Azure Pipelines](h
 
 While build pipelines are used to compile and create working code, deployment pipelines install or deploy the working code to a target application, web service, container or anything else which runs your code.<figure class="wp-block-image">
 
-<img src="../images/2019/01/pipelines-image-designer.png" alt="" class="wp-image-5063" srcset="../images/2019/01/pipelines-image-designer.png 824w, ../images/2019/01/pipelines-image-designer-300x131.png 300w, ../images/2019/01/pipelines-image-designer-768x335.png 768w" sizes="(max-width: 824px) 100vw, 824px" /> <figcaption>image source: Microsoft</figcaption></figure> 
+<img src="../images/2019/01/pipelines-image-designer.png" alt="" class="wp-image-5063" srcset="../images/2019/01/pipelines-image-designer.png 824w, ../images/2019/01/pipelines-image-designer-300x131.png 300w, ../images/2019/01/pipelines-image-designer-768x335.png 768w" sizes="(max-width: 824px) 100vw, 824px" />
+image source: Microsoft
 
 ### Agents
 
@@ -58,7 +59,8 @@ Self-hosted agents maximise your flexibility in terms of required, depended soft
 
 Self-hosted agents can be grouped into agent pools. When you create a build or release pipeline, you specify which pool it uses to run the jobs.<figure class="wp-block-image">
 
-<img src="../images/2019/01/Agents-pools-Azure-Pipelines-_-Microsoft-Docs.png" alt="" class="wp-image-5066" srcset="../images/2019/01/Agents-pools-Azure-Pipelines-_-Microsoft-Docs.png 543w, ../images/2019/01/Agents-pools-Azure-Pipelines-_-Microsoft-Docs-300x280.png 300w" sizes="(max-width: 543px) 100vw, 543px" /> <figcaption>image source: Microsoft</figcaption></figure> 
+<img src="../images/2019/01/Agents-pools-Azure-Pipelines-_-Microsoft-Docs.png" alt="" class="wp-image-5066" srcset="../images/2019/01/Agents-pools-Azure-Pipelines-_-Microsoft-Docs.png 543w, ../images/2019/01/Agents-pools-Azure-Pipelines-_-Microsoft-Docs-300x280.png 300w" sizes="(max-width: 543px) 100vw, 543px" /> 
+image source: Microsoft
 
 Typical use cases, where you want to create agent pools are:
 

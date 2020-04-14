@@ -16,7 +16,7 @@ tags:
   - Hybrid Network
   - Performance
 ---
-<figure class="wp-block-image"><img src="../images/2019/10/speed-300x300.png" alt="" class="wp-image-5157" srcset="../images/2019/10/speed-300x300.png 300w, ../images/2019/10/speed-150x150.png 150w, ../images/2019/10/speed.png 512w" sizes="(max-width: 300px) 100vw, 300px" /></figure> 
+<figure class="wp-block-image"><img src="../images/2019/10/speed-300x300.png" sizes="(max-width: 300px) 100vw, 300px" /></figure> 
 
 A lot of customers are using Azure VPN Gateways to create a hybrid connectivity with Azure and their on-premises data center. Beside Azure Express Route, it&#8217;s a widely adopted and robust solution. Azure VPN Gateways are highly available by default and depending on the SKU even zone redundant and active/active. Whereas active/active configurations require BGP, active passive configurations can use static routes.
 

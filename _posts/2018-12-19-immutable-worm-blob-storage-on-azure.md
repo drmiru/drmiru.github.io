@@ -18,11 +18,9 @@ tags:
   - Compliance
   - WORM
 ---
-## Intro
-
 In a previous post I covered Azure Storage DLM (policy based data lifecycle management) to leverage automatic storage tiering and archival. In this post I&#8217;m going to show how immutable compliant WORM storage can be enabled and used on Azure Blob Storage.
 
-## WORM &#8211; not a tiny, slimy animal
+## WORM - not a tiny, slimy animal
 
 WORM stands for &#8220;Write-Once-Read-Many&#8221; or in other terms for compliant, immutable object storage, where data which has been written once, cannot be modified or deleted at anytime or for a given amount of time. Traditional WORM storage technologies such as magnetic/optical disks, storage systems from vendors like Netapp or Hitachi Data Systems, have done a good job in your on-premises data center. Nowadays as more and more customers are leveraging cloud object storage, they need such capabilities for their cloud storage as well.
 
@@ -74,15 +72,26 @@ Prerequisites:
 
 This example demonstrates a use case, where data written to a blob storage container, must not be deleted, nor modified for a period of 2 years (referencing the creation date of a blob)
 
-  1. Create a resource group <pre class="">az group create -n rgr-worm-demo -l westeurope</pre>
+  1. Create a resource group 
+  {% highlight ruby %}
+  az group create -n rgr-worm-demo -l westeurope
+  {% endhighlight %}
 
-  2. Create a storage account <pre class="">$storageAccount = az storage account create --name stowormdemo --resource-group rgr-worm-demo --access-tier hot --encryption-services blob --https-only true --kind StorageV2 --location westeurope --sku Standard_RAGRS | convertfrom-json</pre>
+  2. Create a storage account 
+    {% highlight ruby %}
+  $storageAccount = az storage account create --name stowormdemo --resource-group rgr-worm-demo --access-tier hot --encryption-services blob --https-only true --kind StorageV2 --location westeurope --sku Standard_RAGRS | convertfrom-json
+  {% endhighlight %}
 
-  3. Create a blob container (which we are going to protect later) <pre class="">$accessKey=((az storage account keys list --account-name $storageAccount.name --resource-group $storageAccount.resourceGroup | ConvertFrom-Json) | Where-Object {$_.keyname -eq 'key1'}).value
+  3. Create a blob container (which we are going to protect later) 
+    {% highlight ruby %}
+  $accessKey=((az storage account keys list --account-name $storageAccount.name --resource-group $storageAccount.resourceGroup | ConvertFrom-Json) | Where-Object {$_.keyname -eq 'key1'}).value
+  az storage container create --name compliance --public-access off --account-name $storageAccount.name --account-key $accessKey
+  {% endhighlight %}
 
-az storage container create --name compliance --public-access off --account-name $storageAccount.name --account-key $accessKey</pre>
-
-  4. Create immutable policy <pre class="">$pol=az storage container immutability-policy create --container-name compliance --account-name $storageAccount.name --period 730 --resource-group $storageAccount.resourceGroup | ConvertFrom-Json</pre>
+  4. Create immutable policy 
+    {% highlight ruby %}
+  $pol=az storage container immutability-policy create --container-name compliance --account-name $storageAccount.name --period 730 --resource-group $storageAccount.resourceGroup | ConvertFrom-Json
+  {% endhighlight %}
 
   5. Test WORM functionality  
     -upload a text file (e.g. using Azure Storage Explorer)  
@@ -93,9 +102,9 @@ All &#8220;delete&#8221; and &#8220;modify/upload&#8221; operations are beeing d
 <img src="../images/2018/12/AZworm-test1-1024x740.png" alt="" class="wp-image-5028" srcset="../images/2018/12/AZworm-test1-1024x740.png 1024w, ../images/2018/12/AZworm-test1-300x217.png 300w, ../images/2018/12/AZworm-test1-768x555.png 768w, ../images/2018/12/AZworm-test1.png 1257w" sizes="(max-width: 1024px) 100vw, 1024px" /> </figure> 
 
 6. Up to now, the immutable policy is still editable, meaning we could reduce the minimum retention interval to 1 day and delete the file the upcoming day. Of course, this is not what your compliance officers would like to happen. Therefore we need to lock the policy object.  
-
-
-<pre class="wp-block-preformatted">az storage container immutability-policy lock --account-name $storageAccount.name --container-name compliance --if-match $pol.etag<br /></pre>
+  {% highlight ruby %}
+az storage container immutability-policy lock --account-name $storageAccount.name --container-name compliance --if-match $pol.etag
+{% endhighlight %}
 
 If we try to modify the policy furthermore, we&#8217;ll receive the following error:
 
@@ -104,8 +113,9 @@ If we try to modify the policy furthermore, we&#8217;ll receive the following er
 </p>
 
 ..which is desired of course. We do not want to have a worm policy to be modified after activation. The only modification allowed is the extend of the retention interval.&nbsp;
-
-<pre class="wp-block-preformatted">az storage container immutability-policy extend --account-name $storageAccount.name --container-name compliance --if-match $pol.etag --period 800</pre>
+  {% highlight ruby %}
+az storage container immutability-policy extend --account-name $storageAccount.name --container-name compliance --if-match $pol.etag --period 800
+{% endhighlight %}
 
 
 
@@ -115,12 +125,15 @@ Example 1: (create a legal hold policy) {#supported-values}
 This example demonstrates how to create a legal hold policy to prevent data deletion or modification for an infinite amount of time. Well not really infinite, because data is only hold immutable until the policy is removed (by removing the tags).
 
 Create another container for the test
-
-<pre class="wp-block-preformatted">az storage container create --name legalstuff --public-access off --account-name $storageAccount.name --account-key $accessKey<br /></pre>
+  {% highlight ruby %}
+az storage container create --name legalstuff --public-access off --account-name $storageAccount.name --account-key $accessKey
+{% endhighlight %}
 
 Now, let&#8217;s create a legal hold policy for this container
 
-<pre class="wp-block-preformatted">az storage container legal-hold set --account-name $storageAccount.name --container-name legalstuff --tags caseid12192018001</pre>
+  {% highlight ruby %}
+az storage container legal-hold set --account-name $storageAccount.name --container-name legalstuff --tags caseid12192018001
+{% endhighlight %}
 
 After setting the legal hold policy, we cannot modify or delete data. In contrary to the retention time based immutable policy, the legal hold policy can be removed, just by removing the tags (assuming you have the required IAM permission). After removing the legal hold, data can be deleted / altered again.
 
