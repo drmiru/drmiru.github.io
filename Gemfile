@@ -7,3 +7,4 @@ gem 'jekyll-mentions'
 gem 'jekyll-feed'
 gem 'jekyll-paginate'
 gem 'jekyll-archives'
+gem 'jekyll-compose', group: [:jekyll_plugins]
