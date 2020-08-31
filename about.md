@@ -10,7 +10,9 @@ sitemap:
 
 ![alt text](../images/mirusc.jpg "Michael Rueefli")
 
-Michael Rueefli is one of the ‘make it noble’ partners, supporting clients and partners in training, concepts, designs and implementations around Microsoft Azure and DevOps.As a long-standing Microsoft MVP, he supports communities worldwide with his Microsoft Azure and Data Center know-how. He is a regular speaker at international events and conferences. He also shares his knowledge on his private blog: www.miru.ch
+Michael Rueefli is one of the 'scopewyse' founders. As an experienced solutions architect he is supporting customers and partners in training, concepts, designs and implementations using cloud solutions from Microsoft Azure Microsoft Azure and Microsoft 365.
+As a long-standing Microsoft MVP, he supports communities worldwide with his Microsoft Azure and Data Center know-how. He is a regular speaker at international events and conferences. He also shares his knowledge on his private blog: www.miru.ch
+
 
 ### Focus Areas:
 * Azure Platform & Infrastructure
