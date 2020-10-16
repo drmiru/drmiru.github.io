@@ -30,7 +30,7 @@ While the microsoft hosted agents are maintained by Microsoft, self-hosted agent
 
 ## Costs
 Self-hosted agents have higher costs, just by the fact that you need to spin up and run virtual machines permanently.
-Regarding the parllel job / pipeline executions, it does not matter which type you choose. Only Azure DevOps Server (on-premises) does not care how many agents are executing tasks in parallel.
+Regarding the parallel job / pipeline executions, it does not matter which type you choose. Only Azure DevOps Server (on-premises) does not care how many agents are executing tasks in parallel.
 
 ## Which agent type to choose?
 If you're not running the on-premises version, there are only a few reasons why to go for self-hosted agents:
