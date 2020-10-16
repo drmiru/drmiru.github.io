@@ -1,6 +1,6 @@
 ---
 id: 5209
-title: Secure your Azure DevOps self-hosted agents
+title: Secure your Azure DevOps agents and pipelines
 date: 2020-10-16T18:53:34+02:00
 author: Michael Rüefli
 layout: post
