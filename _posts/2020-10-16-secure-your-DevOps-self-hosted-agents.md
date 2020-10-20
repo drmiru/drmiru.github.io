@@ -41,7 +41,7 @@ If you're not running the on-premises version, there are only a few reasons why 
 - Complex build/release tools which take just too long to be installed during pipeline runtime
 
 ## What about security?
-There are several areas you need to consider to DevOps chain secure and not a target for any attacker.
+There are several areas you need to consider to secure your DevOps chain and not becoming a target for attackers.
 
 ### General guidelines
 
