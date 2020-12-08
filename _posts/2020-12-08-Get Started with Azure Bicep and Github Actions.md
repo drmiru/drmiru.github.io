@@ -72,7 +72,7 @@ While for beginners, the code still may look complicated, bicep shows it's real 
 - dependencies are automatically resolved
 - variables can be references by just typing their names
 - concat is not required any more, instead strings can be combined with interpolated variables or parameters
-- Referenced resources or modules are autmatically compiled as child or nested resources 
+- Referenced resources or modules are automatically compiled as child or nested resources 
 
 > Disclaimer: Project "bicep" is still in public preview and you should not use it for critical production deployments. But to mention, it's quite stable already and a lot of core functionalities are implemented already.
 
@@ -400,7 +400,16 @@ In this post I showed how to use bicep based templates including a modular appro
 All the examples are available on my Github Account.
 https://github.com/drmiru/bicepdemo
 
-Stay tuned for more deep dive on bicep usage!
+### Useful resources
+
+Get started with Bicep:
+https://github.com/azure/bicep
+
+Get started with ARM deployments using Github Actions: 
+https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-github-actions
+
+
+> Stay tuned for more deep dive on bicep usage!
 
 
 
