@@ -341,7 +341,7 @@ jobs:
       - name: Bicep Build
         uses: aliencube/bicep-build-actions@v0.1
         with:
-          files: ${{ env.bicepFile }}
+          files: '${{ env.bicepFile }}'
       
       #create artifact tar
       - name: 'Tar files'
@@ -380,7 +380,7 @@ jobs:
           scope: subscription
           region: westeurope
           subscriptionId: ${{ env.subscriptionId }}
-          template: ${{ env.armtemplateFile }}
+          template: '${{ env.armtemplateFile }}'
 ```
 
 ## Decompiling existing ARM Templates
