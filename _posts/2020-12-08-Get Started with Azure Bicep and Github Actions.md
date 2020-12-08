@@ -77,7 +77,7 @@ While for beginners, the code still may look complicated, bicep shows it's real 
 > Disclaimer: Project "bicep" is still in public preview and you should not use it for critical production deployments. But to mention, it's quite stable already and a lot of core functionalities are implemented already.
 
 ## Github Actions
-As a lot of you might have noticed alreay, Microsoft is pushing Github a lot since the acquisition back in 2018.
+As a lot of you might have noticed already, Microsoft is pushing Github a lot since the acquisition back in 2018.
 Github Actions are the version of Azure DevOps Pipelines. Configured as YAML code files, the are very similar to Azure DevOps or Gitlab pipelines, although syntax and functionalities differ a bit between the platforms.
 
 Example:
