@@ -119,11 +119,12 @@ In this demo scenario I will demonstrate the following use case:
 - Use Github Actions for CI/CD
 
 ### (1) Installing nigthly bicep builds
-https://github.com/Azure/bicep/blob/main/docs/installing-nightly.md
+[Nightly Bicep Builds](https://github.com/Azure/bicep/blob/main/docs/installing-nightly.md)
+
 
 ### (2) Creating bicep modules
 If you want to start with the basics I recommend the following read.
-https://github.com/Azure/bicep
+[Getting Started with Bicep](https://github.com/Azure/bicep)
 
 For now we will have a look at modules.
 A module is nothing more than a single .bicep file (template) which can be references in a main template later. So let's create the first component template, a virtual network with two subnets.
@@ -398,15 +399,15 @@ https://bicepdemo.z22.web.core.windows.net/
 
 In this post I showed how to use bicep based templates including a modular approach by leveraging modules. Also I included a complete example how to automatically build/deploy a bicep solution using Github Actions (Workflows).
 All the examples are available on my Github Account.
-https://github.com/drmiru/bicepdemo
+[https://github.com/drmiru/bicepdemo](https://github.com/drmiru/bicepdemo)
 
 ### Useful resources
 
 Get started with Bicep:
-https://github.com/azure/bicep
+[https://github.com/azure/bicep](https://github.com/azure/bicep)
 
 Get started with ARM deployments using Github Actions: 
-https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-github-actions
+[https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-github-actions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-github-actions)
 
 
 > Stay tuned for more deep dive on bicep usage!
