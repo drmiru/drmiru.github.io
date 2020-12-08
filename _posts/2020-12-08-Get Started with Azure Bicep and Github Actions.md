@@ -308,7 +308,8 @@ We need to note the following parameters of the output:
 
 Ok, next, we're going to add the credentials as a github protected credential object:
 
-![Github Secrets](../images/2020/GithubCreateAzureSecrets.gif)
+<img src="../images/2020/GithubCreateAzureSecrets.gif" alt="drawing" width="1024"/>
+
 
 The last step is to create the Github Actions Workflow, in fact the CI/CD pipeline. You can use this example as your general workflow template for bicep based ARM deployments.
 
