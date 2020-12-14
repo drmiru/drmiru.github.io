@@ -17,8 +17,7 @@ tags:
   - Security
   - SecDevOps
 ---
-
-<span style="display:block;text-align:center">![Azure bicep](../images/2020/func_graph_with_msi.png)</span>
+<span style="text-align:center">![](../images/2020/func_graph_with_msi.png)</span>
 
 In this post I'm going to show how to use a MSI with PowerShell on Azure Functions to generate oAuth access tokens for Graph API access.
 
