@@ -156,6 +156,6 @@ In this we've seen how to use MSI (Managed Service Identities) to generate acces
 
 You can find the code example on my Github Account:
 
-[https://github.com/drmiru/AzureFunctions/tree/master/MSIAuthN]()
+[https://github.com/drmiru/AzureFunctions/tree/master/MSIAuthN](https://github.com/drmiru/AzureFunctions/tree/master/MSIAuthN)
 
 As always, if you have comments, questions or you find bugs. Feel free to reach out via Github / Twitter or LinkedIn.
