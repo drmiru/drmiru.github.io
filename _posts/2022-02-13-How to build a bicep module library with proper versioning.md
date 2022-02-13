@@ -36,6 +36,7 @@ In this post I'm focusing on the ACR. Usually I'm using an Azure Container Regis
 ## Getting started
 1. Bicep Version
 First you need to make sure, you have the correct bicep version installed on your dev machine. I'm using the bicep extension of azure cli.
+
 ```bash
 az bicep version
 az bicep upgrade
@@ -56,6 +57,7 @@ Such as:
 
 4. Create a container registry
 Create a container registry where you want to store the modules. As an example I've added a bicep template.
+
 ```yaml
 param name string
 param location string
@@ -92,15 +94,18 @@ output registryId string = acr.id
 ```
 
 <b>Deploy the registry</b>
-```
+
+```PowerShell
 az deployment group create --resource-group <your RG> --name bicepacr --template-file .\myAcr.bicep --parameters name=myacr001 --location=westeurope
 ```
 <b>Assign push permissions to your service principal</b>
-```
+
+```PowerShell
 az role assignment create --assignee <object id of your app registration> --role "ACR Push" --scope <registryId>
 ```
 <b>Assign pull permissions to your devops engineers</b>
-```
+
+```PowerShell
 az role assignment create --assignee <object id of your AAD group> --role "ACR Pull" --scope <registryId>
 ```
 
@@ -108,6 +113,7 @@ az role assignment create --assignee <object id of your AAD group> --role "ACR P
 5. Create bicep config file
 - In the root directory of the repo create a file named: bicepconfig.json
 - Edit the file and add the following lines
+
 ```yaml
 {
   "moduleAliases": {
@@ -120,10 +126,12 @@ az role assignment create --assignee <object id of your AAD group> --role "ACR P
   }
 }
 ```
+
 This creates an alias, which can be used in master template for referencing the modules in the registry.
 
 7. Create CI pipeline
 Create a CI pipeline for continous build and push of the modules.
+
 ```yaml
 
 trigger:
@@ -226,6 +234,7 @@ This pipeline will...
 Make sure you protect the main branch of your repo and add a build validation check. With this you can make sure, only successfully compiled modules land in your registry.
 
 8. Use the modules in your main bicep files
+
 ```yaml
 targetScope = 'subscription'
 var subscriptionId string = '9c8c3766-89ae-4acb-9c23-5f1deb8a70e7'
