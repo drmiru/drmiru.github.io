@@ -24,7 +24,7 @@ In this post I'm going to show how to create a bicep module library with a prope
 ## Why create an own module library
 Despite the fact that you find a lot of useful templates in bicep repository on Github, you may want to create your own reference library for your organization or customers. Using modules makes your bicep templates much more reusable and modular
 
-<b>Different Possibilities</b>
+### Different Possibilities
 So let's talk about how to create a module library
 There are different ways to achieve this, each with it's pros and cons.
 - Dedicated Git repository, with Git submodules
@@ -93,17 +93,17 @@ resource acr 'Microsoft.ContainerRegistry/registries@2020-11-01-preview' = {
 output registryId string = acr.id
 ```
 
-<b>Deploy the registry</b>
+Deploy the registry
 
 ```PowerShell
 az deployment group create --resource-group <your RG> --name bicepacr --template-file .\myAcr.bicep --parameters name=myacr001 --location=westeurope
 ```
-<b>Assign push permissions to your service principal</b>
+Assign push permissions to your service principal
 
 ```PowerShell
 az role assignment create --assignee <object id of your app registration> --role "ACR Push" --scope <registryId>
 ```
-<b>Assign pull permissions to your devops engineers</b>
+Assign pull permissions to your devops engineers
 
 ```PowerShell
 az role assignment create --assignee <object id of your AAD group> --role "ACR Pull" --scope <registryId>
