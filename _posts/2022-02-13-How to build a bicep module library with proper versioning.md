@@ -34,7 +34,7 @@ There are different ways to achieve this, each with it's pros and cons.
 In this post I'm focusing on the ACR. Usually I'm using an Azure Container Registry to store and pull container images for AKS or ACI. But since bicep version xx, an ACR can be used to store bicep templates. This allows us to store bicep modules centrally and with a proper versioning using artifact tags.
 
 ## Getting started
-1. Bicep Version
+### Bicep Version
 First you need to make sure, you have the correct bicep version installed on your dev machine. I'm using the bicep extension of azure cli.
 
 ```bash
@@ -42,10 +42,10 @@ az bicep version
 az bicep upgrade
 ```
 
-2. Create Git Repository
+### Create Git Repository
 Create a new Git Repo in Azure DevOps, Github or any other compatible platform
 
-3. Create a proper folder structure in the Repo
+### Create a proper folder structure in the Repo
 Create subfolders, matching the resource provider name or the resource type. Although this is an optional step, it helps organizing your modules
 Such as:
 - Compute
@@ -55,7 +55,7 @@ Such as:
 
 ..and so on.
 
-4. Create a container registry
+### Create a container registry
 Create a container registry where you want to store the modules. As an example I've added a bicep template.
 
 ```yaml
@@ -110,7 +110,7 @@ az role assignment create --assignee <object id of your AAD group> --role "ACR P
 ```
 
 
-5. Create bicep config file
+### Create bicep config file
 - In the root directory of the repo create a file named: bicepconfig.json
 - Edit the file and add the following lines
 
@@ -129,7 +129,7 @@ az role assignment create --assignee <object id of your AAD group> --role "ACR P
 
 This creates an alias, which can be used in master template for referencing the modules in the registry.
 
-7. Create CI pipeline
+### Create CI pipeline
 Create a CI pipeline for continous build and push of the modules.
 
 ```yaml
@@ -233,7 +233,7 @@ This pipeline will...
 
 Make sure you protect the main branch of your repo and add a build validation check. With this you can make sure, only successfully compiled modules land in your registry.
 
-8. Use the modules in your main bicep files
+### Use the modules in your main bicep files
 
 ```yaml
 targetScope = 'subscription'
