@@ -31,7 +31,7 @@ There are different ways to achieve this, each with it's pros and cons.
 - Azure Template Spec
 - Azure Container Registry
 
-In this post I'm focusing on the ACR. Usually I'm using an Azure Container Registry to store and pull container images for AKS or ACI. But since bicep version xx, an ACR can be used to store bicep templates. This allows us to store bicep modules centrally and with a proper versioning using artifact tags.
+In this post I'm focusing on the ACR. Usually I'm using an Azure Container Registry to store and pull container images for AKS or ACI. But since bicep version 0.4.1008 or azure cli version 2.31.0, an ACR can be used to store bicep templates. This allows us to store bicep modules centrally and with a proper versioning using artifact tags.
 
 ## Getting started
 ### Bicep Version
@@ -255,5 +255,10 @@ module uidAgic 'br/myModules:security/usermanagedidentity:20220125.3' = {
 }
 
 ```
+
+More Information:
+https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/private-module-registry?tabs=azure-powershell
+https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/template-specs?tabs=azure-powershell
+
 
 As always, if you have comments, questions or you find bugs. Feel free to reach out via Github / Twitter or LinkedIn.
